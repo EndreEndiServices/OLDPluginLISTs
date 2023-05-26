@@ -1,0 +1,42 @@
+---
+version: 1
+blocks:
+  2:
+    x: 254
+    "y": 43
+    z: 122
+    level: world
+    commands:
+    - song play
+  3:
+    x: 254
+    "y": 43
+    z: 120
+    level: world
+    commands:
+    - song next
+  4:
+    x: 254
+    "y": 43
+    z: 121
+    level: world
+    commands:
+    - song prev
+  5:
+    x: 251
+    "y": 44
+    z: 143
+    level: world
+    commands:
+    - ffa leave
+    - mw tp pvp2%op
+    - spawnpoint%op
+  6:
+    x: 251
+    "y": 44
+    z: 141
+    level: world
+    commands:
+    - ffa join
+    - song1 play%op
+...

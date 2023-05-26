@@ -1,0 +1,9 @@
+---
+handler-priority: 10
+white-world-protection: []
+non-check-worlds: []
+buying-disallowed-worlds: []
+player-land-limit: NaN
+price-per-y-axis: 100
+database-type: yaml
+...

@@ -1,0 +1,361 @@
+name: Broadcaster
+main: Broadcaster\Main
+version: "1.15"
+api: [1.11.0]
+load: STARTUP
+author: EvolSoft
+description: Broadcast Plugin
+website: http://www.evolsoft.tk
+
+commands:
+ broadcaster:
+  aliases: [bc, broadcast]
+  description: Broadcaster Commands.
+  permission: broadcaster
+ sendmessage:
+  aliases: [sm, smsg]
+  description: Send message to specified player (* for all players)
+  permission: broadcaster.sendmessage
+
+permissions:
+ broadcaster:
+  default: op
+  description: Broadcaster commands permissions.
+  children:
+   broadcaster.info:
+    default: op
+    description: Allows player to read info about Broadcaster.
+   broadcaster.reload:
+    default: op
+    description: Allows player to reload Broadcaster.
+   broadcaster.sendmessage:
+    default: op
+    description: Allows sending messages to players with /sendmessage command.<?php
+
+/*
+ * Broadcaster (v1.15) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 02/04/2015 02:54 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/Broadcaster/blob/master/LICENSE)
+ */
+
+namespace Broadcaster;
+
+use pocketmine\Player;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\event\Listener;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+class Main extends PluginBase{
+	
+	//About Plugin Const
+	const PRODUCER = "EvolSoft";
+	const VERSION = "1.15";
+	const MAIN_WEBSITE = "http://www.evolsoft.tk";
+	//Other Const
+	//Prefix
+	const PREFIX = "&9[&eBroadcaster&9] ";
+	
+    public $cfg;
+    
+    public $task;
+
+    public function translateColors($symbol, $message){
+    
+    	$message = str_replace($symbol."0", TextFormat::BLACK, $message);
+    	$message = str_replace($symbol."1", TextFormat::DARK_BLUE, $message);
+    	$message = str_replace($symbol."2", TextFormat::DARK_GREEN, $message);
+    	$message = str_replace($symbol."3", TextFormat::DARK_AQUA, $message);
+    	$message = str_replace($symbol."4", TextFormat::DARK_RED, $message);
+    	$message = str_replace($symbol."5", TextFormat::DARK_PURPLE, $message);
+    	$message = str_replace($symbol."6", TextFormat::GOLD, $message);
+    	$message = str_replace($symbol."7", TextFormat::GRAY, $message);
+    	$message = str_replace($symbol."8", TextFormat::DARK_GRAY, $message);
+    	$message = str_replace($symbol."9", TextFormat::BLUE, $message);
+    	$message = str_replace($symbol."a", TextFormat::GREEN, $message);
+    	$message = str_replace($symbol."b", TextFormat::AQUA, $message);
+    	$message = str_replace($symbol."c", TextFormat::RED, $message);
+    	$message = str_replace($symbol."d", TextFormat::LIGHT_PURPLE, $message);
+    	$message = str_replace($symbol."e", TextFormat::YELLOW, $message);
+    	$message = str_replace($symbol."f", TextFormat::WHITE, $message);
+    
+    	$message = str_replace($symbol."k", TextFormat::OBFUSCATED, $message);
+    	$message = str_replace($symbol."l", TextFormat::BOLD, $message);
+    	$message = str_replace($symbol."m", TextFormat::STRIKETHROUGH, $message);
+    	$message = str_replace($symbol."n", TextFormat::UNDERLINE, $message);
+    	$message = str_replace($symbol."o", TextFormat::ITALIC, $message);
+    	$message = str_replace($symbol."r", TextFormat::RESET, $message);
+    
+    	return $message;
+    }
+    
+    public function onEnable(){
+	    @mkdir($this->getDataFolder());
+        $this->saveDefaultConfig();
+        $this->cfg = $this->getConfig()->getAll();
+        $this->getCommand("sendmessage")->setExecutor(new Commands\SendMessage($this));
+        $this->getCommand("broadcaster")->setExecutor(new Commands\Commands($this));
+        $time = intval($this->cfg["time"]) * 20;
+        $this->task = $this->getServer()->getScheduler()->scheduleRepeatingTask(new Task($this), $time);
+    }
+    
+	public function broadcast($conf, $message){
+		$message = str_replace("{PREFIX}", $conf["prefix"], $message);
+		$message = str_replace("{SUFFIX}", $conf["suffix"], $message);
+		$message = str_replace("{TIME}", date($conf["datetime-format"]), $message);
+		return $message;
+	}
+
+	public function messagebyPlayer(Player $player, $conf, $message){
+	    $format = $conf["sendmessage-format"];
+		$format = str_replace("{MESSAGE}", $message, $format);
+		$format = str_replace("{PREFIX}", $conf["prefix"], $format);
+		$format = str_replace("{SENDER}", $player->getName(), $format);
+		$format = str_replace("{SUFFIX}", $conf["suffix"], $format);
+		$format = str_replace("{TIME}", date($conf["datetime-format"]), $format);
+		return $format;
+	}
+	
+	public function messagebyConsole(CommandSender $player, $conf, $message){
+		$format = $conf["sendmessage-format"];
+		$format = str_replace("{MESSAGE}", $message, $format);
+		$format = str_replace("{PREFIX}", $conf["prefix"], $format);
+		$format = str_replace("{SENDER}", $player->getName(), $format);
+		$format = str_replace("{SUFFIX}", $conf["suffix"], $format);
+		$format = str_replace("{TIME}", date($conf["datetime-format"]), $format);
+		return $format;
+	}
+	
+	public function getMessagefromArray($array){
+		unset($array[0]);
+		return implode(' ', $array);
+	}
+	
+}
+?>
+---
+prefix: "Broadcaster"
+suffix: "[A]"
+time: 15
+sendmessage-format: "[{TIME}] [{PREFIX}] {SUFFIX} {SENDER}> {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "[{TIME}] [{PREFIX}] 1st message"
+ - "[{TIME}] [{PREFIX}] 2nd message"
+ - "[{TIME}] [{PREFIX}] 3rd message"
+...<?php
+
+/*
+ * Broadcaster (v1.15) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:48 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/Broadcaster/blob/master/LICENSE)
+ */
+
+namespace Broadcaster\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use Broadcaster\Main;
+
+class SendMessage extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "sendmessage":
+    				$this->temp = $this->plugin->getConfig()->getAll();
+    				if($sender->hasPermission("broadcaster.sendmessage")){
+    					if(isset($args[0]) && isset($args[1])){
+    						//Send message to all players
+    						if($args[0]=="*"){
+    							//Verify is $sender is Console or Player
+    							if($sender instanceof CommandSender){
+    								foreach($this->plugin->getServer()->getOnlinePlayers() as $onlineplayers){
+    									$onlineplayers->sendMessage($this->plugin->translateColors("&", $this->plugin->messagebyConsole($sender, $this->temp, $this->plugin->getMessagefromArray($args))));
+    								}
+    							}elseif($sender instanceof Player){
+    								foreach($this->plugin->getServer()->getOnlinePlayers() as $onlineplayers){
+    									$onlineplayers->sendMessage($this->plugin->translateColors("&", $this->plugin->messagebyPlayer($sender, $this->temp, $this->plugin->getMessagefromArray($args))));
+    								}
+    							}	
+    						}else{
+    							//Verify if player exists
+    							if($this->plugin->getServer()->getPlayerExact($args[0])){
+    								$receiver = $this->plugin->getServer()->getPlayerExact($args[0]);
+    								//Verify is $sender is Console or Player
+    								if($sender instanceof CommandSender){
+    									$receiver->sendMessage($this->plugin->translateColors("&", $this->plugin->messagebyConsole($sender, $this->temp, $this->plugin->getMessagefromArray($args))));
+    								}elseif($sender instanceof Player){
+    									$receiver->sendMessage($this->plugin->translateColors("&", $this->plugin->messagebyPlayer($sender, $this->temp, $this->plugin->getMessagefromArray($args))));
+    								}
+    							}else{
+    								$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cPlayer not found"));
+    							}
+    						}
+    					}else{
+    						$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cUsage: /sm <player> <message>"));
+    					}
+    				}else{
+    					$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    					return true;
+    				}
+				break;
+    		}
+    	return true;
+    }
+    
+}
+    ?><?php
+
+/*
+ * Broadcaster (v1.15) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 02/04/2015 02:56 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/Broadcaster/blob/master/LICENSE)
+ */
+
+namespace Broadcaster\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use Broadcaster\Main;
+use Broadcaster\Task;
+
+class Commands extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "broadcaster":
+    				if(isset($args[0])){
+    			   		$args[0] = strtolower($args[0]);
+    			   		if($args[0]=="reload"){
+    			   			if($sender->hasPermission("broadcaster.reload")) {
+    			   				$this->plugin->reloadConfig();
+    			   				$this->cfg = $this->plugin->getConfig()->getAll();
+    			   				$time = intval($this->cfg["time"]) * 20;
+    			   				$this->plugin->task->remove();
+    			   				$this->plugin->task = $this->plugin->getServer()->getScheduler()->scheduleRepeatingTask(new Task($this->plugin), $time);
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&aConfiguration Reloaded."));
+    			   				return true;
+    			   			}
+    			   			else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				return true;
+    			   			}
+    			   		}
+    			   		elseif($args[0]=="info"){
+    			   			if($sender->hasPermission("broadcaster.info")) {
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&2BroadCaster &9v" . Main::VERSION . " &2developed by&9 " . Main::PRODUCER));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&2Website &9" . Main::MAIN_WEBSITE));
+    			   				return true;
+    			   			}
+    			   			else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				return true;
+    			   			}
+    			   		}else{
+    			   			if($sender->hasPermission("broadcaster")){
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cSubcommand &9" . $args[0] . "&c not found. Use &9/bc &cto show available commands"));
+    			   				break;
+    			   			}
+    			   			else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				break;
+    			   			}
+    			   			return true;
+    			   		}
+    			   	}
+    			   	else{
+    			   		if($sender->hasPermission("broadcaster")){
+    			   			$sender->sendMessage($this->plugin->translateColors("&", "&2- &9Available Commands &2-"));
+    			   			$sender->sendMessage($this->plugin->translateColors("&", "&9/bc info &2- &9Show info about this plugin"));
+    			   			$sender->sendMessage($this->plugin->translateColors("&", "&9/bc reload &2- &9Reload the config"));
+    			   			$sender->sendMessage($this->plugin->translateColors("&", "&9/sendmessage &2- &9Send message to specified player (* for all players)"));
+    			   			break;
+    			   		}else{
+    			   			$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   			break;
+    			   			}
+    			   		return true;
+    			   	}
+    		}
+    	return true;
+    }
+    
+}
+    ?><?php
+
+/*
+ * Broadcaster (v1.15) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:48 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/Broadcaster/blob/master/LICENSE)
+ */
+
+namespace Broadcaster;
+
+use pocketmine\Server;
+use pocketmine\scheduler\PluginTask;
+use pocketmine\utils\TextFormat;
+
+class Task extends PluginTask{
+
+    public function __construct(Main $plugin){
+        parent::__construct($plugin);
+        $this->plugin = $plugin;
+		$this->length = -1;
+    }
+
+    public function onRun($currentTick){
+    	$this->plugin = $this->getOwner();
+    	$this->plugin->cfg = $this->plugin->getConfig()->getAll();
+    	if($this->plugin->cfg["broadcast-enabled"]==true){
+    		$this->length=$this->length+1;
+    		$messages = $this->plugin->cfg["messages"];
+    		$messagekey = $this->length;
+    		$message = $messages[$messagekey];
+    		if($this->length==count($messages)-1) $this->length = -1;
+    		Server::getInstance()->broadcastMessage($this->plugin->translateColors("&", $this->plugin->broadcast($this->plugin->cfg, $message)));
+    	}
+    }
+
+}
+?>

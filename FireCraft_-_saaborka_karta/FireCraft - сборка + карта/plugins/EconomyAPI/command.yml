@@ -1,0 +1,20 @@
+---
+setmoney:
+- smoney
+mymoney:
+- money
+pay:
+- pay
+givemoney:
+- gmoney
+topmoney:
+- topmoney
+setlang:
+- setlang228
+takemoney:
+- takemoney228
+mystatus:
+- mystatus228
+seemoney:
+- seemoney
+...

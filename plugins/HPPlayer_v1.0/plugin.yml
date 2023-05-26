@@ -1,0 +1,5 @@
+name: HPPlayer
+version: "1.0"
+author: MamayAdesu
+api: 1.12.0
+main: mamayadesu\hpplayer

@@ -1,0 +1,98 @@
+---
+guest:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - -pocketmine.command.me
+  - battlekits.use.fighter
+  - battlekits.use.hardcore
+  - battlekits.use.warrior
+  - battlekits.use.thief
+  - battlekits.use.spartan
+  - battlekits.use.zeus
+  - battlekits.use.brawler
+  - battlekits.use.ninja
+  - battlekits.use.knight
+  - mw.cmd.tp
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.list
+  - pocketmine.command.spawnpoint
+  - simpleauth.command.login
+  - simpleauth.command.register
+  worlds: []
+user:
+  inheritance:
+  - guest
+  permissions:
+  - battlekits.use.user
+  worlds: []
+gamer:
+  inheritance:
+  - guest
+  permissions:
+  - ~
+  worlds: []
+member:
+  inheritance:
+  - guest
+  permissions:
+  - ~
+  worlds: []
+helper:
+  inheritance:
+  - guest
+  permissions:
+  - ~
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.say
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds: []
+mod:
+  inheritance:
+  - guest
+  permissions:
+  - ~
+  - pocketmine.command.ban
+  - pocketmine.command.ban-ip
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.tp
+  worlds: []
+admin:
+  inheritance:
+  - guest
+  permissions:
+  - ~
+  - pocketmine.command.teleport
+  - pocketmine.command.kick
+  - pocketmine.command.ban
+  - pocketmine.command.banip
+  - pocketmine.command.gamemode
+  worlds: []
+senioradmin:
+  inheritance:
+ - guest
+  permissions:
+  - ~
+  worlds: []
+leadadmin:
+  inheritance: []
+  permissions:
+  - ~
+  worlds: []
+owner:
+  inheritance:
+  - guest
+  permissions: []
+  worlds: []
+vip:
+  inheritance:
+  - guest
+  permissions:
+  - battlekits.use.vip
+  - fireblade.cmd
+  worlds: []
+...

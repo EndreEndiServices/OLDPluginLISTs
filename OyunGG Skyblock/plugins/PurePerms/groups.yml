@@ -1,0 +1,13 @@
+---
+§6Ku§bru§ccu:
+  alias: ""
+  inheritance: []
+  permissions: []
+  worlds: []
+Oyuncu:
+  alias: ""
+  isDefault: true
+  inheritance: []
+  permissions: []
+  worlds: []
+...

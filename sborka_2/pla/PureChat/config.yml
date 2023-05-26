@@ -1,0 +1,65 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: '...'
+groups:
+  Player:
+    default-chat: ♦{COLOR_GOLD}[Player] {COLOR_GREEN}{display_name} {COLOR_GRAY}>
+      {message}
+    default-nametag: '{COLOR_GRAY}{display_name}'
+    worlds: []
+  Admin:
+    default-chat: '{COLOR_GOLD}[Admin] {COLOR_YELLOW}{display_name} {COLOR_GOLD}>
+      {message}'
+    default-nametag: '{COLOR_AQUA}[Admin]{COLOR_GREEN}{display_name}'
+    worlds: []
+  Владелец:
+    default-chat: '{COLOR_RED}[Владелец] {COLOR_AQUA}{display_name} {COLOR_RED}>
+      {message}'
+    default-nametag: '{COLOR_RED}[Владелец]{display_name}'
+    worlds: []
+  Креатив:
+    default-nametag: '{COLOR_LIGHT_PURPLE}[Креатив] {display_name}'
+    default-chat: '{COLOR_LIGHT_PURPLE}[Креатив] {COLOR_YELLOW}{display_name} {COLOR_GREEN}
+      > {message}'
+  Vip:
+    default-nametag: '{COLOR_AQUA}[Vip] {display_name}'
+    default-chat: '{COLOR_AQUA}[Vip] {COLOR_YELLOW}{display_name} {COLOR_AQUA} > {message}'
+  Vip+:
+    default-nametag: '{COLOR_AQUA}[Vip+] {display_name}'
+    default-chat: '{COLOR_DARK_RED}[Vip+] {COLOR_YELLOW}{display_name} {COLOR_DARK_RED}
+      > {message}'
+  Premium:
+    default-nametag: '{COLOR_BLUE}[Premium] {display_name}'
+    default-chat: '{COLOR_BLUE}[Premium] {COLOR_YELLOW}{display_name} {COLOR_BLUE}
+      > {message}'
+  Operator:
+    default-nametag: '{COLOR_DARK_RED}[Operator] {COLOR_GREEN}{display_name}'
+    default-chat: '{COLOR_GREEN}[Operator] {COLOR_YELLOW}{display_name} {COLOR_DARK_RED}
+      > {message}'
+  ProAdmin:
+    default-nametag: '{COLOR_YELLOW}[ProAdmin] {COLOR_YELLOW}{display_name}'
+    default-chat: '{COLOR_YELLOW}[ProAdmin] {COLOR_YELLOW}{display_name} {COLOR_DARK_PURPLE}
+      > {message}'
+  Player+:
+    default-nametag: '{display_name}'
+    default-chat: ♦{COLOR_YELLOW}[Player] {COLOR_BLUE}{display_name} {COLOR_GRAY}
+      > {message}
+  Бог:
+    default-nametag: '{display_name}'
+    default-chat: '{COLOR_DARK_BLUE}[Бог] {COLOR_YELLOW}{display_name} {COLOR_DARK_BLUE}
+      > {message}'
+  Архитектор:
+    default-nametag: '{COLOR_LIGHT_PURPLE}{display_name}'
+    default-chat: '{COLOR_LIGHT_PURPLE}[Архитектор] {COLOR_YELLOW}{display_name} {COLOR_LIGHT_PURPLE}
+      > {message}'
+    worlds: []
+  Operator+:
+    default-nametag: '{COLOR_BLUE}[Operator+] {COLOR_YELLOW}{display_name}'
+    default-chat: '{COLOR_GREEN}[Operator+] {COLOR_YELLOW}{display_name} {COLOR_RED}> {message}'
+    worlds: []
+  Owner:
+    default-nametag: '{COLOR_LIGHT_PURPLE}[Owner] {COLOR_YELLOW}{display_name}'
+    default-chat: '{COLOR_YELLOW}[Owner] {COLOR_RED}{display_name} {COLOR_BLUE}> {message}'
+    worlds: []
+...
+

@@ -1,0 +1,33 @@
+package Annihilation.Arena.Kits;
+
+import cn.nukkit.Player;
+import Annihilation.Arena.Arena;
+import cn.nukkit.item.Item;
+import cn.nukkit.entity.Effect;
+
+public class Scout extends Kit{
+
+    public static Item[] items;
+    
+    public Scout(){
+        super("scout", Item.get(346));
+
+        Scout.items = new Item[]{
+                Item.get(Item.GOLDEN_SWORD, 0, 1),
+                Item.get(Item.WOODEN_PICKAXE, 0, 1),
+                Item.get(Item.WOODEN_AXE, 0, 1),
+                Item.get(346, 0, 1),
+                Item.get(Item.COMPASS, 0, 1),
+        };
+    }
+    
+    public static Item[] give(Player p, Item[] i){
+        Effect effect = Effect.getEffect(1);
+        effect.setDuration(999999999);
+        effect.setAmplifier(1);
+        effect.setVisible(true);
+        p.addEffect(effect);
+
+        return Kit.give(p, items.clone());
+    }
+}

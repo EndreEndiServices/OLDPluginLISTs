@@ -1,0 +1,7 @@
+name: BeatsCrates
+description: Simple crate plugin
+author: BeatsDevs
+main: CoolCrates\Loader
+load: POSTWORLD
+version: "1.5"
+api: [3.0.0-ALPHA7, 3.0.0-ALPHA8, 3.0.0-ALPHA9, 3.0.0-ALPHA10, 3.0.0-ALPHA11]

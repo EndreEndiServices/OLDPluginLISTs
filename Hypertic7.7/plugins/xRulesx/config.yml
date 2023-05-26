@@ -1,0 +1,20 @@
+---
+##############################
+# xRulesx Created by xFlare! :D
+# Your using version 1.0.0
+# Check for updates regularly!
+##############################
+
+
+#Add rules below, You may leave some blank.
+rule1: "1. No cheating/using mods"
+rule2: "2. Spamming/Sexual talk are not allowed"
+rule3: "3. No insulting/swearing"
+rule4: "4. No server advertising"
+rule5: "5. Don't be racist!"
+rule6: "6. Do not ask for gamer/member rank"
+rule7: "7. Play 100h/6000minute to be a member"
+rule8: "8. Do not ask for op"
+#Please do not add more rule slots!
+#It may corrupt the config file!
+...

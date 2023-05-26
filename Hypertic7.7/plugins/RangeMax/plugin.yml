@@ -1,0 +1,11 @@
+name: RangeMax
+main: RangeMax\Main
+arthur: fabyan
+description: set a max range for hitting!
+api: [1.12.0]
+version: 1.0.0
+
+commands:
+    mr:
+         default: op
+         permission: mr.cmd

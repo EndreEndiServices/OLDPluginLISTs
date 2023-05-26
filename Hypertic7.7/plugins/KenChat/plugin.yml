@@ -1,0 +1,14 @@
+name: kenchat
+author: CaptainKenji17
+main: kenchat\Main
+version: 1.0
+api: [1.12.0]
+
+commands:
+ clearchat:
+  permission: kenchat.clearchat
+  
+  permissions:
+      kenchat.clearchat:
+          default: op
+          description: "a"

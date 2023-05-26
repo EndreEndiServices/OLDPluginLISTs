@@ -1,0 +1,81 @@
+name: WorldGuardian
+main: WorldGuardian\WorldGuardian
+version: "1.6.1"
+author: mamayadesu
+api: [1.12.0, 2.0.0]
+
+commands:
+ wand:
+  permission: worldguardian.commands.wand
+  description: Give wooden axe
+  usage: /wand
+ claim:
+  permission: worldguardian.commands.claim
+  description: Claim region
+  usage: /claim <region_name>
+ unclaim:
+  permission: worldguardian.commands.unclaim
+  description: Unclaim region
+  usage: /unclaim <nickname>
+ rg:
+  permission: worldguardian.commands.region
+  description: Alias /region
+  usage: /rg <subcommand>
+ region:
+  permission: worldguardian.commands.region
+  description: Check region info
+  usage: /region <subcommand>
+ flag:
+  permission: worldguardian.commands.flag
+  description: Set flag for region
+  usage: /flag <flag> <value>
+ addmember:
+  permission: worldguardian.commands.addmember
+  description: Add player to member list of region
+  usage: /addmember <player>
+ removemember:
+  permission: worldguardian.commands.removemember
+  description: Remove player from member list of region
+  usage: /removemember <player>
+ leaveregion:
+  permission: worldguardian.commands.removemember
+  description: Leave region if you member of it
+  usage: /leaveregion <region>
+ member:
+  permission: worldguardian.commands.region
+  description: My member list
+  usage: /member
+ worldguardian:
+  permission: pocketmine.command.help
+  description: Info
+  usage: /worldguardian
+ 
+permissions:
+ worldguardian.commands.*:
+  default: true
+  description: Allows all commands of RegionGuard
+  children:
+   worldguardian.commands.wand:
+    default: true
+    description: Allows command to recieve a wand
+   worldguardian.commands.claim:
+    default: true
+    description: Allows command to private region
+   worldguardian.commands.unclaim:
+    default: true
+    description: Allows command to delete region by nickname    
+   worldguardian.commands.region:
+    default: true
+    description: Allows command to check region info
+   worldguardian.commands.flag:
+    default: true
+    description: Allows command to set flag
+   worldguardian.commands.addmember:
+    default: true
+    description: Allows command to add player to member list of region
+   worldguardian.commands.removemember:
+    default: true
+    description: Allows command to remove player from member list of region
+#   worldguardian.commands.lrg:
+#    default: true
+#    description: Allows command to leave region

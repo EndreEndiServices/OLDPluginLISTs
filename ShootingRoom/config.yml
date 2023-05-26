@@ -1,0 +1,66 @@
+---
+timing: 60
+price:
+  type: money
+  items:
+  - "388:1"
+  money: 100
+prize:
+  type: money
+  items:
+  - "266:5"
+  - "264:1"
+  money: 100
+arrow-count: 1
+targets:
+- -129 121 -6
+- -131 123 -8
+- -133 121 -6
+- -126 121 -6
+- -124 123 -8
+- -122 121 -6
+- -119 121 -6
+- -117 123 -8
+- -115 121 -6
+- 174 66 179
+- 173 66 179
+- 172 66 179
+arenas:
+  Sky:
+    spawn: -124 116 13
+    sign_join: -115 75 25
+    sign_quit: -124 117 14
+    level: Amissum
+    work: true
+  EasyShot:
+    spawn: 175 65 195
+    sign_join: 120 66 238
+    sign_quit: 175 67 197
+    level: world
+    work: true
+info:
+  Bruno:
+    parts: 3
+    hits: 2
+  Brunot:
+    parts: 0
+    hits: 0
+  Steve:
+    parts: 0
+    hits: 0
+  steve:
+    parts: 0
+    hits: 0
+  bruno:
+    parts: 0
+    hits: 0
+  Stev:
+    parts: 0
+    hits: 0
+  DanilZzD:
+    parts: 2
+    hits: 16
+  MrForest:
+    parts: 0
+    hits: 0
+...

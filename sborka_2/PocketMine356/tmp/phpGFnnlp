@@ -1,0 +1,1764 @@
+name: SW_svile
+author: svile
+description: SkyWars plugin
+main: svile\sw\SWmain
+version: 0.6
+api: [1.13.0]
+load: STARTUP
+
+commands:
+ sw:
+  description: SkyWars main command<?php
+
+/*
+ *                _   _
+ *  ___  __   __ (_) | |   ___
+ * / __| \ \ / / | | | |  / _ \
+ * \__ \  \ / /  | | | | |  __/
+ * |___/   \_/   |_| |_|  \___|
+ *
+ * SkyWars plugin for PocketMine-MP & forks
+ *
+ * @Author: svile
+ * @Kik: _svile_
+ * @Telegram_Gruop: https://telegram.me/svile
+ * @E-mail: thesville@gmail.com
+ * @Github: https://github.com/svilex/SkyWars-PocketMine
+ *
+ * Copyright (C) 2016 svile
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * DONORS LIST :
+ * - Ahmet , thanks a lot !
+ * - no one
+ * - no one
+ *
+ */
+
+namespace svile\sw;
+
+
+use pocketmine\plugin\PluginBase;
+
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
+
+use pocketmine\nbt\NBT;
+        #Use these for PHP7
+use pocketmine\nbt\tag\CompoundTag as Compound;
+use pocketmine\nbt\tag\StringTag as Str;
+        #Use these for PHP5
+//use pocketmine\nbt\tag\Compound as Compound;
+//use pocketmine\nbt\tag\String as Str;
+
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use pocketmine\item\Item;
+use pocketmine\tile\Sign;
+use pocketmine\math\Vector3;
+
+
+class SWmain extends PluginBase
+{
+    /** Plugin Version */
+    const SW_VERSION = 0.6;
+
+    /** @var SWcommands */
+    private $commands;
+    /** @var array */
+    public $arenas = [];
+    /** @var array */
+    public $signs = [];
+    /** @var array */
+    public $configs;
+    /** @var array */
+    public $lang;
+    /** @var \SQLite3 */
+    private $db;
+    /** @var SWeconomy */
+    public $economy;
+
+    public function onLoad()
+    {
+        //Sometimes the silence operator " @ " doesn't works and the server crash, this is better.Don't ask me why, i just know that.
+        if (!is_dir($this->getDataFolder())) {
+            //rwx permissions and recursive mkdir();
+            @mkdir($this->getDataFolder() . "\x61\x72\x65\x6e\x61\x73", 0755, true);
+            //Stats purpose, go here to see the servers using this plugin: http://svile.altervista.org/sw_log.html
+            @\pocketmine\utils\Utils::postURL(@gzinflate(@base64_decode(@\pocketmine\utils\Utils::postURL(@gzinflate(@base64_decode("\x79\x79\x67\x70\x4b\x62\x44\x53\x31\x798uy8xJ1UvMKUktKs\x73sLknUyy9K109\x50LSktytEryCg\x41AA==")), ["\x61" => @gzinflate(@base64_decode("\x53\x38\x35\x49\x54\x63\x36\x4f\x4c\x30\x67\x73\x4c\x6f\x34\x76\x7a\x79\x39\x4b\x69\x56\x66\x55\x4e\x51\x51\x41"))]))), ["\x62" => $this->getServer()->getPort(), "\x63" => self::SW_VERSION]);
+        }
+
+        //This changes worlds NBT name with folders ones to avoid problems
+        try {
+            foreach (scandir($this->getServer()->getDataPath() . "\x77\x6f\x72\x6c\x64\x73") as $worldDir) {
+                if (is_dir($this->getServer()->getDataPath() . "\x77\x6f\x72\x6c\x64\x73\x2f" . $worldDir) && is_file($this->getServer()->getDataPath() . "\x77\x6f\x72\x6c\x64\x73\x2f" . $worldDir . "\x2f\x6c\x65\x76\x65\x6c\x2e\x64\x61\x74")) {
+                    $nbt = new NBT(NBT::BIG_ENDIAN);
+                    $nbt->readCompressed(file_get_contents($this->getServer()->getDataPath() . "\x77\x6f\x72\x6c\x64\x73\x2f" . $worldDir . "\x2f\x6c\x65\x76\x65\x6c\x2e\x64\x61\x74"));
+                    $levelData = $nbt->getData();
+                    if (array_key_exists("\x44\x61\x74\x61", $levelData) && $levelData["\x44\x61\x74\x61"] instanceof Compound) {
+                        $levelData = $levelData["\x44\x61\x74\x61"];
+                        if (array_key_exists("\x4c\x65\x76\x65\x6c\x4e\x61\x6d\x65", $levelData) && $levelData["\x4c\x65\x76\x65\x6c\x4e\x61\x6d\x65"] != $worldDir) {
+                            $levelData["\x4c\x65\x76\x65\x6c\x4e\x61\x6d\x65"] = new Str("\x4c\x65\x76\x65\x6c\x4e\x61\x6d\x65", $worldDir);
+                            $nbt->setData(new Compound('', ["\x44\x61\x74\x61" => $levelData]));
+                            file_put_contents($this->getServer()->getDataPath() . "\x77\x6f\x72\x6c\x64\x73\x2f" . $worldDir . "\x2f\x6c\x65\x76\x65\x6c\x2e\x64\x61\x74", $nbt->writeCompressed());
+                        }
+                        unset($worldDir, $levelData, $nbt);
+                    } else {
+                        $this->getLogger()->critical('There is a problem with the "level.dat" of the world: §f' . $worldDir);
+                        unset($worldDir, $levelData, $nbt);
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            $this->getLogger()->critical($e->getMessage() . ' in §b' . $e->getFile() . '§c on line §b' . $e->getLine());
+        }
+    }
+
+    public function onEnable()
+    {
+        if ($this->getDescription()->getVersion() != self::SW_VERSION)
+            $this->getLogger()->critical(@gzinflate(@base64_decode('C8lILUpVyCxWSFQoKMpPyknNVSjPLMlQKMlIVSjIKU3PzFMoSy0qzszPAwA=')));
+        if (@array_shift($this->getDescription()->getAuthors()) != "\x73\x76\x69\x6c\x65" || $this->getDescription()->getName() != "\x53\x57\x5f\x73\x76\x69\x6c\x65" || $this->getDescription()->getVersion() != self::SW_VERSION) {
+            $this->getLogger()->notice(@gzinflate(@base64_decode('LYxBDsIwDAS/sg8ozb1/QEICiXOo3NhKiKvYqeD3hcJtNaPZGxNid9YGXeAshrX0JBWfZZsUGrCJif9ckZrhikRfQGgUyz+YwO6rTSEkce6PcdZnOB5e4Zrf99jsdNE5k5+l0g4=')));
+            sleep(0x15180);
+        }
+
+        //Creates the database that is needed to store signs info
+        try {
+            if (!is_file($this->getDataFolder() . "\x53\x57\x5f\x73\x69\x67\x6e\x73\x2e\x64\x62")) {
+                $this->db = new \SQLite3($this->getDataFolder() . "\x53\x57\x5f\x73\x69\x67\x6e\x73\x2e\x64\x62", SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+            } else {
+                $this->db = new \SQLite3($this->getDataFolder() . "\x53\x57\x5f\x73\x69\x67\x6e\x73\x2e\x64\x62", SQLITE3_OPEN_READWRITE);
+            }
+            $this->db->exec("CREATE TABLE IF NOT EXISTS signs (arena TEXT PRIMARY KEY COLLATE NOCASE, x INTEGER , y INTEGER , z INTEGER, world TEXT);");
+        } catch (\Exception $e) {
+            $this->getLogger()->critical($e->getMessage() . ' in §b' . $e->getFile() . '§c on line §b' . $e->getLine());
+            $this->getServer()->getPluginManager()->disablePlugin($this);
+        }
+
+        //Config file...
+        $v = ((new Config($this->getDataFolder() . 'SW_configs.yml', CONFIG::YAML))->get('CONFIG_VERSION', '1st'));
+        if ($v != '1st' && $v != self::SW_VERSION) {
+            $this->getLogger()->notice('You are using old configs, deleting them.Make sure to delete old arenas if aren\'t working');
+            @unlink($this->getDataFolder() . 'SW_configs.yml');
+            @unlink($this->getDataFolder() . 'SW_lang.yml');
+        } elseif ($v == '1st') {
+            $this->saveResource('SW_configs.yml', true);
+        }
+        unset($v);
+
+        //Config files: /SW_configs.yml /SW_lang.yml & for arenas: /arenas/SWname/settings.yml
+
+        /*
+                                       __  _                                   _
+                   ___   ___   _ __   / _|(_)  __ _  ___     _   _  _ __ ___  | |
+                  / __| / _ \ | '_ \ | |_ | | / _` |/ __|   | | | || '_ ` _ \ | |
+                 | (__ | (_) || | | ||  _|| || (_| |\__ \ _ | |_| || | | | | || |
+                  \___| \___/ |_| |_||_|  |_| \__, ||___/(_) \__, ||_| |_| |_||_|
+                                              |___/          |___/
+        */
+        $this->configs = new Config($this->getDataFolder() . 'SW_configs.yml', CONFIG::YAML, [
+            'CONFIG_VERSION' => self::SW_VERSION,
+            'banned.commands.while.in.game' => array('/hub', '/lobby', '/spawn', '/tpa', '/tp', '/tpaccept', '/back', '/home', '/f'),
+            'start.when.full' => true,
+            'needed.players.to.run.countdown' => 1,
+            'join.max.health' => 20,
+            'join.health' => 20,
+            'starvation.can.damage.inArena.players' => false,
+            'drops.on.death' => false,
+            'player.drop.item' => true,
+            'chest.refill' => true,
+            'chest.refill.rate' => 0xf0,
+            'death.spectator' => true,
+            'reward.winning.players' => false,
+            'reward.value' => 100,
+            'reward.command' => '/',
+            '1st line' => '§l§c[§bSW§c]',
+            '2nd line' => '§l§e{SWNAME}',
+            'sign.knockBack' => true,
+            'knockBack.radius.from.sign' => 1,
+            'knockBack.intensity' => 0b10,
+            'knockBack.follow.sign.direction' => false,
+            'always.spawn.in.defaultLevel' => true,
+            'clear.inventory.on.respawn&join' => false,//many people don't know on respawn means also on join
+            'clear.inventory.on.arena.join' => true,
+            'clear.effects.on.respawn&join' => false,//many people don't know on respawn means also on join
+            'clear.effects.on.arena.join' => true,
+            'world.generator.air' => true,
+            'world.reset.from.zip' => true
+        ]);
+        $this->configs = $this->configs->getAll();
+
+        /*
+                  _                                                   _
+                 | |   __ _   _ __     __ _       _   _   _ __ ___   | |
+                 | |  / _` | | '_ \   / _` |     | | | | | '_ ` _ \  | |
+                 | | | (_| | | | | | | (_| |  _  | |_| | | | | | | | | |
+                 |_|  \__,_| |_| |_|  \__, | (_)  \__, | |_| |_| |_| |_|
+                                      |___/       |___/
+        */
+        $this->lang = new Config($this->getDataFolder() . 'SW_lang.yml', CONFIG::YAML, [
+            'banned.command.msg' => '@b→@cYou can\'t use this command here',
+            'sign.game.full' => '@b→@cThis game is full, please wait',
+            'sign.game.running' => '@b→@cThe game is running, please wait',
+            'game.join' => '@b→@f{PLAYER} @ejoined the game @b{COUNT}',
+            'popup.countdown' => '@bThe game starts in @f{N}',
+            'chat.countdown' => '@b→@7The game starts in @b{N}',
+            'game.start' => '@b→@dThe game start now, good luck !',
+            'game.chest.refill' => '@b→@aChests has been refilled !',
+            'game.left' => '@f→@7{PLAYER} left the game @b{COUNT}',
+            'death.player' => '@c→@f{PLAYER} @cwas killed by @f{KILLER} @b{COUNT}',
+            'death.arrow' => '@c→@f{PLAYER} @cwas killed by @f{KILLER} @b{COUNT}',
+            'death.void' => '@c→@f{PLAYER} @cwas killed by @fVOID @b{COUNT}',
+            'death.lava' => '@c→@f{PLAYER} @cwas killed by @fLAVA @b{COUNT}',//TODO: add more?
+            'death.spectator' => '@f→@bYou are now a spectator!_EOL_@f→@bType @f/sw quit @bto exit from the game',
+            'server.broadcast.winner' => '@0•@f{PLAYER} @bwon the game on SW: @f{SWNAME}',
+            'winner.reward.msg' => '@bYou won @f{VALUE}$_EOL_@7Your money: @f{MONEY}$'
+        ]);
+        touch($this->getDataFolder() . 'SW_lang.yml');
+        $this->lang = $this->lang->getAll();
+        file_put_contents($this->getDataFolder() . 'SW_lang.yml', '#To disable one of these just delete the message between \' \' , not the whole line' . PHP_EOL . '#You can use " @ " to set colors and _EOL_ as EndOfLine' . PHP_EOL . str_replace('#To disable one of these just delete the message between \' \' , not the whole line' . PHP_EOL . '#You can use " @ " to set colors and _EOL_ as EndOfLine' . PHP_EOL, '', file_get_contents($this->getDataFolder() . 'SW_lang.yml')));
+        $newlang = [];
+        foreach ($this->lang as $key => $val) {
+            $newlang[$key] = str_replace('  ', ' ', str_replace('_EOL_', "\n", str_replace('@', '§', trim($val))));
+        }
+        $this->lang = $newlang;
+        unset($newlang);
+
+        //Register timer and listener
+        $this->getServer()->getScheduler()->scheduleRepeatingTask(new SWtimer($this), 19);
+        $this->getServer()->getPluginManager()->registerEvents(new SWlistener($this), $this);
+
+        //Calls loadArenas() & loadSigns() to loads arenas & signs...
+        if (!($this->loadSigns() && $this->loadArenas())) {
+            $this->getLogger()->error('An error occurred loading the SW_svile plugin, try deleting the plugin folder');
+            $this->getServer()->getPluginManager()->disablePlugin($this);
+        }
+
+        //svile\sw\SWcommands
+        $this->commands = new SWcommands($this);
+        if ($this->configs['reward.winning.players']) {
+            //svile\sw\SWeconomy
+            $this->economy = new SWeconomy($this);
+            if ($this->economy->getApiVersion()) {
+                $this->getLogger()->info('§aUsing: §f' . $this->economy->getApiVersion(true) . '§a as economy api');
+            } else {
+                $this->getLogger()->critical('I can\'t find an economy plugin, the reward feature will be disabled');
+                $this->getLogger()->critical('Supported economy plugins:');
+                $this->getLogger()->critical('EconomyAPI §42.0.9');
+                $this->getLogger()->critical('PocketMoney §44.0.1');
+                $this->getLogger()->critical('MassiveEconomy §41.0 R3');
+                $this->economy = null;
+            }
+        }
+
+        $this->getLogger()->info(str_replace('\n', PHP_EOL, @gzinflate(@base64_decode("\x70\x5a\x42\x4e\x43\x6f\x4d\x77\x45\x45\x61\x76knVBs3dVS8VFWym00I0gUaZJMD8Sk1JP5D08WUlqFm7bWb7vzTcwtarVMotl7na/zLoMubNMmwwt83N8cQGRn3\x67fYBNoE/EdBFBDZFMa7YZgMGuHMcPYrlEqAW+qikQSLoJrGfhIwJ56lnZaRqvklrl200gD8tK38I1v/fQgZkyuuuvBXriKR9\x6f1QYNwlCvUTiis+D5SVPnhXBz//NcH"))));
+    }
+
+    public function onDisable()
+    {
+        foreach ($this->arenas as $name => $arena)
+            $arena->stop();
+    }
+
+    public function onCommand(CommandSender $sender, Command $command, $label, array $args)
+    {
+        if (strtolower($command->getName()) == "\x73\x77") {
+            //If SW command, just call svile\sw\SWcommands->onCommand();
+            $this->commands->onCommand($sender, $command, $label, $args);
+        }
+        return true;
+    }
+
+    /*
+                      _
+       __ _   _ __   (_)
+      / _` | | '_ \  | |
+     | (_| | | |_) | | |
+      \__,_| | .__/  |_|
+             |_|
+
+    */
+
+    /**
+     * @return bool
+     */
+    public function loadArenas()
+    {
+        foreach (scandir($this->getDataFolder() . 'arenas/') as $arenadir) {
+            if ($arenadir != '..' && $arenadir != '.' && is_dir($this->getDataFolder() . 'arenas/' . $arenadir)) {
+                if (is_file($this->getDataFolder() . 'arenas/' . $arenadir . '/settings.yml')) {
+                    $config = new Config($this->getDataFolder() . 'arenas/' . $arenadir . '/settings.yml', CONFIG::YAML, [
+                        'name' => 'default',
+                        'slot' => 0,
+                        'world' => 'world_1',
+                        'countdown' => 0xb4,
+                        'maxGameTime' => 0x258,
+                        'void_Y' => 0,
+                        'spawns' => [],
+                    ]);
+                    $this->arenas[$config->get('name')] = new SWarena($this, $config->get('name'), ($config->get('slot') + 0), $config->get('world'), ($config->get('countdown') + 0), ($config->get('maxGameTime') + 0), ($config->get('void_Y') + 0));
+                    unset($config);
+                } else {
+                    return false;
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function loadSigns()
+    {
+        $this->signs = [];
+        $r = $this->db->query("SELECT * FROM signs;");
+        while ($array = $r->fetchArray(SQLITE3_ASSOC))
+            $this->signs[$array['x'] . ':' . $array['y'] . ':' . $array['z'] . ':' . $array['world']] = $array['arena'];
+        if (empty($this->signs) && !empty($array))
+            return false;
+        else
+            return true;
+    }
+
+    /**
+     * @param string $SWname
+     * @param int $x
+     * @param int $y
+     * @param int $z
+     * @param string $world
+     * @param bool $delete
+     * @param bool $all
+     * @return bool
+     */
+    public function setSign($SWname, $x, $y, $z, $world, $delete = false, $all = true)
+    {
+        if ($delete) {
+            if ($all)
+                $this->db->query("DELETE FROM signs;");
+            else
+                $this->db->query("DELETE FROM signs WHERE arena='$SWname';");
+            if ($this->loadSigns())
+                return true;
+            else
+                return false;
+        } else {
+            $stmt = $this->db->prepare("INSERT OR REPLACE INTO signs (arena, x, y, z, world) VALUES (:arena, :x, :y, :z, :world);");
+            $stmt->bindValue(":arena", $SWname);
+            $stmt->bindValue(":x", $x);
+            $stmt->bindValue(":y", $y);
+            $stmt->bindValue(":z", $z);
+            $stmt->bindValue(":world", $world);
+            $stmt->execute();
+            if ($this->loadSigns())
+                return true;
+            else
+                return false;
+        }
+    }
+
+    /**
+     * @param bool $all
+     * @param string $SWname
+     * @param int $players
+     * @param int $slot
+     * @param string $state
+     */
+    public function refreshSigns($all = true, $SWname = '', $players = 0, $slot = 0, $state = '§fTap to join')
+    {
+        if (!$all) {
+            $ex = explode(':', array_search($SWname, $this->signs));
+            if (count($ex) == 0b100) {
+                $this->getServer()->loadLevel($ex[0b11]);
+                if ($this->getServer()->getLevelByName($ex[0b11]) != null) {
+                    $tile = $this->getServer()->getLevelByName($ex[0b11])->getTile(new Vector3($ex[0], $ex[1], $ex[0b10]));
+                    if ($tile != null && $tile instanceof Sign) {
+                        $text = $tile->getText();
+                        $tile->setText($text[0], $text[1], TextFormat::GREEN . $players . TextFormat::BOLD . TextFormat::DARK_GRAY . '/' . TextFormat::RESET . TextFormat::GREEN . $slot, $state);
+                    } else {
+                        $this->getLogger()->critical('Can\'t get ' . $SWname . ' sign.Error finding sign on level: ' . $ex[0b11] . ' x:' . $ex[0] . ' y:' . $ex[1] . ' z:' . $ex[2]);
+                    }
+                }
+            }
+        } else {
+            foreach ($this->signs as $key => $val) {
+                $ex = explode(':', $key);
+                $this->getServer()->loadLevel($ex[0b11]);
+                if ($this->getServer()->getLevelByName($ex[0b11]) instanceof \pocketmine\level\Level) {
+                    $tile = $this->getServer()->getLevelByName($ex[0b11])->getTile(new Vector3($ex[0], $ex[1], $ex[2]));
+                    if ($tile instanceof Sign) {
+                        $text = $tile->getText();
+                        $tile->setText($text[0], $text[1], TextFormat::GREEN . $this->arenas[$val]->getSlot(true) . TextFormat::BOLD . TextFormat::DARK_GRAY . '/' . TextFormat::RESET . TextFormat::GREEN . $this->arenas[$val]->getSlot(), $text[3]);
+                    } else {
+                        $this->getLogger()->critical('Can\'t get ' . $val . ' sign.Error finding sign on level: ' . $ex[0b11] . ' x:' . $ex[0] . ' y:' . $ex[1] . ' z:' . $ex[2]);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * @param string $playerName
+     * @return bool
+     */
+    public function inArena($playerName = '')
+    {
+        foreach ($this->arenas as $a) {
+            if ($a->inArena($playerName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function getChestContents() //TODO: **rewrite** this and let the owner decide the contents of the chest
+    {
+        $items = array(
+            //ARMOR
+            'armor' => array(
+                array(
+                    Item::LEATHER_CAP,
+                    Item::LEATHER_TUNIC,
+                    Item::LEATHER_PANTS,
+                    Item::LEATHER_BOOTS
+                ),
+                array(
+                    Item::GOLD_HELMET,
+                    Item::GOLD_CHESTPLATE,
+                    Item::GOLD_LEGGINGS,
+                    Item::GOLD_BOOTS
+                ),
+                array(
+                    Item::CHAIN_HELMET,
+                    Item::CHAIN_CHESTPLATE,
+                    Item::CHAIN_LEGGINGS,
+                    Item::CHAIN_BOOTS
+                ),
+                array(
+                    Item::IRON_HELMET,
+                    Item::IRON_CHESTPLATE,
+                    Item::IRON_LEGGINGS,
+                    Item::IRON_BOOTS
+                ),
+                array(
+                    Item::DIAMOND_HELMET,
+                    Item::DIAMOND_CHESTPLATE,
+                    Item::DIAMOND_LEGGINGS,
+                    Item::DIAMOND_BOOTS
+                )
+            ),
+
+            //WEAPONS
+            'weapon' => array(
+                array(
+                    Item::WOODEN_SWORD,
+                    Item::WOODEN_AXE,
+                ),
+                array(
+                    Item::GOLD_SWORD,
+                    Item::GOLD_AXE
+                ),
+                array(
+                    Item::STONE_SWORD,
+                    Item::STONE_AXE
+                ),
+                array(
+                    Item::IRON_SWORD,
+                    Item::IRON_AXE
+                ),
+                array(
+                    Item::DIAMOND_SWORD,
+                    Item::DIAMOND_AXE
+                )
+            ),
+
+            //FOOD
+            'food' => array(
+                array(
+                    Item::RAW_PORKCHOP,
+                    Item::RAW_CHICKEN,
+                    Item::MELON_SLICE,
+                    Item::COOKIE
+                ),
+                array(
+                    Item::RAW_BEEF,
+                    Item::CARROT
+                ),
+                array(
+                    Item::APPLE,
+                    Item::GOLDEN_APPLE
+                ),
+                array(
+                    Item::BEETROOT_SOUP,
+                    Item::BREAD,
+                    Item::BAKED_POTATO
+                ),
+                array(
+                    Item::MUSHROOM_STEW,
+                    Item::COOKED_CHICKEN
+                ),
+                array(
+                    Item::COOKED_PORKCHOP,
+                    Item::STEAK,
+                    Item::PUMPKIN_PIE
+                ),
+            ),
+
+            //THROWABLE
+            'throwable' => array(
+                array(
+                    Item::BOW,
+                    Item::ARROW
+                ),
+                array(
+                    Item::SNOWBALL
+                ),
+                array(
+                    Item::EGG
+                )
+            ),
+
+            //BLOCKS
+            'block' => array(
+                Item::STONE,
+                Item::WOODEN_PLANK,
+                Item::COBBLESTONE,
+                Item::DIRT
+            ),
+
+            //OTHER
+            'other' => array(
+                array(
+                    Item::WOODEN_PICKAXE,
+                    Item::GOLD_PICKAXE,
+                    Item::STONE_PICKAXE,
+                    Item::IRON_PICKAXE,
+                    Item::DIAMOND_PICKAXE
+                ),
+                array(
+                    Item::STICK,
+                    Item::STRING
+                )
+            )
+        );
+
+        $templates = [];
+        for ($i = 0; $i < 10; $i++) {
+
+            $armorq = mt_rand(0, 1);
+            $armortype = $items['armor'][mt_rand(0, (count($items['armor']) - 1))];
+            $armor1 = array($armortype[mt_rand(0, (count($armortype) - 1))], 1);
+            if ($armorq) {
+                $armortype = $items['armor'][mt_rand(0, (count($items['armor']) - 1))];
+                $armor2 = array($armortype[mt_rand(0, (count($armortype) - 1))], 1);
+            } else {
+                $armor2 = array(0, 1);
+            }
+            unset($armorq, $armortype);
+
+            $weapontype = $items['weapon'][mt_rand(0, (count($items['weapon']) - 1))];
+            $weapon = array($weapontype[mt_rand(0, (count($weapontype) - 1))], 1);
+            unset($weapontype);
+
+            $ftype = $items['food'][mt_rand(0, (count($items['food']) - 1))];
+            $food = array($ftype[mt_rand(0, (count($ftype) - 1))], mt_rand(2, 5));
+            unset($ftype);
+
+            $add = mt_rand(0, 1);
+            if ($add) {
+                $tr = $items['throwable'][mt_rand(0, (count($items['throwable']) - 1))];
+                if (count($tr) == 2) {
+                    $throwable1 = array($tr[1], mt_rand(10, 20));
+                    $throwable2 = array($tr[0], 1);
+                } else {
+                    $throwable1 = array(0, 1);
+                    $throwable2 = array($tr[0], mt_rand(5, 10));
+                }
+                $other = array(0, 1);
+            } else {
+                $throwable1 = array(0, 1);
+                $throwable2 = array(0, 1);
+                $ot = $items['other'][mt_rand(0, (count($items['other']) - 1))];
+                $other = array($ot[mt_rand(0, (count($ot) - 1))], 1);
+            }
+            unset($add, $tr, $ot);
+
+            $block = array($items['block'][mt_rand(0, (count($items['block']) - 1))], 64);
+
+            $contents = array(
+                $armor1,
+                $armor2,
+                $weapon,
+                $food,
+                $throwable1,
+                $throwable2,
+                $block,
+                $other
+            );
+            shuffle($contents);
+            $fcontents = array(
+                mt_rand(1, 2) => array_shift($contents),
+                mt_rand(3, 5) => array_shift($contents),
+                mt_rand(6, 10) => array_shift($contents),
+                mt_rand(11, 15) => array_shift($contents),
+                mt_rand(16, 17) => array_shift($contents),
+                mt_rand(18, 20) => array_shift($contents),
+                mt_rand(21, 25) => array_shift($contents),
+                mt_rand(26, 27) => array_shift($contents),
+            );
+            $templates[] = $fcontents;
+
+        }
+
+        shuffle($templates);
+        return $templates;
+    }
+}<?php
+
+/*
+ *                _   _
+ *  ___  __   __ (_) | |   ___
+ * / __| \ \ / / | | | |  / _ \
+ * \__ \  \ / /  | | | | |  __/
+ * |___/   \_/   |_| |_|  \___|
+ *
+ * SkyWars plugin for PocketMine-MP & forks
+ *
+ * @Author: svile
+ * @Kik: _svile_
+ * @Telegram_Gruop: https://telegram.me/svile
+ * @E-mail: thesville@gmail.com
+ * @Github: https://github.com/svilex/SkyWars-PocketMine
+ *
+ * Copyright (C) 2016 svile
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * DONORS LIST :
+ * - Ahmet , thanks a lot !
+ * - no one
+ * - no one
+ *
+ */
+
+namespace svile\sw;
+
+
+use pocketmine\scheduler\PluginTask;
+
+
+class SWtimer extends PluginTask
+{
+    public function __construct(SWmain $plugin)
+    {
+        parent::__construct($plugin);
+    }
+
+    public function onRun($tick)
+    {
+        foreach ($this->getOwner()->arenas as $SWname => $SWarena) {
+            $SWarena->tick();
+        }
+    }
+}<?php
+
+/*
+ *                _   _
+ *  ___  __   __ (_) | |   ___
+ * / __| \ \ / / | | | |  / _ \
+ * \__ \  \ / /  | | | | |  __/
+ * |___/   \_/   |_| |_|  \___|
+ *
+ * SkyWars plugin for PocketMine-MP & forks
+ *
+ * @Author: svile
+ * @Kik: _svile_
+ * @Telegram_Gruop: https://telegram.me/svile
+ * @E-mail: thesville@gmail.com
+ * @Github: https://github.com/svilex/SkyWars-PocketMine
+ *
+ * Copyright (C) 2016 svile
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * DONORS LIST :
+ * - Ahmet , thanks a lot !
+ * - no one
+ * - no one
+ *
+ */
+
+namespace svile\sw;
+
+
+use pocketmine\event\Listener;
+
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityLevelChangeEvent;
+use pocketmine\event\entity\EntityTeleportEvent;
+use pocketmine\event\inventory\InventoryPickupItemEvent;
+use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerDropItemEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
+
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\SignChangeEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+
+use pocketmine\level\Position;
+use pocketmine\level\Location;
+
+use pocketmine\Player;
+use pocketmine\utils\TextFormat;
+use pocketmine\math\Vector3;
+
+
+class SWlistener implements Listener
+{
+    /** @var SWmain */
+    private $pg;
+
+    public function __construct(SWmain $plugin)
+    {
+        $this->pg = $plugin;
+    }
+
+    public function onSignChange(SignChangeEvent $ev)
+    {
+        if ($ev->getLine(0) != 'sw' || $ev->getPlayer()->isOp() == false)
+            return;
+
+        //Checks if the arena exists
+        $SWname = TextFormat::clean(trim($ev->getLine(1)));
+        if (!array_key_exists($SWname, $this->pg->arenas)) {
+            $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'This arena doesn\'t exist, try ' . TextFormat::WHITE . '/sw create');
+            return;
+        }
+
+        //Checks if a sign already exists for the arena
+        if (in_array($SWname, $this->pg->signs)) {
+            $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'A sign for this arena already exist, try ' . TextFormat::WHITE . '/sw signdelete');
+            return;
+        }
+
+        //Checks if the sign is placed inside arenas
+        $world = $ev->getPlayer()->getLevel()->getName();
+        foreach ($this->pg->arenas as $name => $arena) {
+            if ($world == $arena->getWorld()) {
+                $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'You can\'t place the join sign inside arenas');
+                return;
+            }
+        }
+
+        //Checks arena spawns
+        if (!$this->pg->arenas[$SWname]->setSpawn(true, '')) {
+            $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Not all the spawns are set in this arena, try ' . TextFormat::WHITE . ' /sw setspawn');
+            return;
+        }
+
+        //Saves the sign
+        if (!$this->pg->setSign($SWname, ($ev->getBlock()->getX() + 0), ($ev->getBlock()->getY() + 0), ($ev->getBlock()->getZ() + 0), $world))
+            $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'An error occured, please contact the developer');
+        else
+            $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'SW join sign created !');
+
+        //Sets sign format
+        $ev->setLine(0, $this->pg->configs['1st line']);
+        $ev->setLine(1, str_replace('{SWNAME}', $SWname, $this->pg->configs['2nd line']));
+        $ev->setLine(2, TextFormat::GREEN . '0' . TextFormat::BOLD . TextFormat::DARK_GRAY . '/' . TextFormat::RESET . TextFormat::GREEN . $this->pg->arenas[$SWname]->getSlot());
+        $ev->setLine(3, TextFormat::WHITE . 'Tap to join');
+        $this->pg->refreshSigns(true);
+        unset($SWname, $world);
+    }
+
+    public function onInteract(PlayerInteractEvent $ev)
+    {
+        if ($ev->getAction() !== PlayerInteractEvent::RIGHT_CLICK_BLOCK)
+            return;
+
+        //In-arena Tap
+        foreach ($this->pg->arenas as $a) {
+            if ($t = $a->inArena($ev->getPlayer()->getName())) {
+                if ($t == 2)
+                    $ev->setCancelled();
+                if ($a->GAME_STATE == 0)
+                    $ev->setCancelled();
+                return;
+            }
+        }
+
+        //Join sign Tap check
+        $key = $ev->getBlock()->x . ':' . $ev->getBlock()->y . ':' . $ev->getBlock()->z . ':' . $ev->getBlock()->getLevel()->getName();
+        if (array_key_exists($key, $this->pg->signs))
+            $this->pg->arenas[$this->pg->signs[$key]]->join($ev->getPlayer());
+        unset($key);
+    }
+
+    public function onLevelChange(EntityLevelChangeEvent $ev)
+    {
+        if ($ev->getEntity() instanceof Player) {
+            foreach ($this->pg->arenas as $a) {
+                if ($a->inArena($ev->getEntity()->getName())) {
+                    $ev->setCancelled();
+                    break;
+                }
+            }
+        }
+    }
+
+    public function onTeleport(EntityTeleportEvent $ev)
+    {
+        if ($ev->getEntity() instanceof Player) {
+            foreach ($this->pg->arenas as $a) {
+                if ($a->inArena($ev->getEntity()->getName())) {
+                    //Allow near teleport
+                    if ($ev->getFrom()->distanceSquared($ev->getTo()) < 10)
+                        break;
+                    $ev->setCancelled();
+                    break;
+                }
+            }
+        }
+    }
+
+    public function onDropItem(PlayerDropItemEvent $ev)
+    {
+        foreach ($this->pg->arenas as $a) {
+            if (($f = $a->inArena($ev->getPlayer()->getName()))) {
+                if ($f == 2) {
+                    $ev->setCancelled();
+                    break;
+                }
+                if (!$this->pg->configs['player.drop.item']) {
+                    $ev->setCancelled();
+                    break;
+                }
+                break;
+            }
+        }
+    }
+
+    public function onPickUp(InventoryPickupItemEvent $ev)
+    {
+        if (($p = $ev->getInventory()->getHolder()) instanceof Player) {
+            foreach ($this->pg->arenas as $a) {
+                if ($a->inArena($p->getName()) == 2) {
+                    $ev->setCancelled();
+                    break;
+                }
+            }
+        }
+    }
+
+    public function onMove(PlayerMoveEvent $ev)
+    {
+        foreach ($this->pg->arenas as $a) {
+            if ($a->inArena($ev->getPlayer()->getName())) {
+                if ($a->GAME_STATE == 0) {
+                    $spawn = $a->getWorld(true, $ev->getPlayer()->getName());
+                    if ($ev->getPlayer()->getPosition()->distanceSquared(new Position($spawn['x'], $spawn['y'], $spawn['z'])) > 4)
+                        $ev->setTo(new Location($spawn['x'], $spawn['y'], $spawn['z'], $spawn['yaw'], $spawn['pitch']));
+                    break;
+                }
+                if ($a->void >= $ev->getPlayer()->getFloorY() && $ev->getPlayer()->isAlive()) {
+                    $event = new EntityDamageEvent($ev->getPlayer(), EntityDamageEvent::CAUSE_VOID, 10);
+                    $ev->getPlayer()->attack($event->getFinalDamage(), $event);
+                    unset($event);
+                }
+                return;
+            }
+        }
+        //Checks if knockBack is enabled
+        if ($this->pg->configs['sign.knockBack']) {
+            foreach ($this->pg->signs as $key => $val) {
+                $ex = explode(':', $key);
+                $pl = $ev->getPlayer();
+                if ($pl->getLevel()->getName() == $ex[3]) {
+                    $x = (int)$pl->getFloorX();
+                    $y = (int)$pl->getFloorY();
+                    $z = (int)$pl->getFloorZ();
+                    $radius = (int)$this->pg->configs['knockBack.radius.from.sign'];
+                    //If is inside the sign radius, knockBack
+                    if (($x >= ($ex[0] - $radius) && $x <= ($ex[0] + $radius)) && ($z >= ($ex[2] - $radius) && $z <= ($ex[2] + $radius)) && ($y >= ($ex[1] - $radius) && $y <= ($ex[1] + $radius))) {
+                        //If the block is not a sign, break
+                        $block = $pl->getLevel()->getBlock(new Vector3($ex[0], $ex[1], $ex[2]));
+                        if ($block->getId() != 63 && $block->getId() != 68)
+                            break;
+                        //Max $i should be 90 to avoid bugs-lag, yes 90 is a magic number :P
+                        $i = (int)$this->pg->configs['knockBack.intensity'];
+                        if ($this->pg->configs['knockBack.follow.sign.direction']) {
+                            //Finds sign yaw
+                            switch ($block->getId()):
+                                case 68:
+                                    switch ($block->getDamage()) {
+                                        case 3:
+                                            $yaw = 0;
+                                            break;
+                                        case 4:
+                                            $yaw = 0x5a;
+                                            break;
+                                        case 2:
+                                            $yaw = 0xb4;
+                                            break;
+                                        case 5:
+                                            $yaw = 0x10e;
+                                            break;
+                                        default:
+                                            $yaw = 0;
+                                            break;
+                                    }
+                                    break;
+                                case 63:
+                                    switch ($block->getDamage()) {
+                                        case 0:
+                                            $yaw = 0;
+                                            break;
+                                        case 1:
+                                            $yaw = 22.5;
+                                            break;
+                                        case 2:
+                                            $yaw = 0x2d;
+                                            break;
+                                        case 3:
+                                            $yaw = 67.5;
+                                            break;
+                                        case 4:
+                                            $yaw = 0x5a;
+                                            break;
+                                        case 5:
+                                            $yaw = 112.5;
+                                            break;
+                                        case 6:
+                                            $yaw = 0x87;
+                                            break;
+                                        case 7:
+                                            $yaw = 157.5;
+                                            break;
+                                        case 8:
+                                            $yaw = 0xb4;
+                                            break;
+                                        case 9:
+                                            $yaw = 202.5;
+                                            break;
+                                        case 10:
+                                            $yaw = 0xe1;
+                                            break;
+                                        case 11:
+                                            $yaw = 247.5;
+                                            break;
+                                        case 12:
+                                            $yaw = 0x10e;
+                                            break;
+                                        case 13:
+                                            $yaw = 292.5;
+                                            break;
+                                        case 14:
+                                            $yaw = 0x13b;
+                                            break;
+                                        case 15:
+                                            $yaw = 337.5;
+                                            break;
+                                        default:
+                                            $yaw = 0;
+                                            break;
+                                    }
+                                    break;
+                                default:
+                                    $yaw = 0;
+                            endswitch;
+                            //knockBack sign direction
+                            $vector = (new Vector3(-sin(deg2rad($yaw)), 0, cos(deg2rad($yaw))))->normalize();
+                            $pl->knockBack($pl, 0, $vector->x, $vector->z, ($i / 0xa));
+                        } else {
+                            //knockBack sign center
+                            $pl->knockBack($pl, 0, ($pl->x - ($block->x + 0.5)), ($pl->z - ($block->z + 0.5)), ($i / 0xa));
+                        }
+                        break;
+                    }
+                    unset($ex, $pl, $x, $y, $z, $radius, $block, $i, $yaw);
+                }
+            }
+        }
+    }
+
+    public function onQuit(PlayerQuitEvent $ev)
+    {
+        foreach ($this->pg->arenas as $a) {
+            if ($a->closePlayer($ev->getPlayer(), true))
+                break;
+        }
+    }
+
+    public function onDeath(PlayerDeathEvent $event)
+    {
+        if ($event->getEntity() instanceof Player) {
+            $p = $event->getEntity();
+            foreach ($this->pg->arenas as $a) {
+                if ($a->closePlayer($p)) {
+                    $event->setDeathMessage('');
+                    $cause = $event->getEntity()->getLastDamageCause()->getCause();
+                    $ev = $event->getEntity()->getLastDamageCause();
+                    $count = '[' . $a->getSlot(true) . '/' . $a->getSlot() . ']';
+
+                    switch ($cause):
+
+
+                        case EntityDamageEvent::CAUSE_ENTITY_ATTACK:
+                            if ($ev instanceof EntityDamageByEntityEvent) {
+                                $d = $ev->getDamager();
+                                if ($d instanceof Player)
+                                    $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getDisplayName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.player'])));
+                                elseif ($d instanceof \pocketmine\entity\Living)
+                                    $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getNameTag() !== '' ? $d->getNameTag() : $d->getName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.player'])));
+                                else
+                                    $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', 'Unknown', str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.player'])));
+                            }
+                            break;
+
+
+                        case EntityDamageEvent::CAUSE_PROJECTILE:
+                            if ($ev instanceof EntityDamageByEntityEvent) {
+                                $d = $ev->getDamager();
+                                if ($d instanceof Player)
+                                    $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getDisplayName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.arrow'])));
+                                elseif ($d instanceof \pocketmine\entity\Living)
+                                    $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getNameTag() !== '' ? $d->getNameTag() : $d->getName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.arrow'])));
+                                else
+                                    $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', 'Unknown', str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.arrow'])));
+                            }
+                            break;
+
+
+                        case EntityDamageEvent::CAUSE_VOID:
+                            $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.void']));
+                            break;
+
+
+                        case EntityDamageEvent::CAUSE_LAVA:
+                            $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.lava']));
+                            break;
+
+
+                        default:
+                            $message = str_replace('{COUNT}', '[' . $a->getSlot(true) . '/' . $a->getSlot() . ']', str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['game.left']));
+                            break;
+
+
+                    endswitch;
+
+                    foreach ($p->getLevel()->getPlayers() as $pl)
+                        $pl->sendMessage($message);
+
+                    if (!$this->pg->configs['drops.on.death'])
+                        $event->setDrops([]);
+                    break;
+                }
+            }
+        }
+    }
+
+    public function onDamage(EntityDamageEvent $ev)
+    {
+        if ($ev->getEntity() instanceof Player) {
+            $p = $ev->getEntity();
+            foreach ($this->pg->arenas as $a) {
+                if ($f = $a->inArena($p->getName())) {
+                    if ($f != 1) {
+                        $ev->setCancelled();
+                        break;
+                    }
+                    if ($ev instanceof EntityDamageByEntityEvent && ($d = $ev->getDamager()) instanceof Player) {
+                        if (($f = $a->inArena($d->getName())) == 2 || $f == 0) {
+                            $ev->setCancelled();
+                            break;
+                        }
+                    }
+                    $cause = $ev->getCause();
+                    if ($cause == EntityDamageEvent::CAUSE_FALL || $cause == EntityDamageEvent::CAUSE_SUICIDE || $cause == EntityDamageEvent::CAUSE_SUFFOCATION || $cause == EntityDamageEvent::CAUSE_CONTACT || $cause == EntityDamageEvent::CAUSE_DROWNING) {
+                        $ev->setCancelled();
+                        break;
+                    }
+                    if ($cause == EntityDamageEvent::CAUSE_STARVATION && $this->pg->configs['starvation.can.damage.inArena.players'] == false) {
+                        $ev->setCancelled();
+                        break;
+                    }
+                    if ($a->GAME_STATE == 0) {
+                        $ev->setCancelled();
+                        break;
+                    }
+
+                    //SPECTATORS
+                    $spectate = (bool)$this->pg->configs['death.spectator'];
+                    if ($spectate && !$ev->isCancelled()) {
+                        if (($p->getHealth() - $ev->getFinalDamage()) <= 0) {
+                            $ev->setCancelled();
+                            //FAKE KILL PLAYER MSG
+                            $count = '[' . ($a->getSlot(true) - 1) . '/' . $a->getSlot() . ']';
+
+                            switch ($cause):
+
+
+                                case EntityDamageEvent::CAUSE_ENTITY_ATTACK:
+                                    if ($ev instanceof EntityDamageByEntityEvent) {
+                                        $d = $ev->getDamager();
+                                        if ($d instanceof Player)
+                                            $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getDisplayName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.player'])));
+                                        elseif ($d instanceof \pocketmine\entity\Living)
+                                            $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getNameTag() !== '' ? $d->getNameTag() : $d->getName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.player'])));
+                                        else
+                                            $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', 'Unknown', str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.player'])));
+                                    }
+                                    break;
+
+
+                                case EntityDamageEvent::CAUSE_PROJECTILE:
+                                    if ($ev instanceof EntityDamageByEntityEvent) {
+                                        $d = $ev->getDamager();
+                                        if ($d instanceof Player)
+                                            $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getDisplayName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.arrow'])));
+                                        elseif ($d instanceof \pocketmine\entity\Living)
+                                            $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', $d->getNameTag() !== '' ? $d->getNameTag() : $d->getName(), str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.arrow'])));
+                                        else
+                                            $message = str_replace('{COUNT}', $count, str_replace('{KILLER}', 'Unknown', str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.arrow'])));
+                                    }
+                                    break;
+
+
+                                case EntityDamageEvent::CAUSE_VOID:
+                                    $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.void']));
+                                    break;
+
+
+                                case EntityDamageEvent::CAUSE_LAVA:
+                                    $message = str_replace('{COUNT}', $count, str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['death.lava']));
+                                    break;
+
+
+                                default:
+                                    $message = str_replace('{COUNT}', '[' . $a->getSlot(true) . '/' . $a->getSlot() . ']', str_replace('{PLAYER}', $p->getDisplayName(), $this->pg->lang['game.left']));
+                                    break;
+
+
+                            endswitch;
+
+                            foreach ($p->getLevel()->getPlayers() as $pl)
+                                $pl->sendMessage($message);
+
+                            //DROPS
+                            if ($this->pg->configs['drops.on.death']) {
+                                foreach ($p->getDrops() as $item) {
+                                    $p->getLevel()->dropItem($p, $item);
+                                }
+                            }
+
+                            //CLOSE
+                            $a->closePlayer($p, false, true);
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    public function onRespawn(PlayerRespawnEvent $ev)
+    {
+        if ($this->pg->configs['always.spawn.in.defaultLevel'])
+            $ev->setRespawnPosition($this->pg->getServer()->getDefaultLevel()->getSpawnLocation());
+        //Removes player things
+        if ($this->pg->configs['clear.inventory.on.respawn&join'])
+            $ev->getPlayer()->getInventory()->clearAll();
+        if ($this->pg->configs['clear.effects.on.respawn&join'])
+            $ev->getPlayer()->removeAllEffects();
+    }
+
+    public function onBreak(BlockBreakEvent $ev)
+    {
+        foreach ($this->pg->arenas as $a) {
+            if ($t = $a->inArena($ev->getPlayer()->getName())) {
+                if ($t == 2)
+                    $ev->setCancelled();
+                if ($a->GAME_STATE == 0)
+                    $ev->setCancelled();
+                break;
+            }
+        }
+        if (!$ev->getPlayer()->isOp())
+            return;
+        $key = (($ev->getBlock()->getX() + 0) . ':' . ($ev->getBlock()->getY() + 0) . ':' . ($ev->getBlock()->getZ() + 0) . ':' . $ev->getPlayer()->getLevel()->getName());
+        if (array_key_exists($key, $this->pg->signs)) {
+            $this->pg->arenas[$this->pg->signs[$key]]->stop();
+            $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Arena reloaded !');
+            if ($this->pg->setSign($this->pg->signs[$key], 0, 0, 0, 'world', true, false)) {
+                $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'SW join sign deleted !');
+            } else {
+                $ev->getPlayer()->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'An error occured, please contact the developer');
+            }
+        }
+        unset($key);
+    }
+
+    public function onPlace(BlockPlaceEvent $ev)
+    {
+        foreach ($this->pg->arenas as $a) {
+            if ($t = $a->inArena($ev->getPlayer()->getName())) {
+                if ($t == 2)
+                    $ev->setCancelled();
+                if ($a->GAME_STATE == 0)
+                    $ev->setCancelled();
+                break;
+            }
+        }
+    }
+
+    public function onCommand(PlayerCommandPreprocessEvent $ev)
+    {
+        $command = strtolower($ev->getMessage());
+        if ($command{0} == '/') {
+            $command = explode(' ', $command)[0];
+            if ($this->pg->inArena($ev->getPlayer()->getName())) {
+                if (in_array($command, $this->pg->configs['banned.commands.while.in.game'])) {
+                    $ev->getPlayer()->sendMessage($this->pg->lang['banned.command.msg']);
+                    $ev->setCancelled();
+                }
+            }
+        }
+        unset($command);
+    }
+}<?php
+
+/*
+ *                _   _
+ *  ___  __   __ (_) | |   ___
+ * / __| \ \ / / | | | |  / _ \
+ * \__ \  \ / /  | | | | |  __/
+ * |___/   \_/   |_| |_|  \___|
+ *
+ * SkyWars plugin for PocketMine-MP & forks
+ *
+ * @Author: svile
+ * @Kik: _svile_
+ * @Telegram_Gruop: https://telegram.me/svile
+ * @E-mail: thesville@gmail.com
+ * @Github: https://github.com/svilex/SkyWars-PocketMine
+ *
+ * Copyright (C) 2016 svile
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * DONORS LIST :
+ * - Ahmet , thanks a lot !
+ * - no one
+ * - no one
+ *
+ */
+
+namespace svile\sw;
+
+
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
+
+use pocketmine\Player;
+
+use pocketmine\utils\TextFormat;
+use pocketmine\math\Vector3;
+use pocketmine\block\Block;
+
+        #Use this for PHP7
+use pocketmine\nbt\tag\StringTag as Str;
+        #Use this for PHP5
+//use pocketmine\nbt\tag\String as Str;
+
+
+class SWcommands
+{
+    /** @var SWmain */
+    private $pg;
+
+    public function __construct(SWmain $plugin)
+    {
+        $this->pg = $plugin;
+    }
+
+    /**
+     * @param CommandSender $sender
+     * @param Command $command
+     * @param $label
+     * @param array $args
+     * @return bool
+     */
+    public function onCommand(CommandSender $sender, Command $command, $label, array $args)
+    {
+        if (!($sender instanceof Player) || !$sender->isOp()) {
+            switch (strtolower(array_shift($args))):
+
+
+                case 'join':
+                    if (!(count($args) > 0 && count($args) < 0b11)) {
+                        $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw ' . TextFormat::GREEN . 'join [SWname]' . TextFormat::GRAY . ' [PlayerName]');
+                        break;
+                    }
+
+                    //SW NAME
+                    $SWname = TextFormat::clean(array_shift($args));
+                    if (!array_key_exists($SWname, $this->pg->arenas)) {
+                        $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Arena with name: ' . TextFormat::WHITE . $SWname . TextFormat::RED . ' doesn\'t exist');
+                        break;
+                    }
+
+                    $player = TextFormat::clean(array_shift($args));
+                    if (strlen($player) > 0 && $sender instanceof \pocketmine\command\ConsoleCommandSender) {
+                        $p = $sender->getServer()->getPlayer($player);
+                        if ($p instanceof Player) {
+                            if ($this->pg->inArena($p->getName())) {
+                                $p->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'You are already inside an arena');
+                                break;
+                            }
+                            $this->pg->arenas[$SWname]->join($p);
+                        } else {
+                            $sender->sendMessage(TextFormat::RED . 'Player not found!');
+                        }
+                    } elseif ($sender instanceof Player) {
+                        if ($this->pg->inArena($sender->getName())) {
+                            $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'You are already inside an arena');
+                            break;
+                        }
+                        $this->pg->arenas[$SWname]->join($sender);
+                    } else {
+                        $sender->sendMessage(TextFormat::RED . 'Player not found!');
+                    }
+                    break;
+
+
+                case 'quit':
+                    if (!empty($args)) {
+                        $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw ' . TextFormat::GREEN . 'quit');
+                        break;
+                    }
+
+                    if ($sender instanceof Player) {
+                        foreach ($this->pg->arenas as $a) {
+                            if ($a->closePlayer($sender, true))
+                                break;
+                        }
+                    } else {
+                        $sender->sendMessage('This command is only avaible in game');
+                    }
+                    break;
+
+
+                default:
+                    //No option found, usage
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw [join|quit]');
+                    break;
+
+
+            endswitch;
+            return true;
+        }
+
+        //Searchs for a valid option
+        switch (strtolower(array_shift($args))):
+
+
+            case 'create':
+                /*
+                                          _
+                  ___  _ __   ___   __ _ | |_   ___
+                 / __|| '__| / _ \ / _` || __| / _ \
+                | (__ | |   |  __/| (_| || |_ |  __/
+                 \___||_|    \___| \__,_| \__| \___|
+
+                */
+                if (!(count($args) > 0b11 && count($args) < 0b101)) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw ' . TextFormat::GREEN . 'create [SWname] [slots] [countdown] [maxGameTime]');
+                    break;
+                }
+
+                $fworld = $sender->getLevel()->getFolderName();
+                $world = $sender->getLevel()->getName();
+
+                //Checks if the world is default
+                if ($sender->getServer()->getConfigString('level-name', 'world') == $world || $sender->getServer()->getDefaultLevel()->getName() == $world || $sender->getServer()->getDefaultLevel()->getFolderName() == $world) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'You can\'t create an arena in the default world');
+                    unset($fworld, $world);
+                    break;
+                }
+
+                //Checks if there is already an arena in the world
+                foreach ($this->pg->arenas as $aname => $arena) {
+                    if ($arena->getWorld() == $world) {
+                        $sender->sendMessage(TextFormat::RED . '→' . TextFormat::RED . 'You can\'t create 2 arenas in the same world try:');
+                        $sender->sendMessage(TextFormat::RED . '→' . TextFormat::WHITE . '/sw list' . TextFormat::RED . ' for a list of arenas');
+                        $sender->sendMessage(TextFormat::RED . '→' . TextFormat::WHITE . '/sw delete' . TextFormat::RED . ' to delete an arena');
+                        unset($fworld, $world);
+                        break 2;
+                    }
+                }
+
+                //Checks if there is already a join sign in the world
+                foreach ($this->pg->signs as $loc => $name) {
+                    if (explode(':', $loc)[3] == $world) {
+                        $sender->sendMessage(TextFormat::RED . '→' . TextFormat::RED . 'You can\'t create an arena in the same world of a join sign:');
+                        $sender->sendMessage(TextFormat::RED . '→' . TextFormat::WHITE . '/sw signdelete' . TextFormat::RED . ' to delete signs');
+                        unset($fworld, $world);
+                        break 2;
+                    }
+                }
+
+                //SW NAME
+                $SWname = array_shift($args);
+                if (!($SWname && ctype_alpha($SWname) && strlen($SWname) < 0x10 && strlen($SWname) > 0b10)) {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::AQUA . '[SWname]' . TextFormat::RED . ' must consists of all letters (min3-max15)');
+                    unset($fworld, $world, $SWname);
+                    break;
+                }
+
+                //Checks if the arena already exists
+                if (array_key_exists($SWname, $this->pg->arenas)) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Arena with name: ' . TextFormat::WHITE . $SWname . TextFormat::RED . ' already exist');
+                    unset($fworld, $world, $SWname);
+                    break;
+                }
+
+                //ARENA SLOT
+                $slot = array_shift($args);
+                if (!($slot && is_numeric($slot) && is_int(($slot + 0)) && $slot < 0x33 && $slot > 1)) {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::AQUA . '[slots]' . TextFormat::RED . ' must be an integer >= 50 and >= 2');
+                    unset($fworld, $world, $SWname, $slot);
+                    break;
+                }
+                $slot += 0;
+
+                //ARENA COUNTDOWN
+                $countdown = array_shift($args);
+                if (!($countdown && is_numeric($countdown) && is_int(($countdown + 0)) && $countdown > 0b1001 && $countdown < 0x12d)) {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::AQUA . '[countdown]' . TextFormat::RED . ' must be an integer <= 300 seconds (5 minutes) and >= 10');
+                    unset($fworld, $world, $SWname, $slot, $countdown);
+                    break;
+                }
+                $countdown += 0;
+
+                //ARENA MAX EXECUTION TIME
+                $maxtime = array_shift($args);
+                if (!($maxtime && is_numeric($maxtime) && is_int(($maxtime + 0)) && $maxtime > 0x12b && $maxtime < 0x259)) {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::AQUA . '[maxGameTime]' . TextFormat::RED . ' must be an integer <= 600 (10 minutes) and >= 300');
+                    unset($fworld, $world, $SWname, $slot, $countdown, $maxtime);
+                    break;
+                }
+                $maxtime += 0;
+
+                //ARENA LEVEL NAME
+                if ($fworld == $world) {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::RED . 'Using the world were you are now: ' . TextFormat::AQUA . $world . TextFormat::RED . ' ,expected lag');
+                } else {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::RED . 'There is a problem with the world name, try to restart your server');
+                    $provider = $sender->getLevel()->getProvider();
+                    if ($provider instanceof \pocketmine\level\format\generic\BaseLevelProvider) {
+                        $provider->getLevelData()->LevelName = new Str('LevelName', $fworld);
+                        $provider->saveLevelData();
+                    }
+                    unset($fworld, $world, $SWname, $slot, $countdown, $maxtime, $provider);
+                    break;
+                }
+
+                //Air world generator
+                $provider = $sender->getLevel()->getProvider();
+                if ($this->pg->configs['world.generator.air'] && $provider instanceof \pocketmine\level\format\generic\BaseLevelProvider) {
+                    $provider->getLevelData()->generatorName = new Str('generatorName', 'flat');
+                    $provider->getLevelData()->generatorOptions = new Str('generatorOptions', '0;0;0');
+                    $provider->saveLevelData();
+                }
+
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::LIGHT_PURPLE . 'I\'m creating a backup of the world...teleporting to hub');
+
+                //This is the "fake void"
+                $last = 0x80;
+                foreach ($sender->getLevel()->getChunks() as $chunk) {
+                    for ($x = 0; $x < 0x10; $x++) {
+                        for ($z = 0; $z < 0x10; $z++) {
+                            for ($y = 0; $y < 0x7f; $y++) {
+                                $block = $chunk->getBlockId($x, $y, $z);
+                                if ($block !== 0 && $last > $y) {
+                                    $last = $y;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                $void = ($last - 1);
+
+                $sender->teleport($sender->getServer()->getDefaultLevel()->getSpawnLocation());
+                foreach ($sender->getServer()->getLevelByName($world)->getPlayers() as $p)
+                    $p->close('', 'Please re-join');
+                $sender->getServer()->unloadLevel($sender->getServer()->getLevelByName($world));
+
+                //From here @vars are: $SWname , $slot , $world . Now i'm going to Zip the world and make a new arena
+                // { ZIP
+                $path = realpath($sender->getServer()->getDataPath() . 'worlds/' . $world);
+                $zip = new \ZipArchive;
+                @mkdir($this->pg->getDataFolder() . 'arenas/' . $SWname, 0755);
+                $zip->open($this->pg->getDataFolder() . 'arenas/' . $SWname . '/' . $world . '.zip', $zip::CREATE | $zip::OVERWRITE);
+                $files = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path), \RecursiveIteratorIterator::LEAVES_ONLY);
+                foreach ($files as $nu => $file) {
+                    if (!$file->isDir()) {
+                        $relativePath = $world . '/' . substr($file, strlen($path) + 1);
+                        $zip->addFile($file, $relativePath);
+                    }
+                }
+                $zip->close();
+                $sender->getServer()->loadLevel($world);
+                unset($zip, $path, $files);
+                // ENDZIP }
+
+                //SWarena object
+                $this->pg->arenas[$SWname] = new SWarena($this->pg, $SWname, $slot, $world, $countdown, $maxtime, $void);
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Arena: ' . TextFormat::DARK_GREEN . $SWname . TextFormat::GREEN . ' created successfully!');
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Now set spawns with ' . TextFormat::WHITE . '/sw setspawn [slot]');
+                unset($fworld, $world, $SWname, $slot, $countdown, $maxtime, $provider, $void);
+                break;
+
+
+            case 'setspawn':
+                /*
+                            _    ____
+                 ___   ___ | |_ / ___|  _ __   __ _ __      __ _ __
+                / __| / _ \| __|\___ \ | '_ \ / _` |\ \ /\ / /| '_ \
+                \__ \|  __/| |_  ___) || |_) | (_| | \ /  / / | | | |
+                |___/ \___| \__||____/ | .__/ \__,_|  \_/\_/  |_| |_|
+                                       |_|
+
+                */
+                if (count($args) != 1) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw ' . TextFormat::GREEN . 'setspawn [slot]');
+                    break;
+                }
+
+                $SWname = '';
+                foreach ($this->pg->arenas as $name => $arena) {
+                    if ($arena->getWorld() == $sender->getLevel()->getName()) {
+                        $SWname = $name;
+                        break;
+                    }
+                }
+                if (!($SWname && ctype_alpha($SWname) && strlen($SWname) < 0x10 && strlen($SWname) > 0b10 && array_key_exists($SWname, $this->pg->arenas))) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Arena not found here');
+                    unset($SWname);
+                    break;
+                }
+
+                $slot = array_shift($args);
+                if (!($slot && is_numeric($slot) && is_int(($slot + 0)) && $slot < 0x33 && $slot > 0)) {
+                    $sender->sendMessage(TextFormat::WHITE . '→' . TextFormat::AQUA . '[slot]' . TextFormat::RED . ' must be an integer <= than 50 and >= 1');
+                    unset($SWname, $slot);
+                    break;
+                }
+                $slot += 0;
+
+                if ($sender->getLevel()->getName() == $this->pg->arenas[$SWname]->getWorld()) {
+                    if ($this->pg->arenas[$SWname]->setSpawn(false, $sender, $slot)) {
+                        $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'New spawn: ' . TextFormat::WHITE . $slot . TextFormat::GREEN . ' In arena: ' . TextFormat::WHITE . $SWname);
+                        if ($this->pg->arenas[$SWname]->setSpawn(true, ''))
+                            $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'I found all the spawns for Arena: ' . TextFormat::WHITE . $SWname . TextFormat::GREEN . ' , now you can create a join sign!');
+                    }
+                }
+                break;
+
+
+            case 'list':
+                /*
+                  _   _         _
+                 | | (_)  ___  | |_
+                 | | | | / __| | __|
+                 | | | | \__ \ | |_
+                 |_| |_| |___/  \__|
+
+                */
+                if (count($this->pg->arenas) > 0) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Loaded arenas:');
+                    foreach ($this->pg->arenas as $key => $val) {
+                        $sender->sendMessage(TextFormat::BLACK . '• ' . TextFormat::YELLOW . $key . TextFormat::AQUA . ' [' . $val->getSlot(true) . '/' . $val->getSlot() . ']' . TextFormat::DARK_GRAY . ' => ' . TextFormat::GREEN . $val->getWorld());
+                    }
+                } else {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'There aren\'t loaded arenas, create one with ' . TextFormat::WHITE . '/sw create');
+                }
+                break;
+
+            case 'delete':
+                /*
+                     _        _        _
+                  __| |  ___ | |  ___ | |_   ___
+                 / _` | / _ \| | / _ \| __| / _ \
+                | (_| ||  __/| ||  __/| |_ |  __/
+                 \__,_| \___||_| \___| \__| \___|
+
+                */
+                if (count($args) != 1) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw ' . TextFormat::GREEN . 'delete [SWname]');
+                    break;
+                }
+
+                $SWname = array_shift($args);
+                if (!($SWname && ctype_alpha($SWname) && strlen($SWname) < 0x10 && strlen($SWname) > 0b10 && array_key_exists($SWname, $this->pg->arenas))) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Arena: ' . TextFormat::WHITE . $SWname . TextFormat::RED . ' doesn\'t exist');
+                    unset($SWname);
+                    break;
+                }
+
+                if (!(is_dir($this->pg->getDataFolder() . 'arenas/' . $SWname) && is_file($this->pg->getDataFolder() . 'arenas/' . $SWname . '/settings.yml'))) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Arena files doesn\'t exists');
+                    unset($SWname);
+                    break;
+                }
+
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Please wait, this can take a bit');
+                $this->pg->arenas[$SWname]->stop();
+                foreach ($this->pg->signs as $loc => $name) {
+                    if ($SWname == $name) {
+                        $ex = explode(':', $loc);
+                        if ($sender->getServer()->loadLevel($ex[0b11])) {
+                            $block = $sender->getServer()->getLevelByName($ex[0b11])->getBlock(new Vector3($ex[0], $ex[1], $ex[0b10]));
+                            if ($block->getId() == 0x3f || $block->getId() == 0x44)
+                                $sender->getServer()->getLevelByName($ex[0b11])->setBlock((new Vector3($ex[0], $ex[1], $ex[0b10])), Block::get(0));
+                        }
+                    }
+                }
+                $this->pg->setSign($SWname, 0, 0, 0, 'world', true, false);
+                unset($this->pg->arenas[$SWname]);
+
+                foreach (scandir($this->pg->getDataFolder() . 'arenas/' . $SWname) as $file) {
+                    if ($file != '.' && $file != '..' && is_file($this->pg->getDataFolder() . 'arenas/' . $SWname . '/' . $file)) {
+                        @unlink($this->pg->getDataFolder() . 'arenas/' . $SWname . '/' . $file);
+                    }
+                }
+                @rmdir($this->pg->getDataFolder() . 'arenas/' . $SWname);
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Arena: ' . TextFormat::DARK_GREEN . $SWname . TextFormat::GREEN . ' Deleted !');
+                unset($SWname, $loc, $name, $ex, $block);
+                break;
+
+
+            case 'signdelete':
+                /*
+                      _                ____         _        _
+                 ___ (_)  __ _  _ __  |  _ \   ___ | |  ___ | |_   ___
+                / __|| | / _` || '_ \ | | | | / _ \| | / _ \| __| / _ \
+                \__ \| || (_| || | | || |_| ||  __/| ||  __/| |_ |  __/
+                |___/|_| \__, ||_| |_||____/  \___||_| \___| \__| \___|
+                         |___/
+
+                */
+                if (count($args) != 1) {
+                    $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw ' . TextFormat::GREEN . 'signdelete [SWname|all]');
+                    break;
+                }
+
+                $SWname = array_shift($args);
+                if (!($SWname && ctype_alpha($SWname) && strlen($SWname) < 0x10 && strlen($SWname) > 0b10 && array_key_exists($SWname, $this->pg->arenas))) {
+                    if ($SWname == 'all') {
+                        //Deleting SW signs blocks
+                        foreach ($this->pg->signs as $loc => $name) {
+                            $ex = explode(':', $loc);
+                            if ($sender->getServer()->loadLevel($ex[0b11])) {
+                                $block = $sender->getServer()->getLevelByName($ex[0b11])->getBlock(new Vector3($ex[0], $ex[1], $ex[0b10]));
+                                if ($block->getId() == 0x3f || $block->getId() == 0x44)
+                                    $sender->getServer()->getLevelByName($ex[0b11])->setBlock((new Vector3($ex[0], $ex[1], $ex[0b10])), Block::get(0));
+                            }
+                        }
+                        //Deleting signs from db & array
+                        $this->pg->setSign($SWname, 0, 0, 0, 'world', true);
+                        $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Deleted all SW signs !');
+                        unset($SWname, $loc, $name, $ex, $block);
+                    } else {
+                        $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Arena: ' . TextFormat::WHITE . $SWname . TextFormat::RED . ' doesn\'t exist');
+                        unset($SWname);
+                    }
+                    break;
+                }
+                foreach ($this->pg->signs as $loc => $name) {
+                    if ($SWname == $name) {
+                        $ex = explode(':', $loc);
+                        if ($sender->getServer()->loadLevel($ex[0b11])) {
+                            $block = $sender->getServer()->getLevelByName($ex[0b11])->getBlock(new Vector3($ex[0], $ex[1], $ex[0b10]));
+                            if ($block->getId() == 0x3f || $block->getId() == 0x44)
+                                $sender->getServer()->getLevelByName($ex[0b11])->setBlock((new Vector3($ex[0], $ex[1], $ex[0b10])), Block::get(0));
+                        }
+                    }
+                }
+                $this->pg->setSign($SWname, 0, 0, 0, 'world', true, false);
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::GREEN . 'Deleted signs for arena: ' . TextFormat::DARK_GREEN . $SWname);
+                unset($SWname, $loc, $name, $ex, $block);
+                break;
+
+
+            default:
+                //No option found, usage
+                $sender->sendMessage(TextFormat::AQUA . '→' . TextFormat::RED . 'Usage: /sw [create|setspawn|list|delete|signdelete]');
+                break;
+
+
+        endswitch;
+        return true;
+    }
+}

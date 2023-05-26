@@ -1,0 +1,70 @@
+# {{variable}} is variable
+# It is replaced at run time
+system:
+ error:
+  permission: "You don't have permissions to use this command."
+  invalidsubcommand: "/money {{subCommand}} does not exist"
+
+view:
+ usage: "Правильно: /money view <Акаунт>"
+ type:
+  player: "Player"
+  non-player: "Non-Player"
+ hide:
+  true: "true"
+  false: "false"
+ fail: "Couldn't view the account"
+ result: "{{account}} money:{{money}} type:{{type}} hide:{{hide}}"
+
+pay:
+ usage: "Правильно: /money pay <Игрок> <Сума>"
+ fail: "Ошыбка Передавания"
+ result:
+  sender: "you -> {{target}}: {{money}}"
+  target: "{{sender}} -> you: {{money}}"
+
+withdraw:
+ usage: "Правильно: /money wd <цель> <Сума>"
+ fail: "не удалось Вывести"
+ error:
+  nonplayer: "You can withdraw money from only non-player account"
+  pay: "Ошыбка Передавания"
+ result: "{{target}} -> Тебе: {{money}}"
+
+create:
+ usage: "Правильно: /money create <Акаунт>"
+ fail: "Ошыбка создания Акаунта"
+ success: "Успешно Создан {{account}}"
+
+hide:
+ usage: "Правильно: /money hide <Акаунт>"
+ fail: "Ошыбка прятанья акаунта"
+ success: успешно Закрыт {{account}}"
+
+unhide:
+ usage: "Правильно: /money unhide <Акаунт>"
+ fail: "Ошыбка открытия акаунта"
+ success: "Успешно Открыт {{account}}"
+
+top:
+ usage: "Правильно: /money top <Сума>"
+ title: "Millionaires"
+ decoration: "-* ======= *-"
+ item: "#{{rank}} : {{name}} {{money}}"
+
+stat:
+ result: "Total:{{total}} Average:{{average}} Accounts:{{accounts}}"
+
+set:
+ usage: "Правильно: /money set <target> <Сума>"
+ fail: "Ошыбка добавления денег"
+ result:
+  console: "[Передача]Закончено!"
+  target: "Теперь у вас денег {{money}} благодаря админа"
+
+grant:
+ usage: "Правильно: /money grant <target> <amount>"
+ fail: "Failed to grant money"
+ result:
+  console: "[предоставление] Закончено!"
+  target: "Вам предостовляеться {{money}} благодаря админа"

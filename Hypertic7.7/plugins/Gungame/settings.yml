@@ -1,0 +1,96 @@
+---
+level-0-items:
+- 7, 7, 7
+level-1-items:
+- 7, 7, 7
+level-2-items:
+- 7, 7, 7
+level-3-items:
+- 7, 7, 7
+level-4-items:
+- 7, 7, 7
+level-5-items:
+- 7, 7, 7
+level-6-items:
+- 7, 7, 7
+sign[arena]:
+  x: 206
+  "y": 3
+  z: 142
+pos1[arena]:
+  x: 206
+  "y": 4
+  z: 142
+pos2[arena]:
+  x: 206
+  "y": 4
+  z: 142
+pos3[arena]:
+  x: 206
+  "y": 4
+  z: 142
+pos4[arena]:
+  x: 202
+  "y": 3
+  z: 149
+pos5[arena]:
+  x: 202
+  "y": 4
+  z: 149
+pos6[arena]:
+  x: 210
+  "y": 3
+  z: 153
+pos8[arena]:
+  x: 210
+  "y": 4
+  z: 153
+pos9[arena]:
+  x: 210
+  "y": 4
+  z: 153
+pos10[arena]:
+  x: 210
+  "y": 4
+  z: 153
+sign[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos1[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos2[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos3[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos4[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos5[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos6[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos8[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos9[1]:
+  x: 127
+  "y": 5
+  z: 129
+pos10[1]:
+  x: 127
+  "y": 5
+  z: 129
+...

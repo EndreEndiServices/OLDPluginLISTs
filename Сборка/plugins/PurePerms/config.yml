@@ -1,0 +1,5 @@
+---
+data-provider: yaml
+default-language: ru
+enable-multiworld-perms: false
+...

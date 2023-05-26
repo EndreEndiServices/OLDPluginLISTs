@@ -1,0 +1,7 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/StrafelessPvP/Plexium-ServerGuide
+branches:
+- master
+projects:
+  Plexium-ServerGuide:
+    path: ""
+...

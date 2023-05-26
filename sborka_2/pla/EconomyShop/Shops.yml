@@ -1,0 +1,922 @@
+---
+-86:64:305:world:
+  x: -86
+  "y": 64
+  z: 305
+  level: world
+  price: 1000
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 64
+-86:64:306:world:
+  x: -86
+  "y": 64
+  z: 306
+  level: world
+  price: 1000
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 64
+-86:64:307:world:
+  x: -86
+  "y": 64
+  z: 307
+  level: world
+  price: 1000
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 64
+-86:64:308:world:
+  x: -86
+  "y": 64
+  z: 308
+  level: world
+  price: 250
+  item: 17
+  itemName: Oak Wood
+  meta: 0
+  amount: 45
+-86:64:309:world:
+  x: -86
+  "y": 64
+  z: 309
+  level: world
+  price: 50
+  item: 2
+  itemName: Grass
+  meta: 0
+  amount: 64
+-86:64:311:world:
+  x: -86
+  "y": 64
+  z: 311
+  level: world
+  price: 500
+  item: 322
+  itemName: Golden Apple
+  meta: 0
+  amount: 10
+-86:64:312:world:
+  x: -86
+  "y": 64
+  z: 312
+  level: world
+  price: 250
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 50
+-86:64:310:world:
+  x: -86
+  "y": 64
+  z: 310
+  level: world
+  price: 500
+  item: 1
+  itemName: Stone
+  meta: 0
+  amount: 64
+-87:64:313:world:
+  x: -87
+  "y": 64
+  z: 313
+  level: world
+  price: 3000
+  item: 57
+  itemName: Diamond Block
+  meta: 0
+  amount: 64
+-89:64:313:world:
+  x: -89
+  "y": 64
+  z: 313
+  level: world
+  price: 3000
+  item: 41
+  itemName: Gold Block
+  meta: 0
+  amount: 64
+-90:64:313:world:
+  x: -90
+  "y": 64
+  z: 313
+  level: world
+  price: 3000
+  item: 22
+  itemName: Lapis Lazuli Block
+  meta: 0
+  amount: 64
+-92:64:313:world:
+  x: -92
+  "y": 64
+  z: 313
+  level: world
+  price: 3000
+  item: 152
+  itemName: Block of Redstone
+  meta: 0
+  amount: 64
+-94:64:313:world:
+  x: -94
+  "y": 64
+  z: 313
+  level: world
+  price: 100
+  item: 25
+  itemName: Noteblock
+  meta: 0
+  amount: 1
+-95:64:313:world:
+  x: -95
+  "y": 64
+  z: 313
+  level: world
+  price: 250
+  item: 20
+  itemName: Glass
+  meta: 0
+  amount: 30
+-88:64:313:world:
+  x: -88
+  "y": 64
+  z: 313
+  level: world
+  price: 3000
+  item: 42
+  itemName: Iron Block
+  meta: 0
+  amount: 64
+-91:64:313:world:
+  x: -91
+  "y": 64
+  z: 313
+  level: world
+  price: 400
+  item: 384
+  itemName: Bottle o' Enchanting
+  meta: 0
+  amount: 64
+-93:64:313:world:
+  x: -93
+  "y": 64
+  z: 313
+  level: world
+  price: 250
+  item: 5
+  itemName: Spruce Wood Planks
+  meta: 1
+  amount: 45
+107:65:1:world:
+  x: 107
+  "y": 65
+  z: 1
+  level: world
+  price: 1000
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 5
+107:65:-4:world:
+  x: 107
+  "y": 65
+  z: -4
+  level: world
+  price: 250
+  item: 17
+  itemName: Oak Wood
+  meta: 0
+  amount: 64
+107:65:2:world:
+  x: 107
+  "y": 65
+  z: 2
+  level: world
+  price: 250
+  item: 17
+  itemName: Birch Wood
+  meta: 2
+  amount: 64
+107:65:0:world:
+  x: 107
+  "y": 65
+  z: 0
+  level: world
+  price: 1000
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 10
+107:65:-3:world:
+  x: 107
+  "y": 65
+  z: -3
+  level: world
+  price: 350
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 32
+107:65:-2:world:
+  x: 107
+  "y": 65
+  z: -2
+  level: world
+  price: 5000
+  item: 322
+  itemName: Golden Apple
+  meta: 0
+  amount: 32
+107:65:-1:world:
+  x: 107
+  "y": 65
+  z: -1
+  level: world
+  price: 1000
+  item: 366
+  itemName: Cooked Chicken
+  meta: 0
+  amount: 10
+160:66:747:world:
+  x: 160
+  "y": 66
+  z: 747
+  level: world
+  price: 1000
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 5
+161:66:747:world:
+  x: 161
+  "y": 66
+  z: 747
+  level: world
+  price: 1000
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 5
+162:66:747:world:
+  x: 162
+  "y": 66
+  z: 747
+  level: world
+  price: 1000
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 5
+163:66:747:world:
+  x: 163
+  "y": 66
+  z: 747
+  level: world
+  price: 700
+  item: 155
+  itemName: Quartz Block
+  meta: 0
+  amount: 32
+164:66:747:world:
+  x: 164
+  "y": 66
+  z: 747
+  level: world
+  price: 250
+  item: 17
+  itemName: Oak Wood
+  meta: 0
+  amount: 64
+165:66:747:world:
+  x: 165
+  "y": 66
+  z: 747
+  level: world
+  price: 250
+  item: 17
+  itemName: Birch Wood
+  meta: 2
+  amount: 64
+169:66:747:world:
+  x: 169
+  "y": 66
+  z: 747
+  level: world
+  price: 900
+  item: 384
+  itemName: Bottle o' Enchanting
+  meta: 0
+  amount: 64
+166:66:747:world:
+  x: 166
+  "y": 66
+  z: 747
+  level: world
+  price: 1000
+  item: 116
+  itemName: Enchanting Table
+  meta: 0
+  amount: 1
+167:66:747:world:
+  x: 167
+  "y": 66
+  z: 747
+  level: world
+  price: 500
+  item: 89
+  itemName: Glowstone
+  meta: 0
+  amount: 64
+160:66:750:world:
+  x: 160
+  "y": 66
+  z: 750
+  level: world
+  price: 100
+  item: 355
+  itemName: Bed
+  meta: 0
+  amount: 1
+160:66:749:world:
+  x: 160
+  "y": 66
+  z: 749
+  level: world
+  price: 10
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 64
+160:66:748:world:
+  x: 160
+  "y": 66
+  z: 748
+  level: world
+  price: 2000
+  item: 322
+  itemName: Golden Apple
+  meta: 0
+  amount: 64
+160:66:751:world:
+  x: 160
+  "y": 66
+  z: 751
+  level: world
+  price: 500
+  item: 351
+  itemName: Lapis Lazuli
+  meta: 4
+  amount: 64
+160:66:753:world:
+  x: 160
+  "y": 66
+  z: 753
+  level: world
+  price: 100
+  item: 261
+  itemName: Bow
+  meta: 0
+  amount: 1
+160:66:752:world:
+  x: 160
+  "y": 66
+  z: 752
+  level: world
+  price: 100
+  item: 262
+  itemName: Arrow
+  meta: 0
+  amount: 64
+168:66:747:world:
+  x: 168
+  "y": 66
+  z: 747
+  level: world
+  price: 1000
+  item: 47
+  itemName: Bookshelf
+  meta: 0
+  amount: 64
+160:66:763:world:
+  x: 160
+  "y": 66
+  z: 763
+  level: world
+  price: 50
+  item: 25
+  itemName: Noteblock
+  meta: 0
+  amount: 1
+160:66:762:world:
+  x: 160
+  "y": 66
+  z: 762
+  level: world
+  price: 2000
+  item: 49
+  itemName: Obsidian
+  meta: 0
+  amount: 64
+167:66:763:world:
+  x: 167
+  "y": 66
+  z: 763
+  level: world
+  price: 2000
+  item: 397
+  itemName: Skull
+  meta: 0
+  amount: 1
+160:66:756:world:
+  x: 160
+  "y": 66
+  z: 756
+  level: world
+  price: 2000
+  item: 397
+  itemName: Skull
+  meta: 1
+  amount: 1
+166:66:763:world:
+  x: 166
+  "y": 66
+  z: 763
+  level: world
+  price: 2000
+  item: 397
+  itemName: Skull
+  meta: 2
+  amount: 1
+160:66:758:world:
+  x: 160
+  "y": 66
+  z: 758
+  level: world
+  price: 1000
+  item: 379
+  itemName: Brewing Stand
+  meta: 0
+  amount: 1
+160:66:759:world:
+  x: 160
+  "y": 66
+  z: 759
+  level: world
+  price: 1000
+  item: 145
+  itemName: Anvil
+  meta: 0
+  amount: 1
+160:66:760:world:
+  x: 160
+  "y": 66
+  z: 760
+  level: world
+  price: 250
+  item: 373
+  itemName: Water Bottle
+  meta: 0
+  amount: 1
+160:66:761:world:
+  x: 160
+  "y": 66
+  z: 761
+  level: world
+  price: 250
+  item: 380
+  itemName: Cauldron
+  meta: 0
+  amount: 1
+160:66:757:world:
+  x: 160
+  "y": 66
+  z: 757
+  level: world
+  price: 500
+  item: 20
+  itemName: Glass
+  meta: 0
+  amount: 64
+165:66:763:world:
+  x: 165
+  "y": 66
+  z: 763
+  level: world
+  price: 2000
+  item: 397
+  itemName: Skull
+  meta: 3
+  amount: 1
+160:66:755:world:
+  x: 160
+  "y": 66
+  z: 755
+  level: world
+  price: 2000
+  item: 397
+  itemName: Skull
+  meta: 4
+  amount: 1
+160:66:754:world:
+  x: 160
+  "y": 66
+  z: 754
+  level: world
+  price: 500
+  item: 65
+  itemName: Ladder
+  meta: 0
+  amount: 32
+163:66:763:world:
+  x: 163
+  "y": 66
+  z: 763
+  level: world
+  price: 50
+  item: 55
+  itemName: Redstone Wire
+  meta: 0
+  amount: 1
+164:66:763:world:
+  x: 164
+  "y": 66
+  z: 763
+  level: world
+  price: 700
+  item: 389
+  itemName: Item Frame
+  meta: 0
+  amount: 1
+161:66:763:world:
+  x: 161
+  "y": 66
+  z: 763
+  level: world
+  price: 900
+  item: 330
+  itemName: Iron Door
+  meta: 0
+  amount: 1
+162:66:763:world:
+  x: 162
+  "y": 66
+  z: 763
+  level: world
+  price: 200
+  item: 61
+  itemName: Furnace
+  meta: 0
+  amount: 1
+114:59:225:world:
+  x: 114
+  "y": 59
+  z: 225
+  level: world
+  price: 600
+  item: 261
+  itemName: Bow
+  meta: 0
+  amount: 1
+115:59:225:world:
+  x: 115
+  "y": 59
+  z: 225
+  level: world
+  price: 100
+  item: 262
+  itemName: Arrow
+  meta: 0
+  amount: 32
+116:59:225:world:
+  x: 116
+  "y": 59
+  z: 225
+  level: world
+  price: 300
+  item: 351
+  itemName: Lapis Lazuli
+  meta: 4
+  amount: 40
+117:59:225:world:
+  x: 117
+  "y": 59
+  z: 225
+  level: world
+  price: 100
+  item: 54
+  itemName: Chest
+  meta: 0
+  amount: 2
+118:59:225:world:
+  x: 118
+  "y": 59
+  z: 225
+  level: world
+  price: 150
+  item: 20
+  itemName: Glass
+  meta: 0
+  amount: 64
+119:59:225:world:
+  x: 119
+  "y": 59
+  z: 225
+  level: world
+  price: 200
+  item: 5
+  itemName: Oak Wood Planks
+  meta: 0
+  amount: 64
+113:59:225:world:
+  x: 113
+  "y": 59
+  z: 225
+  level: world
+  price: 250
+  item: 17
+  itemName: Birch Wood
+  meta: 2
+  amount: 64
+110:59:225:world:
+  x: 110
+  "y": 59
+  z: 225
+  level: world
+  price: 5000
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 10
+111:59:225:world:
+  x: 111
+  "y": 59
+  z: 225
+  level: world
+  price: 5000
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 10
+112:59:225:world:
+  x: 112
+  "y": 59
+  z: 225
+  level: world
+  price: 5000
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 10
+109:59:225:world:
+  x: 109
+  "y": 59
+  z: 225
+  level: world
+  price: 50
+  item: 38
+  itemName: Oxeye Daisy
+  meta: 8
+  amount: 5
+121:59:225:world:
+  x: 121
+  "y": 59
+  z: 225
+  level: world
+  price: 80
+  item: 38
+  itemName: Poppy
+  meta: 0
+  amount: 5
+120:59:225:world:
+  x: 120
+  "y": 59
+  z: 225
+  level: world
+  price: 300
+  item: 116
+  itemName: Enchanting Table
+  meta: 0
+  amount: 1
+109:58:233:world:
+  x: 109
+  "y": 58
+  z: 233
+  level: world
+  price: 100
+  item: 354
+  itemName: Cake
+  meta: 0
+  amount: 5
+109:58:232:world:
+  x: 109
+  "y": 58
+  z: 232
+  level: world
+  price: 200
+  item: 17
+  itemName: Birch Wood
+  meta: 2
+  amount: 40
+109:58:231:world:
+  x: 109
+  "y": 58
+  z: 231
+  level: world
+  price: 300
+  item: 263
+  itemName: Coal
+  meta: 0
+  amount: 32
+109:58:229:world:
+  x: 109
+  "y": 58
+  z: 229
+  level: world
+  price: 100
+  item: 323
+  itemName: Sign
+  meta: 0
+  amount: 5
+109:58:230:world:
+  x: 109
+  "y": 58
+  z: 230
+  level: world
+  price: 400
+  item: 384
+  itemName: Bottle o' Enchanting
+  meta: 0
+  amount: 40
+124:59:252:world:
+  x: 124
+  "y": 59
+  z: 252
+  level: world
+  price: 200
+  item: 348
+  itemName: Glowstone Dust
+  meta: 0
+  amount: 15
+124:59:251:world:
+  x: 124
+  "y": 59
+  z: 251
+  level: world
+  price: 200
+  item: 375
+  itemName: Spider Eye
+  meta: 0
+  amount: 15
+124:59:250:world:
+  x: 124
+  "y": 59
+  z: 250
+  level: world
+  price: 200
+  item: 372
+  itemName: Nether Wart
+  meta: 0
+  amount: 15
+124:59:249:world:
+  x: 124
+  "y": 59
+  z: 249
+  level: world
+  price: 200
+  item: 377
+  itemName: Blaze Powder
+  meta: 0
+  amount: 15
+124:59:248:world:
+  x: 124
+  "y": 59
+  z: 248
+  level: world
+  price: 200
+  item: 376
+  itemName: Fermented Spider Eye
+  meta: 0
+  amount: 15
+124:59:247:world:
+  x: 124
+  "y": 59
+  z: 247
+  level: world
+  price: 200
+  item: 341
+  itemName: Slimeball
+  meta: 0
+  amount: 15
+128:59:253:world:
+  x: 128
+  "y": 59
+  z: 253
+  level: world
+  price: 300
+  item: 382
+  itemName: Glistering Melon
+  meta: 0
+  amount: 10
+132:59:253:world:
+  x: 132
+  "y": 59
+  z: 253
+  level: world
+  price: 300
+  item: 378
+  itemName: Magma Cream
+  meta: 0
+  amount: 10
+130:59:253:world:
+  x: 130
+  "y": 59
+  z: 253
+  level: world
+  price: 300
+  item: 396
+  itemName: Golden Carrot
+  meta: 0
+  amount: 10
+127:59:253:world:
+  x: 127
+  "y": 59
+  z: 253
+  level: world
+  price: 100
+  item: 371
+  itemName: Gold Nugget
+  meta: 0
+  amount: 5
+129:59:253:world:
+  x: 129
+  "y": 59
+  z: 253
+  level: world
+  price: 200
+  item: 373
+  itemName: Water Bottle
+  meta: 0
+  amount: 10
+131:59:253:world:
+  x: 131
+  "y": 59
+  z: 253
+  level: world
+  price: 200
+  item: 379
+  itemName: Brewing Stand
+  meta: 0
+  amount: 1
+121:58:229:world:
+  x: 121
+  "y": 58
+  z: 229
+  level: world
+  price: 50
+  item: 332
+  itemName: Snowball
+  meta: 0
+  amount: 16
+109:58:234:world:
+  x: 109
+  "y": 58
+  z: 234
+  level: world
+  price: 5000
+  item: 322
+  itemName: Golden Apple
+  meta: 0
+  amount: 10
+121:58:230:world:
+  x: 121
+  "y": 58
+  z: 230
+  level: world
+  price: 50
+  item: 297
+  itemName: Bread
+  meta: 0
+  amount: 10
+121:58:232:world:
+  x: 121
+  "y": 58
+  z: 232
+  level: world
+  price: 50
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 5
+121:58:231:world:
+  x: 121
+  "y": 58
+  z: 231
+  level: world
+  price: 30
+  item: 391
+  itemName: Carrot
+  meta: 0
+  amount: 7
+...

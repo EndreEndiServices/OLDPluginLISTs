@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="nukkit_survival">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../nukkit_survival.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

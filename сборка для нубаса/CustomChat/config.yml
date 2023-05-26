@@ -1,0 +1,7 @@
+---
+chat-format: ' §a[✔] §f✌§o§9{PREFIX} §f═╬ §c{DISPLAY_NAME} §f╬═ ➠ §eツ§6{MESSAGE}§eシ'
+if-player-has-no-faction: NoFaction
+enable-formatter: true
+disablechat: false
+default-player-prefix: §esuper-player
+...

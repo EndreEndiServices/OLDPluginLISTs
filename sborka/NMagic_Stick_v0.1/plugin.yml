@@ -1,0 +1,9 @@
+name: NM
+main: NMagic_Stick\MStick
+version: 0.1
+author: N1crystall
+api: 2.0.0
+load: POSTWORLD
+commands:
+ mg:
+  description: "Волшебные Палочки"

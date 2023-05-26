@@ -1,0 +1,41 @@
+---
+kitName: gold_kit
+isDefault: false
+cost: 0
+health: 20
+armors:
+  helmet:
+  - 314
+  - "0"
+  - "1"
+  chestplate:
+  - 315
+  - "0"
+  - "1"
+  leggings:
+  - 316
+  - "0"
+  - "1"
+  boots:
+  - 317
+  - "0"
+  - "1"
+weapons:
+  256:
+  - 256
+  - "0"
+  - "1"
+  332:
+  - 332
+  - "0"
+  - "64"
+foods:
+  260:
+  - 260
+  - "0"
+  - "2"
+  391:
+  - 391
+  - "0"
+  - "2"
+...

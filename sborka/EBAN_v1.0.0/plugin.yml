@@ -1,0 +1,22 @@
+name: EBB
+main: eban\eban
+version: 1.0.0
+api: 1.12.0
+load: POSTWORLD
+author: ANDRUS
+description: EBan By ANDRUS
+website: vk.com/joker865552
+
+commands:
+ eban:
+  description: ебанит игрока
+  usage: "/eban <ник>"
+  permission: eban.command
+ uneban:
+  description: разебанивает игрока
+  usage: "/uneban <ник>"
+  permission: eban.command
+permissions:
+ eban.command:
+  description: "Eban by ANDRUS"
+  default: op

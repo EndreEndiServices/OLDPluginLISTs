@@ -1,0 +1,24 @@
+#
+# Разные права
+#
+
+донат-вход: fapi.join - Випы и выше
+сохранение: fapi.save - Инвентарь
+antiadvert: fapi.noad - Нет рекламы у випов
+worldborde: fapi.border - Ограничение мира
+
+#
+# Комманды
+#
+
+gm: fapi.cmd.gm
+fly: fapi.cmd.fly
+tpall: fapi.cmd.tpall
+clear: fapi.cmd.clear
+vanish: fapi.cmd.vanish
+back: fapi.save
+heal: fapi.cmd.heal
+dupe: fapi.cmd.dupe
+top: fapi.cmd.top
+suicide: fapi.cmd.suicide
+clearchat: fapi.cmd.clearchat

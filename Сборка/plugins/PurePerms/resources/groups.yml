@@ -1,0 +1,12 @@
+---
+Guest:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - guest
+Vip:
+  inheritance:
+  - Guest
+  permissions:
+  - vip
+...

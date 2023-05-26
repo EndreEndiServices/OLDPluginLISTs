@@ -1,0 +1,38 @@
+---
+titleStat: '[a§aTop§bPlayers§f] §9Статистика игрока {player}:'
+userNotExist: '[a§aTop§bPlayers§f] §eТакого игрока нет'
+killTitle: §b• §fЛучшие убийцы сервера §b•
+killElement: §e{player}§a - убил §f{value}
+killCount: 7
+deathTitle: §e• §fСуицидники сервера •§e
+deathElement: §e{player} §a- умер §f{value} раз
+deathCount: 7
+breakTitle: §c• §fБольше всех ломали §c
+breakElement: §a{player} - §f{value}
+breakCount: 7
+placeTitle: §a• §fБольше всех строили §a•
+placeElement: §e{player} §a- §f{value}
+placeCount: 7
+autoUpdate: 300
+coords:
+  kill:
+    x: 136.000000
+    "y": 71.500000
+    z: 147.000000
+    level: world
+  place:
+    x: 124.000000
+    "y": 70.500000
+    z: 149.000000
+    level: world
+  death:
+    x: 130.000000
+    "y": 70.500000
+    z: 132.000000
+    level: world
+  break:
+    x: 146.000000
+    "y": 71.500000
+    z: 143.000000
+    level: world
+...

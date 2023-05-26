@@ -1,0 +1,14 @@
+#BanHammer Configuration
+BanHammer: 286
+#BanHammer MUST be the items ID
+
+BanType: ban
+#Available BanTypes
+# - ban
+# - banip
+# - kick
+#NOTE: tempban is NOT currently implemented!
+
+TimerBanTime: 6
+#TimerBanTime does NOT currently work!
+#It will be implemented when TimerBan has been updated

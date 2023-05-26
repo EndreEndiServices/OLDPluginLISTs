@@ -1,0 +1,77 @@
+<?
+/*
+__PocketMine Plugin__
+name=Rules
+version=1.0.0
+author=charged900
+class=Rules
+apiversion=7,8,9,10
+*/
+
+class Rules implements plugin{
+	private $api, $server;
+	private $config;
+    private $nr = 0;
+    private $interval;
+	
+	public function __construct(ServerAPI $api, $server = false) {
+	$this->api = $api;
+	$this->server = ServerAPI::request();
+	}
+	
+	public function __destruct() {
+                $this->config->save();
+        }
+	public function init() {
+			   $this->config = new Config($this->api->plugin->configPath($this) . "Rules.yml", CONFIG_YAML, array('interval' => 1, 'Rules' => array("Rules: ")));
+               $this->interval = $this->config->get("interval");
+               $this->api->schedule(20 * 60 * $this->interval, array($this, "rule"), array(), false);
+               $this->api->console->register('rules', "Rules", array($this, 'commandHandler'));
+        }
+		public function rule() {
+                $messagesArray = $this->config->get("rules");
+                if (count($messagesArray) > 1) {
+                        $message = $messagesArray[$this->nr];
+                        $this->api->chat->broadcast("[Rules] " . $message);
+                        if ($this->nr < count($messagesArray)-1) {
+                                $this->nr++;
+                        } else {
+                                $this->nr = 0;
+                        }
+                }
+                $this->api->schedule(20 * 60 * $this->interval, array($this, "rule"), array(), false);
+        }
+		public function commandHandler($cmd, $params, $issuer, $alias) {
+                $c = array_shift($params);
+                if($c === 'add' && isset($params)){
+                        $s = implode(" ",$params);
+                        $a = $this->config->get("rules");
+                        array_push($a,$s);
+                        $this->saveConfig("rules",$a);
+                        console("Rules added");
+                } else if($c === 'del' && isset($params)){
+                        $n = implode(" ",$params);
+                        $a = $this->config->get("rules");
+                        array_splice($a, (int)$params, 1);
+                        $this->saveConfig("rules",$a);
+                        console("Deleted rules");
+                } else if($c === 'time' && isset($params)){
+                        $n = implode(" ",$params);
+                        $this->saveConfig("interval",(int)$n);
+                        $this->interval = (int)$n;
+                        console("Interval changed to ".(int)$n." minutes");
+                } else {
+                        $i = 0;
+                        console("\tRules Usage:\nAdd new Rule List:\trules add <text>\nRemove a Rule List:\trules del <nr>\nChange interval:\ttimerules time <nr>");
+                        foreach($this->config->get("rules") as $m) {
+                                console($i . ". " . $m);
+                                $i++;
+                        }
+                }
+        }
+		public function saveConfig($k,$v) {
+                $this->config->set($k,$v);
+                $this->config->save();
+        }
+}
+?>

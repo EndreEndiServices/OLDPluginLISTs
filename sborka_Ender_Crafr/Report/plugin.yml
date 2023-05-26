@@ -1,0 +1,8 @@
+name: Fixplug
+version: 1.0
+api: 2.0.0
+main: Fixplug\Fixplug
+author: FixPlug
+commands:
+ report:
+  description: "Подать жалобу"

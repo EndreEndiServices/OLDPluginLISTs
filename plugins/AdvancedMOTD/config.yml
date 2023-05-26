@@ -1,0 +1,6 @@
+#Time in between each MOTD Change in seconds
+Occurrence: 3
+
+#Different MOTDs to show
+MOTDS:
+  - "&l&o&b<= &aKai&eCraft&b => &dBuild&aBattle"

@@ -1,0 +1,10 @@
+---
+"133:0":
+- effect: 1
+  amplifier: 10
+  duration: 10
+"152:0":
+- effect: 8
+  amplifier: 10
+  duration: 10
+...

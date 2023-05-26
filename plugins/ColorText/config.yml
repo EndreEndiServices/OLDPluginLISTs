@@ -1,0 +1,7 @@
+#the colors you can use are:
+#from "§0" to "§9" and from "§a" to "§f"
+#setting "enabled" to false will disabile the effect of the plugin
+
+enabled: true
+name: "§6"
+message: "§a"

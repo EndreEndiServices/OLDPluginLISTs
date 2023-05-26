@@ -1,0 +1,15 @@
+name: MultiversePE
+main: MultiversePE\Main
+version: 1.0.0
+api: [1.2.0]
+load: STARTUP
+authors: [Comedyman937]
+description: Multiple world management for PocketMine-MP!
+
+permissions:
+    multiversepe.admin:
+       description: "Allows players to use the MultiversePE-Worlds commands!"
+       default: op
+    multiversepe.teleport:
+      description: "Allows players to teleport to other worlds!"
+      default: op

@@ -1,0 +1,99 @@
+name: Passport
+version: 1.0
+api: [1.12.0, 2.0.0]
+author: MrGenga
+main: MrGenga\Passport
+permissions:
+    passport:
+        description: "Позволяет игрокам использовать команду /passport"
+        default: true
+commands:
+    passport:
+        description: "Команда паспорта"
+        permission: passport
+        aliases: [pas, pass]
+<?php
+
+namespace MrGenga;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\utils\Config;
+use pocketmine\Player;
+
+class Passport extends PluginBase implements Listener, CommandExecutor{
+
+    protected $eapi;
+
+    public function onEnable(){
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        @mkdir($this->getDataFolder() . "players");
+        $this->eapi = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
+        if($this->eapi == null){
+            $this->getLogger()->critical("§cДля работы данного плагина нужен плагин §6EconomyAPI§c!");
+            $this->getServer()->getPluginManager()->disablePlugin($this->getServer()->getPluginManager()->getPlugin("Passport"));
+            return;
+        }
+        $this->getLogger()->info("§2Плагин §6Passport §2от §6MrGenga §2успешно загружен!");
+    }
+
+    public function onBlockPlace(BlockPlaceEvent $ev){
+        $config = new Config($this->getDataFolder() . "/players/".strtolower($ev->getPlayer()->getName()).".yml", Config::YAML, array("placed" => 0, "breaked" => 0, "kills" => 0, "deaths" => 0));
+        $config->set("placed", $config->get("placed") + 1);
+        $config->save();
+    }
+
+    public function onBlockBreak(BlockBreakEvent $ev){
+        $config = new Config($this->getDataFolder() . "/players/".strtolower($ev->getPlayer()->getName()).".yml", Config::YAML, array("placed" => 0, "breaked" => 0, "kills" => 0, "deaths" => 0));
+        $config->set("breaked", $config->get("breaked") + 1);
+        $config->save();
+    }
+
+    public function onPlayerDeath(PlayerDeathEvent $ev){
+        $config = new Config($this->getDataFolder() . "/players/".strtolower($ev->getEntity()->getName()).".yml", Config::YAML, array("placed" => 0, "breaked" => 0, "kills" => 0, "deaths" => 0));
+        $config->set("deaths", $config->get("deaths") + 1);
+        $config->save();
+    }
+
+    public function onEntityDamage(EntityDamageEvent $ev){
+        if(!($ev instanceof EntityDamageByEntityEvent)) return;
+        if(!($ev->getEntity() instanceof Player) && !($ev->getDamager() instanceof Player)) return;
+        if($ev->getEntity()->getHealth() - $ev->getFinalDamage() > 0) return;
+        $config = new Config($this->getDataFolder() . "/players/".strtolower($ev->getDamager()->getName()).".yml", Config::YAML, array("placed" => 0, "breaked" => 0, "kills" => 0, "deaths" => 0));
+        $config->set("kills", $config->get("kills") + 1);
+        $config->save();
+    }
+
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
+        if($cmd->getName() == "passport" || $label == "pas" || $label == "pass" || $label == "passport"){
+            if(count($args) < 1) {
+                $sender->sendMessage("§cИспользование: /passport <игрок>");
+                return true;
+            }
+            $nick = $args[0];
+            $config = new Config($this->getDataFolder() . "/players/". strtolower($nick).".yml", Config::YAML, array("placed" => 0, "breaked" => 0, "kills" => 0, "deaths" => 0));
+            $money = $this->eapi->myMoney($nick);
+            if($money == false) $money = 0;
+            $sender->sendMessage("§2| §6Паспорт игрока §a".$nick."§6:");
+            $sender->sendMessage('§2| §eДенег: §2$'.$money);
+            $sender->sendMessage("§2| §eПоставлено блоков: §9".$config->get("placed"));
+            $sender->sendMessage("§2| §eСломано блоков: §9".$config->get("breaked"));
+            $sender->sendMessage("§2| §eУбийств: §9".$config->get("kills"));
+            $sender->sendMessage("§2| §eСмертей: §9".$config->get("deaths"));
+            return true;
+        }
+    }
+
+    public function onDisable(){
+        $this->getLogger()->info("§2Плагин §6Passport §2от §6MrGenga §2успешно выключен!");
+    }
+
+}

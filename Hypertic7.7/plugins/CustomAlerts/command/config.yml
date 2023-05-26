@@ -1,0 +1,20 @@
+---
+##############################
+# xRulesx Created by xFlare! :D
+# Your using version 1.0.0
+# Check for updates regularly!
+##############################
+
+
+#Add rules below, You may leave some blank.
+rule1: "/hub - return to lobby"
+rule2: "/mymoney - display how much money you got"
+rule3: "/news - show's what's new on server"
+rule4: "/pay <playername> <ammount> - give money to person"
+rule5: "/rules - show server rules"
+rule6: "/chpwd - change password"
+rule7: "/list - show online players"
+rule8: "/timeranks check - check your gaming time"
+#Please do not add more rule slots!
+#It may corrupt the config file!
+...

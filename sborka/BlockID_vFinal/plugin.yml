@@ -1,0 +1,8 @@
+name: BDD
+version: Final
+api: 1.12.0
+main: MCYasha\BlockID\BlockID
+author: MCYasha
+commands:
+ itid:
+   default: true

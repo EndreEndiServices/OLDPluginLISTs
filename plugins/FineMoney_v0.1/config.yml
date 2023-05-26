@@ -1,0 +1,6 @@
+---
+enable: "true"
+economy-plugin: EconomyAPI
+money: 1
+message: [Finecraft] Ты убил игрока {name} и получил {money} монету
+...

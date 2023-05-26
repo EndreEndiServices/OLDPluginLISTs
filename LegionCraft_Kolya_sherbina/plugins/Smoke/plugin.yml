@@ -1,0 +1,9 @@
+name: Smoke
+author: FunnyRain (vk.com/cookie3149)
+api: [2.0.0]
+version: 1.0
+main: FunnyRain\Smoke
+
+commands:
+  smoke:
+    description: "/smoke"

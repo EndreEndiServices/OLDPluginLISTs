@@ -1,0 +1,33 @@
+---
+name: demo6
+type: tf
+ip: 192.168.0.15
+port: "19133"
+active: true
+enterLevelName: SimplePortalWorld
+portalEnter1X: 118.000000
+portalEnter1Y: 66.000000
+portalEnter1Z: 104.000000
+portalEnter2X: 117.000000
+portalEnter2Y: 69.000000
+portalEnter2Z: 101.000000
+allowIPs: []
+enterDestinationPosX: false
+enterDestinationPosY: false
+enterDestinationPosZ: false
+enterDestinationSignX: 119
+enterDestinationSignY: 67
+enterDestinationSignZ: 101
+portalExitPos1X: false
+portalExitPos1Y: false
+portalExitPos1Z: false
+portalExitPos2X: false
+portalExitPos2Y: false
+portalExitPos2Z: false
+exitDestinationPosX: false
+exitDestinationPosY: false
+exitDestinationPosZ: false
+exitDestinationSignX: false
+exitDestinationSignY: false
+exitDestinationSignZ: false
+...

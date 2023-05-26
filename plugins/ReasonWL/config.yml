@@ -1,0 +1,4 @@
+#if set to TRUE, whitelist is enabled
+enable_whitelist: "FALSE"
+#set custom reason for whitelist
+reason: "Server is whitelisted"

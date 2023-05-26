@@ -1,0 +1,5 @@
+name: CItem
+main: CItem\CItem
+api: [1.13.0]
+version: 1.3.0
+author: Richen

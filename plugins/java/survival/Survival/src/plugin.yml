@@ -1,0 +1,11 @@
+name: Survival
+version: "1.0"
+api: ["1.0.0"]
+main: GameTeam.Survival
+author: "kvetinac97"
+description: "Survival"
+depend: ["GTCore"]
+
+commands:
+    help:
+      description: "Show server help"

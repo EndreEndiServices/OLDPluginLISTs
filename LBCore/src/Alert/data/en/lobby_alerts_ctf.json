@@ -1,0 +1,8 @@
+[
+    ["Capture the flags from the opposing teams flag rooms.", "You will need one flag from each of two rooms."],
+    ["The opposing team is on the other side of the gap.","Build a bridge to get across it."],
+    ["You are in the spawn room.  You get teleported back here if you get killed."],
+    ["Bring captured flags to the goals outside the spawn room."],
+    ["You can place blocks off the edge of horizontal", "surfaces without going over the edge.", "Tricky at first, but you will get the hang of it."],
+    ["VIP gets to pick team upon joining, then they are stuck with it."]  
+]

@@ -1,0 +1,10 @@
+main: Richen\AutoMine\AutoMine
+version: 0.0.1
+api:
+- 1.14.0
+- 2.0.0
+load: POSTWORLD
+
+name: AutoMine
+author: Richen
+website: http://vk.com/richen

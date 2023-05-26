@@ -1,0 +1,70 @@
+#superBAR config. Plugin by FaigerSYS
+ver: 7
+### Please do not change 'ver' ###
+
+#HUD format. For color use §.
+hot-format: "Hello, %NICK%\nOnline: %ONLINE%/%MAX_ONLINE%"
+#Tip:
+# %NICK% - name of player
+# %MONEY% - count of player's money
+#   NEED EconomyAPI OR PocketMoney. PocketMoney: https://forums.pocketmine.net/plugins/pocketmoney.63/
+#   EconomyAPI: https://forums.pocketmine.net/plugins/€¢onom¥.30/
+# %ITEM_ID% / %ITEM_META% - ID/{META/DAMAGE} of item in hand
+# %FACTION% - player's faction
+#   NEED FactionsPro. You can download it here: https://forums.pocketmine.net/plugins/factionspro.848/
+# %TIME% - time
+#   How to set a different timezone - see below
+# %ONLINE% - how many players now on server
+# %MAX_ONLINE% - max. online
+# %X% / %Y% / %Z% - get X/Y/Z-coordinates of player
+# %IP% - IP of player
+# %PP_GROUP% - PurePerms group of player
+#   NEED PurePerms. You can download it from here: https://forums.pocketmine.net/plugins/pureperms.862/
+# %TAG% - player's tag (text above player's head)
+# %LOAD% - load of server (0-100 %)
+# %TPS% - TPS of server
+# %KILLS% / %DEATHS% - count of player's kills/deaths
+#   NEED KillChat. If you have installed CustomChat, install KillChat extension: https://forums.pocketmine.net/plugins/killchat-extension-cc.916/
+#   If not, or if there are any problems, install modified version of KillChat: https://github.com/FaigerSYS/superBAR_additionally/raw/master/KillChat_MOD.phar
+# %LEVEL% - name of player's current world/level
+# %PING% - get ping with player-server.
+#   NEED GetPing. You can download it here: https://github.com/Muirfield/bad-plugins/releases/tag/GetPing-1.0.0 . Plugin maybe is non-working.
+# %GT% / %AGT% - player's duration of session / total time of the game
+#   NEED GameTime. You can download it here: https://github.com/FaigerSYS/GameTime/releases/latest
+# \n - new line. WARNING! \n is not the same as /n
+
+#The level of the text offset. Set the variable for example at 30 to see the result.
+text-offset-level: 0
+#Tip:
+# A negative value (e.g. -30) - to left side
+# Average value (e.g. 30) - to right side
+
+#Type of HUD (popup/tip). 
+type: "popup"
+#Tip:
+# To make HUD higher, use "tip"
+# MCPE 0.14.2/0.14.3 does not support tips. But in version 0.15.0 the ability to use 'tip' returned.
+
+#Timer (every *setted parameter* ticks sends to player HUD)
+timer: 15
+#Tip:
+# 20 ticks - 1 second
+# 1 tick - 1/20 seconds
+
+#Time format (for %TIME%)
+time-format: "H:i:s"
+#Tip:
+# H - hours
+# i - minutes
+# s - seconds
+# All strings you can see there: http://php.net/manual/function.date.php
+
+#This will be displayed (in %FACTION%) if the player does not have a faction
+no-faction: "NoFaction"
+
+#Timezone (for %TIME%)
+timezone: false
+#Tip:
+# false - without changes ; "America/New_York" - New York time
+# List of another timezones: https://secure.php.net/manual/timezones.php
+# If not working, go to /path_to_server/bin/php*/bin/php.ini and add/set parameter 'date.timezone' to your timezone

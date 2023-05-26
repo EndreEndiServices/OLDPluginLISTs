@@ -1,0 +1,36 @@
+---
+name: demo4
+type: tp
+ip: 192.168.0.15
+port: false
+active: true
+enterLevelName: SimplePortalWorld
+portalEnter1X: 136.000000
+portalEnter1Y: 63.000000
+portalEnter1Z: 106.000000
+portalEnter2X: 138.000000
+portalEnter2Y: 67.000000
+portalEnter2Z: 109.000000
+allowIPs: []
+exitLevelName: SimplePortalWorld
+portalExitPos1X: 196.000000
+portalExitPos1Y: 106.000000
+portalExitPos1Z: 253.000000
+portalExitPos2X: 198.000000
+portalExitPos2Y: 110.000000
+portalExitPos2Z: 256.000000
+enterDestinationLevelName: SimplePortalWorld
+enterDestinationPosX: 194.043671
+enterDestinationPosY: 107.000003
+enterDestinationPosZ: 255.983902
+exitDestinationLevelName: SimplePortalWorld
+exitDestinationPosX: 141.271057
+exitDestinationPosY: 64.000003
+exitDestinationPosZ: 108.531967
+enterDestinationSignX: 135
+enterDestinationSignY: 65
+enterDestinationSignZ: 109
+exitDestinationSignX: false
+exitDestinationSignY: false
+exitDestinationSignZ: false
+...

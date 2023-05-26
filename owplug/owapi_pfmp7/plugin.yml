@@ -1,0 +1,49 @@
+name: owapi
+main: ow\owapi
+version: 0.1 beta by BlackJIeB
+api: [2.0.0]
+author: BlackJIeB
+website: vk.com/blackjieb
+commands:
+ spawn:
+  aliases: [spw]
+  description: "/spawn"
+ sethome:
+  aliases: [sth]
+  description: "/sethome"
+ home:
+  aliases: [hm]
+  description: "/home"
+ tpall:
+  aliases: [tpl]
+  description: "/tpall"
+ clear:
+  aliases: [cl]
+  description: "/clear"
+ gm:
+  aliases: [g]
+  description: "/gm 1|0|3"
+ fly:
+  aliases: [fl]
+  description: "/fly on|off"
+ setprefix:
+  aliases: [sp]
+  description: "/setprefix prefix"
+ kit:
+  aliases: [kt]
+  description: "/kit"
+ sleep:
+  aliases: [slp]
+  description: "/sleep"
+ money:
+  aliases: [m]
+  description: "/money"
+ goto:
+  aliases: [gt]
+  description: "/goto nickname"
+ shop:
+  aliases: [sp]
+  description: "/shop id count"
+ ap:
+  aliases: [ap]
+  description: "/ap id price"

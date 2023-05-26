@@ -1,0 +1,6 @@
+---
+groups:
+  Guest:
+    chat: "§8[§7Игрок§8] §7{display_name}: §f{message}"
+    nametag: "§ePlayer §f{display_name}"
+...

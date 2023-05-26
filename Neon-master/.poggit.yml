@@ -1,0 +1,8 @@
+---
+branches: master
+projects:
+  Neon:
+    icon: neonlogo.png
+    path: ""
+    model: default
+...

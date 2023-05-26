@@ -1,0 +1,51 @@
+name: ClearChat
+main: Richen\ClearChat
+api: 1.12.0
+version: 0.0.1
+load: STARTUP
+author: Richen
+
+commands:
+  clearchat:
+    description: "/clearchat"
+    aliases: [cc]<?php
+namespace Richen;
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\PluginCommand;
+use pocketmine\utils\TextFormat as F;
+class ClearChat extends PluginBase implements Listener{
+	
+	public function onEnable(){
+		$this->getLogger()->info(F::GREEN."Плагин ClearChat от RichenPlay запущен!");
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	}
+
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
+        switch($cmd->getName()){
+			case "clearchat":
+			case "cc":
+			if($sender instanceof Player){
+				if($sender->hasPermission("fapi.cmd.clearchat")){
+					foreach($this->getServer()->getOnlinePlayers() as $p){
+						$p->sendMessage(" \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ");
+						$p->sendMessage(F::RED."".$sender->getName().F::GOLD." очистил чат!");
+					}
+				}else{
+					$sender->sendMessage(F::RED."У Вас нет прав на выполнение этой комманды.");
+				}
+			}else{
+				foreach($this->getServer()->getOnlinePlayers() as $p){
+					$p->sendMessage(" \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ");
+					$p->sendMessage(F::YELLOW. "» ".F::RED.$sender->getName().F::GOLD." очистил чат!");
+				}
+			}
+			break;
+		}
+	}
+}

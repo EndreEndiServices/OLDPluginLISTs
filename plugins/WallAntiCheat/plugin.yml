@@ -1,0 +1,9 @@
+name: AntiCheat
+main: Ragnok123\WallAntiCheat
+version: 1.0.0
+api: 1.12.0
+load: STARTUP
+author: MineTox Team
+authors: [Ragnok123]
+description: AntiCheat
+website: https://minetox.cz

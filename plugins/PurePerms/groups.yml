@@ -1,0 +1,97 @@
+---
+Guest:
+  alias: gst
+  isDefault: true
+  inheritance: []
+  permissions:
+  - -advancedkits.magg
+  - -advancedkits.magw
+  - -aptr.angry
+  - -aptr.bubble
+  - -aptr.enchant
+  - -aptr.happy
+  - -aptr.portal
+  - -elitestick.use
+  - -mp.use
+  - -pocketmine.command.me
+  - -pocketmine.command.wild
+  - -premium.use
+  - -premium.use.premium
+  - -rg.p
+  - -worldguardian.commands.*
+  - advancedkits.elf
+  - advancedkits.orcs
+  - advancedkits.people
+  - advancedkits.undead
+  - clear.command.self
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.list
+  - serverauth.login
+  - serverauth.logout
+  - serverauth.register
+  worlds: []
+YouTuber:
+  alias: yt
+  isDefault: false
+  inheritance:
+  - Guest
+  permissions: []
+  worlds: []
+Vip:
+  alias: vip
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Premium:
+  alias: prm
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.magg
+  - advancedkits.magw
+  - premium.use
+  - premium.use.premium
+  worlds: []
+Elite:
+  alias: eli
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.magg
+  - advancedkits.magw
+  - elitestick.use
+  - mp.use
+  - premium.use
+  - premium.use.premium
+  worlds: []
+Moderator:
+  alias: md
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Admin:
+  alias: adm
+  inheritance:
+  - Guest
+  permissions:
+  - essentials.gamemode
+  - pocketmine.broadcast
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds: []
+Owner:
+  alias: owr
+  inheritance:
+  - Admin
+  permissions:
+  - essentials
+  - pocketmine.command
+  - pperms.command
+  worlds: []
+...

@@ -1,0 +1,80 @@
+---
+datetime-format: "H:i:s"
+Motd:
+  update-timeout: 1
+  custom: false
+  message: "&e[{TIME}] &aДобро пожаловать на сервер! &n&b[{MAXPLAYERS}/{TOTALPLAYERS}]"
+WhitelistedServer:
+  custom: true
+  message: "&c&oСервер на тех.работах! &fВся информация в Группе &bvk.com/mpe_plagins"
+FirstJoin:
+  enable: true
+  message: "&d{PLAYER}&6 присоединился"
+Join:
+  hide: false
+  custom: true
+  message: "&d{PLAYER}&6 присоединился"
+Quit:
+  hide: false
+  custom: true
+  message: "&d{PLAYER}&6 отключился &7:("
+WorldChange:
+  enable: false
+  message: "&2[{TIME}] &a{PLAYER}&e moved from &c{ORIGIN}&e to &a{TARGET}"
+Death:
+  hide: false
+  custom: false
+  message: "&c{PLAYER} умер"
+  death-contact-message:
+    hide: false
+    custom: false
+    message: "&cУпс! {PLAYER} был раздавлен {BLOCK}"
+  kill-message:
+    hide: false
+    custom: false
+    message: "&9{PLAYER} &eбыл убит &c{KILLER}"
+  death-projectile-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} был разстрелен {KILLER}"
+  death-suffocation-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} утонул"
+  death-fall-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} упал с огромной высоты"
+  death-fire-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} сгорел в огне"
+  death-on-fire-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} сгорел в огне"
+  death-lava-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} утонул в лаве"
+  death-drowning-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} утонул"
+  death-explosion-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} был взорван"
+  death-void-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} упал в пустоту"
+  death-suicide-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} совершил самоубийство"
+  death-magic-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} был убит магией"
+...

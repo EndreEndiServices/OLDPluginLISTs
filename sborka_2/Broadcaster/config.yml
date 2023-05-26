@@ -1,0 +1,12 @@
+---
+prefix: "§eVodka§bCraft"
+suffix: "[A]"
+time: 78
+sendmessage-format: "[{TIME}] [{PREFIX}] {SUFFIX} {SENDER}> {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "&7(&eVodka§bCraft) &cМы в ВКонтакте &2.http://http://vk.com/vodkacraft_pe"
+ - "&7(&eaVodka§bCraft) &cХочешь Выделиться? , Покупай &2Доннат у создателя Vk http://vk.com/id353042318 вот пукапайте донат у этих двух людей   http://vk.com/kolay22rus"
+ - "&7(&eVodka§bCraft) &cУ нас скучно Не &2Бывает"
+...

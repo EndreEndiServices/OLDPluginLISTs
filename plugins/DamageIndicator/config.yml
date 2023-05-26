@@ -1,0 +1,5 @@
+#DamageIndicator Config
+health_symbol: "♥"
+health_color: "§4"
+lost_health_color: "§0"
+turn_off_health_for_ops: "YES"

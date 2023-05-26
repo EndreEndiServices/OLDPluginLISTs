@@ -1,0 +1,60 @@
+---
+# Prison Core by Az928
+# Msg prefixes
+prefix: "§8§l[§r§bPrison§l§8]§r"
+
+# Affected world
+world: "world"
+
+# Blocks that players can break
+# Notice: You must set damage or it won't work
+breakable.blocks:
+  - "14:0"
+  - "15:0"
+  - "57:0"
+  - "17:2"
+
+# Blocks that players can place
+# Same format as breakable blocks
+placeable.blocks:
+  - "0:0"
+
+# Factory settings
+# Cost to make factories and multiply when levelup
+factory.base.cost: 2000
+
+# Money will be given randomly between max and min money
+# Max range of deposit money
+# Notice: Max deposit money will be multiplied by factory level
+deposit.max.money: 500
+
+# Min range of deposit money
+deposit.min.money: 50
+
+# How many blocks players has to break before a deposit?
+deposit.target: 600
+
+# Max factory level
+max.factory.level: 20
+
+# Item that will be given on each deposit
+deposit.item: "266:0"
+
+# Factory pop-up
+show.factory.popup: "true"
+
+# Built in chat settings
+built-in-chat: "false"
+
+# Peaceful spawn settings 
+# Not stable yet
+radius: 128
+enable-pvp: "false"
+# Disable PvP for @radius blocks from spawn
+
+# Messages 
+cannot.break.block: "§cCannot break this block"
+cannot.place.block: "§cCannot place this block"
+cannot.pvp: "§cYou cannot PvP here!"
+
+...

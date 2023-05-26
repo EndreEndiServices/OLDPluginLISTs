@@ -1,0 +1,38 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: '...'
+groups:
+  Guest:
+    default-chat: §8[§eИгрок§8] §7{display_name} -=> §f{message}
+    default-nametag: §8[§eИгрок§8] §c{display_name}
+    worlds: []
+  YouTuber:
+    default-chat: §8[§c✔§8]§8[§fYou§cTuber§8] §7{display_name} -=> §e{message}
+    default-nametag: §8[§c✔§8]§8[§fYou§cTuber§8] §7{display_name}
+    worlds: []
+  Vip:
+    default-chat: §8[§c$§8]§8[§aVIP§8] §7{display_name} -=> §e{message}
+    default-nametag: §8[§c$§8]§8[§2VIP§8] §7{display_name}
+    worlds: []
+  Premium:
+    default-chat: §8[§c$§8]§8[§3Premium§8] §7{display_name} -=> §e{message}
+    default-nametag: §8[§c$§8]§8[§3Premium§8] §7{display_name}
+    worlds: []
+  Elite:
+    default-chat: §8[§c$§8]§8[§bElite§8] §7{display_name} -=> §e{message}
+    default-nametag: §8[§c$§8]§8[§bElite§8] §7{display_name}
+    worlds: []
+  Admin:
+    default-chat: §8[§c✔§8]§8[§6Администратор§8] §7{display_name} -=> §b{message}
+    default-nametag: §8[§c✔§8]§8[§6Админ§8] §7{display_name}
+    worlds: []
+  Moderator:
+    default-chat: §8[§c✔§8]§8[§bМодератор§8] §7{display_name} -=> §b{message}
+    default-nametag: §8[§c✔§8]§8[§bМодер§8] §7{display_name}
+    worlds: []
+  Owner:
+    default-chat: §8[§c✔§8]§8[§fСоздатель§8] §7{display_name} -=> §o§6{message}
+    default-nametag: §8[§c✔§8]§8[§fСоздатель§8] §7{display_name}
+    worlds: []
+ 
+...

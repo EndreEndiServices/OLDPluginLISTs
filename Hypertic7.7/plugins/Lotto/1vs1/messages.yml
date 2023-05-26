@@ -1,0 +1,28 @@
+# Messages 1vs1 config.
+# Use colors with "&" or "§". You can find any help about formating codes here : http://minecraft.gamepedia.com/Formatting_codes .
+# Plugin by Minifixio.
+
+---
+###############
+#Queue messages
+###############
+queue_join: "§8> §5You've joined the 1vs1 queue"
+queue_playersinqueue: "§8> §5Waiting players : "
+queue_popup: "&8» §5You've joined the 1vs1 queue"
+queue_alreadyinqueue: "&8> §5You are already in the queue !"
+
+##############
+#Duel messages
+##############
+duel_tip: "&5» You are strarting a duel!"
+duel_against: "&8> §5Duel against : "
+duel_start: "&6++++++++=++++++++\n&8> §5You are starting a duel !\n&8> §5You have 3minute!\n&5++++++++=++++++++"
+duel_winner: "&8> §5You won the duel against : "
+duel_loser: "&8> §cYou've lost the duel against : "
+duel_timeover: "&f&l++++++++=++++++++\n&6> Playing time &6over&6, no winners !\n&6> Be faster next time !\n&f&l++++++++=++++++++"
+
+###############
+#Arena messages
+###############
+arena_alreadyinarena: "&8> §5You are already in a arena !"
+...

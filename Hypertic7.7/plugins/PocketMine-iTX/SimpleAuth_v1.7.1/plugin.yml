@@ -1,0 +1,43 @@
+name: SimpleAuth
+main: SimpleAuth\SimpleAuth
+version: 1.7.1
+api: 1.12.0
+load: STARTUP
+author: PocketMine Team
+authors: [shoghicp]
+description: Prevents people to impersonate an account, requering registration and login when connecting.
+website: https://github.com/PocketMine/SimpleAuth
+commands:
+ login:
+  description: "Logs into an account"
+  usage: "/login <password>"
+  permission: simpleauth.command.login
+ register:
+  description: "Registers an account"
+  usage: "/register <password>"
+  permission: simpleauth.command.register
+
+permissions:
+ simpleauth:
+  default: op
+  description: "Allows using everything SimpleAuth has"
+  children:
+   simpleauth.chat:
+    description: "Allows using the chat while not being authenticated"
+    default: false
+   simpleauth.move:
+    description: "Allows moving while not being authenticated"
+    default: false
+   simpleauth.lastid:
+    description: "Allows authenticating using the last id when enabled in the config"
+    default: true
+   simpleauth.command:
+    description: "Allows using SimpleAuth commands"
+    default: true
+    children:
+     simpleauth.command.register:
+      description: "Allows registering an account"
+      default: true
+     simpleauth.command.login:
+      description: "Allows logging into an account"
+      default: true

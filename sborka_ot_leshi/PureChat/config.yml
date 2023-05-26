@@ -1,0 +1,34 @@
+
+# PureChat by 64FF00 (xktiverz@gmail.com, @64ff00 for Twitter)
+
+---
+# Allows you to use per-world chat formats + per-world nametags
+# - true / false
+enable-multiworld-support: false
+
+# A list of all PurePerms groups
+groups:
+  Guest:
+    # Default tags: {world_name}, {display_name}, {user_name}, {message}
+    # Also remember that you can also use {faction} tag if you have FactionsPro plugin installed!
+    
+    # New feature added in v1.2.4 - Colors!
+    # RED: {COLOR_RED}, GREEN: {COLOR_GREEN}, BLUE: {COLOR_BLUE}, LIGHT_PURPLE: {COLOR_LIGHT_PURPLE}, and so on...
+    # BOLD: {FORMAT_BOLD}, STRIKETHROUGH: {FORMAT_STRIKETHROUGH}, UNDERLINE: {FORMAT_UNDERLINE}, ITALIC: {FORMAT_ITALIC}
+    # RESET: {FORMAT_RESET}
+    default-chat: "{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}> {message}"
+    default-nametag: "{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}"
+    worlds: [] 
+  Admin:
+    default-chat: "{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}> {message}"
+    default-nametag: "{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}"
+    worlds: []
+  Owner: 
+    default-chat: "{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}> {message}"
+    default-nametag: "{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}"
+    worlds: []
+  OP: 
+    default-chat: "{COLOR_GREEN}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}> {message}"
+    default-nametag: "{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET} {display_name} {COLOR_GRAY}"
+    worlds: []
+...

@@ -1,0 +1,18 @@
+name: ffa
+arthur: fabyan
+description: 
+version: 1.0.0
+api: [1.12.0]
+main: ffa\Main
+
+commands:
+    aff:
+        permission: op
+        description: e
+    ffa:
+        permission: ffa
+        description: e2
+permissions:
+    ffa:
+        default: true
+        description:

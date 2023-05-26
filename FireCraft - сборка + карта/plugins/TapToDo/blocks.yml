@@ -1,0 +1,30 @@
+---
+version: 1
+blocks:
+- x: -128
+  "y": 82
+  z: 76
+  level: xap
+  commands:
+  - ""
+- x: -133
+  "y": 89
+  z: 73
+  level: xap
+  commands:
+  - gmoney %p 1000 %op
+  - spawn
+- x: -132
+  "y": 89
+  z: 73
+  level: xap
+  commands:
+  - gmoney %p 1000 %op
+- x: -133
+  "y": 89
+  z: 73
+  level: xap
+  commands:
+  - gmoney %p 100 %op
+  - spawn
+...

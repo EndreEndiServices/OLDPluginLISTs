@@ -1,0 +1,3 @@
+online-format: " Онлайн [%min%/%max%]"
+join-format: "  %player% зашел на сервер"
+quit-format: "  %player% покинул сервер"

@@ -1,0 +1,13 @@
+name: FactionsPro
+author: StrafelessPvP
+description: PlexiumPE-FactionPro'
+version: 1.3.11-3
+main: FactionsPro\FactionMain
+api: 3.0.0-ALPHA9
+softdepend:
+    - PureChat
+    - AntiSpamPro
+commands:
+    f: { description: 'use /f help for all parameters', permission: f.command }
+permissions:
+    f.command: { default: true, description: 'Allow use of all faction commands' }

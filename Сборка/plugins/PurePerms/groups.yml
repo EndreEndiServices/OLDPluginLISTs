@@ -1,0 +1,183 @@
+---
+Guest:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - cmd.time
+  - cmd.weather
+  - guest
+Fly:
+  inheritance:
+  - Guest
+  permissions:
+  - cmd.fly
+  - cmd.sleep
+  - cmd.suicide
+  - cmd.wild
+  - fly
+  - kits
+Vip:
+  inheritance:
+  - Guest
+  - Fly
+  permissions:
+  - cmd.back
+  - cmd.clearinv
+  - cmd.feed
+  - cmd.heal
+  - cmd.ignore
+  - cmd.vip
+  - purechat.chat
+  - superfish
+  - vip
+Premium:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  permissions:
+  - cmd.god
+  - cmd.me
+  - cmd.saveinv
+  - premium
+  - superbow
+Creative:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  permissions:
+  - antiban
+  - cmd.gamemode
+  - cmd.mute
+  - cmd.teleport
+  - cmd.time
+  - cmd.tp
+  - creative
+  - pocketmine.command.tp
+Admin:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  permissions:
+  - admin
+  - cmd.ban
+  - cmd.clearchat
+  - cmd.kick
+  - cmd.say
+  - cmd.tp
+Moderator:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  permissions:
+  - cmd.ban-ip
+  - cmd.hide
+  - cmd.pardon
+  - cmd.prd-ip
+  - moderator
+  - pocketmine.command.ban-ip
+SuperAdmin:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  - Moderator
+  permissions:
+  - cmd.give
+  - cmd.pardon
+  - cmd.vanish
+  - rg.all
+  - superadmin
+Antigriefer:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  - Moderator
+  - SuperAdmin
+  permissions:
+  - antigriefer
+  - cmd.nickset
+Creater:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  - Moderator
+  - SuperAdmin
+  - Antigriefer
+  permissions:
+  - cmd.set
+  - cmd.tphere
+  - creater
+  - tell.admin
+Gospodin:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  - Moderator
+  - SuperAdmin
+  - Antigriefer
+  - Creater
+  permissions:
+  - gospodin
+  - pocketmine.command.ban.ip
+  - pocketmine.command.unban.ip
+  - rg.all
+  - we.all
+Owner:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  - Moderator
+  - SuperAdmin
+  - Antigriefer
+  - Creater
+  - Gospodin
+  permissions:
+  - '*'
+  - owner
+SOwner:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  - Premium
+  - Creative
+  - Admin
+  - Moderator
+  - SuperAdmin
+  - Antigriefer
+  - Creater
+  - Gospodin
+  - Owner
+  permissions:
+  - '*'
+  - sowner
+...

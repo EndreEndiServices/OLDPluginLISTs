@@ -1,0 +1,243 @@
+<?php
+ 
+  /*
+  __PocketMine Plugin__
+  name=SocialSign
+  description=
+  version=1.1
+  author=Dinokiller
+  class=SocialSign
+  apiversion=12
+  */
+ 
+class SocialSign implements Plugin{
+  private $api, $config, $tap;
+  private $help = array(
+    "Commands:\n",
+    "  /socialsign create - Creates a social sign.\n",
+    "  /ss - Alias for socialsign\n"
+  );  
+   
+  public function __construct(ServerAPI $api, $server = false){
+    $this->api = $api;
+  }
+ 
+  public function init(){
+    $this->config = new Config($this->api->plugin->configPath($this) . "config.yml", CONFIG_YAML, array(
+      "op-only-create-signs" => true,
+      "op-only-destroy-signs" => true,
+      "sign-update-interval" => 10,
+      "save-interval" => 5
+    ));
+    $this->config = $this->api->plugin->readYAML($this->api->plugin->configPath($this) . "config.yml");
+    $this->api->addHandler("player.block.touch", array($this, "eventHandler"));
+    $this->api->addHandler("player.block.break", array($this, "eventHandler"));
+    $this->api->console->register("socialsign", "[function] [args]", array($this, "handleCommand"));
+    $this->api->console->alias("ss", "socialsign");
+    $this->api->schedule(20 * $this->config["sign-update-interval"], array($this, "updateSigns"), array(), false);
+  }
+   
+  public function eventHandler(&$data, $event){
+    switch($event){
+      case "player.block.break":
+        $block = $data["target"];
+        $player = $data["player"];
+        foreach($this->config as &$sign){
+          if(isset($sign["x"]) && isset($sign["y"]) && isset($sign["z"]) && isset($sign["level"])){
+            if($sign["x"] == $block->x && $sign["y"] == $block->y && $sign["z"] == $block->z && $sign["level"] == $block->level->getName()){
+              if(!$this->config["op-only-destroy-signs"] || $this->config["op-only-destroy-signs"] && $this->api->ban->isOp($player->username)){
+                unset($sign);
+                $player->sendChat("This social sign has been unregistered.\n");
+                $this->api->plugin->writeYAML($this->api->plugin->configPath($this) . "signs.yml", $this->config);
+              }else{
+                $player->sendChat("You don't have permission to destroy social signs.\n");
+                return false;
+              }
+            }
+          }
+        }
+      break;
+      case "player.block.touch":
+        $player = $data["player"];
+        $block = $data["target"];
+        if(isset($this->tap[$player->username]["type"]) && isset($this->tap[$player->username]["username"]) && $block->getID() == WALL_SIGN || $block->getID() == SIGN_POST){
+          $pos = new Position($block->x, $block->y, $block->z, $block->level);
+          $tile = $this->api->tile->get($pos);
+          if(!$tile instanceof Tile){
+            $tile = $this->api->tile->add($block->level, TILE_SIGN, $block->x, $block->y, $block->z);
+          }
+          foreach($this->config as $sign){
+            if($sign["x"] == $block->x && $sign["y"] == $block->y && $sign["z"] == $block->z && $sign["level"] = $block->level->getName()){
+              $player->sendChat("There's already a social sign here!\n");
+              return;
+            }
+          }
+          array_push($this->config, array(
+            "type" => $this->tap[$player->username]["type"],
+            "username" => $this->tap[$player->username]["username"],
+            "x" => $block->x,
+            "y" => $block->y,
+            "z" => $block->z,
+            "level" => $block->level->getName()
+          ));
+          $this->api->plugin->writeYAML($this->api->plugin->configPath($this) . "signs.yml", $this->config);
+          unset($this->tap[$player->username]);
+          $player->sendChat("Social sign created successfully!\n");
+        }
+      break;
+    }
+  }
+ 
+  public function handleCommand($cmd, $params, $issuer){
+    $out = "";
+    if($cmd == "socialsign"){
+      if(count($params) == 0){
+        $params[0] = "help";
+      }
+      switch($params[0]){
+        case "create":
+        if($issuer instanceof Player){
+          if(!$this->config["op-only-create-signs"] || $this->config["op-only-create-signs"] && $this->api->ban->isOp($issuer->username)){
+            if(isset($params[1]) && isset($params[2])){
+              $params[1] = strtolower($params[1]);
+              if($params[1] != "youtube" && $params[1] != "facebook" && $params[1] != "twitter"){
+                $out .= "That social network doesn't exist or isn't supported.\n";
+              }else{
+                $this->tap[$issuer->username]["type"] = $params[1];
+                $this->tap[$issuer->username]["username"] = $params[2];
+                $out .= "Tap a sign to create a social sign!\n";
+              }
+            }else{
+              $out .= "Usage: /socialsign create <socialnetwork> <username>\n";
+            }
+          }else{
+            $out .= "You don't have permission to create social signs.\n";
+          }
+        }else{
+            $out .= "[CMD] This can only be run in-game.\n";
+        }
+      break;
+      case "help":
+        foreach($this->help as $line){
+          $out .= $line;
+        }
+      break;
+      default:
+        $out .= "Command doesn't exist! Use /help\n";
+      }
+      return $out;
+    }          
+  }
+ 
+  public function updateSigns(){
+    foreach($this->config as &$sign){
+      if(isset($sign["type"]) && isset($sign["x"]) && isset($sign["y"]) && isset($sign["z"]) && isset($sign["level"]) && isset($sign["username"])){
+        switch(strtolower($sign["type"])){
+          case "youtube":
+            $level = $this->api->level->get($sign["level"]);
+            if(!$level instanceof Level){
+              unset($tile);
+              continue;
+            }
+            $pos = new Position($sign["x"], $sign["y"], $sign["z"], $level);
+            $tile = $this->api->tile->get($pos);
+            if(!$tile instanceof Tile){
+              unset($tile);
+              continue;
+            }
+            $tile->setText("[YouTube]", $sign["username"], "has " . $this->getYouTubeSubs($sign["username"]), "subscribers.");
+          break;
+          case "twitter":
+            $level = $this->api->level->get($sign["level"]);
+            if(!$level instanceof Level){
+              unset($tile);
+              continue;
+            }
+            $pos = new Position($sign["x"], $sign["y"], $sign["z"], $level);
+            $tile = $this->api->tile->get($pos);
+            if(!$tile instanceof Tile){
+              unset($tile);
+              continue;
+            }
+            $tile->setText("[Twitter]", $sign["username"], "has " . $this->getTwitterFollowers($sign["username"]), "followers.");
+          break;
+          case "facebook":
+            $level = $this->api->level->get($sign["level"]);
+            if(!$level instanceof Level){
+              unset($tile);
+              continue;
+            }
+            $pos = new Position($sign["x"], $sign["y"], $sign["z"], $level);
+            $tile = $this->api->tile->get($pos);
+            if(!$tile instanceof Tile){
+              unset($tile);
+              continue;
+            }
+            $tile->setText("[Facebook]", $sign["username"], "has " . $this->getFacebookLikes($sign["username"]), "likes.");
+          break;
+          case "twitch":
+            $level = $this->api->level->get($sign["level"]);
+            if(!$level instanceof Level){
+              unset($tile);
+              continue;
+            }
+            $pos = new Position($sign["x"], $sign["y"], $sign["z"], $level);
+            $tile = $this->api->tile->get($pos);
+            if(!$tile instanceof Tile){
+              unset($tile);
+              continue;
+            }
+            $tile->setText("[Twitch]", $sign["username"], "has " . $this->getTwitchFollowers($sign["username"]), "followers.");
+          break;
+          default:
+            unset($tile);
+        }  
+      }else{
+        unset($sign);
+      }
+    }
+    $this->api->schedule(20 * $this->config["sign-update-interval"], array($this, "updateSigns"), array(), false);
+  }
+ 
+  public function getTwitchFollowers($username){
+    $data = Utils::curl_get("https://api.twitch.tv/kraken/channels/" . strtolower($username) . "/follows.json");
+    $data = json_decode($data, true);
+    if(isset($data["error"]) || !isset($data["_total"])){ // If the user doesn't exist.
+      return 0;
+    }
+    return $data["_total"];
+  }
+ 
+  public function getYouTubeSubs($username){
+    $data = file_get_contents("http://gdata.youtube.com/feeds/api/users/" . strtolower($username) ."?alt=json");
+    if($data == "User not found"){
+      return 0;
+    }
+    $data = json_decode($data, true);
+    
+    return $data["entry"]["yt\$statistics"]["subscriberCount"];
+  }
+   
+  public function getTwitterFollowers($username){
+    $data = Utils::curl_get("https://cdn.api.twitter.com/1/users/lookup.json?screen_name=" . strtolower($username));
+    $data = json_decode($data, true);
+    if(isset($data["errors"]) || !isset($data[0]["followers_count"])){ // If the user doesn't exist.
+      return 0;
+    }
+    return $data[0]["followers_count"];
+  }
+   
+  public function getFacebookLikes($username){
+    $data = file_get_contents("http://graph.facebook.com/" . strtolower($username));
+    $data = json_decode($data, true);
+    if(isset($data["error"]) || !isset($data["likes"])){ // If the user doesn't exist.
+      return 0;
+    }
+    return $data["likes"];
+  }
+ 
+  public function __destruct(){
+ 
+  }
+ 
+}

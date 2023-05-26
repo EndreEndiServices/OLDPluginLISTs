@@ -1,0 +1,22 @@
+---
+## KingdomCore Config ##
+## Server Name ##
+Server-Name: §bKingdom§9Craft§c
+
+## Dev Server Settings ##
+Dev_Mode: false
+Dev-Server-Name: §bKingdom§9Dev§c
+
+## Server Version ##
+Version: Beta 1.6
+
+## Server Ip Domain ##
+Server-IP: play.kcmcpe.net  
+
+## Items ##
+Games-Item: 378
+Parkour-Item: 369
+Leaper-Item: 288
+Help-Item: 339
+Hub-Item: 345
+...

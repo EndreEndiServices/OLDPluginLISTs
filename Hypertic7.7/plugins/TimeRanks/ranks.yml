@@ -1,0 +1,14 @@
+---
+DefaultRank:
+  default: true
+  pureperms_group: guest
+user:
+  minutes: 20
+  pureperms_group: user
+member:
+  minutes: 6000
+  pureperms_group: member
+gamer:
+  minutes: 1000
+  pureperms_group: gamer
+...

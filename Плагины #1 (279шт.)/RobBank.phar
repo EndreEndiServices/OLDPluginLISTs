@@ -1,0 +1,354 @@
+<?php __HALT_COMPILER(); ?>
+�                  
+   plugin.yml�  �U�  sYA�         src/RobBank/Main.php�(  �U�(  �T�ж         src/RobBank/TimerTask.phpQ  �UQ  _.u�         resources/register.yml   �U   �_��         resources/config.yml   �U   5w�p�      name: RobBank
+version: 1.0
+author: MrGenga
+description: "Самая новая мини-игра для вашего сервера!"
+api: [1.12.0]
+main: RobBank\Main
+commands:
+  robbank:
+    permission: robbank
+    usage: "/robbank"
+    description: "Все команды из RobBank"
+permissions:
+  robbank:
+    default: true
+    description: "Команды RobBank"<?php
+
+namespace RobBank;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+use pocketmine\math\Vector3;
+use pocketmine\entity\Effect;
+use pocketmine\event\Listener;
+use pocketmine\command\ConsoleCommandSender;
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\Player;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\block\Block;
+use pocketmine\item\Item;
+use pocketmine\inventory\PlayerInventory;
+use pocketmine\scheduler\CallbackTask;
+use pocketmine\scheduler\ServerScheduler;
+
+class Main extends PluginBase implements Listener,CommandExecutor{
+	public $cops = array();
+	public $bankPos;
+	public $robberPos;
+	public $robber;
+	public $game = false;
+	public $world;
+	public $itemsDump = array();
+	
+	public function onEnable() {
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		$this->getLogger()->info(TextFormat::GREEN."RobBank включился! Приятной игры!");
+		$this->saveDefaultConfig();
+		$this->getServer()->loadLevel($this->getConfig()->get("map"));
+		$this->world = $this->getServer()->getLevelByName($this->getConfig()->get("map"));
+		$this->gTask = $this->getServer()->getScheduler()->scheduleRepeatingTask(new TimerTask($this), 20);
+		@mkdir($this->getDataFolder()."levels");
+	}
+	public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+		if($cmd->getName() == "robbank") {
+			if(in_array($sender, $this->world->getPlayers())) {
+				$this->quitGame($sender, true);
+			}
+			else {
+				$this->joinGame($sender);
+			}
+		}
+	}
+	public function onBlockBreak(BlockBreakEvent $event) {
+		if($event->getPlayer()->getLevel() == $this->world) {
+			if($event->getPlayer() == $this->robber && $event->getBlock()->getId() == 57 && $this->game) {
+				$this->levelMessage($this->world, TextFormat::RED."[RobBank] Бандит украл алмазный блок! Остановите его!");
+				$this->bankPos = new Vector3($event->getBlock()->getFloorX(),$event->getBlock()->getFloorY(),$event->getBlock()->getFloorZ());
+				$event->setCancelled();
+				$this->world->setBlock(new Vector3($event->getBlock()->getFloorX(),$event->getBlock()->getFloorY(),$event->getBlock()->getFloorZ()),Block::get(0,0));
+				$this->robber->getInventory()->addItem(Item::get(57,0));
+			}
+			else {
+				$event->setCancelled();
+			}
+		}
+	}
+	public function onBlockPlace(BlockPlaceEvent $event) {
+		if($event->getPlayer()->getLevel() == $this->world) {
+			if($event->getBlock()->getId() == 57 && $event->getPlayer()->getLevel()->getBlock(new Vector3($event->getBlock()->getFloorX(), ($event->getBlock()->getFloorY())-1, $event->getBlock()->getFloorZ()))->getId() == 42 && $this->game) {
+				$this->robberPos = new Vector3($event->getBlock()->getFloorX(),$event->getBlock()->getFloorY(),$event->getBlock()->getFloorZ());
+				$this->gameEnd("robber");
+			}
+			else {
+				$event->setCancelled();
+			}
+		}
+	}
+	public function joinGame(Player $player) {
+		if($this->game) {
+			$player->sendMessage(TextFormat::RED."[RobBank] Извините, игра уже началась, пожалуйста подождите.");
+		}
+		else {
+			if(count($this->world->getPlayers()) == 5) {
+				$player->sendMessage(TextFormat::RED."[RobBank] Игра заполнена!");
+			}
+			else {
+				$name = $player->getName();
+				$this->levelMessage($this->world, TextFormat::RED."[RobBank] $name присоединился к игре.");
+				$player->teleport(new Position($this->world->getSpawn()->getX(), $this->world->getSpawn()->getY(), $this->world->getSpawn()->getZ(), $this->world));
+				$this->itemsDump[$name] = $player->getInventory()->getContents();
+				$player->getInventory()->clearAll();
+			}
+		}
+	}
+	public function quitGame(Player $player, $msg) {
+		$player->getInventory()->setContents($this->itemsDump[$player->getName()]);
+		$lvl = $this->getServer()->getDefaultLevel()->getSpawnLocation();
+		$player->teleport(new Position($lvl->getX(),$lvl->getY(),$lvl->getZ(),$this->getServer()->getDefaultLevel()));
+		$player->getInventory()->clearAll();
+		if($msg) {
+			$name = $player->getName();
+			$this->levelMessage($this->world, TextFormat::RED."[RobBank] $name вышел из игры.");
+		}
+		if($this->game) {
+			if(in_array($player,$this->cops)) {
+				unset($this->cops[array_search($player,$this->cops)]);
+				sort($this->cops);
+				if(count($this->cops) == 0) {
+					$this->gameEnd("robber");
+				}
+			}
+			elseif($player == $this->robber) {
+				$this->gameEnd("cops");
+				$effect = Effect::getEffect(21);
+				$effect->setVisible(false);
+				$effect->setAmplifier(14);
+				$effect->setDuration(0);
+				$this->robber->addEffect($effect);
+				$this->robber->setHealth(20);
+			}
+		}
+	}
+	public function onPlayerDeath(PlayerDeathEvent $event) {
+		if($this->game && $event->getEntity() == $this->robber) {
+			$this->gameEnd("cops");
+		}
+		if(in_array($event->getEntity(),$this->cops) && $this->game) {
+			$event->setDrops([]);
+		}
+	}
+	public function onPlayerRespawn(PlayerRespawnEvent $event) {
+		if(in_array($event->getPlayer(),$this->cops) && $this->game) {
+			$this->getServer()->getScheduler()->scheduleDelayedTask(new CallbackTask([$this, "copResp"], [$event]), 1);
+			$this->giveItems($event->getPlayer());
+		}
+	}
+	public function onPvP(EntityDamageEvent $event) {
+		if($event instanceof EntityDamageByEntityEvent) {
+			$victim = $event->getEntity();
+			$attacker = $event->getDamager();
+			if($victim instanceof Player && $attacker instanceof Player) {
+				if((in_array($victim, $this->cops) && in_array($attacker, $this->cops)) || (in_array($victim, $this->world->getPlayers())&&in_array($attacker, $this->world->getPlayers())&&!($this->game))) {
+					$event->setCancelled();
+				}
+			}
+		}
+	}
+	public function onDisable() {
+		$this->getLogger()->info(TextFormat::RED."RobBank выключился!");
+	}
+	public function levelMessage(Level $level, $message) {
+		foreach($level->getPlayers() as $pl) {
+			$pl->sendMessage($message);
+		}
+	}
+	public function gameEnd($whowon) {
+		if($this->game) {
+			if($whowon == "robber") {
+				$this->game = false;
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "give money " . $rthis->robber->getName() . " 7");
+				$this->getServer()->broadcastMessage(TextFormat::RED."[RobBank] Игра окончена! Бандит победил! Он получит 7 gems!");
+			}
+			else {
+				$this->game = false;
+				foreach($this->cops as $cop) {
+					$this->getServer()->dispatchCommand(new ConsoleCommandSender(), "give money " . $cop->getName() . " 3");
+				}
+				$this->getServer()->broadcastMessage(TextFormat::RED."[RobBank] Игра окончена! Полицейские победили! Они получат по 3 gems!");
+			}
+			foreach($this->world->getPlayers() as $pl) {
+				$pl->getInventory()->clearAll();
+				$this->quitGame($pl, false);
+			}
+			$this->gTask = $this->getServer()->getScheduler()->scheduleRepeatingTask(new TimerTask($this), 20);
+			$this->resetMap();
+			$this->cops = array();
+			$this->robber = null;
+		}
+	}
+	public function resetMap() {
+		$this->world->setBlock($this->robberPos, Block::get(0,0));
+		$this->world->setBlock($this->bankPos, Block::get(57,0));
+	}
+	public function startGame() {
+		if(count($this->world->getPlayers()) > 1) {
+			$players = $this->world->getPlayers();
+			$this->robber = $players[array_rand($players, 1)];
+			foreach($players as $pl) {
+				if(!($pl == $this->robber)) {
+					$this->cops[] = $pl;
+				}
+			}
+			$effect = Effect::getEffect(21);
+			$effect->setVisible(false);
+			$effect->setDuration(2147483648);
+			$effect->setAmplifier(14);
+			$this->robber->addEffect($effect);
+			$worldConf = new Config($this->getDataFolder()."levels/".$this->world->getFolderName().".yml", Config::YAML);
+			$pos = new Position($worldConf->get("robberX"), $worldConf->get("robberY"), $worldConf->get("robberZ"), $this->world);
+			$this->robber->teleport($pos);
+			$name = $this->robber->getName();
+			$this->game = true;
+			$this->giveItems("robber");
+			$this->giveItems("cops");
+			$this->getServer()->broadcastMessage(TextFormat::RED."[RobBank] Игра началась! Бандит - {$name}.");
+			ServerScheduler::cancelTask($this->gTask);
+		}
+	}
+	public function giveItems($who) {
+		if($who instanceof Player) {
+			$who->getInventory()->setHelmet(Item::get(302,0,1));
+			$who->getInventory()->setChestplate(Item::get(303,0,1));
+			$who->getInventory()->setLeggings(Item::get(304,0,1));
+			$who->getInventory()->setBoots(Item::get(305,0,1));
+			$who->getInventory()->sendArmorContents($who);
+			$who->getInventory()->addItem(Item::get(272,0,1));
+			$who->getInventory()->addItem(Item::get(261,0,1));
+			$who->getInventory()->addItem(Item::get(262,0,64));
+		}
+		elseif($who == "cops") {
+			foreach($this->cops as $cop) {
+				$this->giveItems($cop);
+			}
+		}
+		elseif($who == "robber") {
+			$ro = $this->robber;
+			$ro->getInventory()->setHelmet(Item::get(306,0,1));
+			$ro->getInventory()->setChestplate(Item::get(307,0,1));
+			$ro->getInventory()->setLeggings(Item::get(308,0,1));
+			$ro->getInventory()->setBoots(Item::get(309,0,1));
+			$ro->getInventory()->sendArmorContents($ro);
+			$ro->getInventory()->addItem(Item::get(267,0,1));
+			$ro->getInventory()->addItem(Item::get(257,0,1));
+			$ro->getInventory()->addItem(Item::get(261,0,1));
+			$ro->getInventory()->addItem(Item::get(262,0,512));
+		}
+	}
+	public function onJoin(PlayerJoinEvent $event) {
+		if(in_array($event->getPlayer(), $this->world->getPlayers())) {
+			$this->joinGame($event->getPlayer());
+			$this->cache = $event->getPlayer();
+			$this->getServer()->getScheduler()->scheduleDelayedTask(new CallbackTask([$this,"delayedQuit"],[]), 1);
+		}
+	}
+	public function delayedQuit() {
+		$this->quitGame($this->cache, false);
+	}
+	public function copResp($event) {
+		$event->getPlayer()->teleport(new Position($this->world->getSpawnLocation()->getX(),$this->world->getSpawnLocation()->getY(),$this->world->getSpawnLocation()->getZ(),$this->world));
+	}
+}
+?><?php
+
+namespace RobBank;
+
+use pocketmine\scheduler\PluginTask;
+use pocketmine\utils\TextFormat;
+use pocketmine\level\Level;
+use pocketmine\level\sound\ClickSound;
+use pocketmine\Player;
+
+class TimerTask extends PluginTask {
+	public $seconds = 181;
+	public function onRun($tick) {
+     if(!($this->getOwner()->game)) {
+		$this->players = $this->getOwner()->world->getPlayers();
+		if(count($this->players) > 1) {
+			$this->seconds--;
+			$minutes = floor($this->seconds / 60);
+			$sec = $this->seconds - ($minutes * 60);
+			if($sec < 10) $sec = "0{$sec}";
+			foreach($this->players as $pl) {
+				$pl->sendTip(TextFormat::RED . "До начала игры: 0{$minutes}:{$sec}");
+				/*if($this->seconds < 6) {
+					$sound = new ClickSound($pl->getLocation());
+					$this->getOwner()->world->addSound($sound);
+				}*/
+			}
+		}
+		else {
+			foreach($this->players as $pl) {
+				$pl->sendTip(TextFormat::RED . "Для начала игры нужно минимум 2 игрока.");
+			}
+		}
+		switch($this->seconds) {
+			case 180:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 3 минуты.");
+				break;
+			case 120:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 2 минуты.");
+				break;
+			case 90:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталась 1 минута и 30 секунд.");
+				break;
+			case 60:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталась 1 минута.");
+				break;
+			case 30:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 30 секунд.");
+				break;
+			case 10:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 10 секунд.");
+				break;
+			case 5:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 5 секунд.");
+				break;
+			case 4:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 4 секунды.");
+				break;
+			case 3:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 3 секунды.");
+				break;
+			case 2:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 2 секунды.");
+				break;
+			case 1:
+				$this->getOwner()->levelMessage($this->getOwner()->world, TextFormat::RED."[RobBank] До начала игры осталось 1 секунда.");
+				break;
+			case 0:
+				$this->getOwner()->startGame();
+				$this->getOwner()->getServer()->getScheduler()->cancelTask($this);
+				break;
+		}
+	}
+  else {
+     $this->seconds = 181;
+   }
+   }
+}
+?>
+code: map: robbank#ݎE��ӹ4�z�]�v
+��   GBMB

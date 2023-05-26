@@ -1,0 +1,23 @@
+name: ShootingRoom
+main: justmaks19\shootingroom\ShootingRoom
+author: justmaks19
+version: 2.0
+website: http://vk.com/justmaks19
+
+commands:
+  shr:
+    permission: shr.command
+    description: Тир
+
+permissions:
+  shr.command:
+    default: true
+    children:
+      shr.command.setup:
+        default: op
+      shr.command.info:
+        default: true
+      shr.command.work:
+        default: op
+
+

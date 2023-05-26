@@ -1,0 +1,4 @@
+---
+win-message: '{PLAYER} won a gungame match!'
+running-message: 'Ends in:'
+...

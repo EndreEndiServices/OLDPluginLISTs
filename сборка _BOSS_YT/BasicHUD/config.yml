@@ -1,0 +1,5 @@
+---
+version: 1.0.3
+ticks: 15
+format: '{GREEN}{BasicHUD} {WHITE}{world} ({x},{y},{z}) {bearing}'
+...

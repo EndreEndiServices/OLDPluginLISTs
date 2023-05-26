@@ -1,0 +1,712 @@
+---
+252:68:121:world:
+  x: 252
+  "y": 68
+  z: 121
+  level: world
+  price: 800
+  item: 276
+  itemName: Diamond Sword
+  meta: 0
+  amount: 1
+251:68:121:world:
+  x: 251
+  "y": 68
+  z: 121
+  level: world
+  price: 800
+  item: 279
+  itemName: Diamond Axe
+  meta: 0
+  amount: 1
+250:68:121:world:
+  x: 250
+  "y": 68
+  z: 121
+  level: world
+  price: 500
+  item: 267
+  itemName: Iron Sword
+  meta: 0
+  amount: 1
+249:68:121:world:
+  x: 249
+  "y": 68
+  z: 121
+  level: world
+  price: 500
+  item: 258
+  itemName: Iron Axe
+  meta: 0
+  amount: 1
+248:68:121:world:
+  x: 248
+  "y": 68
+  z: 121
+  level: world
+  price: 250
+  item: 272
+  itemName: Stone Sword
+  meta: 0
+  amount: 1
+257:68:121:world:
+  x: 257
+  "y": 68
+  z: 121
+  level: world
+  price: 120
+  item: 5
+  itemName: Oak Wood Planks
+  meta: 0
+  amount: 64
+258:68:121:world:
+  x: 258
+  "y": 68
+  z: 121
+  level: world
+  price: 120
+  item: 4
+  itemName: Cobblestone
+  meta: 0
+  amount: 64
+259:68:121:world:
+  x: 259
+  "y": 68
+  z: 121
+  level: world
+  price: 120
+  item: 1
+  itemName: Stone
+  meta: 0
+  amount: 64
+260:68:121:world:
+  x: 260
+  "y": 68
+  z: 121
+  level: world
+  price: 60
+  item: 17
+  itemName: Oak Wood
+  meta: 0
+  amount: 16
+256:68:121:world:
+  x: 256
+  "y": 68
+  z: 121
+  level: world
+  price: 240
+  item: 45
+  itemName: Bricks
+  meta: 0
+  amount: 64
+256:68:117:world:
+  x: 256
+  "y": 68
+  z: 117
+  level: world
+  price: 500
+  item: 261
+  itemName: Bow
+  meta: 0
+  amount: 1
+252:68:117:world:
+  x: 252
+  "y": 68
+  z: 117
+  level: world
+  price: 500
+  item: 262
+  itemName: Arrow
+  meta: 0
+  amount: 64
+257:68:117:world:
+  x: 257
+  "y": 68
+  z: 117
+  level: world
+  price: 800
+  item: 310
+  itemName: Diamond Helmet
+  meta: 0
+  amount: 1
+258:68:117:world:
+  x: 258
+  "y": 68
+  z: 117
+  level: world
+  price: 800
+  item: 311
+  itemName: Diamond Chestplate
+  meta: 0
+  amount: 1
+259:68:117:world:
+  x: 259
+  "y": 68
+  z: 117
+  level: world
+  price: 800
+  item: 312
+  itemName: Diamond Leggings
+  meta: 0
+  amount: 1
+260:68:117:world:
+  x: 260
+  "y": 68
+  z: 117
+  level: world
+  price: 800
+  item: 313
+  itemName: Diamond Boots
+  meta: 0
+  amount: 1
+251:68:117:world:
+  x: 251
+  "y": 68
+  z: 117
+  level: world
+  price: 500
+  item: 306
+  itemName: Iron Helmet
+  meta: 0
+  amount: 1
+250:68:117:world:
+  x: 250
+  "y": 68
+  z: 117
+  level: world
+  price: 500
+  item: 307
+  itemName: Iron Chestplate
+  meta: 0
+  amount: 1
+249:68:117:world:
+  x: 249
+  "y": 68
+  z: 117
+  level: world
+  price: 500
+  item: 308
+  itemName: Iron Leggings
+  meta: 0
+  amount: 1
+248:68:117:world:
+  x: 248
+  "y": 68
+  z: 117
+  level: world
+  price: 500
+  item: 309
+  itemName: Iron Boots
+  meta: 0
+  amount: 1
+248:68:116:world:
+  x: 248
+  "y": 68
+  z: 116
+  level: world
+  price: 500
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 32
+249:68:116:world:
+  x: 249
+  "y": 68
+  z: 116
+  level: world
+  price: 500
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 32
+250:68:116:world:
+  x: 250
+  "y": 68
+  z: 116
+  level: world
+  price: 500
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 32
+251:68:116:world:
+  x: 251
+  "y": 68
+  z: 116
+  level: world
+  price: 100
+  item: 332
+  itemName: Snowball
+  meta: 0
+  amount: 16
+252:68:116:world:
+  x: 252
+  "y": 68
+  z: 116
+  level: world
+  price: 500
+  item: 263
+  itemName: Coal
+  meta: 0
+  amount: 16
+256:68:116:world:
+  x: 256
+  "y": 68
+  z: 116
+  level: world
+  price: 20
+  item: 297
+  itemName: Bread
+  meta: 0
+  amount: 1
+257:68:116:world:
+  x: 257
+  "y": 68
+  z: 116
+  level: world
+  price: 120
+  item: 320
+  itemName: Cooked Porkchop
+  meta: 0
+  amount: 16
+258:68:116:world:
+  x: 258
+  "y": 68
+  z: 116
+  level: world
+  price: 120
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 16
+259:68:116:world:
+  x: 259
+  "y": 68
+  z: 116
+  level: world
+  price: 120
+  item: 360
+  itemName: Melon
+  meta: 0
+  amount: 16
+250:68:112:world:
+  x: 250
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 41
+  itemName: Gold Block
+  meta: 0
+  amount: 10
+251:68:112:world:
+  x: 251
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 42
+  itemName: Iron Block
+  meta: 0
+  amount: 10
+249:68:112:world:
+  x: 249
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 57
+  itemName: Diamond Block
+  meta: 0
+  amount: 10
+259:68:112:world:
+  x: 259
+  "y": 68
+  z: 112
+  level: world
+  price: 100
+  item: 355
+  itemName: Bed
+  meta: 0
+  amount: 1
+258:68:112:world:
+  x: 258
+  "y": 68
+  z: 112
+  level: world
+  price: 100
+  item: 54
+  itemName: Chest
+  meta: 0
+  amount: 1
+256:68:112:world:
+  x: 256
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 379
+  itemName: Brewing Stand
+  meta: 0
+  amount: 1
+257:68:112:world:
+  x: 257
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 116
+  itemName: Enchanting Table
+  meta: 0
+  amount: 1
+252:68:112:world:
+  x: 252
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 384
+  itemName: Bottle o' Enchanting
+  meta: 0
+  amount: 32
+248:68:112:world:
+  x: 248
+  "y": 68
+  z: 112
+  level: world
+  price: 1000
+  item: 351
+  itemName: Ink Sac
+  meta: 0
+  amount: 32
+-63:63:87:world:
+  x: -63
+  "y": 63
+  z: 87
+  level: world
+  price: 1500
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 4
+-63:63:89:world:
+  x: -63
+  "y": 63
+  z: 89
+  level: world
+  price: 1500
+  item: 388
+  itemName: Emerald
+  meta: 0
+  amount: 4
+-63:63:88:world:
+  x: -63
+  "y": 63
+  z: 88
+  level: world
+  price: 1000
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 4
+-73:63:81:world:
+  x: -73
+  "y": 63
+  z: 81
+  level: world
+  price: 60
+  item: 297
+  itemName: Bread
+  meta: 0
+  amount: 1
+-73:63:80:world:
+  x: -73
+  "y": 63
+  z: 80
+  level: world
+  price: 130
+  item: 260
+  itemName: Apple
+  meta: 0
+  amount: 17
+-73:63:79:world:
+  x: -73
+  "y": 63
+  z: 79
+  level: world
+  price: 750
+  item: 320
+  itemName: Cooked Porkchop
+  meta: 0
+  amount: 19
+-72:63:79:world:
+  x: -72
+  "y": 63
+  z: 79
+  level: world
+  price: 800
+  item: 322
+  itemName: Golden Apple
+  meta: 1
+  amount: 6
+-71:63:79:world:
+  x: -71
+  "y": 63
+  z: 79
+  level: world
+  price: 750
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 19
+-71:63:80:world:
+  x: -71
+  "y": 63
+  z: 80
+  level: world
+  price: 165
+  item: 360
+  itemName: Melon
+  meta: 0
+  amount: 8
+-71:63:81:world:
+  x: -71
+  "y": 63
+  z: 81
+  level: world
+  price: 95
+  item: 357
+  itemName: Cookie
+  meta: 0
+  amount: 13
+-69:63:83:world:
+  x: -69
+  "y": 63
+  z: 83
+  level: world
+  price: 3000
+  item: 276
+  itemName: Diamond Sword
+  meta: 0
+  amount: 1
+-68:63:83:world:
+  x: -68
+  "y": 63
+  z: 83
+  level: world
+  price: 3000
+  item: 278
+  itemName: Diamond Pickaxe
+  meta: 0
+  amount: 1
+-67:63:83:world:
+  x: -67
+  "y": 63
+  z: 83
+  level: world
+  price: 3000
+  item: 279
+  itemName: Diamond Axe
+  meta: 0
+  amount: 1
+-65:63:83:world:
+  x: -65
+  "y": 63
+  z: 83
+  level: world
+  price: 4000
+  item: 310
+  itemName: Diamond Helmet
+  meta: 0
+  amount: 1
+-64:63:83:world:
+  x: -64
+  "y": 63
+  z: 83
+  level: world
+  price: 4000
+  item: 311
+  itemName: Diamond Chestplate
+  meta: 0
+  amount: 1
+-63:63:84:world:
+  x: -63
+  "y": 63
+  z: 84
+  level: world
+  price: 4000
+  item: 312
+  itemName: Diamond Leggings
+  meta: 0
+  amount: 1
+-63:63:85:world:
+  x: -63
+  "y": 63
+  z: 85
+  level: world
+  price: 4000
+  item: 313
+  itemName: Diamond Boots
+  meta: 0
+  amount: 1
+-63:63:91:world:
+  x: -63
+  "y": 63
+  z: 91
+  level: world
+  price: 1500
+  item: 267
+  itemName: Iron Sword
+  meta: 0
+  amount: 1
+-63:63:92:world:
+  x: -63
+  "y": 63
+  z: 92
+  level: world
+  price: 1500
+  item: 257
+  itemName: Iron Pickaxe
+  meta: 0
+  amount: 1
+-63:63:93:world:
+  x: -63
+  "y": 63
+  z: 93
+  level: world
+  price: 1500
+  item: 258
+  itemName: Iron Axe
+  meta: 0
+  amount: 1
+-72:63:93:world:
+  x: -72
+  "y": 63
+  z: 93
+  level: world
+  price: 3500
+  item: 261
+  itemName: Bow
+  meta: 0
+  amount: 1
+-73:63:93:world:
+  x: -73
+  "y": 63
+  z: 93
+  level: world
+  price: 650
+  item: 262
+  itemName: Arrow
+  meta: 0
+  amount: 32
+-67:63:93:world:
+  x: -67
+  "y": 63
+  z: 93
+  level: world
+  price: 2000
+  item: 306
+  itemName: Iron Helmet
+  meta: 0
+  amount: 1
+-68:63:93:world:
+  x: -68
+  "y": 63
+  z: 93
+  level: world
+  price: 2000
+  item: 307
+  itemName: Iron Chestplate
+  meta: 0
+  amount: 1
+-69:63:93:world:
+  x: -69
+  "y": 63
+  z: 93
+  level: world
+  price: 2000
+  item: 308
+  itemName: Iron Leggings
+  meta: 0
+  amount: 1
+-71:63:93:world:
+  x: -71
+  "y": 63
+  z: 93
+  level: world
+  price: 2000
+  item: 309
+  itemName: Iron Boots
+  meta: 0
+  amount: 1
+-126:64:44:world:
+  x: -126
+  "y": 64
+  z: 44
+  level: world
+  price: 200
+  item: 350
+  itemName: Cooked Fish
+  meta: 0
+  amount: 64
+-124:64:42:world:
+  x: -124
+  "y": 64
+  z: 42
+  level: world
+  price: 200
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 64
+-122:64:44:world:
+  x: -122
+  "y": 64
+  z: 44
+  level: world
+  price: 2000
+  item: 322
+  itemName: Golden Apple
+  meta: 0
+  amount: 64
+-87:67:190:world:
+  x: -87
+  "y": 67
+  z: 190
+  level: world
+  price: 200
+  item: 87
+  itemName: Netherrack
+  meta: 0
+  amount: 64
+-88:67:190:world:
+  x: -88
+  "y": 67
+  z: 190
+  level: world
+  price: 200
+  item: 79
+  itemName: Ice
+  meta: 0
+  amount: 64
+-89:67:190:world:
+  x: -89
+  "y": 67
+  z: 190
+  level: world
+  price: 200
+  item: 121
+  itemName: End Stone
+  meta: 0
+  amount: 64
+-63:63:83:world:
+  x: -63
+  "y": 63
+  z: 83
+  level: world
+  price: 1500
+  item: 351
+  itemName: Lapis Lazuli
+  meta: 4
+  amount: 4
+...

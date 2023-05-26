@@ -1,0 +1,30 @@
+package Annihilation.Arena.Kits;
+
+import cn.nukkit.Player;
+import Annihilation.Arena.Arena;
+import cn.nukkit.inventory.PlayerInventory;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.enchantment.Enchantment;
+
+public class Archer extends Kit{
+
+    public static Item[] items;
+    
+    public Archer(){
+        super("archer", Item.get(Item.BOW));
+        Archer.items = new Item[]{
+                Item.get(Item.BOW, 0, 1),
+                Item.get(270, 0, 1),
+                Item.get(271, 0, 1),
+                Item.get(Item.POTION, 21, 1),
+                Item.get(Item.COMPASS, 0, 1),
+                Item.get(Item.ARROW, 0, 16),
+        };
+
+        items[0].addEnchantment(Enchantment.getEnchantment(19));
+    }
+    
+    public static Item[] give(Player p){
+        return Kit.give(p, items.clone());
+    }
+}

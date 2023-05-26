@@ -1,0 +1,38 @@
+package BedWars.Task;
+
+import BedWars.BedWars;
+import MTCore.Mysql.AsyncQuery;
+import cn.nukkit.Player;
+import cn.nukkit.item.Item;
+import cn.nukkit.Server;
+
+import java.util.HashMap;
+
+public class StartArenaTask extends AsyncQuery{
+
+    public StartArenaTask(BedWars plugin, String player){
+        this.player = player;
+
+        plugin.getServer().getScheduler().scheduleAsyncTask(this);
+    }
+
+    @Override
+    public void onQuery(HashMap<String, Object> data){
+        this.setResult(data.get("rank"));
+    }
+
+    @Override
+    public void onCompletion(Server server){
+        Player p = server.getPlayer(this.player);
+        String rank = (String) this.getResult();
+
+        if (p.isOnline()){
+            if (rank != "hrac"){
+                p.getInventory().addItem(Item.get(336, 0, 16).setCustomName("§r§6Bronze"));
+                p.getInventory().addItem(Item.get(265, 0, 4).setCustomName("§r§7Iron"));
+                p.getInventory().addItem(Item.get(266, 0, 1).setCustomName("§r§eGold"));
+            }
+        }
+    }
+
+}

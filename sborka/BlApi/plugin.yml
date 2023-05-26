@@ -1,0 +1,57 @@
+name: BlApi
+main: BlApi\Main
+api: [2.0.0]
+author: CREEDO
+version: 0.0.1
+load: STARTUP
+
+commands:
+  mine:
+    description: "/mine"
+  sleep:
+    description: "/sleep"
+  norm:
+    description: "/norm"
+  god:
+    description: "/god"
+  report:
+    description: "/report"
+  kids:
+    description: "/min"
+  big:
+    description: "/big"
+  hack++:
+    description: "/hack++"
+  back:
+    description: "/back"
+  sethome:
+    description: "/sethome"
+  home:
+    description: "/home"
+    aliases: [hm]
+  spawn:
+    description: "/spawn"
+    aliases: [sp]
+  tpall:
+    description: "/tpall"
+  clear:
+    description: "/clear"
+    aliases: [ci]
+  gm:
+    description: "/gm"
+  fly:
+    description: "/fly"
+  heal:
+    description: "/heal"
+  dupe:
+    description: "/dupe"
+  vanish:
+    description: "/vanish"
+    aliases: [v]
+  clearchat:
+    description: "/clearchat"
+    aliases: [cc]
+  vips:
+    description: "/vips add/remove"
+  top:
+    description: "/top"

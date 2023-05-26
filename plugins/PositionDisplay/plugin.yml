@@ -1,0 +1,6 @@
+name: PosDisplayer
+version: 1.0
+api: 1.12.0
+main: posDisplayer\PosDisplayer
+author: CreeperFace
+description: display position of touched block

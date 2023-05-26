@@ -1,0 +1,9 @@
+name: MyJOB
+version: Very_Dohuya
+api: 2.0.0
+author: CloudMine
+main: CloudMine\job
+
+commands:
+  job:
+     default: true

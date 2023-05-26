@@ -1,0 +1,12 @@
+# Config file for TimeCommander by LDX;
+
+# List of commands for the plugin to execute at the given times;
+# Command: Command to execute;
+# Time: Amount of time in minutes between command executions;
+Commands:
+  - Command: time set day
+    Time: 5
+  - Command: say Mesaj
+    Time: 10
+  - Command: say Mesaj
+    Time: 20

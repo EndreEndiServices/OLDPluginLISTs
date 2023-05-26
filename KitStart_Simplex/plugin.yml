@@ -1,0 +1,11 @@
+name: KitStart
+main: Kits\Main
+version: 1.0
+author: lisov
+website: https://vk.com/vlnkv11
+api: [2.0.0, 3.0.0-ALPHA2, 3.0.0, 3.0.0-ALPHA3, 3.0.0-ALPHA4]
+load: POSTWORLD
+
+commands:
+  kit:
+   defaulth: true

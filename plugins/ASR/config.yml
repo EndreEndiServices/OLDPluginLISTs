@@ -1,0 +1,6 @@
+---
+Version: 2.0.1
+TimeToRestart: 50
+Prefix: '§e[§3RELOAD§e]§f'
+Logger_DB: false
+...

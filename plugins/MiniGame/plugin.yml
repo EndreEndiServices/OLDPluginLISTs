@@ -1,0 +1,11 @@
+name: MineCombat
+main: MineCombat\Main
+version: InDev
+api: [1.1.0]
+author: MK
+description: Plugin for PIDE Event Server
+website: http://cafe.naver.com/minecraftpe
+commands:
+ mc:
+  description: MineCombat main command
+  usage: "Usage: /mc <start|stop|score>"

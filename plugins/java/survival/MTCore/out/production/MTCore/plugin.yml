@@ -1,0 +1,39 @@
+name: GTCore
+version: "1.0"
+api: ["1.0.0"]
+main: GTCore.MTCore
+author: "CreeperFace"
+description: "GTCore"
+depend: ["GTHttpApi"]
+
+commands:
+    tokeny:
+        description: "show player's money"
+        aliases:
+        - tokens
+        - money
+        - coins
+        - cash
+        - penize
+        - prachy
+        - love
+    aw:
+        description: "Answer the quiz"
+    answer:
+        description: "Answer the quiz"
+    register:
+        description: "Register command"
+    login:
+        description: "Login command"
+    changepassword:
+        description: "change your password"
+    setrank:
+        description: "setrank command"
+    mt:
+        description: "secret"
+    addcoins:
+        description: "add coins"
+    addexp:
+        description: "add xp"
+    setspawn:
+        description: "test"

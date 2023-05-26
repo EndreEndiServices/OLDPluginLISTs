@@ -1,0 +1,5 @@
+name: AdrenalineUHC
+author: Irish
+version: 1.2.1
+api: [3.0.0-ALPHA4]
+main: ParadoxUHC\UHC

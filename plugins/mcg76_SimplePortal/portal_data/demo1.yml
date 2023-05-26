@@ -1,0 +1,36 @@
+---
+name: demo1
+type: tp
+ip: false
+port: false
+active: true
+enterLevelName: SimplePortalWorld
+portalEnter1X: 97.000000
+portalEnter1Y: 66.000000
+portalEnter1Z: 131.000000
+portalEnter2X: 95.000000
+portalEnter2Y: 71.000000
+portalEnter2Z: 128.000000
+allowIPs: []
+enterDestinationLevelName: SimplePortalWorld
+enterDestinationPosX: 126.753212
+enterDestinationPosY: 69.000003
+enterDestinationPosZ: 271.233276
+exitLevelName: SimplePortalWorld
+portalExitPos1X: 125.000000
+portalExitPos1Y: 68.000000
+portalExitPos1Z: 268.000000
+portalExitPos2X: 128.000000
+portalExitPos2Y: 72.000000
+portalExitPos2Z: 266.000000
+exitDestinationLevelName: SimplePortalWorld
+exitDestinationPosX: 90.161377
+exitDestinationPosY: 67.000003
+exitDestinationPosZ: 130.282959
+enterDestinationSignX: 98
+enterDestinationSignY: 68
+enterDestinationSignZ: 128
+exitDestinationSignX: false
+exitDestinationSignY: false
+exitDestinationSignZ: false
+...

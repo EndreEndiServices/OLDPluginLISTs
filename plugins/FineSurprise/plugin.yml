@@ -1,0 +1,11 @@
+name: FineSurprise
+main: Fireworks\Fireworks
+version: 1.5
+api: 1.8.0
+load: POSTWORLD
+author: boybook
+description: Snowball Fireworks !
+commands:
+ fw:
+  description: Fireworks command
+  usage: "Usage: /fw"

@@ -1,0 +1,14 @@
+name: MyMenu
+main: mymenu\main
+versions: 1.0
+api: [2.0.0, 3.0.0-ALPHA1, 3.0.0-ALPHA2, 3.0.0-ALPHA3, 3.0.0-ALPHA4, 3.0.0-ALPHA5]
+author: Mudak
+
+commands:
+  menu:
+    description: "Купить эффекты"
+    permission: buy.effect
+permissions:
+  buy.effect:
+    default: true
+    description: "СПААААЙС"

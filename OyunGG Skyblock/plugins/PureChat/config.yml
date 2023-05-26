@@ -1,0 +1,28 @@
+---
+version: 1.4.0-BETA-04
+default-factions-plugin: ~
+enable-multiworld-chat: false
+groups:
+  Guest:
+    chat: '&3&l{prefix}&e[Guest]&f&r {display_name} &7> {msg}'
+    nametag: '&3&l{prefix}&e[Guest]&f&r {display_name}'
+    worlds: []
+  Admin:
+    chat: '&3&l{prefix}&c[Admin]&f&r {display_name} &7> {msg}'
+    nametag: '&3&l{prefix}&c[Admin]&f&r {display_name}'
+    worlds: []
+  Owner:
+    chat: '&3&l{prefix}&a[Owner]&f&r {display_name} &7> {msg}'
+    nametag: '&3&l{prefix}&a[Owner]&f&r {display_name}'
+    worlds: []
+  OP:
+    chat: '&3&l{prefix}&9[OP]&f&r {display_name} &7> {msg}'
+    nametag: '&3&l{prefix}&9[OP]&f&r {display_name}'
+    worlds: []
+  §6Ku§bru§ccu:
+    chat: §7[§6Ku§bru§ccu§7]§f{display_name} §c» §f{msg}
+    nametag: '&8&l[§6Ku§bru§ccu]&f&r {display_name}'
+  Oyuncu:
+    chat: §7{display_name}§c » §7{msg}
+    nametag: '&8&l[Oyuncu]&f&r {display_name}'
+...

@@ -1,0 +1,10 @@
+main: Richen\ClearLagg\ClearLagg
+version: 0.0.1
+api:
+- 1.13.0
+- 2.0.0
+load: POSTWORLD
+
+name: ClearLagg
+author: Richen
+website: http://vk.com/richen

@@ -1,0 +1,27 @@
+# SimpleAuth 1.4.0 language file
+
+join:
+ message: "                                  §d•°§l§bMinr§cLife§d°•              \n
+§a                        Авторизуйся чтобы играть на сервере!\n
+§c                        Наш IP: §eplay.ml-pe.tk:21250\n
+§5                        Наша группа: §ahttp://vk.com/mcpe_minelife\n 
+§6                        Удачной игры на сервере! ;)\n                                 §d•°§bMine§cLife§d°•        "
+ register: "§2                         Вы не зарегистрированы. \n§c               Зарегистрируйтесь: §d/register <пароль>"
+ login: "§2                          Войдите на сервер: §c/login <пароль>"
+register:
+ usage: "/register <password>"
+ description: "Registers an account"
+ permission: "You do not have permission to use the register command!"
+ error:
+  password: "§c                       Твой пароль слишком короткий!"
+  registered: "§a                         Этот аккаунт уже зарегистрирован"
+  general: "Error during authentication."
+
+login:
+ usage: "§c                   Пиши правильно!: §a/login <пароль>"
+ description: "Logs into an account"
+ permission: "You do not have permission to use the login command!"
+ success: "§a                           Молодец! Ты зашёл на сервер!"
+ error:
+  password: "§c                             Неправильный пароль!"
+  registered: "§c                       Аккаунт не зарегистрирован"

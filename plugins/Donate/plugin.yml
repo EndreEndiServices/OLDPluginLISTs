@@ -1,0 +1,20 @@
+main: donate\Main
+api: 1.10.0
+load: POSTWORLD
+author: glgf+bilson
+
+name: Donate
+description: xem gia VIP
+version: 3.0
+author: [aliuly,Glitchmaster_PE]
+website: https://www.youtube.com/channel/UCICbnpqTiPCJXT11VbQHFWg
+
+commands:
+  donate:
+    description: xem giá VIP
+    usage: "/donate"
+    permission: glbilson.donate
+permissions:
+  glbilson.donate:
+    default: true
+    description: "xem giá VIP"

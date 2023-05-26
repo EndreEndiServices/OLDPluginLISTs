@@ -1,0 +1,9 @@
+name: FQ
+main: Quest\Main
+version: 0.1 
+author: dina4ik
+api: [1.12.0] 
+load: POSTWORLD
+commands: 
+ fq: 
+  description: Создание Quest NPC 

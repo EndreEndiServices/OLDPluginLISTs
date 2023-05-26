@@ -1,0 +1,5 @@
+name: SiteTag
+main: UltraPlugins\SiteTag
+version: 1.0.0
+web: vk.com/ultra_plugins
+api: 3.0.0

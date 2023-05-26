@@ -1,0 +1,16 @@
+#Configuration file for BlockFreezer v1.1.0
+version: 1.1.0
+#Do not edit the version string, it is used for internal purposes
+plugin:
+ autoUpdate: true
+ #Set to true to enable automatic overwriting of this file when the plugin is updated
+level:
+ world:
+ #Format all block IDs like this: "id:damage"
+ - "8:0"
+ - "9:0"
+ - "10:0"
+ - "11:0"
+ anotherworld:
+ - "58:0"
+ - "60:0"

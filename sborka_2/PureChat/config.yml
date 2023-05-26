@@ -1,0 +1,68 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: §2●
+groups:
+  Player:
+    default-chat: §f[{faction}§f] §7[§aИгрок§7]§e {display_name} §c-> §b{message}
+    default-nametag: §f{faction}§aБродяга§9{display_name}§
+    worlds: []
+  Admin:
+    default-chat: §f[{faction}§f] §7[§eАдминистратор§7] §b{display_name} §c-> §6{message}
+    default-nametag: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Owner:
+    default-chat: §f[{faction}§f] §7[§bСоздатель-3§7] §e{display_name} §c-> §a{message}
+    default-nametag: '{COLOR_BLUE}Owner{COLOR_WHITE}:{FORMAT_RESET} {COLOR_BLUE}{display_name}'
+    worlds: []
+  OP:
+    default-chat: §3[{faction}§3] §7[§6Оператор§7] §b{display_name}§c - §a{message}
+    default-nametag: '{COLOR_BLUE}OP{COLOR_WHITE}:{FORMAT_RESET} {display_name}'
+    worlds: []
+  Fly:
+    default-chat: §f[{faction}§f] §7[§6FLY§7] §a{display_name} §c-> §e{message}
+    default-nametag: §3[§6{faction}§3]§6[§c§lFly§6]§1{display_name}
+    worlds: []
+  VIP+:
+    default-chat: §f[{faction§f] §7[§eVIP+§7] §a{display_name} §c-> §b{message}
+    default-nametag: §3[§6{faction}§3]§c{display_name}
+    worlds: []
+  VIP:
+    default-chat: §f[{faction}§f] §7[§9VIP§7] §6{display_name} §c-> §3{message}
+    default-nametag: §3[§6{faction}§3]§7[§cVIP§7]§e{display_name}
+    worlds: []
+  Creative:
+    default-chat: §f[{faction}§f] §7[§aКреатив§7] §d{display_name} §c-> §e{message}
+    default-nametag: §3[§6{faction}§3]§cCreative§a{display_name}
+    worlds: []
+  Helper:
+    default-nametag: §f[§6{faction}§f] §7[§5Helper§7]§d{display_name}
+    default-chat: §f[{faction}§f] §7[§5Helper§7] §a{display_name} §c-> §6{message}
+    worlds: []
+  Moderator:
+    default-nametag: §f[{faction}§f]§7[§9Модератор§7] §c{display_name}
+    default-chat: §f[{faction}§f] §7[§9Модератор§7] §a{display_name} §c-> §b{message}
+  Guest:
+    default-chat: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Tex:
+    default-nametag: '[Tex] {display_name}'
+    default-chat: §f  [{faction}§f] §7[§6Тех§aПоддержка§7] §b{display_name} §c-> §e{message}
+  Pov:
+    default-nametag: '[§повелитель] {display_name}'
+    default-chat: §f[{faction}§f] §7[§cГл§a_Основатель§7] §e{display_name} §d-> §b{message}
+  Pol:
+    default-nametag: '[Pol] {display_name}'
+    default-chat: §f [{faction}§f] §f[§6Зам_Основателя§f]§a {display_name} §c->§b
+      {message}
+  Premium:
+    default-nametag: '[Premium] {display_name}'
+    default-chat: '[Premium] {display_name} > {message}'
+  §aGL:
+    ADMINISTRATOR:
+      default-nametag: '[§aGL.ADMINISTRATOR] {display_name}'
+      default-chat: '[§aGL.ADMINISTRATOR] {display_name} > {message}'
+...

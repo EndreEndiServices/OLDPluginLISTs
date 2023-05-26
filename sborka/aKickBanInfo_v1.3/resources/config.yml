@@ -1,0 +1,20 @@
+---
+usage: "§7Использованиe: §a/kb <kick/ban> <игрок> (причина)"
+
+permNotEx: "§cУ тебя нет на это прав!"
+
+playerOffline: "§eИгрока нет на сервере"
+
+defaultReason: "§eПричина не указана"
+
+playerBan: "§aИгрок §b{player}§a заблокирован"
+playerUnban: "§aИгрок §b{player} §aразблокирован"
+
+kick: "§aТебя выгнали с сервера\n§bВыгнал: {player}\n§cПричина: {reason}"
+ban: "§aАккаунт заблокирован\n§bЗабанил: {player}\n§cПричина: {reason}"
+immunity: "§eАдминистратор §a{player} §eимеет защиту от бана!"
+
+broadcast: true # Сообщение всем игрокам
+broadcastBanMessage: "§aАдминистратор §e{player} §aзаблокировал игрока §6{target}§e. §cПричина: {reason}"
+broadcastKickMessage: "§aАдминистратор §e{player} §aвыгнал с сервера игрока §6{target}§e. §cПричина: {reason}"
+...

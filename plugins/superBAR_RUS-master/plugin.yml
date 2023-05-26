@@ -1,0 +1,24 @@
+name: superBAR
+main: FaigerSYS\superBAR\Main
+version: 1.4.5
+api: [1.13.0, 2.0.0]
+load: POSTWORLD
+author: FaigerSYS
+description: "Просто хороший и настраиваемый хотбар"
+
+commands:
+ superbar:
+  description: "Главная команда"
+  aliases: [sb, supbar, sbar]
+  permission: superbar
+
+permissions:
+ superbar:
+  default: true
+  description: "Разрешение на просмотр версии superBAR"
+ superbar.help:
+  default: op
+  description: "Разрешение на просмотр помощи по командам"
+ superbar.reload:
+  default: op
+  description: "Разрешение на перезагрузку настроек"

@@ -1,0 +1,10 @@
+name: owmoney
+main: ow\owmoney
+version: 0.1 beta by BlackJIeB
+api: [2.0.0]
+author: BlackJIeB
+website: vk.com/blackjieb
+commands:
+ owmoney:
+  aliases: [owm]
+  description: "main cmd"

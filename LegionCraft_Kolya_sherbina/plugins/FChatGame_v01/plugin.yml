@@ -1,0 +1,6 @@
+name: ChatGame
+main: Help\Main
+version: 0.1 
+author: flabberfish 
+api: [1.12.0] 
+load: POSTWORLD

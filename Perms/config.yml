@@ -1,0 +1,254 @@
+---
+guest:
+  prefix: "§7Игрок"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance: []
+  permissions:
+  - kit.start
+  - auth.login
+  - auth.register
+  - auth.changepassword
+  - tp.warp
+  - api.tell
+vip:
+  prefix: "§aVIP"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  permissions:
+  - kit.vip
+  - api.heal
+  - api.repair
+  - api.clear
+hero:
+  prefix: "§dHERO"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  permissions:
+  - kit.hero
+  - api.fly
+  - api.size
+  - api.suicide
+elite:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  permissions:
+  - kit.elite
+  - api.speed
+  - api.god
+  - api.getpos
+creative:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - elite
+  permissions:
+  - api.gamemode
+  - api.top
+  - tp.wild
+helper:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  permissions:
+  - tp.tppos
+  - api.kick
+moder:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  permissions:
+  - tp.teleport
+  - api.skin
+  - api.time
+admin:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  permissions:
+  - api.say
+  - jail.jail
+  - jail.unjail
+ag:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  permissions:
+  - api.ag
+angel:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  permissions:
+  - api.vanish
+  - api.enchant
+  - api.clearchat
+  - api.ban
+deluxe:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  - angel
+  permissions:
+  - tp.tpo
+  - api.pardon
+vladika:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  - angel
+  - deluxe
+  permissions:
+  - perms.nick
+  - perms.prefix
+  - api.give
+  - guard.items
+  - api.tell.see
+god:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  - angel
+  - deluxe
+  - vladika
+  permissions:
+  - we.set
+  - api.kill
+  - api.setvip
+  - guard.blocks
+sponsor:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  - angel
+  - deluxe
+  - vladika
+  - god
+  permissions: []
+console:
+  prefix: "§dELITE"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  - angel
+  - deluxe
+  - vladika
+  - god
+  - sponsor
+  permissions:
+  - '*'
+richen:
+  prefix: "§dКуратор"
+  chat: "§c{marry}{clan}§8({prefix}§8) §7{name} §8→ §f{message}"
+  nametag: "§8({prefix}§8) §7{name}"
+  inheritance:
+  - guest
+  - vip
+  - hero
+  - creative
+  - helper
+  - moder
+  - admin
+  - ag
+  - angel
+  - deluxe
+  - vladika
+  - god
+  - sponsor
+  - console
+  permissions:
+  - '*'
+...

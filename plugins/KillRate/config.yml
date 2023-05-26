@@ -1,0 +1,59 @@
+---
+version: 2.1.0
+features:
+  '# signs': enable/disable signs
+  signs: true
+  '# ranks': Enable support for RankUp plugin
+  ranks: false
+  '# achievements': Enable PocketMine achievements
+  achievements: true
+  '# kill-streak': Enable kill-streak tracking.
+  kill-streak: false
+  '# rewards': award money.
+  rewards: true
+settings:
+  '# points': award points.
+  points: true
+  '# min-kills': Minimum number of kills before declaring a kill-streak
+  min-kills: 7
+  '# reset-on-death': Reset counters on death.
+  reset-on-death: false
+  '# creative': track creative kills.
+  creative: false
+  '# dynamic-updates': Update signs.
+  dynamic-updates: 80
+  '# default-rank': Default rank (when resetting ranks)
+  default-rank: false
+values:
+  <Example>:
+  - money
+  - points
+  '*':
+  - 1
+  - 10
+  Player:
+  - 100
+  - 100
+formats:
+  default: '{sname} {count}'
+  names: '{n}.{player}'
+  scores: '{count}'
+database:
+  '# backend': Use SQLiteMgr or MySqlMgr
+  backend: SQLiteMgr
+  '# MySql': MySQL settings.
+  MySql:
+    host: localhost
+    user: nobody
+    password: secret
+    database: KillRateDb
+    port: 3306
+signs:
+  '[STATS]': stats
+  '[ONLINE TOPS]': online-tops
+  '[RANKINGS]': rankings
+  '[RANKNAMES]': rankings-names
+  '[RANKPOINTS]': rankings-points
+  '[TOPNAMES]': online-top-names
+  '[TOPPOINTS]': online-top-points
+...

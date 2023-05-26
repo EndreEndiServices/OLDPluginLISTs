@@ -1,0 +1,17 @@
+name: MPP
+main: FaigerSYS\MultiProtocol\MultiProtocol
+version: "1.0"
+api: ["2.0.0", "3.0.0", "3.0.0-ALPHA1", "3.0.0-ALPHA2", "3.0.0-ALPHA3", "3.0.0-ALPHA4"]
+load: POSTWORLD
+author: FaigerSYS
+description: "Добавит мультипротокол на ваш сервер"
+
+commands:
+ currectprotocol:
+  description: "Узнать версию протокола данного ядра"
+  permission: "currectprotocol"
+
+permissions:
+ currectprotocol:
+  default: op
+  description: "Возможность использовать команду"

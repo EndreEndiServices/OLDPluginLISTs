@@ -1,0 +1,8 @@
+name: CVape
+main: CVape\Main
+version: 0.0.1
+author: 0.0.1
+api: [2.0.0]
+commands:
+ vape:
+  default: true

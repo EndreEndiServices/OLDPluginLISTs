@@ -1,0 +1,103 @@
+<?php
+
+
+
+declare(strict_types=1);
+
+
+
+namespace fcore\task;
+
+
+
+use fcore\FCore;
+
+use pocketmine\Player;
+
+
+
+/**
+
+ * Class ScheduleManager
+
+ * @package fcore\task
+
+ */
+
+class ScheduleManager {
+
+
+
+    /** @var FCore $plugin */
+
+    public $plugin;
+
+
+
+    /** @var array $repeating */
+
+    public $repeating = [];
+
+    
+
+    /**
+
+     * ScheduleManager constructor.
+
+     * @param FCore $plugin
+
+     */
+
+    public function __construct(FCore $plugin) {
+
+        $this->plugin = $plugin;
+
+        $this->registerTasks();
+
+    }
+
+
+
+    public function getScheduler() {
+
+        return $this->plugin->getServer()->getScheduler();
+
+    }
+
+
+
+    public function registerTasks() {
+
+        $this->repeating["utils"] = new UtilsTask($this);
+
+        $this->repeating["broadcast"] = new BroadcastTask;
+
+        $this->repeating["main"] = new MainTask($this);
+
+        foreach ($this->repeating as $index => $task) {
+
+            if($index == "utils") $this->getScheduler()->scheduleRepeatingTask($task, 1);
+
+            if($index == "broadcast") $this->getScheduler()->scheduleRepeatingTask($task, 20*60*3);
+
+            if($index == "main") $this->getScheduler()->scheduleRepeatingTask($task, 200);
+
+        }
+
+    }
+
+
+
+    /**
+
+     * @param Player $player
+
+     */
+
+    public function runJoinTask(Player $player, $join = true, $wait = true) {
+
+        $this->getScheduler()->scheduleDelayedTask(new JoinTask($this->plugin, $player, $join), $wait ? 20 : 0);
+
+    }
+
+}

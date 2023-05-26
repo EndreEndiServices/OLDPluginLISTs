@@ -1,0 +1,174 @@
+---
+Player:
+  inheritance: []
+  permissions:
+  - -essentials.kit
+  - -essentials.kit.other
+  - -pocketmine.command.me
+  - kits.kit.starter
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.list
+  - pperms.command.ppinfo
+  - simpleauth.command.login
+  - simpleauth.command.register
+  worlds: []
+  isDefault: true
+VIP:
+  inheritance:
+  - Player
+  permissions:
+  - fly
+  - kits.kit.starter
+  - kits.kit.vip
+  - pocketmine.command.effect
+  - pocketmine.command.give
+  - simpleauth.command.login
+  - simpleauth.command.register
+  worlds: []
+Premium:
+  inheritance:
+  - Player
+  permissions:
+  - fly
+  - kits.kit.premium
+  - kits.kit.starter
+  - kits.kit.vip
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - pocketmine.command.give
+  - simpleauth.command.login
+  - simpleauth.command.register
+  worlds: []
+Creative:
+  inheritance:
+  - Player
+  permissions:
+  - fly
+  - kits.kit.premium
+  - kits.kit.starter
+  - kits.kit.vip
+  - pocketime.command.gamemode
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - simpleauth.command.login
+  - simpleauth.command.register
+Helper:
+  inheritance:
+  - Player
+  permissions:
+  - fly
+  - kits.kit.premium
+  - kits.kit.starter
+  - kits.kit.vip
+  - pocketmine.command.ban.player
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.unban.player
+  - simpleauth.command.login
+  - simpleauth.command.register
+Admin:
+  inheritance:
+  - Player
+  permissions:
+  - essentialstp.command.delwarp
+  - essentialstp.command.setwarp
+  - fly
+  - kits.kit.premium
+  - kits.kit.starter
+  - kits.kit.vip
+  - pocketmine.command.ban.player
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.say
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  - pocketmine.command.unban.player
+  - simpleauth.command.login
+  - simpleauth.command.register
+Moderator:
+  inheritance:
+  - Player
+  permissions:
+  - essentialstp.command
+  - fly
+  - kits.kit.premium
+  - kits.kit.starter
+  - kits.kit.vip
+  - pocketmine.command.ban
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.unban
+  - rg
+  - simpleauth.command.login
+  - simpleauth.command.register
+  worlds: []
+Owner:
+  inheritance:
+  - Player
+  permissions:
+  - economyapi.*
+  - economysell.*
+  - economyshop.*
+  - essentialstp.command
+  - fly
+  - itemcase
+  - pocketmine.command
+  - pocketmine.command.me
+  - pperms.command
+  - rg
+  - tagblock.add
+  worlds: []
+Fly:
+  inheritance: []
+  permissions: []
+  worlds: []
+Tex:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Pov:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Pol:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+§bZam:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+ADMINISTRATOR:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+GL.ADMINISTRATOR:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+§aGL.ADMINISTRATOR:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+...

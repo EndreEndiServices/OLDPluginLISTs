@@ -1,0 +1,5 @@
+name: BeatsCore
+version: 1.0.0
+api: [3.0.0-ALPHA11]
+main: BeatsCore\Core
+author: Epicrafter60

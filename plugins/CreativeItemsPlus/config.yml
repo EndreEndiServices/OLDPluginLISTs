@@ -1,0 +1,15 @@
+---
+#If enabled, all items are wiped except ones you've added
+full-customization: false
+#Items you want added (Format: itemid:damagevalue)
+items-added:
+  246: 0 #Glowing
+  247: 1 #Red Nether Reactor Core
+  247: 2 #Black Nether Reactor Core
+#Items you want removed (Format: itemid:damagevalue)
+items-removed:
+  46: 0 #Tnt
+  259: 0 #Flint & Steel
+  51: 0 #Fire
+  7: 0 #Bedrock
+...

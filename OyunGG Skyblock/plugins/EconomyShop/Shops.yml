@@ -1,0 +1,872 @@
+---
+66:4:-40:Nova:
+  x: 66
+  "y": 4
+  z: -40
+  level: Nova
+  price: 150
+  item: 360
+  itemName: Melon
+  meta: 0
+  amount: 4
+66:4:-42:Nova:
+  x: 66
+  "y": 4
+  z: -42
+  level: Nova
+  price: 140
+  item: 357
+  itemName: Cookie
+  meta: 0
+  amount: 5
+62:4:-44:Nova:
+  x: 62
+  "y": 4
+  z: -44
+  level: Nova
+  price: 250
+  item: 364
+  itemName: Steak
+  meta: 0
+  amount: 5
+63:4:-44:Nova:
+  x: 63
+  "y": 4
+  z: -44
+  level: Nova
+  price: 100
+  item: 363
+  itemName: Raw Beef
+  meta: 0
+  amount: 5
+62:4:-39:Nova:
+  x: 62
+  "y": 4
+  z: -39
+  level: Nova
+  price: 150
+  item: 391
+  itemName: Carrot
+  meta: 0
+  amount: 5
+66:4:-39:Nova:
+  x: 66
+  "y": 4
+  z: -39
+  level: Nova
+  price: 150
+  item: 260
+  itemName: Apple
+  meta: 0
+  amount: 5
+61:4:-39:Nova:
+  x: 61
+  "y": 4
+  z: -39
+  level: Nova
+  price: 350
+  item: 396
+  itemName: Golden Carrot
+  meta: 0
+  amount: 5
+65:4:-44:Nova:
+  x: 65
+  "y": 4
+  z: -44
+  level: Nova
+  price: 100
+  item: 365
+  itemName: Raw Chicken
+  meta: 0
+  amount: 5
+64:4:-44:Nova:
+  x: 64
+  "y": 4
+  z: -44
+  level: Nova
+  price: 250
+  item: 366
+  itemName: Cooked Chicken
+  meta: 0
+  amount: 5
+61:4:-40:Nova:
+  x: 61
+  "y": 4
+  z: -40
+  level: Nova
+  price: 150
+  item: 400
+  itemName: Pumpkin Pie
+  meta: 0
+  amount: 5
+61:4:-42:Nova:
+  x: 61
+  "y": 4
+  z: -42
+  level: Nova
+  price: 450
+  item: 320
+  itemName: Cooked Porkchop
+  meta: 0
+  amount: 5
+61:4:-43:Nova:
+  x: 61
+  "y": 4
+  z: -43
+  level: Nova
+  price: 100
+  item: 319
+  itemName: Raw Porkchop
+  meta: 0
+  amount: 5
+61:4:-41:Nova:
+  x: 61
+  "y": 4
+  z: -41
+  level: Nova
+  price: 250
+  item: 297
+  itemName: Bread
+  meta: 0
+  amount: 5
+65:4:-39:Nova:
+  x: 65
+  "y": 4
+  z: -39
+  level: Nova
+  price: 1000
+  item: 322
+  itemName: Golden Apple
+  meta: 0
+  amount: 1
+140:4:124:world:
+  x: 140
+  "y": 4
+  z: 124
+  level: world
+  price: 100
+  item: 1
+  itemName: Stone
+  meta: 0
+  amount: 64
+159:5:100:world:
+  x: 159
+  "y": 5
+  z: 100
+  level: world
+  price: 100
+  item: 20
+  itemName: Glass
+  meta: 0
+  amount: 64
+100:5:153:Lobby:
+  x: 100
+  "y": 5
+  z: 153
+  level: Lobby
+  price: 250
+  item: 98
+  itemName: Stone Bricks
+  meta: 0
+  amount: 3
+100:5:154:Lobby:
+  x: 100
+  "y": 5
+  z: 154
+  level: Lobby
+  price: 272
+  item: 48
+  itemName: Moss Stone
+  meta: 0
+  amount: 3
+100:5:155:Lobby:
+  x: 100
+  "y": 5
+  z: 155
+  level: Lobby
+  price: 98
+  item: 5
+  itemName: Oak Wood Planks
+  meta: 0
+  amount: 5
+100:5:156:Lobby:
+  x: 100
+  "y": 5
+  z: 156
+  level: Lobby
+  price: 120
+  item: 45
+  itemName: Bricks
+  meta: 0
+  amount: 6
+100:5:157:Lobby:
+  x: 100
+  "y": 5
+  z: 157
+  level: Lobby
+  price: 180
+  item: 159
+  itemName: White Stained Clay
+  meta: 0
+  amount: 24
+100:5:158:Lobby:
+  x: 100
+  "y": 5
+  z: 158
+  level: Lobby
+  price: 145
+  item: 108
+  itemName: Brick Stairs
+  meta: 0
+  amount: 10
+100:5:159:Lobby:
+  x: 100
+  "y": 5
+  z: 159
+  level: Lobby
+  price: 100
+  item: 112
+  itemName: Nether Bricks
+  meta: 0
+  amount: 16
+100:5:160:Lobby:
+  x: 100
+  "y": 5
+  z: 160
+  level: Lobby
+  price: 130
+  item: 155
+  itemName: Quartz Block
+  meta: 0
+  amount: 16
+100:5:161:Lobby:
+  x: 100
+  "y": 5
+  z: 161
+  level: Lobby
+  price: 65
+  item: 44
+  itemName: Stone Slab
+  meta: 0
+  amount: 8
+100:5:162:Lobby:
+  x: 100
+  "y": 5
+  z: 162
+  level: Lobby
+  price: 95
+  item: 139
+  itemName: Cobblestone Wall
+  meta: 0
+  amount: 16
+100:5:163:Lobby:
+  x: 100
+  "y": 5
+  z: 163
+  level: Lobby
+  price: 50
+  item: 20
+  itemName: Glass
+  meta: 0
+  amount: 6
+100:5:164:Lobby:
+  x: 100
+  "y": 5
+  z: 164
+  level: Lobby
+  price: 80
+  item: 89
+  itemName: Glowstone
+  meta: 0
+  amount: 6
+98:5:165:Lobby:
+  x: 98
+  "y": 5
+  z: 165
+  level: Lobby
+  price: 200
+  item: 65
+  itemName: Ladder
+  meta: 0
+  amount: 32
+99:5:165:Lobby:
+  x: 99
+  "y": 5
+  z: 165
+  level: Lobby
+  price: 100
+  item: 106
+  itemName: Vines
+  meta: 0
+  amount: 32
+112:5:168:Lobby:
+  x: 112
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 8000
+  item: 116
+  itemName: Enchanting Table
+  meta: 0
+  amount: 1
+115:5:168:Lobby:
+  x: 115
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 5500
+  item: 410
+  itemName: Hopper
+  meta: 0
+  amount: 1
+116:4:168:Lobby:
+  x: 116
+  "y": 4
+  z: 168
+  level: Lobby
+  price: 50
+  item: 301
+  itemName: Leather Boots
+  meta: 0
+  amount: 1
+117:4:168:Lobby:
+  x: 117
+  "y": 4
+  z: 168
+  level: Lobby
+  price: 50
+  item: 300
+  itemName: Leather Pants
+  meta: 0
+  amount: 1
+119:4:168:Lobby:
+  x: 119
+  "y": 4
+  z: 168
+  level: Lobby
+  price: 50
+  item: 298
+  itemName: Leather Cap
+  meta: 0
+  amount: 1
+118:4:168:Lobby:
+  x: 118
+  "y": 4
+  z: 168
+  level: Lobby
+  price: 50
+  item: 299
+  itemName: Leather Tunic
+  meta: 0
+  amount: 1
+114:5:168:Lobby:
+  x: 114
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 25
+  item: 171
+  itemName: White Carpet
+  meta: 0
+  amount: 2
+120:4:165:Lobby:
+  x: 120
+  "y": 4
+  z: 165
+  level: Lobby
+  price: 2000
+  item: 302
+  itemName: Chainmail Helmet
+  meta: 0
+  amount: 1
+120:4:166:Lobby:
+  x: 120
+  "y": 4
+  z: 166
+  level: Lobby
+  price: 2000
+  item: 303
+  itemName: Chain Chestplate
+  meta: 0
+  amount: 1
+120:4:167:Lobby:
+  x: 120
+  "y": 4
+  z: 167
+  level: Lobby
+  price: 2000
+  item: 304
+  itemName: Chain Leggings
+  meta: 0
+  amount: 1
+120:4:168:Lobby:
+  x: 120
+  "y": 4
+  z: 168
+  level: Lobby
+  price: 2000
+  item: 305
+  itemName: Chainmail Boots
+  meta: 0
+  amount: 1
+113:5:168:Lobby:
+  x: 113
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 35
+  item: 35
+  itemName: White Wool
+  meta: 0
+  amount: 3
+120:4:164:Lobby:
+  x: 120
+  "y": 4
+  z: 164
+  level: Lobby
+  price: 3265
+  item: 388
+  itemName: Emerald
+  meta: 0
+  amount: 2
+111:5:168:Lobby:
+  x: 111
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 40
+  item: 390
+  itemName: Flower Pot
+  meta: 0
+  amount: 2
+110:5:168:Lobby:
+  x: 110
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 4000
+  item: 397
+  itemName: Skull
+  meta: 0
+  amount: 1
+119:4:164:Lobby:
+  x: 119
+  "y": 4
+  z: 164
+  level: Lobby
+  price: 2637
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 2
+109:5:168:Lobby:
+  x: 109
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 40
+  item: 161
+  itemName: Acacia Leaves
+  meta: 0
+  amount: 1
+118:4:164:Lobby:
+  x: 118
+  "y": 4
+  z: 164
+  level: Lobby
+  price: 2522
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 2
+118:6:164:Lobby:
+  x: 118
+  "y": 6
+  z: 164
+  level: Lobby
+  price: 1626
+  item: 265
+  itemName: Iron Ingot
+  meta: 0
+  amount: 1
+117:4:164:Lobby:
+  x: 117
+  "y": 4
+  z: 164
+  level: Lobby
+  price: 5473
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 2
+108:5:168:Lobby:
+  x: 108
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 55
+  item: 170
+  itemName: Hay Bale
+  meta: 0
+  amount: 2
+107:5:168:Lobby:
+  x: 107
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 44
+  item: 30
+  itemName: Cobweb
+  meta: 0
+  amount: 2
+106:5:168:Lobby:
+  x: 106
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 90
+  item: 86
+  itemName: Pumpkin
+  meta: 0
+  amount: 1
+105:5:168:Lobby:
+  x: 105
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 100
+  item: 103
+  itemName: Melon Block
+  meta: 0
+  amount: 2
+104:5:168:Lobby:
+  x: 104
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 6500
+  item: 145
+  itemName: Anvil
+  meta: 0
+  amount: 1
+103:5:168:Lobby:
+  x: 103
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 500
+  item: 380
+  itemName: Cauldron
+  meta: 0
+  amount: 1
+115:4:163:Lobby:
+  x: 115
+  "y": 4
+  z: 163
+  level: Lobby
+  price: 100
+  item: 295
+  itemName: Wheat Seeds
+  meta: 0
+  amount: 12
+102:5:168:Lobby:
+  x: 102
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 3200
+  item: 379
+  itemName: Brewing Stand
+  meta: 0
+  amount: 1
+101:5:168:Lobby:
+  x: 101
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 50
+  item: 61
+  itemName: Furnace
+  meta: 0
+  amount: 1
+100:5:168:Lobby:
+  x: 100
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 65
+  item: 54
+  itemName: Chest
+  meta: 0
+  amount: 1
+99:5:168:Lobby:
+  x: 99
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 46
+  item: 58
+  itemName: Crafting Table
+  meta: 0
+  amount: 1
+96:6:168:Lobby:
+  x: 96
+  "y": 6
+  z: 168
+  level: Lobby
+  price: 200
+  item: 323
+  itemName: Sign
+  meta: 0
+  amount: 33
+98:5:168:Lobby:
+  x: 98
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 300
+  item: 323
+  itemName: Sign
+  meta: 0
+  amount: 16
+97:5:168:Lobby:
+  x: 97
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 150
+  item: 47
+  itemName: Bookshelf
+  meta: 0
+  amount: 4
+97:5:165:Lobby:
+  x: 97
+  "y": 5
+  z: 165
+  level: Lobby
+  price: 190
+  item: 19
+  itemName: Sponge
+  meta: 0
+  amount: 8
+96:5:165:Lobby:
+  x: 96
+  "y": 5
+  z: 165
+  level: Lobby
+  price: 50
+  item: 102
+  itemName: Glass Pane
+  meta: 0
+  amount: 4
+95:5:167:Lobby:
+  x: 95
+  "y": 5
+  z: 167
+  level: Lobby
+  price: 50
+  item: 85
+  itemName: Oak Fence
+  meta: 0
+  amount: 4
+95:5:166:Lobby:
+  x: 95
+  "y": 5
+  z: 166
+  level: Lobby
+  price: 40
+  item: 96
+  itemName: Wooden Trapdoor
+  meta: 0
+  amount: 2
+95:6:165:Lobby:
+  x: 95
+  "y": 6
+  z: 165
+  level: Lobby
+  price: 100
+  item: 428
+  itemName: Birch Door
+  meta: 0
+  amount: 1
+115:4:157:Lobby:
+  x: 115
+  "y": 4
+  z: 157
+  level: Lobby
+  price: 150
+  item: 338
+  itemName: Sugar Cane
+  meta: 0
+  amount: 12
+115:4:156:Lobby:
+  x: 115
+  "y": 4
+  z: 156
+  level: Lobby
+  price: 100
+  item: 81
+  itemName: Cactus
+  meta: 0
+  amount: 32
+115:4:158:Lobby:
+  x: 115
+  "y": 4
+  z: 158
+  level: Lobby
+  price: 95
+  item: 296
+  itemName: Wheat
+  meta: 0
+  amount: 32
+115:4:159:Lobby:
+  x: 115
+  "y": 4
+  z: 159
+  level: Lobby
+  price: 50
+  item: 323
+  itemName: Sign
+  meta: 0
+  amount: 16
+115:4:160:Lobby:
+  x: 115
+  "y": 4
+  z: 160
+  level: Lobby
+  price: 20
+  item: 458
+  itemName: Beetroot Seeds
+  meta: 0
+  amount: 10
+116:4:164:Lobby:
+  x: 116
+  "y": 4
+  z: 164
+  level: Lobby
+  price: 500
+  item: 263
+  itemName: Coal
+  meta: 0
+  amount: 64
+115:4:161:Lobby:
+  x: 115
+  "y": 4
+  z: 161
+  level: Lobby
+  price: 50
+  item: 362
+  itemName: Melon Seeds
+  meta: 0
+  amount: 16
+115:4:162:Lobby:
+  x: 115
+  "y": 4
+  z: 162
+  level: Lobby
+  price: 80
+  item: 361
+  itemName: Pumpkin Seeds
+  meta: 0
+  amount: 16
+115:6:152:Lobby:
+  x: 115
+  "y": 6
+  z: 152
+  level: Lobby
+  price: 3723
+  item: 420
+  itemName: Unknown
+  meta: 0
+  amount: 2
+100:5:152:Lobby:
+  x: 100
+  "y": 5
+  z: 152
+  level: Lobby
+  price: 200
+  item: 4
+  itemName: Cobblestone
+  meta: 0
+  amount: 64
+115:5:151:Lobby:
+  x: 115
+  "y": 5
+  z: 151
+  level: Lobby
+  price: 5000
+  item: 384
+  itemName: Bottle o' Enchanting
+  meta: 0
+  amount: 16
+100:5:151:Lobby:
+  x: 100
+  "y": 5
+  z: 151
+  level: Lobby
+  price: 200
+  item: 2
+  itemName: Grass
+  meta: 0
+  amount: 12
+111:5:151:Lobby:
+  x: 111
+  "y": 5
+  z: 151
+  level: Lobby
+  price: 100
+  item: 3
+  itemName: Dirt
+  meta: 0
+  amount: 10
+112:5:151:Lobby:
+  x: 112
+  "y": 5
+  z: 151
+  level: Lobby
+  price: 150
+  item: 12
+  itemName: Sand
+  meta: 0
+  amount: 10
+95:5:168:Lobby:
+  x: 95
+  "y": 5
+  z: 168
+  level: Lobby
+  price: 200
+  item: 355
+  itemName: Bed
+  meta: 0
+  amount: 1
+115:4:155:Lobby:
+  x: 115
+  "y": 4
+  z: 155
+  level: Lobby
+  price: 1500
+  item: 326
+  itemName: Unknown
+  meta: 0
+  amount: 1
+115:4:154:Lobby:
+  x: 115
+  "y": 4
+  z: 154
+  level: Lobby
+  price: 1500
+  item: 327
+  itemName: Unknown
+  meta: 0
+  amount: 1
+115:4:153:Lobby:
+  x: 115
+  "y": 4
+  z: 153
+  level: Lobby
+  price: 500
+  item: 325
+  itemName: Bucket
+  meta: 0
+  amount: 1
+...

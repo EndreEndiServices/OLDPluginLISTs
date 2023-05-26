@@ -1,0 +1,36 @@
+# Открытие меню через предмет
+item: "345:0"
+
+# Если вы не напишете "on", функция будет включена.
+toggle:
+ spawn: "on"
+ warp: "on"
+ sendmoney: "on"
+ recievemoney: "on"
+ calendar: "on"
+ speaker: "on"
+ calc: "on"
+ moveisland: "on"
+ moveflat: "on"
+ moneyinfo: "on"
+ tell: "on"
+
+speaker:
+ # Необходимые деньги
+ need-money: 1000
+ # Максимальная длина сообщения
+ limit-message: 50
+
+worlds:
+# Не все миры разрешены. Все, что меньше 0, всегда разрешено.
+# Если 0, он недоступен в мире.
+# Пример. Если в мире pvp есть более одного человека, вы не можете его использовать.
+#pvp: 2
+
+# Теги
+# "@mymoney" нужна экономика от onebone - EconomyAPI
+# "@playername", "@playercount", "@playermaxcount", "@motd", "@mymoney", "@health", "@maxhealth", "@year", "@month", "@day", "@hour"
+message: |-
+  §l§c≫ §eВаш ник:§b @playername
+  §l§c≫ §eУ вас:§a @mymoney монет
+  §l§c≫ §eОнлайн§a @playercount §eиз§6 @playermaxcount

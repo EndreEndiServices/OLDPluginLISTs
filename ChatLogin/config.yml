@@ -1,0 +1,17 @@
+#ChatLogin plugin default configuration
+---
+#show ChatLogin prefix
+show-prefix: false
+#Register message
+register-message: "&f--> &7Registre-se digitando sua senha no chat!"
+#Require password confirmation for registration
+password-confirm-required: true
+#Register confirmation message
+register-confirm-message: "&f--> §bRepita sua senha novamente!"
+#No register permissions message
+no-register-permissions: "&cVocê não autorizados para registrar!"
+#Login message
+login-message: "&b--> §7Digite sua senha no chat para se loga!"
+#No login permissions message
+no-login-permissions: "&cnão foi autorizado para se Loga!"
+...

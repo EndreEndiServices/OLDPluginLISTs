@@ -1,0 +1,49 @@
+---
+blocks:
+  1:
+    posName: kops_dust
+    x: 108
+    "y": 28
+    z: 184
+  2:
+    posName: terrorist_dust
+    x: 108
+    "y": 28
+    z: 186
+  3:
+    posName: kop_nether
+    x: 108
+    "y": 28
+    z: 192
+  4:
+    posName: terrorist_nether
+    x: 108
+    "y": 28
+    z: 194
+pos:
+  cs:go_dust:
+    posName: cs:go_dust
+    x: 237
+    "y": 7
+    z: 200
+  terrorist_dust:
+    posName: terrorist_dust
+    x: 237
+    "y": 7
+    z: 200
+  kops_dust:
+    posName: kops_dust
+    x: 282
+    "y": 3
+    z: 207
+  terrorist_nether:
+    posName: terrorist_Nether
+    x: 372
+    "y": 4
+    z: 209
+  kop_nether:
+    posName: kop_Nether
+    x: 426
+    "y": 2
+    z: 194
+...

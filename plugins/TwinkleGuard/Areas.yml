@@ -1,0 +1,92 @@
+---
+cs:go_lobby:
+  min:
+  - 43
+  - 0
+  - 150
+  max:
+  - 125
+  - 127
+  - 231
+  owners:
+  - themrtroll
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: allow
+    bucket-use: deny
+    drop-item: allow
+cs:go_dust:
+  min:
+  - 222
+  - 0
+  - 191
+  max:
+  - 313
+  - 36
+  - 242
+  owners:
+  - themrtroll
+  members: []
+  level: world
+  flags:
+    pvp: allow
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: allow
+    bucket-use: deny
+    drop-item: allow
+cs:go_nether:
+  min:
+  - 358
+  - 2
+  - 177
+  max:
+  - 437
+  - 127
+  - 223
+  owners:
+  - themrtroll
+  members: []
+  level: world
+  flags:
+    pvp: allow
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: allow
+    bucket-use: deny
+    drop-item: allow
+...

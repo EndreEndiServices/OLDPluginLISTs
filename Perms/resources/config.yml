@@ -1,0 +1,12 @@
+---
+guest:
+  prefix: "Игрок"
+  chat: "{marry}{clan}{prefix}{name} {message}"
+  nametag: "{prefix}{name}"
+  inheritance: []
+  permissions:
+  - kit.start
+  - auth.login
+  - auth.register
+  - auth.changepassword
+...

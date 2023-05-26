@@ -1,0 +1,91 @@
+---
+Игрок:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - economyapi.command.money
+  - economyapi.command.pay
+  - economyapi.command.topmoney
+  - fapi.border
+  - fapi.noad
+  - pchat.colored.format
+  - pchat.colored.nametag
+  worlds: []
+Флай:
+  inheritance:
+  - Игрок
+  permissions:
+  - fapi.cmd.fly
+  worlds: []
+Вип:
+  inheritance:
+  - Флай
+  permissions:
+  - fapi.cmd.heal
+  - fapi.cmd.vanish
+  - fapi.join
+  worlds: []
+Премиум:
+  inheritance:
+  - Вип
+  permissions:
+  - fapi.cmd.clear
+  - fapi.cmd.top
+  - fapi.save
+  - pocketmine.command.kick
+  worlds: []
+Креатив:
+  inheritance:
+  - Премиум
+  permissions:
+  - fapi.cmd.cc
+  - fapi.cmd.gm
+  worlds: []
+Лорд:
+  inheritance:
+  - Креатив
+  permissions:
+  - fapi.cmd.dupe
+  - fapi.cmd.mute
+  - pocketmine.command.ban.player
+  - pocketmine.command.say
+  - pocketmine.command.teleport
+  worlds: []
+Модератор:
+  inheritance:
+  - Лорд
+  permissions:
+  - pocketmine.command.banipbyname
+  - pocketmine.command.give
+  - pocketmine.command.kill
+  - pocketmine.command.kill.other
+  - pocketmine.command.kill.self
+  - pocketmine.command.unban.ip
+  - pocketmine.command.unban.player
+  - rg.breakall
+  - rg.doall
+  - rg.maxareas
+  - rg.maxsize
+  worlds: []
+Создатель:
+  inheritance:
+  - Модератор
+  permissions:
+  - pocketmine.command.effect
+  - swe.pos1
+  - swe.pos2
+  - swe.set
+  - swe.undo
+  - swe.walls
+  worlds: []
+Основатель:
+  inheritance: []
+  permissions:
+  - pocketmine.command.time
+  worlds: []
+Бог:
+  inheritance: []
+  permissions:
+  - fapi.cmd.tpall
+  worlds: []
+...

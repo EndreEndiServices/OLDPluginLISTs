@@ -1,0 +1,21 @@
+name: KB
+main: AlexBrin\aKBI_Main
+api: [2.0.0, 3.0.0]
+version: 1.3
+author: AlexBrin
+
+commands:
+  kb:
+    default: op
+    description: "Kick and user lock / Кик и бан пользователей"
+
+permissions:
+  bki:
+    default: op
+    children:
+      kbi.kick:
+        default: op
+      kbi.ban:
+        default: op
+      kbi.unban:
+        default: op

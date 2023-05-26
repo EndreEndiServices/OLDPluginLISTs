@@ -1,0 +1,87 @@
+---
+пвп:
+- -24
+- 63
+- 279
+- SpawnSurvival
+shop:
+- 550
+- 57
+- 172
+- world
+parkour:
+- -578
+- 65
+- -157
+- world
+pvp:
+- 579
+- 60
+- 134
+- world
+drop:
+- 534
+- 65
+- 129
+- world
+parkur:
+- -158
+- 64
+- -8
+- world
+surprise:
+- -185
+- 61
+- -30
+- world
+snow:
+- 168
+- 68
+- -62
+- world
+PVP:
+- 199
+- 62
+- -239
+- world
+hotel:
+- -733
+- 66
+- -368
+- world
+police:
+- -413
+- 65
+- -61
+- world
+school:
+- -871
+- 65
+- -609
+- world
+marry:
+- -350
+- 67
+- 76
+- world
+selfie:
+- -483
+- 69
+- -200
+- world
+pvp2:
+- -535
+- 67
+- -311
+- world
+shool1:
+- 353
+- 64
+- -516
+- world
+тюрьма:
+- 1431
+- 65
+- 134
+- world
+...

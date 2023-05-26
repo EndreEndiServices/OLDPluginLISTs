@@ -1,0 +1,552 @@
+package BedWars.Arena;
+
+import BedWars.BedWars;
+import BedWars.Shop.ItemWindow;
+import BedWars.Shop.ShopWindow;
+import BedWars.Task.ShopManagerDisplay;
+import BedWars.Utils.Items;
+import cn.nukkit.block.BlockSandstone;
+import cn.nukkit.blockentity.BlockEntityChest;
+import cn.nukkit.event.player.PlayerItemHeldEvent;
+import cn.nukkit.Player;
+import cn.nukkit.item.Item;
+import cn.nukkit.inventory.PlayerInventory;
+import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.item.enchantment.Enchantment;
+
+import java.util.HashMap;
+
+public class ShopManager {
+    
+    public Arena plugin;
+    public HashMap<String, VirtualInventory> inv = new HashMap<>();
+    public HashMap<String, String> win = new HashMap<>();
+
+    public HashMap<Integer, ShopWindow> windows = new HashMap<>();
+
+    public HashMap<String, Item[]> items = new HashMap<>();
+    
+    public ShopManager(Arena plugin){
+        this.registerWindows();
+
+        this.plugin = plugin;
+        Item[] main = {Item.get(24, 2), Item.get(303), Item.get(274), Item.get(283), Item.get(261), Item.get(260), Item.get(54), Item.get(373), Item.get(46), Item.get(175)};
+        this.items.put("main", main);
+        Item[] blocks = {Item.get(24, 2), Item.get(24, 2, 16), Item.get(121), Item.get(42), Item.get(89)};
+        this.items.put("blocks", blocks);
+        Item[] armor = {Item.get(298), Item.get(300), Item.get(301), Item.get(303).setCustomName("§r§eChestplate lvl1"), Item.get(303).setCustomName("§r§eChestplate lvl2"), Item.get(303).setCustomName("§r§eChestplate lvl3")};
+        this.items.put("armor", armor);
+        Item[] pickaxes = {Item.get(270).setCustomName("§r§eKrumpac lvl1"), Item.get(274).setCustomName("§r§eKrumpac lvl2"), Item.get(257).setCustomName("§r§eKrumpac lvl3")};
+        this.items.put("pickaxes", pickaxes);
+        Item[] swords = {Item.get(283).setCustomName("§r§eMec lvl1"), Item.get(283).setCustomName("§r§eMec lvl2"), Item.get(267).setCustomName("§r§eMec lvl3")};
+        this.items.put("swords", swords);
+        Item[] bows = {Item.get(261), Item.get(261), Item.get(261), Item.get(262)};
+        this.items.put("bows", bows);
+        Item[] food = {Item.get(260).setCustomName("§r§eLuk lvl1"), Item.get(320).setCustomName("§r§eLuk lvl2"), Item.get(354).setCustomName("§r§eLuk lvl3")};
+        this.items.put("food", food);
+        Item[] chests = {Item.get(54)};
+        this.items.put("chests", chests);
+        Item[] potions = {Item.get(373, 21), Item.get(373, 22), Item.get(373, 14), Item.get(373, 29), Item.get(373, 31)};
+        this.items.put("potions", potions);
+        Item[] special = {Item.get(30), /*Item.get(19).setCustomName("§r§eLuckyBlock"),*/ Item.get(332).setCustomName("§r§bEnderperla")};
+        this.items.put("special", special);
+        Item[] tokens = {Item.get(276), Item.get(45), Item.get(278), Item.get(49), Item.get(310), Item.get(311), Item.get(312),Item.get(313)};
+        this.items.put("tokens", tokens);
+
+        Enchantment prt = Enchantment.getEnchantment(0);
+        prt.setLevel(1);
+        this.items.get("armor")[3].addEnchantment(prt);
+        prt.setLevel(2);
+        this.items.get("armor")[4].addEnchantment(prt);
+        prt.setLevel(3);
+        this.items.get("armor")[5].addEnchantment(prt);
+        Enchantment efc = Enchantment.getEnchantment(15);
+        efc.setLevel(1);
+        this.items.get("pickaxes")[0].addEnchantment(efc);
+        this.items.get("pickaxes")[1].addEnchantment(efc);
+        this.items.get("pickaxes")[2].addEnchantment(efc);
+        Enchantment shrp = Enchantment.getEnchantment(9);
+        shrp.setLevel(1);
+        this.items.get("swords")[0].addEnchantment(shrp);
+        shrp.setLevel(2);
+        this.items.get("swords")[1].addEnchantment(shrp);
+        this.items.get("swords")[2].addEnchantment(shrp);
+        Enchantment unbr = Enchantment.getEnchantment(17);
+        this.items.get("armor")[3].addEnchantment(unbr);
+        this.items.get("armor")[4].addEnchantment(unbr);
+        this.items.get("armor")[5].addEnchantment(unbr);
+        this.items.get("pickaxes")[0].addEnchantment(unbr);
+        this.items.get("pickaxes")[1].addEnchantment(unbr);
+        this.items.get("pickaxes")[2].addEnchantment(unbr);
+        this.items.get("swords")[0].addEnchantment(unbr);
+        this.items.get("swords")[1].addEnchantment(unbr);
+        this.items.get("swords")[2].addEnchantment(unbr);
+        Enchantment inf = Enchantment.getEnchantment(22);
+        inf.setLevel(1);
+        for (Item i : this.items.get("bows")){
+            i.addEnchantment(inf);
+        }
+        Enchantment pow = Enchantment.getEnchantment(19);
+        pow.setLevel(1);
+        this.items.get("bows")[0].addEnchantment(pow);
+        pow.setLevel(2);
+        this.items.get("bows")[1].addEnchantment(pow);
+        this.items.get("bows")[2].addEnchantment(pow);
+        Enchantment pun = Enchantment.getEnchantment(20);
+        pun.setLevel(1);
+        this.items.get("bows")[2].addEnchantment(pun);
+    }
+
+    public void registerWindows(){
+
+    }
+
+    private Item setCount(Item i, int count){
+        i.setCount(count);
+        return i;
+    }
+
+    public void openShop(Player p){
+        if (this.isShopping(p)){
+            return;
+        }
+        PlayerInventory inv = p.getInventory();
+        this.inv.put(p.getName().toLowerCase(), new VirtualInventory(p));
+        this.win.put(p.getName().toLowerCase(), "main");
+        this.setContents(inv, "main");
+        p.sendMessage(BedWars.getPrefix() + "§aPro obchodování otevri svuj inventar");
+    }
+    
+    public void setContents(PlayerInventory inv, String where){
+        inv.clearAll();
+        HashMap<Integer, Item> it = new HashMap<>();
+        int c = 0;
+        for (Item i : this.items.get(where)){
+            it.put(c, i);
+            c++;
+        }
+        it.put(26, Item.get(35, 14));
+        for (int a = 0; a <= 9; a++){
+            inv.setHotbarSlotIndex(a, 34);
+        }
+        inv.setContents(it);
+    }
+
+    public void buy(Player p, Item item, PlayerItemHeldEvent e, int slot){
+        if (!this.isShopping(p) || item.getId() == Item.AIR || item.getCount() <= 0){
+            return;
+        }
+        String n = p.getName().toLowerCase();
+        PlayerInventory inv = p.getInventory();
+        String window = this.win.get(n);
+        int id = item.getId();
+        switch (window){
+            case "main":
+                switch (id){
+                    case 24:
+                        this.win.put(n, "blocks");
+                        this.setContents(inv, "blocks");
+                        break;
+                    case 303:
+                        this.win.put(n, "armor");
+                        this.setContents(inv, "armor");
+                        break;
+                    case 274:
+                        this.win.put(n, "pickaxes");
+                        this.setContents(inv, "pickaxes");
+                        break;
+                    case 283:
+                        this.win.put(n, "swords");
+                        this.setContents(inv, "swords");
+                        break;
+                    case 261:
+                        this.win.put(n, "bows");
+                        this.setContents(inv, "bows");
+                        break;
+                    case 260:
+                        this.win.put(n, "food");
+                        this.setContents(inv, "food");
+                        break;
+                    case 54:
+                        this.win.put(n, "chest");
+                        Item[] z = {this.items.get("chests")[0], Item.get(265).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(z, inv);
+                        break;
+                    case 373:
+                        this.win.put(n, "potions");
+                        this.setContents(inv, "potions");
+                        break;
+                    case 46:
+                        this.win.put(n, "special");
+                        this.setContents(inv, "special");
+                        break;
+                    case 175:
+                        this.win.put(n, "tokens");
+                        this.setContents(inv, "tokens");
+                        break;
+                    case 35:
+                        if (item.getDamage() == 14){
+                            this.unsetPlayer(p);
+                        }
+                        break;
+                }
+                break;
+            case "blocks":
+                switch (slot){
+                    case 0:
+                        this.win.put(n, "sandstone");
+                        Item[] it = {Item.get(24, 2, 2), Item.get(336).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(it, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "sandstone16");
+                        Item[] b = {Item.get(24, 2, 16), Item.get(336, 0, 8).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "endstone");
+                        Item[] c = {this.items.get("blocks")[1], Item.get(336, 0, 7).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(c, inv);
+                        break;
+                    case 3:
+                        this.win.put(n, "ironblock");
+                        Item[] d = {this.items.get("blocks")[2], Item.get(265).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 4:
+                        this.win.put(n, "glowstone");
+                        Item[] f = {Item.get(89, 0, 4), Item.get(336, 0, 4).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(f, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "armor":
+                int c = this.plugin.getPlayerColor(p);
+                switch (slot){
+                    case 0:
+                        this.win.put(n, "helmet");
+                        Item[] a = {this.setCustomColor(this.items.get("armor")[0], c), Item.get(336).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "leggings");
+                        Item[] b = {this.setCustomColor(this.items.get("armor")[1], c), Item.get(336).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "boots");
+                        Item[] d = {this.setCustomColor(this.items.get("armor")[0], c), Item.get(336).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 3:
+                        this.win.put(n, "chestplate1");
+                        Item[] f = {this.items.get("armor")[3], Item.get(265).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(f, inv);
+                        break;
+                    case 4:
+                        this.win.put(n, "chestplate2");
+                        Item[] g = {this.items.get("armor")[4], Item.get(265, 0, 3).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(g, inv);
+                        break;
+                    case 5:
+                        this.win.put(n, "chestplate1");
+                        Item[] h = {this.items.get("armor")[5], Item.get(265, 0, 7).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(h, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "pickaxes":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "pickaxe1");
+                        Item[] a = {this.items.get("pickaxes")[0], Item.get(336, 0, 3).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "pickaxe2");
+                        Item[] b = {this.items.get("pickaxes")[1], Item.get(265, 0, 2).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "pickaxe3");
+                        Item[] d = {this.items.get("pickaxes")[2], Item.get(266).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "swords":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "sword1");
+                        Item[] a = {this.items.get("swords")[0], Item.get(265).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "sword2");
+                        Item[] b = {this.items.get("swords")[1], Item.get(265, 0, 3).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "sword3");
+                        Item[] d = {this.items.get("swords")[2], Item.get(266, 0, 5).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "bows":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "bow1");
+                        Item[] a = {this.items.get("bows")[0], Item.get(266, 0, 3).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "bow2");
+                        Item[] b = {this.items.get("bows")[1], Item.get(266, 0, 7).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "bow3");
+                        Item[] d = {this.items.get("bows")[2], Item.get(266, 0, 12).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 3:
+                        this.win.put(n, "arrow");
+                        Item[] f = {this.items.get("bows")[3], Item.get(266).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(f, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "food":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "apple");
+                        Item[] a = {this.items.get("food")[0], Item.get(336).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "porkchop");
+                        Item[] b = {this.items.get("food")[1], Item.get(336, 0, 2).setCustomName("§r§6Bronz")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "cake");
+                        Item[] d = {this.items.get("food")[2], Item.get(265).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "potions":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "healingI");
+                        Item[] a = {this.items.get("potions")[0], Item.get(265, 0, 3).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "healingII");
+                        Item[] b = {this.items.get("potions")[1], Item.get(265, 0, 5).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "speedI");
+                        Item[] d = {this.items.get("potions")[2], Item.get(265, 0, 7).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 3:
+                        this.win.put(n, "regenerationI");
+                        Item[] f = {this.items.get("potions")[3], Item.get(266, 0, 3).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(f, inv);
+                        break;
+                    case 4:
+                        this.win.put(n, "strenghtI");
+                        Item[] g = {this.items.get("potions")[4], Item.get(266, 0, 8).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(g, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "special":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "cobweb");
+                        Item[] a = {this.items.get("special")[0], Item.get(265, 0, 4).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(a, inv);
+                        break;
+                    /*case 1:
+                        this.win.put(n, "luckyblock");
+                        Item[] b = {this.items.get("special")[1], Item.get(265, 0, 5).setCustomName("§r§7Zelezo")};
+                        this.openBuyWindow(b, inv);
+                        break;*/
+                    case /*2*/1:
+                        this.win.put(n, "enderperla");
+                        Item[] d = {this.items.get("special")[/*2*/1], Item.get(266, 0, 13).setCustomName("§r§eZlato")};
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            case "tokens":
+                switch(slot){
+                    case 0:
+                        this.win.put(n, "diaSword");
+                        Item[] a = {this.items.get("tokens")[0], Item.get(264, 0, 30).setCustomName("§r§b300 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 300 tokenu");
+                        this.openBuyWindow(a, inv);
+                        break;
+                    case 1:
+                        this.win.put(n, "bricks");
+                        Item[] b = {this.items.get("tokens")[1], Item.get(264, 0, 10).setCustomName("§r§b100 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 100 tokenu");
+                        this.openBuyWindow(b, inv);
+                        break;
+                    case 2:
+                        this.win.put(n, "diaPickaxe");
+                        Item[] d = {this.items.get("tokens")[2], Item.get(264, 0, 50).setCustomName("§r§b500 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 500 tokenu");
+                        this.openBuyWindow(d, inv);
+                        break;
+                    case 3:
+                        this.win.put(n, "obsidian");
+                        Item[] f = {this.items.get("tokens")[3], Item.get(264, 0, 20).setCustomName("§r§b200 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 200 tokenu");
+                        this.openBuyWindow(f, inv);
+                        break;
+                    case 4:
+                        this.win.put(n, "diaHelmet");
+                        Item[] g = {this.items.get("tokens")[4], Item.get(264, 0, 25).setCustomName("§r§b250 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 250 tokenu");
+                        this.openBuyWindow(g, inv);
+                        break;
+                    case 5:
+                        this.win.put(n, "diaChest");
+                        Item[] h = {this.items.get("tokens")[5], Item.get(264, 0, 40).setCustomName("§r§b400 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 400 tokenu");
+                        this.openBuyWindow(h, inv);
+                        break;
+                    case 6:
+                        this.win.put(n, "diaLeggings");
+                        Item[] i = {this.items.get("tokens")[6], Item.get(264, 0, 35).setCustomName("§r§b350 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 350 tokenu");
+                        this.openBuyWindow(i, inv);
+                        break;
+                    case 7:
+                        this.win.put(n, "diaBoots");
+                        Item[] j = {this.items.get("tokens")[7], Item.get(264, 0, 20).setCustomName("§r§b200 Tokenu")};
+                        p.sendPopup(BedWars.getPrefix() + "§bTento item stojí 200 tokenu");
+                        this.openBuyWindow(j, inv);
+                        break;
+                    case 26:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                }
+                break;
+            default:
+                switch(id){
+                    case 35:
+                        this.setContents(inv, "main");
+                        this.win.put(n, "main");
+                        break;
+                    case 336:
+                    case 264:
+                    case 265:
+                    case 266:
+                        break;
+                    default:
+                        this.clickItem(p, item, inv.getItem(2));
+                }
+        }
+    }
+
+    public Item setCustomColor(Item i, int c){
+        CompoundTag tag;
+        if (!i.hasCompoundTag()){
+            tag = new CompoundTag();
+        }
+        else {
+            tag = i.getNamedTag();
+        }
+        tag.putInt("customColor", c);
+        i.setNamedTag(tag);
+        return i;
+    }
+
+    public void openBuyWindow(Item[] items, PlayerInventory inv){
+        inv.clearAll();
+        inv.setItem(0, items[0]);
+        inv.setItem(2, items[2]);
+        inv.setItem(26, Item.get(35, 14, 1));
+        for (int i = 0; i <= 9; i++){
+            inv.setHotbarSlotIndex(i, 34);
+        }
+        inv.sendContents((Player) inv.getHolder());
+    }
+
+    public void clickItem(Player p, Item buyItem, Item costItem){
+        VirtualInventory inv = this.inv.get(p.getName().toLowerCase());
+        if (costItem.getId() == 264){
+            int price = 10*(costItem.getCount());
+            new ShopManagerDisplay(this.plugin.plugin, p.getName(), price, buyItem.getId());
+            return;
+        }
+        if (inv.contains(costItem)){
+            inv.removeItem(costItem);
+            inv.addItem(buyItem);
+            p.sendPopup(BedWars.getPrefix() + "§aZakoupeno " + buyItem.getName());
+            return;
+        }
+        p.sendPopup(BedWars.getPrefix() + "§cNemas dost " + costItem.getName() + "pro koupeni" + buyItem.getName());
+    }
+
+    public boolean isShopping(Player p){
+        return this.win.containsKey(p.getName().toLowerCase());
+    }
+
+    public void unsetPlayer(Player p){
+        if (p.isOnline()){
+            VirtualInventory cv = this.inv.get(p.getName().toLowerCase());
+            PlayerInventory inv = p.getInventory();
+            inv.clearAll();
+            inv.setContents(cv.getContents());
+            inv.setArmorContents(cv.armor);
+            for (int i = 0; i <= 9; i++){
+                inv.setHotbarSlotIndex(cv.hotbar[i], i);
+            }
+        }
+        this.inv.remove(p.getName().toLowerCase());
+        this.win.remove(p.getName().toLowerCase());
+    }
+
+
+}

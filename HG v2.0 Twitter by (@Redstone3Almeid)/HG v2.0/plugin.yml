@@ -1,0 +1,22 @@
+name: HG
+main: SliceKits\Loader
+version: 1
+api: 2.0.0
+author: RedstoneAlmeida
+
+commands:
+    kit:
+      description: KitCommand
+      default: true
+    hgstart:
+      description: Start Command
+      default: op
+    forcestart:
+      description: Start Command
+      default: op
+    nicker:
+      description: Start Command
+      default: op
+    stats:
+      description: Start Command
+      default: true

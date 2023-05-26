@@ -1,0 +1,167 @@
+---
+Player:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - -pocketmine.command.me
+  - kits.kit.start
+  - kits.list
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.list
+  - simpleauth.command.login
+  - simpleauth.command.register
+  worlds: []
+Admin:
+  inheritance:
+  - Player
+  - Premium
+  - Vip
+  - Vip+
+  - Бог
+  permissions:
+  - essentials.gamemode
+  - pocketmine.broadcast
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds: []
+Operator:
+  inheritance:
+  - Player
+  - Vip
+  - Vip+
+  - Admin
+  - Premium
+  permissions:
+  - morecommands.freeze
+  - morecommands.mute
+  - morecommands.unfreeze
+  - morecommands.unmute
+  - pocketmine.command.ban
+  - pocketmine.command.banip
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - rg
+  - scl.scl
+  - sclearlogg
+  - wea
+  worlds: ~
+Владелец:
+  inheritance:
+  - Player
+  - Admin
+  - Premium
+  - Vip
+  - Vip+
+  - Бог
+  - ProAdmin
+  - Helper
+  - Креатив
+  permissions:
+  - '*'
+  - pocketmine. command
+  worlds: ~
+Vip:
+  inheritance:
+  - Player
+  permissions:
+  - fly
+  - kits.kit.vip
+  - pocketmine.command.heal
+  - pocketmine.command.kick
+  - save.inv
+  worlds: ~
+Креатив:
+  inheritance:
+  - Player
+  - Player+
+  permissions:
+  - pocketmine.command.gamemode.other
+  worlds: ~
+Vip+:
+  inheritance:
+  - Player
+  - Vip
+  - Креатив
+  permissions:
+  - pocketmine.command.back
+  - pocketmine.command.gamemode
+  - pocketmine.command.repair
+  worlds: ~
+Premium:
+  inheritance:
+  - Player
+  - Vip
+  - Vip+
+  - Креатив
+  permissions:
+  - pocketmine.command.gamemode
+  - pocketmine.command.heal.other
+  - pocketmine.command.repair.other
+  - pocketmine.command.teleporte
+  - pocketmine.command.time
+  worlds: ~
+ProAdmin:
+  inheritance:
+  - Player
+  - Premium
+  - Vip
+  - Vip+
+  - Player+
+  permissions:
+  - essentials.gamemode
+  - pocketmine.broadcast
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds: ~
+Player+:
+  inheritance:
+  - Player
+  permissions:
+  - pchat.colored
+  - pchat.colored.chat
+  worlds: ~
+Бог:
+  inheritance:
+  - Player
+  - Vip
+  permissions:
+  - fly
+  - kits.kit.vip
+  - kits.kit.бог
+  - megapickaxe.use
+  worlds: ~
+Operator+:
+  inheritance:
+  - Player
+  - Admin
+  - Premium
+  - Vip
+  - Vip+
+  - Бог
+  - ProAdmin
+  - Helper
+  - Креатив
+  permissions: ~
+  worlds: ~
+Owner:
+  inheritance:
+  - Player
+  - Admin
+  - Premium
+  - Vip
+  - Vip+
+  - Бог
+  - ProAdmin
+  - Helper
+  - Креатив
+  permissions:
+  - '*'
+  worlds: ~
+...

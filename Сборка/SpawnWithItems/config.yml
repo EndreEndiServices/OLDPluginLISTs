@@ -1,0 +1,7 @@
+# Config file for SpawnWithItems by LDX;
+
+# List of items to give players when they spawn; Format: ID:Damage:Amount
+items:
+- "272:0:1"
+- "17:0:16"
+- "364:0:5"

@@ -1,0 +1,30 @@
+main: Richen\Economy\Economy
+version: 0.0.5
+api:
+- 1.14.0
+- 2.0.0
+load: STARTUP
+
+name: Economy
+author: Richen
+website: http://vk.com/richen
+
+commands:
+  seemoney:
+    description: "Проверить баланс игрока"
+    aliases: [smoney, checkmoney, sm]
+  pay:
+    description: "Передать игроку кредиты"
+    aliases: [paymoney]
+  money:
+    description: "Проверить свой баланс"
+    aliases: [mymoney, mm, moneys, balance, bal, mon]
+  takemoney:
+    description: "Забрать кредиты у игрока"
+    aliases: [tmoney, removemoney]
+  addmoney:
+    description: "Выдать кредиты игроку"
+    aliases: [givemoney, gmoney, moneyadd]
+  topmoney:
+    description: "Топ богатыъ игроков"
+    aliases: [tm, topm]

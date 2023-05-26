@@ -1,0 +1,6 @@
+name: MyPEShop
+main: rus_inc\MyPEShop\Shop
+author: rus_inc
+load: POSTWORLD
+version: 1.3 - release
+api: [1.0.0]

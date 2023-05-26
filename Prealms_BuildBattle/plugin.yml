@@ -1,0 +1,14 @@
+name: Prealms_BuildBattle
+main: Kai\BB
+api: [1.0.0, 2.0.0]
+version: 1.3.0
+author: DragonPlayzMC
+
+commands:
+    bb:
+        usage: /bb <make>
+        description: CreateGame
+permissions:
+    bb.op:
+        default: op
+  

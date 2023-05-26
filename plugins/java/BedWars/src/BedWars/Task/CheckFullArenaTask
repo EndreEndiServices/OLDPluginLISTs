@@ -1,0 +1,52 @@
+package BedWars.Task;
+
+import BedWars.Arena.Arena;
+import BedWars.BedWars;
+import MTCore.Mysql.AsyncQuery;
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.plugin.Plugin;
+
+import java.util.HashMap;
+
+public class CheckFullArenaTask extends AsyncQuery{
+
+    public CheckFullArenaTask(BedWars plugin, String player){
+        this.player = player;
+
+        plugin.getServer().getScheduler().scheduleAsyncTask(this);
+    }
+
+    @Override
+    public void onQuery(HashMap<String, Object> data){
+        this.setResult(data.get("rank"));
+    }
+
+    @Override
+    public void onCompletion(Server server){
+
+        Player p = server.getPlayer(this.player);
+        if (!p.isOnline()){
+            return;
+        }
+
+        Plugin pl = server.getPluginManager().getPlugin("BedWars");
+        if (!(pl instanceof BedWars)){
+            return;
+        }
+        BedWars plug = (BedWars) pl;
+        Object a = plug.getPlayerArena(p);
+        if (!(a instanceof Arena)){
+            return;
+        }
+        Arena arena = (Arena) a;
+
+        if (!(this.getResult().equals("hrac"))){
+            arena.joinToArena(p);
+        }
+        else {
+            p.sendMessage(BedWars.getPrefix() + "§cArena is full");
+        }
+    }
+
+}

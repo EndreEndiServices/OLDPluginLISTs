@@ -1,0 +1,32 @@
+name: SafeCreative
+version: 1.0
+api: 1.12.0
+main: safecreative\Main
+author: CreeperFace
+description: turn on creative for VIP players!
+
+commands:
+    creative:
+        description: "turn on safe creative"
+        permission: sc.creative
+    survival:
+        description: "turn off safe creative"
+        permission: sc.survival
+permissions:
+    sc:
+        description: "main permission"
+        default: op
+        children:
+            sc.command:
+                description: "allows use all SC commands"
+                default: op
+                children:
+                    sc.command.creative:
+                        description: "creative permission"
+                        default: op
+                    sc.command.survival:
+                        description: "survival permission"
+                        default: op
+            sc.save:
+                description: "all blocks placed by player with this perms don´t drop items"
+                default: 

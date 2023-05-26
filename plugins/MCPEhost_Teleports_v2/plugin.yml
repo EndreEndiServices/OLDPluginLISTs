@@ -1,0 +1,113 @@
+﻿name: MCPEhost_Teleports
+main: essentialsTP\essentialsTP
+version: 2.0
+api: [1.0.0]
+commands:
+ home:
+  description: Телепортироваться в точку дома .
+  usage: "/home"
+  permission: essentialstp.command.home
+ sethome:
+  description: Установить точку дома .
+  usage: "/sethome название"
+  permission: essentialstp.command.sethome
+ delhome:
+  description: Удалить точку дома .
+  usage: "/delhome название"
+  permission: essentialstp.command.delhome
+ back:
+  description: Вернуться на на место последней смерти .
+  usage: "/back"
+  permission: essentialstp.command.back
+ wild:
+  description: Телепорт в случайное место .
+  usage: "/wild"
+  permission: essentialstp.command.wild
+ setspawn:
+  description: Установить точку возрождения .
+  usage: "/setspawn"
+  permission: essentialstp.command.setspawn
+ spawn:
+  description: Вернуться на точку возрождения .
+  usage: "/spawn"
+  permission: essentialstp.command.spawn
+ warp:
+  description: Телепортироваться на варп .
+  usage: "/warp название"
+  permission: essentialstp.command.tpahere
+ setwarp:
+  description: Установить точку варпа .
+  usage: "/setwarp название"
+  permission: essentialstp.command.setwarp
+ delwarp:
+  description: Удалить точку варпа .
+  usage: "/delwarp название"
+  permission: essentialstp.command.delwarp
+ tpa:
+  description: Отправить запрос на телепортацию .
+  usage: "/tpa ник"
+  permission: essentialstp.command.tpa
+ tpahere:
+  description: Отправить запрос на телепортацию к себе .
+  usage: "/tpahere ник"
+  permission: essentialstp.command.tpahere
+ tpaccept:
+  description: Принять запрос на телепортацию .
+  usage: "/tpaccept"
+  permission: essentialstp.command.tpaccept
+ tpdeny:
+   description: Отклонить запрос на телепортацию .
+   usage: "/tpdeny"
+   permission: essentialstp.command.tpdeny
+
+permissions:
+ essentialstp:
+  default: op
+  description: "Will allow all essentialsTP commands"
+  children:
+   essentialstp.command:
+    description: "Will allow you to use commands"
+    default: op 
+    children:
+     essentialstp.command.tpdeny:
+      description: "Allows player to decline request"
+      default: true
+     essentialstp.command.tpaccept:
+      description: "Allows player to accept request"
+      default: true
+     essentialstp.command.tpahere:
+      description: "Allows player to teleport player to them"
+      default: true
+     essentialstp.command.tpa:
+      description: "Allows player to teleport to another player"
+      default: true
+     essentialstp.command.delwarp:
+      description: "Allows player to delete warps"
+      default: op
+     essentialstp.command.setwarp:
+      description: "Allows player to set warps"
+      default: op
+     essentialstp.command.warp:
+      description: "Allows player use warps"
+      default: true
+     essentialstp.command.setspawn:
+      description: "Allows player to set spawn for world"
+      default: op
+     essentialstp.command.spawn:
+      description: "Allows player use spawn command"
+      default: true
+     essentialstp.command.wild:
+      description: "Allows player to teleport to a random location in world"
+      default: true
+     essentialstp.command.back:
+      description: "Allows player go back to there last death location"
+      default: op 
+     essentialstp.command.delhome:
+      description: "Allows player to delete thier homes"
+      default: true
+     essentialstp.command.sethome:
+      description: "Allows player to set there homes"
+      default: true
+     essentialstp.command.home:
+      description: "Allows player to use the home command"
+      default: true

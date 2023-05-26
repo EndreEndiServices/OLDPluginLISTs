@@ -1,0 +1,29 @@
+---
+titleStat: '[a§aTop§bPlayers§f] §9Статистика игрока {player}:'
+userNotExist: '[a§aTop§bPlayers§f] §eТакого игрока нет'
+
+
+# !!! ВНИМАНИЕ !!!
+# Если менять значения count - тогда ОБЯЗАТЕЛЬНО изменять Y таблицы в большую сторону в списке ниже (coords)
+killTitle: '§bЛучшие убийцы сервера:'
+killElement: '{player} - убил {value}'
+killCount: 5 # Количество игроков
+
+deathTitle: '§bСуицидники сервера:'
+deathElement: '{player} - умер {value} раз'
+deathCount: 5 # Количество игроков
+
+breakTitle: '§bБольше всех ломали:'
+breakElement: '{player} - {value}'
+breakCount: 5 # Количество игроков
+
+placeTitle: '§bБольше всех строили:'
+placeElement: '{player} - {value}'
+placeCount: 5 # Количество игроков
+
+# Период автоматического обновления. По умолчанию: 300
+# В СЕКУНДАХ
+autoUpdate: 300
+
+coords: []
+...

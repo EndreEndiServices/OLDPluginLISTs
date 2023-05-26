@@ -1,0 +1,18 @@
+name: SAA
+main: Sergey_Dertan\SAutoMine\SAutoMineMainFolder\SAutoMineMain
+load: STARTUP
+version: Alpha_0.1
+author: Sergey_Dertan
+api: 1.8.0
+commands:
+ sam:
+  description: "Команды SAutoMine"
+  permission: sam.sam
+permissions:
+ sautomine:
+  description: "Максимальные права"
+  default: op
+  children:
+   sam.sam:
+    default: op
+    description: "Разрешить управлять авто шахтой"

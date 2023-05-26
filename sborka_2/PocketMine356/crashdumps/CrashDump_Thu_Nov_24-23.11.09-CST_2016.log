@@ -1,0 +1,79 @@
+ClearSky Crash Dump Thu Nov 24 23:11:09 CST 2016
+
+Error: syntax error, unexpected '}'
+File: myzip:///FinecraftRegister.zip#FinecraftRegister/src/Auth/Auth
+Line: 169
+Type: E_PARSE
+
+THIS CRASH WAS CAUSED BY A PLUGIN
+
+Code:
+[160] 	public function Sprint(PlayerToggleSprintEvent $e) {
+[161] 		$player = $e->getPlayer();
+[162] 		if($this->authSession[$player->getName()]) {
+[163] 			$e->setCancelled();
+[164] 			if($this->getData($player->getName(), "password") == null) {
+[165] 				$player->sendMessage("");
+[166] 			} else {
+[167] 				$player->sendMessage(");
+[168] 			}
+[169] "		}
+[170] 	}
+[171] 	
+[172] 	
+[173] 	
+[174]     public function saveData($playerName, $tip, $data) {
+[175]       	$sFile = (new Config($this->getDataFolder() . "players/".$playerName.".yml", Config::YAML))->getAll();
+[176]         $sFile[$tip] = $data;
+[177]       	$fFile = new Config($this->getDataFolder() . "players/".$playerName.".yml", Config::YAML);
+[178]         $fFile->setAll($sFile);
+[179]      	$fFile->save();
+
+Backtrace:
+#0 (): pocketmine\Server->crashDump(boolean)
+
+ClearSky version: 1.1 #CuttingEdge [Protocol 81; API 1.13.1]
+uname -a: Linux localhost 3.4.5 #1 SMP PREEMPT Fri Jul 4 16:39:38 CST 2014 armv7l
+PHP Version: 5.6.2
+Zend version: 2.6.0
+OS : Linux, android
+
+Loaded plugins:
+SW_svile 0.6 by svile for API(s) 1.13.0
+GamemodeMaster 2.1 by TheMarkosPlay for API(s) 1.0.0
+SWorldEditor Beta_1.5 by Sergey_Dertan for API(s) 1.8.0
+NoCreativeDamage 1.0 by  for API(s) 1.12.0
+MegaPickaxe 0.1 by MCYasha for API(s) 1.12.0
+KillPleaSe Final by RogVaLoT for API(s) 1.12.0
+HotBarInfo 1.0.0 by Pub4Game for API(s) 1.0.0
+Passport 1 by MrGenga for API(s) 1.12.0, 2.0.0
+RandomGroup 0.2 TRIAL by AutoRacing for API(s) 1.12.0
+Kits 1.1 by MamayAdesu for API(s) 1.12.0
+NPC 1.3.1 by onebone for API(s) 1.13.0, 2.0.0
+CustomAlerts 1.9 by EvolSoft for API(s) 1.12.0
+ExtraHealth 0.1-BETA by Syntaxious for API(s) 1.13.0, 2.0.0
+ClearChat 0.0.1 by Richen for API(s) 1.12.0
+BasicPlugin 1.0.0 by DylanAlexandre for API(s) 1.2.0
+Coffee 1 by  for API(s) 1.0.0, 2.0.0
+EconomyJob 2.0.3 by onebone for API(s) 1.0.0, 1.1.0, 1.2.0, 1.2.1, 1.3.0, 1.3.1, 1.4.0, 1.4.1
+VoteBan 1.0.3 by GmWM for API(s) 1.12.0
+DamageIndicator 1 by CreeperFace for API(s) 1.12.0
+DevTools 1.10.0 by PocketMine Team for API(s) 1.3.1
+AntiPiar 1 by TheMaks for API(s) 1.12.0
+Broadcaster 1.15 by EvolSoft for API(s) 1.11.0
+BlockID Final by MCYasha for API(s) 1.12.0
+ZipPluginLoader 1.1.2 by aliuly for API(s) 1.10.0
+TapToDo 2.2.1 by Falk for API(s) 1.0.0
+TAGBlock 0.8-Alpha by ifteam for API(s) 1.13.0, 2.0.0
+ServerAuth 2.13 by EvolSoft for API(s) 1.11.0
+PurePerms 1.2.2 by 64FF00 for API(s) 1.12.0
+ProtectionAreas 1.0.0 by TopPlugins for API(s) 1.6.0
+FactionsPro 1.4 by PluginPE for API(s) 1.12.0
+ClearLagg Beta_0.2 by Sergey_Dertan for API(s) 1.8.0
+BloodFX 1.0.0 by hoyinm14mc & CyberCube-HK Team for API(s) 1.12.0
+BanItem 2.1 by LDX for API(s) 1.0.0
+SAutoMine Alpha_0.1 by Sergey_Dertan for API(s) 1.8.0
+AntiSpam_Final 0.2 by Mafia for API(s) 1.7.0
+PiarNOP 1.2.3 by vk.com/plugin_pe for API(s) 1.0.0
+AntiChat 1.0 by flabberfish for API(s) 1.0.0
+PureChat 1.3.3 by 64FF00 for API(s) 1.11.0

@@ -1,0 +1,22 @@
+---
+version: 1.1.1
+'# settings': Configuration settings
+settings:
+  '# global': If true all worlds share the same NetherChest
+  global: false
+  '# particles': Decorate NetherChests...
+  particles: true
+  '# p-ticks': Particle ticks
+  p-ticks: 20
+  '# base-block': Block to use for the base
+  base-block: NETHERRACK
+'# backend': Use YamlMgr or MySqlMgr
+backend: YamlMgr
+'# MySql': MySQL settings.
+MySql:
+  host: localhost
+  user: nobody
+  password: secret
+  database: netherchestdb
+  port: 3306
+...

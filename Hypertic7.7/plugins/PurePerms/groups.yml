@@ -1,0 +1,271 @@
+---
+guest:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - -essentials.kit
+  - -essentials.kit.other
+  - -pocketmine.command.me
+  - VIP
+  - battlekits.use.archer
+  - battlekits.use.beatrice
+  - battlekits.use.brawler
+  - battlekits.use.ezeron
+  - battlekits.use.fighter
+  - battlekits.use.hardcore
+  - battlekits.use.knight
+  - battlekits.use.ninja
+  - battlekits.use.peacemaker
+  - battlekits.use.rookie
+  - battlekits.use.spartan
+  - battlekits.use.thief
+  - battlekits.use.warrior
+  - battlekits.use.zeus
+  - mcpemmo.stats
+  - mw.cmd.tp
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - playnoteblocksong1.cmd1.play1
+  - pocketmine.command.list
+  - pperms.command.ppinfo
+  - timeranks
+  - timeranks.command
+  worlds: []
+member:
+  isDefault: false
+  inheritance:
+  - guest
+  permissions:
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd*
+  - playnoteblocksong.cmd.*
+  - timeranks.exempt
+  worlds: []
+user:
+  isDefault: false
+  inheritance:
+  - guest
+  permissions:
+  - -seeId
+  - battlekits.use.brawler
+  - battlekits.use.ezeron
+  - battlekits.use.knight
+  - mw.cmd.tp.mario
+  - timeranks
+  - timeranks.command
+  worlds: []
+gamer:
+  isDefault: false
+  inheritance:
+  - guest
+  permissions:
+  - battlekits.use.brawler
+  - battlekits.use.ezeron
+  - battlekits.use.heavy
+  - playnotblocksong.cmd.next
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd.*
+  - playnoteblocksong.cmd.next
+  - playnoteblocksong.cmd.play
+  - playnoteblocksong.cmd.prev
+  - playnoteblocksong.cmd.stop
+  - timeranks.command
+  worlds: []
+admin:
+  isDefault: false
+  inheritance:
+  - mod
+  - guest
+  permissions:
+  - -broadcast.admin
+  - -seeId
+  - -slapper.seeId
+  worlds: []
+helper:
+  isDefault: false
+  inheritance:
+  - guest
+  permissions:
+  - -seeId
+  - mw.cmd.tp
+  - mw.cmd.tp.update
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd.*
+  - pocketmine.command.ban-ip
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  worlds: []
+mod:
+  isDefault: false
+  inheritance:
+  - helper
+  - guest
+  permissions:
+  - -seeId
+  - playnoteblocksong.cmd
+  - pocketmine.command.ban
+  - pocketmine.command.ban-ip
+  - pocketmine.command.pardon
+  - pocketmine.command.pardon-ip
+  - pocketmine.command.time
+  - timeranks
+  worlds: []
+senioradmin:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - -broadcast.admin
+  - -seeId
+  - -slapper.seeId
+  worlds: []
+leadadmin:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - -broadcast.admin
+  - -seeId
+  - -slapper.seeId
+  - -slapper.seeid
+  - pchat.colored
+  worlds: []
+owner:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - -broadcast.admin
+  - -seeId
+  - -slapper.seeId
+  - battlekits.use.archer
+  - battlekits.use.beatrice
+  - battlekits.use.ezeron
+  - battlekits.use.fighter
+  - battlekits.use.hardcore
+  - battlekits.use.master
+  - battlekits.use.peacemaker
+  - battlekits.use.rookie
+  - battlekits.use.spartan
+  - battlekits.use.vip
+  - battlekits.use.warrior
+  - pchat.colored
+  - pocketmine.command
+  worlds: []
+vip:
+  isDefault: false
+  inheritance:
+  - guest
+  permissions:
+  - battlekits.use
+  - battlekits.use.master
+  - battlekits.use.vip
+  - mw.cmd.tp
+  - pchat.colored
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd.*
+  - playnoteblocksong.cmd.next
+  - playnoteblocksong.cmd.play
+  - playnoteblocksong.cmd.prev
+  - playnoteblocksong.cmd.stop
+  - pocketmine.command.spawnpoint
+  - timeranks.exempt
+  worlds: []
+Dev:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+OrbitOwner:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+s:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - slapper.hit
+  worlds: []
+youtube:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - -essentials.kit
+  - -essentials.kit.other
+  - -pocketmine.command.me
+  - VIP
+  - battlekits.use.archer
+  - battlekits.use.brawler
+  - battlekits.use.ezeron
+  - battlekits.use.fighter
+  - battlekits.use.hardcore
+  - battlekits.use.heavy
+  - battlekits.use.ninja
+  - battlekits.use.spartan
+  - battlekits.use.thief
+  - battlekits.use.warrior
+  - battlekits.use.zeus
+  - mw.cmd.tp
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd.*
+  - pocketmine.command.gamemode.spectator
+  - pocketmine.command.gamemode.survival
+  - pocketmine.command.list
+  - pperms.command.ppinfo
+  - timeranks
+  - timeranks.command
+  - timeranks.exempt
+  worlds: []
+yt1:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - -essentials.kit
+  - -essentials.kit.other
+  - -pocketmine.command.me
+  - VIP
+  - battlekits.use.archer
+  - battlekits.use.brawler
+  - battlekits.use.ezeron
+  - battlekits.use.fighter
+  - battlekits.use.hardcore
+  - battlekits.use.heavy
+  - battlekits.use.knight
+  - battlekits.use.ninja
+  - battlekits.use.spartan
+  - battlekits.use.thief
+  - battlekits.use.warrior
+  - battlekits.use.zeus
+  - mw.cmd.tp
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd.*
+  - pocketmine.command.gamemode.spectator
+  - pocketmine.command.gamemode.survival
+  - pocketmine.command.list
+  - pperms.command.ppinfo
+  - timeranks
+  - timeranks.command
+  worlds: []
+membervip:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - VIP
+  - battlekits.use
+  - battlekits.use.master
+  - battlekits.use.vip
+  - mw.cmd.tp
+  - pchat.colored
+  - playnoteblocksong.cmd
+  - playnoteblocksong.cmd.*
+  - playnoteblocksong.cmd.next
+  - playnoteblocksong.cmd.play
+  - playnoteblocksong.cmd.prev
+  - playnoteblocksong.cmd.stop
+  - pocketmine.command.spawnpoint
+  - timeranks.exempt
+  worlds: []
+...

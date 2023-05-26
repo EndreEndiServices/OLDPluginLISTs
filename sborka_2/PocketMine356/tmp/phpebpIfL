@@ -1,0 +1,846 @@
+name: SWorldEditor
+main: Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorMain
+api: 1.8.0
+version: Beta_1.5 
+author: Sergey_Dertan
+load: STARTUP
+website: http://vk.com/superator
+commands:
+ /set:
+   permission: swe.set
+   description: "Set blocks"
+ /:
+  aliases: [/help, /sworldeditor, /help]
+  description: "Help of SWorldEditor"
+  permission: swe.help
+ /pos1:
+  description: "Set 1 pos for edit world"
+  permission: swe.pos1
+ /pos2:
+  description: "Set 2 pos for edit world"
+  permission: swe.pos2
+ /reset:
+  description: "Remove selected"
+  permission: swe.reset
+ /wand:
+  description: "Get item for select area"
+  permission: swe.reset
+ /expand:
+  description: "Expand selected"
+  permission: swe.expand
+ /replace:
+  description: "Replace blocks"
+  permission: swe.replace
+ /size:
+  description: "Get size of selected area"
+  permission: swe.size
+ /copy:
+  description: "Cope selected area"
+  permission: swe.copy
+ /undo:
+  description: "Undo last changes"
+  permission: swe.undo
+ /sell:
+  description: "Clear selected"
+  permission: swe.clear
+ /info:
+  description: "Info of SWorldEditor"
+  permission: swe.info
+ /clear-clipboard:
+  description: "Clear clipboard"
+  permission: swe.clear-clipboard
+ /walls:
+  description: "Create walls"
+  permission: swe.walls
+ /redo:
+  description: "Cancel last redo"
+  permission: swe.redo
+ /set-mult:
+  description: ""
+  permission: swe.set
+ up:
+  description: ""
+  permission: swe.up
+ /limit:
+  description: "Set block change limit"
+  permission: swe.limit
+ /replace-mult:
+  description: ""
+  permission: swe.replace
+ /regen:
+  description: "Regenerate selected area"
+  permission: swe.regen
+ /bugs:
+  description: "Посмотреть известные баги"
+ /bugreport:
+  description: "Оставить отчет о баге"
+
+permissions:
+ sworldeditor:
+  default: op
+  description: "Top permissions of SWorldEditor"
+  children:
+   swe.help:
+    default: true
+    description: "Allow to use command //sworldeditor"
+   swe.set:
+    default: op
+    description: "Allow to use command //set"
+   swe.pos1:
+    default: op
+    description: "Allow to use command //pos1"
+   swe.pos2:
+    default: op
+    description: "Allow to use command //pos2"
+   swe.reset:
+    default: op
+    description: "Allow to use command //reset"
+   swe.wand:
+    default: op
+    description: "Allow to use command //wand"
+   swe.expand:
+    default: op
+    description: "Allow to use command //expand"
+   swe.replace:
+    default: op
+    description: "Allow to use command //replace"
+   swe.size:
+    default: op
+    description: "Allow to use command //size"
+   swe.copy:
+    default: op
+    description: "Allow to use command //copy"
+   swe.undo:
+    default: op
+    description: "Allow to use command //undo"
+   swe.sell:
+    default: op
+    description: "Allow to use command //sell"
+   swe.info:
+    default: true
+    description: "Allow to use command //info"
+   swe.clear-clipboard:
+    default: op
+    description: "Allow to use command //clear-clipboard"
+   swe.walls:
+    default: op
+    description: "Allow to use command //walls"
+   swe.redo:
+    default: op
+    description: "Allow to use commmand //redo"
+   swe.limit:
+    default: op
+    description: "Allow to use command //limit"
+   swe.up:
+    default: op
+    description: "Allow to use command /up"
+   swe.regen:
+    default: op
+    description: "Allow to use command //regen"
+     <?php
+namespace Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder;
+
+use pocketmine\block\Block;
+use pocketmine\command\Command as CMD;
+use pocketmine\command\CommandSender as S;
+use pocketmine\event\Listener as L;
+use pocketmine\item\Item;
+use pocketmine\math\Vector3;
+use pocketmine\Player;
+use pocketmine\plugin\PluginBase as PB;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat as F;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\ClearEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\CopyEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\CreateWallsEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\ExpandEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\GetSizeEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\GetWandItemEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\ReplaceBlocksEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\SetBlocksEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\SetPos1Event;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\SetPos2Event;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\UndoEvent;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\UpEvent;
+
+/*
+ * SWorldEditor
+ * от Sergey Dertan
+ * из Украины
+ * Редактируйте мир вашего сервера легко и быстро!
+ * В финальной версии скорее всего будут все функции WorldEdit,которые есть на PC серверах.
+ * Есть вопросы или предложения?Напишите мне в ВК: http://vk.com/superator , GMail: superator2018@gmail.com или Skype: Sergey44668800
+ */
+
+/*
+ * TODO
+ * Всё что есть в WorldEdit на PC сервера
+ */
+
+/**
+ * Class SWorldEditorMain
+ * @package Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder
+ */
+class SWorldEditorMain extends PB implements L
+{
+    public $config, $pos1, $pos2, $undo, $copy, $redo;
+    private $bugsReports;
+    protected $eventListener;
+
+    function onEnable()
+    {
+        $this->getLogger()->info(F::GREEN . "SWorldEditor V_" . $this->getDescription()->getVersion() . " by Sergey Dertan load!");
+        $this->config = new Config($this->getDataFolder() . "Config.yml", Config::YAML, array(
+            "block-change-limit" => 4000
+        ));
+        $this->bugsReports = new Config($this->getDataFolder() . "BugsReports.yml", Config::YAML, array());
+        $this->eventListener = new SWEEventListener($this);
+        $this->getServer()->getPluginManager()->registerEvents($this->eventListener, $this);
+    }
+
+    /**
+     * @param S $s
+     * @param CMD $cmd
+     * @param string $label
+     * @param array $args
+     * @return bool
+     */
+    function onCommand(S $s, CMD $cmd, $label, array $args)
+    {
+        if ($s instanceof Player) {
+            switch ($cmd->getName()) {
+                case"/help":
+                case"/":
+                    $s->sendMessage(F::YELLOW . " HELP OF SWorldEditor");
+                    $s->sendMessage(F::YELLOW . "  //set - set blocks");
+                    $s->sendMessage(F::YELLOW . "  //clear - remove selected");
+                    $s->sendMessage(F::YELLOW . "  //replace - replace blocks");
+                    $s->sendMessage(F::YELLOW . "  //size - size of selected area");
+                    $s->sendMessage(F::YELLOW . "  //pos1 and //pos2 - set 1 pos or 2 pos");
+                    $s->sendMessage(F::YELLOW . "  //wand - get item for select area");
+                    $s->sendMessage(F::YELLOW . "  //undo - cancel last change");
+                    $s->sendMessage(F::YELLOW . "  //copy - copy selected area");
+                    $s->sendMessage(F::YELLOW . "  //info - info of plugin");
+                    $s->sendMessage(F::YELLOW . "  //clear-clipboard - clear clipboard");
+                    $s->sendMessage(F::YELLOW . "  SWE - SWorldEditor");
+                    return true;
+                    break;
+                case"/wand":
+                    $item = Item::get(292, 0, 1);
+                    $this->getServer()->getPluginManager()->callEvent($e = new GetWandItemEvent($s, $item));
+                    if (!$e->isCancelled()) {
+                        if ($s->getInventory()->canAddItem($item)) {
+                            if ($s->getGamemode() != 1) {
+                                $s->getInventory()->addItem($item);
+                                $s->sendMessage(F::RED . "[SWE] You get item for select area");
+                            } else {
+                                $s->sendMessage(F::RED . "[SWE] You in creative mode!");
+                            }
+                        } else {
+                            $s->sendMessage(F::RED . "[SWE] You inventory full!");
+                        }
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] GetWandItemEvent cancelled");
+                    }
+                    break;
+                case"/pos1":
+                    $this->getServer()->getPluginManager()->callEvent($e = new SetPos1Event($s));
+                    if (!$e->isCancelled()) {
+                        $player = $s->getPlayer();
+                        $this->pos1[$s->getName()] = array("1" => $player->getFloorX(), "2" => $player->getFloorY(), "3" => $player->getFloorZ(), "4" => $player->getLevel()->getName());
+                        $s->sendMessage(F::YELLOW . "[SWE] Position 1 set");
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] SetPos1Event cancelled");
+                    }
+                    break;
+                case"/pos2":
+                    $this->getServer()->getPluginManager()->callEvent($e = new SetPos2Event($s));
+                    if (!$e->isCancelled()) {
+                        $player = $s->getPlayer();
+                        $this->pos2[$s->getName()] = array("1" => $player->getFloorX(), "2" => $player->getFloorY(), "3" => $player->getFloorZ(), "4" => $player->getLevel()->getName());
+                        $s->sendMessage(F::YELLOW . "[SWE] Position 2 set");
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] SetPos2Event cancelled");
+                    }
+                    break;
+                case"/set":
+                    if (!isset($this->pos1[$s->getName()]) and !isset($this->pos2[$s->getName()])) {
+                        $s->sendMessage(F::RED . "[SWE] You will set pos1 and pos2");
+                        return true;
+                    }
+                    if (!isset($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] Use //set <BLOCK_ID>");
+                        return true;
+                    }
+                    if (Block::get($args[0])->getId() != $args[0] and Block::get($args[0])->getName() != $args[0]) {
+                        $s->sendMessage(F::RED . "[SWE] Block " . $args[0] . " not exists");
+                        return true;
+                    }
+                    $this->getServer()->getPluginManager()->callEvent($e = new SetBlocksEvent($s, Block::get($args[0]), $this->pos1[$s->getName()], $this->pos2[$s->getName()]));
+                    if ($e->isCancelled()) {
+                        $s->sendMessage(F::RED . "[SWE] SetBlocksEvent cancelled");
+                        return true;
+                    }
+                    if ($this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]) > $this->config->get("block-change-limit")) {
+                        $s->sendMessage(F::RED . "[SWE] Block change limit " . $this->config->get("block-change-limit") . " blocks");
+                        $s->sendMessage(F::RED . "[SWE] You want change " . $this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]));
+                        return true;
+                    }
+                    $pos1 = $this->pos1[$s->getName()];
+                    $pos2 = $this->pos2[$s->getName()];
+                    $minX = min($pos1["1"], $pos2["1"]);
+                    $maxX = max($pos1["1"], $pos2["1"]);
+                    $minY = min($pos1["2"], $pos2["2"]);
+                    $maxY = max($pos1["2"], $pos2["2"]);
+                    $minZ = min($pos1["3"], $pos2["3"]);
+                    $maxZ = max($pos1["3"], $pos2["3"]);
+                    $c = 0;
+                    $sc = count($this->undo[$s->getName()]);
+                    for ($x = $minX; $x <= $maxX; ++$x) {
+                        for ($y = $minY; $y <= $maxY; ++$y) {
+                            for ($z = $minZ; $z <= $maxZ; ++$z) {
+                                $c++;
+                                $this->undo[$s->getName()][$sc][$c] = array("id" => $s->getLevel()->getBlockIdAt($x, $y, $z), "x" => $x, "y" => $y, "z" => $z);
+                                $s->getLevel()->setBlock(new Vector3($x, $y, $z), Block::get($args[0]));
+                            }
+                        }
+                    }
+                    $s->sendMessage(F::YELLOW . "[SWE] Changed " . $c . " blocks!");
+                    return true;
+                    break;
+                case"/expand":
+                    if (isset($this->pos1[$s->getName()]) and isset($this->pos2[$s->getName()])) {
+                        if (isset($args[1])) {
+                            if (isset($args[2])) {
+                                if (is_numeric($args[1])) {
+                                    $this->getServer()->getPluginManager()->callEvent($e = new ExpandEvent($s));
+                                    if (!$e->isCancelled()) {
+                                        if (strtolower($args[2]) == "up" or strtolower($args[2]) == "down") {
+                                            if ($args[2] == "down") {
+                                                $this->pos2[$s->getName()]["2"] = $this->pos2[$s->getName()]["2"] - $args[1];
+                                                $s->sendMessage(F::YELLOW . "[SWE] Selected expanded to " . $this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]) . " blocks");
+                                            } else {
+                                                $this->pos1[$s->getName()]["2"] = $this->pos1[$s->getName()]["2"] - $args[1];
+                                                $s->sendMessage(F::YELLOW . "[SWE] Selected expanded to " . $this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]) . " blocks");
+                                            }
+                                        } else {
+                                            $s->sendMessage(F::RED . "[SWE] Only UP or DOWN");
+                                        }
+                                    } else {
+                                        $s->sendMessage(F::RED . "[SWE] ExpandEvent cancelled");
+                                    }
+                                } else {
+                                    $s->sendMessage(F::RED . "[SWE] <BLOCKS> must be number");
+                                }
+                            } else {
+                                $s->sendMessage(F::RED . "[SWE] Use //expand <BLOCKS> <UP/DOWN>");
+                            }
+                        } else {
+                            $s->sendMessage(F::RED . "[SWE] Use //expand <BLOCKS> <UP/DOWN>");
+                        }
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] You must set pos1 and pos2!");
+                    }
+                    break;
+                case"/size":
+                    $this->getServer()->getPluginManager()->callEvent($e = new GetSizeEvent($s));
+                    if (!$e->isCancelled()) {
+                        if (isset($this->pos1[$s->getName()]) and isset($this->pos2[$s->getName()])) {
+                            $s->sendMessage(F::YELLOW . "[SWE] " . $this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]) . " blocks");
+                        } else {
+                            $s->sendMessage(F::RED . "[SWE] You must set pos1 and pos2");
+                        }
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] GetSizeEvent cancelled");
+                    }
+                    break;
+                case"/replace":
+                    if (isset($args[0]) and isset($args[1])) {
+                        if (is_numeric($args[0]) and is_numeric($args[1])) {
+                            if (Block::get($args[0]) instanceof Block and Block::get($args[1]) instanceof Block) {
+                                if (isset($this->pos1[$s->getName()]) and isset($this->pos2[$s->getName()])) {
+                                    if ($this->pos1[$s->getName()]["4"] === $this->pos2[$s->getName()]["4"]) {
+                                        if ($this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]) <= $this->config->get("block-change-limit")) {
+                                            $this->getServer()->getPluginManager()->callEvent($e = new ReplaceBlocksEvent($s));
+                                            if (!$e->isCancelled()) {
+                                                $pos1 = $this->pos1[$s->getName()];
+                                                $pos2 = $this->pos2[$s->getName()];
+                                                $minX = min($pos1["1"], $pos2["1"]);
+                                                $maxX = max($pos1["1"], $pos2["1"]);
+                                                $minY = min($pos1["2"], $pos2["2"]);
+                                                $maxY = max($pos1["2"], $pos2["2"]);
+                                                $minZ = min($pos1["3"], $pos2["3"]);
+                                                $maxZ = max($pos1["3"], $pos2["3"]);
+                                                $c = 0;
+                                                $sc = count($this->undo[$s->getName()]);
+                                                for ($x = $minX; $x <= $maxX; ++$x) {
+                                                    for ($y = $minY; $y <= $maxY; ++$y) {
+                                                        for ($z = $minZ; $z <= $maxZ; ++$z) {
+                                                            if ($s->getLevel()->getBlockIDAt($x, $y, $z) === $args[0]) {
+                                                                $c++;
+                                                                $this->undo[$s->getName()][$sc][$c] = array("id" => $s->getLevel()->getBlockIdAt($x, $y, $z), "x" => $x, "y" => $y, "z" => $z);
+                                                                $s->getLevel()->setBlock(new Vector3($x, $y, $z), Block::get($args[1]));
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                $s->sendMessage(F::YELLOW . "[SWE] Changed " . $c . " blocks!");
+                                            } else {
+                                                $s->sendMessage(F::RED . "[SWE] ReplaceBlocksEvent cancelled");
+                                            }
+                                        } else {
+                                            $s->sendMessage(F::RED . "[SWE] Change limit " . $this->config->get("block-change-limit") . " you want change " . $this->blockCount($this->pos1[$s->getName()], $this->pos2[$s->getName()]));
+                                        }
+                                    } else {
+                                        $s->sendMessage(F::RED . "[SWE] Pos1 and pos2 must be in one world");
+                                    }
+                                } else {
+                                    $s->sendMessage(F::RED . "[SWE] You must set pos1 and pos2");
+                                }
+                            } else {
+                                $s->sendMessage(F::RED . "[SWE] Blocks with ID <ID1> or <ID2> not exists");
+                            }
+                        } else {
+                            $s->sendMessage(F::RED . "[SWE] <ID1> and <ID2> must be numbers!");
+                        }
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] Use //replace <ID1> <ID2>");
+                    }
+                    break;
+                case"/copy":
+                    if (isset($this->pos1[$s->getName()]) and isset($this->pos2[$s->getName()])) {
+                        $this->getServer()->getPluginManager()->callEvent($e = new CopyEvent($s));
+                        if (!$e->isCancelled()) {
+                            $pos1 = $this->pos1[$s->getName()];
+                            $pos2 = $this->pos2[$s->getName()];
+                            $minX = min($pos1["1"], $pos2["1"]);
+                            $maxX = max($pos1["1"], $pos2["1"]);
+                            $minY = min($pos1["2"], $pos2["2"]);
+                            $maxY = max($pos1["2"], $pos2["2"]);
+                            $minZ = min($pos1["3"], $pos2["3"]);
+                            $maxZ = max($pos1["3"], $pos2["3"]);
+                            $i = 0;
+                            for ($x = $minX; $x <= $maxX; ++$x) {
+                                for ($y = $minY; $y <= $maxY; ++$y) {
+                                    for ($z = $minZ; $z <= $maxZ; ++$z) {
+                                        $i++;
+                                        $this->copy[$s->getName()][$i] = array($s->getLevel()->getBlockIDAt($x, $y, $z) => array("x" => $x, "y" => $y, "z" => $z));
+                                    }
+                                }
+                            }
+                            $s->sendMessage(F::RED . "[SWE] " . $i . " blocks copy to clipboard");
+                        } else {
+                            $s->sendMessage(F::RED . "[SWE] CopyEvent cancelled");
+                        }
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] You will set pos1 and pos2 first");
+                    }
+                    break;
+                case"/undo":
+                    if (isset($args[0])) {
+                        $s->sendMessage($this->undo($s, $args[0]));
+                        return true;
+                    }
+                    $s->sendMessage($this->undo($s, null));
+                    return true;
+                    break;
+                case"/sell":
+                    $s->sendMessage($this->sell($s));
+                    break;
+                case"/info":
+                    $s->sendMessage(F::YELLOW . "SWorldEditor V_" . $this->getDescription()->getVersion());
+                    $s->sendMessage(F::YELLOW . "от Sergey Dertan");
+                    $s->sendMessage(F::YELLOW . "из Украины");
+                    $s->sendMessage(F::YELLOW . "Skype: Sergey44668800");
+                    $s->sendMessage(F::YELLOW . "VK: http://vk.com/superator");
+                    $s->sendMessage(F::YELLOW . "GMail: superator2018@gmail.com");
+                    break;
+                case"/walls":
+                    if (!isset($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] Use //walls <BLOCK>");
+                        return true;
+                    }
+                    if (!is_numeric($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] <BLOCK> must be numeric");
+                        return true;
+                    }
+                    $s->sendMessage($this->walls($s, Block::get($args[0])));
+                    return true;
+                    break;
+                case"/clear-clipboard":
+                    $s->sendMessage($this->clearclipboard($s));
+                    break;
+                case"/redo":
+                    if (isset($this->redo[$s->getName()])) {
+                        if (isset($this->undo[$s->getName()])) unset($this->undo[$s->getName()]);
+                        foreach ($this->redo[$s->getName()] as $index => $q) {
+                            $this->undo[$s->getName()][count($this->undo[$s->getName()]) + 1] = array("id" => $s->getLevel()->getBlockIdAt($q["x"], $q["y"], $q["z"]), "x" => $q["x"], "y" => $q["y"], "z" => $q["z"]);
+                            $s->getLevel()->setBlock(new Vector3($q["x"], $q["y"], $q["z"]), Block::get($q["id"]));
+                        }
+                        $s->sendMessage(F::RED . "[SWE] Last undo cancelled");
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] Undo not exists");
+                    }
+                    break;
+                case"/set-mult":
+                    if (isset($this->pos1[$s->getName()]) and isset($this->pos2[$s->getName()])) {
+                        if (isset($args[0]) and isset($args[1])) {
+                            foreach ($args as $block) {
+                                if (Block::get($block)->getId() != $block and Block::get($block)->getName() != $block) {
+                                    $s->sendMessage(F::RED . "[SWE] Block " . $block . " not exists");
+                                    return true;
+                                }
+                            }
+                            $this->getServer()->getPluginManager()->callEvent($e = new SetBlocksEvent($s, null, $this->pos1[$s->getName()], $this->pos2[$s->getName()]));
+                            if ($e->isCancelled()) {
+                                $s->sendMessage(F::RED . "[SWE] ReplaceBlocksEvent cancelled");
+                                return true;
+                            }
+                            $pos1 = $this->pos1[$s->getName()];
+                            $pos2 = $this->pos2[$s->getName()];
+                            $minX = min($pos1["1"], $pos2["1"]);
+                            $maxX = max($pos1["1"], $pos2["1"]);
+                            $minY = min($pos1["2"], $pos2["2"]);
+                            $maxY = max($pos1["2"], $pos2["2"]);
+                            $minZ = min($pos1["3"], $pos2["3"]);
+                            $maxZ = max($pos1["3"], $pos2["3"]);
+                            $c = 0;
+                            $sc = count($this->undo[$s->getName()]) + 1;
+                            for ($x = $minX; $x <= $maxX; ++$x) {
+                                for ($y = $minY; $y <= $maxY; ++$y) {
+                                    for ($z = $minZ; $z <= $maxZ; ++$z) {
+                                        $c++;
+                                        $this->undo[$s->getName()][$sc][$c] = array("id" => $s->getLevel()->getBlockIDAt($x, $y, $z), "x" => $x, "y" => $y, "z" => $z);
+                                        $s->getLevel()->setBlock(new Vector3($x, $y, $z), Block::get($args[mt_rand(0, count($args) - 1)]));
+                                    }
+                                }
+                            }
+                            $s->sendMessage(F::YELLOW . "[SWE] Changed " . $c . " blocks");
+                        } else {
+                            $s->sendMessage(F::RED . "[SWE] Use //set-mult <BLOCK1> <BLOCK2>\n or //set-mult <BLOCK1> <BLOCK2> <BLOCK3...>");
+                        }
+                    } else {
+                        $s->sendMessage(F::RED . "[SWE] You will set pos1 and pos2!");
+                    }
+                    break;
+                case"/limit":
+                    if (!isset($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] Use //limit <BLOCK_CHANGE_LIMIT>");
+                        return true;
+                    }
+                    if (!is_numeric($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] <BLOCK_CHANGE_LIMIT> must be number");
+                        return true;
+                    }
+                    $this->config->set("block-change-limit", $args[0]);
+                    $this->config->save();
+                    $s->sendMessage(F::YELLOW . "[SWE] Block change limit now " . $args[0]);
+                    return true;
+                    break;
+                case"up":
+                    if (!isset($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] Use /up <DISTANCE>");
+                        return true;
+                    }
+                    if (!is_numeric($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] <DISTANCE> must be number");
+                        return true;
+                    }
+                    $this->getServer()->getPluginManager()->callEvent($e = new UpEvent($s, $args[0]));
+                    if ($e->isCancelled()) {
+                        $s->sendMessage(F::RED . "[SWE] UpEvent cancelled");
+                        return true;
+                    }
+                    $s->teleport(new Vector3($s->getFloorX(), $s->getFloorY() + $args[0], $s->getFloorZ()));
+                    $y = $s->getFloorY() + $args[0];
+                    $s->sendMessage(F::YELLOW . "[SWE] You go to " . $s->getFloorX() . "," . $y . "," . $s->getFloorY());
+                    break;
+                case"/replace-mult":
+                    if (!isset($args[0]) or !isset($args[1]) or !isset($args[2])) {
+                        $s->sendMessage(F::RED . "[SWE] Use //replace-mult <WHAT_REPLACE> <BLOCK2> <BLOCK3...>");
+                        return true;
+                    }
+                    if (!isset($this->pos1[$s->getName()]) or !isset($this->pos2[$s->getName()])) {
+                        $s->sendMessage(F::RED . "[SWE] select pos1 and pos2 first");
+                        return true;
+                    }
+                    $this->getServer()->getPluginManager()->callEvent($e = new ReplaceBlocksEvent($s));
+                    if ($e->isCancelled()) {
+                        $s->sendMessage(F::RED . "[SWE] ReplaceBlocksEvent cancelled");
+                        return true;
+                    }
+                    $pos1 = $this->pos1[$s->getName()];
+                    $pos2 = $this->pos2[$s->getName()];
+                    $minX = min($pos1["1"], $pos2["1"]);
+                    $maxX = max($pos1["1"], $pos2["1"]);
+                    $minY = min($pos1["2"], $pos2["2"]);
+                    $maxY = max($pos1["2"], $pos2["2"]);
+                    $minZ = min($pos1["3"], $pos2["3"]);
+                    $maxZ = max($pos1["3"], $pos2["3"]);
+                    $c = 0;
+                    $sc = count($this->undo[$s->getName()]) + 1;
+                    for ($x = $minX; $x <= $maxX; ++$x) {
+                        for ($y = $minY; $y <= $maxY; ++$y) {
+                            for ($z = $minZ; $z <= $maxZ; ++$z) {
+                                if ($s->getLevel()->getBlockIdAt($x, $y, $z) == $args[0]) {
+                                    $c++;
+                                    $this->undo[$s->getName()][$sc][$c] = array("id" => $s->getLevel()->getBlockIDAt($x, $y, $z), "x" => $x, "y" => $y, "z" => $z);
+                                    $s->getLevel()->setBlock(new Vector3($x, $y, $z), Block::get($args[mt_rand(1, count($args) - 1)]));
+                                }
+                            }
+                        }
+                    }
+                    $s->sendMessage(F::YELLOW . "[SWE] Changed " . $c . " blocks");
+                    return true;
+                    break;
+                case"/regen":
+                    if (!isset($this->pos1[$s->getName()]) or !isset($this->pos2[$s->getName()])) {
+                        $s->sendMessage(F::RED . "[SWE] Set pos1 and pos2 first");
+                        return true;
+                    }
+                    $pos1 = $this->pos1[$s->getName()];
+                    $pos2 = $this->pos2[$s->getName()];
+                    $minX = min($pos1["1"], $pos2["1"]);
+                    $maxX = max($pos1["1"], $pos2["1"]);
+                    $minZ = min($pos1["3"], $pos2["3"]);
+                    $maxZ = max($pos1["3"], $pos2["3"]);
+                    for ($x = $minX; $x <= $maxX; ++$x) {
+                        for ($z = $minZ; $z <= $maxZ; ++$z) {
+                            $s->getLevel()->regenerateChunk($x, $z);
+                        }
+                    }
+                    $s->sendMessage(F::YELLOW . "[SWE] Area regenarated");
+                    return true;
+                    break;
+                case"/bugs":
+                    $s->sendMessage(F::YELLOW . "[SWE] Известные баги:\n После создания стен командой //walls восстановить блоки которые были на месте стен нельзя\n Команда //regen не работает\n Команда //redo не работает\n Кол-во измененных блоков после создания стен не верно");
+                    break;
+                case"/bugreport":
+                    if (!isset($args[0])) {
+                        $s->sendMessage(F::RED . "[SWE] Испрользуйте //bugreport <СООБЩЕНИЕ>");
+                        return true;
+                    }
+                    $rc = count($this->bugsReports->getAll()) + 1;
+                    $this->bugsReports->set($rc, implode(" ",$args) . ". Сообщение оставил: ". $s->getName());
+                    $this->bugsReports->save();
+                    $s->sendMessage(F::YELLOW . "[SWE] Спасибо за сообщение!");
+                    return true;
+                    break;
+            }
+        } else {
+            $s->sendMessage(F::RED . "[ERROR] Эта команда работает только в игре (/" . $cmd->getName() . ")");
+        }
+        return true;
+    }
+
+    /**
+     * @param array $p1
+     * @param array $p2
+     * @return mixed
+     */
+    private function blockCount(array $p1, array $p2)
+    {
+        $minX = min($p1["1"], $p2["1"]);
+        $maxX = max($p1["1"], $p2["1"]);
+        $minY = min($p1["2"], $p2["2"]);
+        $maxY = max($p1["2"], $p2["2"]);
+        $minZ = min($p1["3"], $p2["3"]);
+        $maxZ = max($p1["3"], $p2["3"]);
+        return ($maxX - $minX + 1) * ($maxY - $minY + 1) * ($maxZ - $minZ + 1);
+    }
+
+    /**
+     * @param Player $p
+     * @param array $pos1
+     * @param array $pos2
+     * @param $blocks
+     * @param $block
+     * @return string
+     */
+    private function setBlocks(Player $p, array $pos1, array $pos2, $blocks, $block)
+    {
+        $minX = min($pos1["1"], $pos2["1"]);
+        $maxX = max($pos1["1"], $pos2["1"]);
+        $minY = min($pos1["2"], $pos2["2"]);
+        $maxY = max($pos1["2"], $pos2["2"]);
+        $minZ = min($pos1["3"], $pos2["3"]);
+        $maxZ = max($pos1["3"], $pos2["3"]);
+        $c = 0;
+        $a = null;
+        if (isset($this->undo[$p->getName()]) and is_array($this->undo[$p->getName()]) and count($this->undo[$p->getName()]) != 0) $a = 1;
+        for ($x = $minX; $x <= $maxX; ++$x) {
+            for ($y = $minY; $y <= $maxY; ++$y) {
+                for ($z = $minZ; $z <= $maxZ; ++$z) {
+                    $c++;
+                    if ($a == null) $this->undo[$p->getName()][1][$c] = array("id" => $p->getLevel()->getBlockIdAt($x, $y, $z), "x" => $x, "y" => $y, "z" => $z); else $this->undo[$p->getName()][count($this->undo[$p->getName()]) + 1][$c] = array("id" => $p->getLevel()->getBlockIdAt($x, $y, $z), "x" => $x, "y" => $y, "z" => $z);
+                    if ($block == null) $p->getLevel()->setBlock(new Vector3($x, $y, $z), Block::get($block)); else $p->getLevel()->setBlock(new Vector3($x, $y, $z), Block::get($blocks[mt_rand(1, count($blocks))]));
+                }
+            }
+        }
+        return F::YELLOW . "[SWE] Changed {$c} blocks";
+    }
+
+    /**
+     * @param Player $s
+     * @param $uc
+     * @return string
+     */
+    private function undo(Player $s, $uc)
+    {
+        $this->getServer()->getPluginManager()->callEvent($e = new UndoEvent($s));
+        if ($e->isCancelled()) {
+            return F::RED . "[SWE] UndoEvent canceled";
+        }
+        if (!is_array($this->undo[$s->getName()]) and count($this->undo[$s->getName()]) <= 0) {
+            return F::RED . "[SWE] Changes not found";
+        }
+        if ($uc != null and !is_numeric($uc)) {
+            return F::RED . "[SWE] Change number must be numeric!";
+        }
+        if ($uc == null) {
+            foreach ($this->undo[$s->getName()][count($this->undo[$s->getName()]) - 1] as $bi) {
+                $s->getLevel()->setBlock(new Vector3($bi["x"], $bi["y"], $bi["z"]), Block::get($bi["id"]));
+            }
+            return F::YELLOW . "[SWE] Undo success";
+        }
+        if (!isset($this->undo[$s->getName()][$uc])) {
+            return F::RED . "[SWE] Change {$uc} not found";
+        }
+        foreach ($this->undo[$s->getName()][$uc] as $bi) {
+            $s->getLevel()->setBlock(new Vector3($bi["x"], $bi["y"], $bi["z"]), Block::get($bi["id"]));
+        }
+        return F::YELLOW . "[SWE] Undo success";
+    }
+
+    /**
+     * @param Player $s
+     * @return string
+     */
+    private function clearclipboard(Player $s)
+    {
+        if (isset($this->undo[$s->getName()])) unset($this->undo[$s->getName()]);
+        if (isset($this->copy[$s->getName()])) unset($this->copy[$s->getName()]);
+        if (isset($this->redo[$s->getName()])) unset($this->redo[$s->getName()]);
+        return F::YELLOW . "[SWE] Clipboard cleared";
+    }
+
+    /**
+     * @param Player $s
+     * @return string
+     */
+    private function sell(Player $s)
+    {
+        $this->getServer()->getPluginManager()->callEvent($e = new ClearEvent($s));
+        if ($e->isCancelled()) {
+            return F::RED . "[SWE] ClearEvent canceled";
+        }
+        if (isset($this->pos1[$s->getName()])) unset($this->pos1[$s->getName()]);
+        if (isset($this->pos2[$s->getName()])) unset($this->pos2[$s->getName()]);
+        return F::YELLOW . "[SWE] Positions cleared";
+    }
+
+    private function walls(Player $s, Block $block)
+    {
+        if (!isset($this->pos2[$s->getName()]) or !isset($this->pos1[$s->getName()])) {
+            return F::RED . "[SWE] Set pos1 and pos2 first";
+        }
+        $this->getServer()->getPluginManager()->callEvent($e = new CreateWallsEvent($s));
+        if ($e->isCancelled()) {
+            return F::RED . "[SWE] CreateWallsEvent canceled";
+        }
+        $pos1 = $this->pos1[$s->getName()];
+        $pos2 = $this->pos2[$s->getName()];
+        $minX = min($pos1["1"], $pos2["1"]);
+        $maxX = max($pos1["1"], $pos2["1"]);
+        $minY = min($pos1["2"], $pos2["2"]);
+        $maxY = max($pos1["2"], $pos2["2"]);
+        $minZ = min($pos1["3"], $pos2["3"]);
+        $maxZ = max($pos1["3"], $pos2["3"]);
+        $c = 0;
+        for ($x = $minX; $x <= $maxX; ++$x) {
+            for ($y = $minY; $y <= $maxY; ++$y) {
+                for ($z = $minZ; $z <= $maxZ; ++$z) {
+                    $c++;
+                    $s->getLevel()->setBlock(new Vector3($x, $y, $minZ), $block);
+                    $s->getLevel()->setBlock(new Vector3($x, $y, $maxZ), $block);
+                    $s->getLevel()->setBlock(new Vector3($minX, $y, $z), $block);
+                    $s->getLevel()->setBlock(new Vector3($maxX, $y, $z), $block);
+                }
+            }
+        }
+        return F::YELLOW . "[SWE] Walls created\n Changed {$c} blocks";
+    }
+
+    function onDisable()
+    {
+        $this->getLogger()->info(F::RED . "SWorldEditor V_" . $this->getDescription()->getVersion() . " by Sergey Dertan unload!");
+    }
+}<?php
+namespace Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder;
+
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\item\IronHoe;
+use pocketmine\Player;
+use pocketmine\utils\TextFormat as F;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\SetPos1Event;
+use Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorEvents\SetPos2Event;
+
+/**
+ * Class SWEEventListener
+ * @package Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder
+ */
+class SWEEventListener implements Listener
+{
+    /**
+     * @var SWorldEditorMain
+     */
+    private $plugin;
+
+    /**
+     * @param SWorldEditorMain $plugin
+     */
+    function __construct(SWorldEditorMain $plugin)
+    {
+        $this->plugin = $plugin;
+    }
+
+
+    /**
+     * @param PlayerInteractEvent $e
+     */
+    function touchForPos1(PlayerInteractEvent $e)
+    {
+
+        $this->plugin->getServer()->getPluginManager()->callEvent($event = new SetPos1Event($e->getPlayer()));
+        if ($e->getPlayer() instanceof Player and $e instanceof PlayerInteractEvent and $e->getItem() instanceof IronHoe) {
+            if (!$event->isCancelled()) {
+                $block = $e->getBlock();
+                $this->plugin->pos1[$e->getPlayer()->getName()] = array("1" => $block->getFloorX(), "2" => $block->getFloorY(), "3" => $block->getFloorZ(), "4" => $block->getLevel()->getName());
+                $e->setCancelled();
+                $e->getPlayer()->sendMessage(F::YELLOW . "[SWE] Position 1 set");
+            } else {
+                $e->getPlayer()->sendMessage(F::RED . "[SWE] SetPos1Event cancelled");
+            }
+        }
+    }
+
+    /**
+     * @param BlockBreakEvent $e
+     */
+    function breakForPos2(BlockBreakEvent $e)
+    {
+        $this->plugin->getServer()->getPluginManager()->callEvent($event = new SetPos2Event($e->getPlayer()));
+        if ($e->getPlayer() instanceof Player and $e instanceof BlockBreakEvent and $e->getItem() instanceof IronHoe) {
+            if (!$event->isCancelled()) {
+                $block = $e->getBlock();
+                $this->plugin->pos2[$e->getPlayer()->getName()] = array("1" => $block->getFloorX(), "2" => $block->getFloorY(), "3" => $block->getFloorZ(), "4" => $block->getLevel()->getName());
+                $e->setCancelled();
+                $e->getPlayer()->sendMessage(F::YELLOW . "[SWE] Position 2 set");
+            } else {
+                $e->getPlayer()->sendMessage(F::RED . "[SWE] SetPos2Event cancelled");
+            }
+        }
+    }
+}

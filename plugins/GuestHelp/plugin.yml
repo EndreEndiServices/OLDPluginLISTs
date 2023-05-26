@@ -1,0 +1,15 @@
+name: GuestHelp
+description: Просмотр команд Guest
+author: Mana
+main: GuestHelp\Main
+load: POSTWORLD
+version: 0.0.1
+api: [2.0.0]
+commands:
+    play:
+        usage: /play
+        description: Просмотр Guest команд
+permissions:
+    admin.cmd:
+        default: true
+        description: Позволяет просматривать команды

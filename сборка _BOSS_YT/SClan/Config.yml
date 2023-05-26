@@ -1,0 +1,12 @@
+---
+Max-clan-members: 15
+Default-clan-money: 1000
+Max-clan-level: 100
+Chat-format-in: '[@clan] @player : @message'
+Chat-format-without: '@player : @message'
+Clan-chat-format: '[@] @player : @message'
+Clan-list: []
+Invite-cancel-time: 60
+Max-clan-name-length: 8
+Min-clan-name-length: 1
+...

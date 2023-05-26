@@ -1,0 +1,12 @@
+---
+prefix: "AdvertMCPE"
+suffix: "[MC-PE.NET]"
+time: 20
+sendmessage-format: "[{PREFIX}] {SUFFIX} {SENDER}> {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "&6[&bMC-PE.NET&6] [&fИнформация&6] &fПодпишись &bvk.com/pe_craft"
+ - "&6[&bMC-PE.NET&6] [&fИнформация&6] &fЗаходи на сайт &bMC-PE.NET"
+ - "&6[&bMC-PE.NET&6] [&fИнформация&6] &fЗаходи на сайт &bMC-PE.NET"
+...

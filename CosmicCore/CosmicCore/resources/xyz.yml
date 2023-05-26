@@ -1,0 +1,20 @@
+---
+#Inside the spawn area!
+#spawn*1 = >
+#spawn*2 = <
+spawnX1: -255
+spawnX2: -120
+spawnY1: 94
+spawnY2: 129
+spawnZ1: -82
+spawnZ2: 5
+#Outside the spawn area (extends up to the spawn Prof).
+#prot*1 = >
+#prot*2 = <
+protX1: -342
+protX2: 141
+protY1: 0
+protY2: 129
+protZ1: -283
+protZ2: 234
+...

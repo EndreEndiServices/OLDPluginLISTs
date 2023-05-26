@@ -1,0 +1,30 @@
+name: EP-Core
+description: EnderPixel Core Plugin
+version: 2.1
+main: ep\main
+api: 2.0.0
+commands:
+ killmobs:
+  description: Kills all Mobs & Entities.
+ fly:
+  description: Fly Command
+  permission: fly.command
+ day:
+  description: Sets time to day
+  permission: epcore.cmd.day
+ feed:
+  description: Fills your food bar
+  permission: epcore.feed
+ gm3:
+  description: Sets gamemode to 0 or 3
+  permission: epcore.cmd.gm
+ gm0:
+  description: Sets gamemode to Survival
+  permission: epcore.cmd.gm
+ pos:
+  description: Gets your position
+ permissions:
+  epcore.cmd.pos:
+   default: true
+ emoji:
+  description: Shows how to do in-game emojis

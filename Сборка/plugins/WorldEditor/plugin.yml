@@ -1,0 +1,18 @@
+main: Richen\WorldEditor\WorldEditor
+version: 0.0.1
+api:
+- 1.14.0
+- 2.0.0
+load: POSTWORLD
+
+name: WorldEditor
+author: Richen
+website: http://vk.com/richen
+
+commands:
+ /set:
+  description: 'e'
+ /pos1:
+  description: 'e'
+ /pos2:
+  description: 'e'

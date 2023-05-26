@@ -1,0 +1,19 @@
+---
+#
+#InventoryClear v1.0 Config File
+#
+#Use true to Enable or put anything else to Disable
+#
+#Show Clear Inventory Messages on Console?
+Console-Messages: false
+#
+#Clear Inventory on Join?
+Clear-on-Join: false
+#
+#Clear Inventory on Death?
+Clear-on-Death: false
+#
+#Clear on Quit?
+Clear-on-Quit: false
+#
+...

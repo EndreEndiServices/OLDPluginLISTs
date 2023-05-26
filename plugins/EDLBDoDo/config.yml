@@ -1,0 +1,15 @@
+---
+IslandWorldSpawn1:
+- 16
+- 86
+- 1152
+IslandWorldSpawn2:
+- 24
+- 86
+- 1152
+arenas:
+- IslandWorld
+IslandWorldinicio: 0
+IslandWorldPlayTime: 515
+IslandWorldStartTime: 30
+...

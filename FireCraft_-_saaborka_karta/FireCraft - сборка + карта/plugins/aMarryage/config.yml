@@ -1,0 +1,39 @@
+---
+# префикс для PureChat
+prefixPP: '§7(§4❤§7)'
+
+# сколько нужно заплатить за свадьбу
+# если 0, то бесплатно
+MoneyToMarry: 5000
+
+# сколько сердечек спавнить над игроком (команда /marry love)
+# ВНИМАНИЕ
+# ИСПОЛЬЗОВАТЬ С ОСТОРОЖНОСТЬЮ, ТАК КАК НЕСЕТ СОБОЙ НАГРУЗКУ НА СЕРВЕР
+# рекомендуется не больше 15
+hearth: 7
+
+prefix: '§7(§bFire§cCraft§7)'
+
+broadcast: '§7(§bFire§cCraft§7) §aОни: §6{first} §aи §6{second} §3Поженились§c!'
+firstNotEnoughMoney: '§7(§bFire§cCraft§7)§6 У§a {player}§b недостаточно средств§c!'
+notEnoughMoney: '§7(§bFire§cCraft§7)§6 У§a вас§b недостаточно средств§c!'
+alreadyPair: '§7(§bFire§cCraft§7)§6 У§a игрока§b уже есть вторая половинка§c!'
+offline: '§7(§bFire§cCraft§7)§a Игрок§b оффлайн§c!'
+tp: '§7(§bFire§cCraft§7)§a Вы§b телепортировались к своей половинке§c!'
+tpToYou: '§7(§bFire§cCraft§7)§6 К§a вам§b телепортировалась ваша вторая половинка§c!'
+exist: '§7(§bFire§cCraft§7)§b Измена§c?!§a И не стыдно§c!?'
+homeCreate: '§7(§bFire§cCraft§7)§e Точка§a общего дома§6 установлена§c!'
+homeTP: '§7(§bFire§cCraft§7) §aВы§b телепортированы в§e общий дом§c!'
+homeNotExist: '§7(§bFire§cCraft§7)§6 У§a вас§b нет общего дома§c!'
+divorce: '§7(§bFire§cCraft§7)§a Вы успешно§b развелись с §eигроком:§3 {player}'
+leftYou: "§7(§bFire§cCraft§7)§a Игрок:§3 {player} §eбросил §aвас§c!"
+lonely:  '§7Ты одинок :C'
+sent: '§7(§bFire§cCraft§7)§a Вы§b отправили запрос на свадьбу игроку: §a{player}'
+notExist: '§7(§bFire§cCraft§7)§6 У§a вас§b нет входящих предложений§c!'
+reject: '§7(§bFire§cCraft§7)§a Игрок§b отклонил §aваше§e предложение§c!'
+rejected: '§7(§bFire§cCraft§7)§a Вы§b отклонили §eпредложение§c!'
+incoming: '§7(§bFire§cCraft§7)§a Вам§b пришел запрос на свадьбу от: §e{player}'
+accept: '§7(§bFire§cCraft§7)§6 Теперь§b Вы §6и §b{player} §e-§a семья§c!'
+titleList: '§7(§bFire§cCraft§7)§a Список команд: '
+wtf: '§7(§bFire§cCraft§7)§a Ты долбоеб, не§c?!'
+...

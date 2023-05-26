@@ -1,0 +1,26 @@
+---
+prefix: "§e[§cINFO§e]"
+suffix: "[A]"
+time: 150
+sendmessage-format: "&e[{TIME}] &b[{PREFIX}] {SUFFIX} &a{SENDER}&e>&f {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "{PREFIX} §aНаш сайт авто-доната: §6shop.holywest.tk"
+ - "{PREFIX} §eЮтуберка на сервере дается от §c1000 §eподписчиков и рекламы сервера на вашем канале! Писать создателям в Вконтакте!"
+ - "{PREFIX} §aДонат можно купить на сайте: §6shop.holywest.tk"
+ - "{PREFIX} §eГруппа ВКонтакте: §6vk.com/holywest_null"
+ - "{PREFIX} §6Создатели: §aLowNoise §6-> §9vk.com/bogdanmakarchuk"
+ - "{PREFIX} §eПокупая донат Вы делаете приятно не только себе, но и помогаете серверу жить дальше §f:)"
+ - "{PREFIX} §aПросим Вас не просить привилегии (OП, VIP, Premium и т.д.). Так как мы не дадим Вам бесплатно должность и Вы теряете свое и нашое время!"
+ - "{PREFIX} §3Мы всегда рады новым и старым игрокам! Зовите друзей чтоб было еще веселей проводить время на сервере)"
+ - "{PREFIX} §cЕсли у Вас есть какие-то проблемы с покупкой привилегии на нашем сайте напишите создателям в личку в Вконтакте!"
+ - "{PREFIX} §9Всегда свежие новости в группе в Вконтакте: §bvk.com/holywest_null§9! подпишитесь чтоб знать все о сервере!"
+ - "{PREFIX} §6Если Вы нашли какую-либо ошибку в тексте или мини игре напишите нам и мы решим её!"
+popup-time: 15
+popup-duration: 5
+sendpopup-format: "&a{SENDER}&e>>&f {MESSAGE}"
+popup-broadcast-enabled: false
+popups:
+ - "&aСообщений нет"
+...

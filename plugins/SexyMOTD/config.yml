@@ -1,0 +1,13 @@
+# SexyMOTD config file
+
+# Available keys to add:
+# & : to replace color code '§' example: &5 = purple
+# {server_name} : 'server-name' in server.properties
+# {players} : Online players count
+# {max_players} : Max player number
+# {description} : 'description' in server.properties
+# {white_list} : Show whitelist status
+# %line% : Next line
+# {VIP_stats} : You must have VIPSlots by IJoshuaHD to use it, it will show wether the server is currently only allow VIPs to join or not
+
+MOTD: '§6[§dGallogen.Ru§6]§e §bSurvival§4#1 §c[§a0.14.0 - 0.14.3§c] %line%+                                    §eDonate: §bbonus.trademc.org§6 §3-60%!!!'

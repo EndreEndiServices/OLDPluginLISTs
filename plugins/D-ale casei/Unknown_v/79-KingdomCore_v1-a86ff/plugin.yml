@@ -1,0 +1,15 @@
+name: KingdomCore
+author: EpicSteve33
+main: KingdomCore\Main
+api: [3.0.0-APLHA11]
+version: 1.6
+commands:
+ help:
+  usage: /help
+  description: Help Command
+ hub:
+  usage: /hub
+  description: Main Hub Command
+ fly:
+  usage: /flyon
+  description: fly Command

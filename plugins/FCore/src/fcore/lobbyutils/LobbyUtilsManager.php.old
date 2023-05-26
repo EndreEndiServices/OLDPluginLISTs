@@ -1,0 +1,352 @@
+<?php
+
+declare(strict_types=1);
+
+namespace fcore\lobbyutils;
+
+use fcore\FCore;
+use fcore\form\Button;
+use fcore\form\FormAPI;
+use fcore\form\SimpleForm;
+use fcore\lobbyutils\gadgets\FlyGadget;
+use fcore\lobbyutils\gadgets\Gadget;
+use fcore\lobbyutils\gadgets\RunningGadget;
+use fcore\lobbyutils\gadgets\TNTGadget;
+use fcore\lobbyutils\particles\HelixParticle;
+use fcore\lobbyutils\particles\Particle;
+use fcore\lobbyutils\particles\RunningParticle;
+use fcore\lobbyutils\particles\UnicornParticle;
+use fcore\lobbyutils\particles\WingParticle;
+use fcore\profile\ProfileManager;
+use pocketmine\level\Level;
+use pocketmine\Player;
+
+/**
+ * Class LobbyUtilsManager
+ * @package fcore\lobbyutils
+ */
+class LobbyUtilsManager {
+
+    /** @var FCore $plugin */
+    public $plugin;
+
+    /** @var Level $lobbyLevel */
+    private $lobbyLevel;
+
+    /** @var array $gadgets */
+    public $gadgets = [];
+
+    /** @var array $particles */
+    public $particles = [];
+
+    /** @var array $rparticles */
+    public $rparticles = [
+        "unicorn" => [],
+        "helix" => []
+    ];
+
+    /** @var array $rgadgets */
+    public $rgadgets = [
+        "tnt" => []
+    ];
+
+    /**
+     * LobbyUtilsManager constructor.
+     * @param FCore $plugin
+     */
+    public function __construct(FCore $plugin) {
+        $this->plugin = $plugin;
+        $this->lobbyLevel = $this->plugin->getServer()->getDefaultLevel();
+        $this->registerGadgets();
+        $this->registerParticles();
+    }
+
+    public function registerParticles() {
+        $this->particles["unicorn"] = new UnicornParticle($this);
+        $this->particles["helix"] = new HelixParticle($this);
+    }
+
+
+    public function registerGadgets() {
+        $this->gadgets["fly"] = new FlyGadget;
+        $this->gadgets["tnt"] = new TNTGadget;
+    }
+
+    /**
+     * @param Player $player
+     */
+    public function openParticleShop(Player $player) {
+        /** @var FormAPI $formApi */
+        $formApi = $this->plugin->formApi;
+
+        $onSubmit = function (Player $sender, array $data) {
+            $result = $data[0];
+            if($result === null) return;
+
+            /** @var Particle[] $particles */
+            $particles = [];
+
+            foreach (\fcore\FCore::$instance->lobbyUtilsMgr->particles as $index => $particle) {
+                array_push($particles, $particle);
+            }
+
+            if(empty($particles[intval($result)])) {
+                return;
+            }
+
+            /** @var Particle $particle */
+            $particle = $particles[intval($result)];
+
+            $playerCoins = (int)ProfileManager::getPlayerProfileData($sender, "coins");
+
+            if($playerCoins-$particle->getCost() >= 0) {
+                $sender->sendMessage(FCore::getPrefix()."§aYou bought {$particle->getName()} particle!");
+                ProfileManager::$players[$sender->getName()]["particles"][strtolower($particle->getName())] = [true];
+                ProfileManager::$players[$sender->getName()]["coins"] = $playerCoins-$particle->getCost();
+            }
+            else {
+                $sender->sendMessage(FCore::getPrefix()."§cYou need more coins to buy this!");
+            }
+        };
+
+        $buttons = [];
+
+        /**
+         * @var string $index
+         * @var Particle $particle
+         */
+        foreach ($this->particles as $index => $particle) {
+            array_push($buttons, new Button("§l".$particle->getName()."§r §7".$particle->getCost(), $particle->getImage(), "url"));
+        }
+
+        /** @var SimpleForm $form */
+        $form = $formApi->createSimpleForm("§1§lShop§r§3 >>> §eParticles", "Select the particle to buy", $buttons, $onSubmit);
+        $form->send($player);
+    }
+
+    /**
+     * @param Player $player
+     */
+    public function openGadgetsShop(Player $player) {
+        /** @var FormAPI $formApi */
+        $formApi = $this->plugin->formApi;
+
+        $onSubmit = function (Player $sender, array $data) {
+            $result = $data[0];
+            if($result === null) return;
+
+            /** @var Gadget[] $gadgets */
+            $gadgets = [];
+
+            foreach (\fcore\FCore::$instance->lobbyUtilsMgr->gadgets as $index => $gadget) {
+                array_push($gadgets, $gadget);
+            }
+
+            /** @var Gadget $gadget */
+            $gadget = $gadgets[intval($result)];
+
+            if(!$gadget instanceof Gadget) {
+                return;
+            }
+
+            $playerCoins = (int)ProfileManager::getPlayerProfileData($sender, "coins");
+
+            if($playerCoins - $gadget->getCost() >= 0) {
+                $sender->sendMessage(FCore::getPrefix()."§aYou bought {$gadget->getName()} gadget!");
+                $gadget->buy($sender);
+            }
+            else {
+                $sender->sendMessage(FCore::getPrefix()."§cYou need more coins to buy this!");
+            }
+        };
+
+        $buttons = [];
+
+        /**
+         * @var string $index
+         * @var Particle $particle
+         */
+        foreach ($this->gadgets as $index => $gadget) {
+            array_push($buttons, new Button("§l".$gadget->getName()."§r §7".$gadget->getCost(), $gadget->getImage(), "url"));
+        }
+
+        /** @var SimpleForm $form */
+        $form = $formApi->createSimpleForm("§1§lShop§r§3 >>> §eGadgets", "Select the gadget to buy", $buttons, $onSubmit);
+        $form->send($player);
+    }
+
+    public function openGadgets(Player $player) {
+        $buttons = [];
+
+        foreach ($this->gadgets as $gadget) {
+            $data = ProfileManager::$players[$player->getName()]["gadgets"];
+            $name = "§6".$gadget->getName()." ";
+            $name .= $data[strtolower($gadget->getName())][1] == 0 ? "§c0 " : "§a ".$data[strtolower($gadget->getName())][1]." ";
+            $name .= $data[strtolower($gadget->getName())][0] === true ? "§aEnable" : "§cBuy this gadget first!";
+            array_push($buttons, new Button($name, $gadget->getImage(), "url"));
+        }
+
+        $func = function (Player $player, array $data){
+            $result = $data[0];
+            if($result === null) return;
+
+            #if(empty($g[$result])) return;
+
+            /** @var array $g */
+            $g = [];
+
+            /**
+             * @var string $index
+             * @var Gadget $gadget
+             */
+            foreach (\fcore\FCore::$instance->lobbyUtilsMgr->gadgets as $index => $gadget) {
+                array_push($g, $gadget);
+            }
+
+            /** @var Gadget $gadget */
+            $gadget = $g[$result];
+
+            if(!$gadget instanceof Gadget) {
+                return;
+            }
+
+            if(ProfileManager::$players[$player->getName()]["gadgets"][strtolower($gadget->getName())][0] === true) {
+                if($gadget->isStackable()) {
+                    if(ProfileManager::$players[$player->getName()]["gadgets"][strtolower($gadget->getName())][1] > 0) {
+                        $gadget->equip($player);
+                    }
+                    else {
+                        $player->sendMessage(FCore::getPrefix()."§cBuy this gadget first!");
+                    }
+                }
+                else {
+                    $player->sendMessage(FCore::getPrefix()."§aGadget used!");
+                    \fcore\FCore::$instance->lobbyUtilsMgr->rgadgets[strtolower($gadget->getName())] = $player;
+                }
+            }
+            else {
+                $player->sendMessage(FCore::getPrefix()."§cBuy this gadget first!");
+            }
+        };
+        $form = $this->plugin->formApi->createSimpleForm("§6§lGadgets", "§aSelect gadget.", $buttons, $func);
+        $form->send($player);
+    }
+
+    public function openParticles(Player $player) {
+        $buttons = [];
+
+        foreach ($this->particles as $particle) {
+            $data = ProfileManager::$players[$player->getName()]["particles"];
+            $name = "§6".$particle->getName()." ";
+            $name .= $data[strtolower($particle->getName())][0] === true ? "§aEnable" : "§cBuy this particle first!";
+            array_push($buttons, new Button($name, $particle->getImage(), "url"));
+        }
+
+        $func = function (Player $player, array $data){
+            $result = $data[0];
+            if($result === null) return;
+
+            $p = [];
+
+            /**
+             * @var string $index
+             * @var Particle $particle
+             */
+            foreach (\fcore\FCore::$instance->lobbyUtilsMgr->particles as $index => $particle) {
+                array_push($p, $particle);
+            }
+
+            /** @var Particle $particle $gadget */
+            $particle = $p[$result];
+
+            if(!$particle instanceof Particle) {
+                ob_start();
+                var_dump($p);
+                $this->plugin->getLogger()->critical(ob_get_clean());
+                return;
+            }
+
+            if(ProfileManager::$players[$player->getName()]["particles"][strtolower($particle->getName())][0] === true) {
+                $player->sendMessage(FCore::getPrefix()."§aSelected particle {$particle->getName()}");
+                if(isset(\fcore\FCore::$instance->lobbyUtilsMgr->rparticles[strtolower($particle->getName())][$player->getName()])) {
+                    unset(\fcore\FCore::$instance->lobbyUtilsMgr->rparticles[strtolower($particle->getName())][$player->getName()]);
+                }
+                else {
+                    \fcore\FCore::$instance->lobbyUtilsMgr->rparticles[strtolower($particle->getName())][$player->getName()] = $player;
+                }
+            }
+            else {
+                $player->sendMessage(FCore::getPrefix()."§cBuy this particle first!");
+            }
+        };
+        $form = $this->plugin->formApi->createSimpleForm("§6§Particles", "§aSelect particle.", $buttons, $func);
+        $form->send($player);
+    }
+
+    /**
+     * @cosmeticMenu
+     *
+     * @param Player $player
+     */
+    public function openCosmeticMenu(Player $player) {
+        $buttons = [
+            new Button("§e§lGadgets", "http://icons.iconarchive.com/icons/chrisl21/minecraft/256/Folder-Tnt-icon.png", "url"),
+            new Button("§e§lParticles", "http://icons.iconarchive.com/icons/chrisl21/minecraft/256/Folder-Grass-icon.png", "url")
+        ];
+        $func = function (Player $player, array $data){
+            $result = $data[0];
+            if($result === null) return;
+
+            if($result === 0) {
+                $this->openGadgets($player);
+            }
+            if($result === 1) {
+                $this->openParticles($player);
+            }
+        };
+        $form = $this->plugin->formApi->createSimpleForm("§eCosmeticMenu", "§aSelect section.", $buttons, $func);
+        $form->send($player);
+    }
+
+
+
+
+
+
+
+    public function removeParticles(Player $player) {
+        foreach ($this->rparticles as $particle => $players) {
+            foreach ($players as $name => $p) {
+                if($name == $player->getName()) {
+                    unset($this->rparticles[$particle[$name]]);
+                }
+            }
+        }
+    }
+
+    /**
+     * @task
+     *
+     *  > Run particles
+     */
+    public function runParticles() {
+        foreach ($this->particles as $particle) {
+            if($particle instanceof RunningParticle) {
+                $particle->run();
+            }
+        }
+    }
+
+    /**
+     * @task
+     *
+     *  > Run gadgets
+     */
+    public function runGadgets() {
+        foreach ($this->gadgets as $gadget) {
+            if($gadget instanceof RunningGadget) {
+                $gadget->run();
+            }
+        }
+    }
+}

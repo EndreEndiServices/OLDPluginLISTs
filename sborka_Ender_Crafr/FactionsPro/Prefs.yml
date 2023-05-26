@@ -1,0 +1,7 @@
+---
+MaxFactionNameLength: 6
+MaxPlayersPerFaction: 20
+OnlyLeadersAndOfficersCanInvite: false
+OfficersCanClaim: false
+PlotSize: 0
+...

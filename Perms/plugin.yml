@@ -1,0 +1,56 @@
+main: PurePro\Perms\PermsMain
+version: 1.0.6
+api:
+- 1.14.0
+- 2.0.0
+load: STARTUP
+
+name: PermsPro
+author: Timur Volkov
+website: http://vk.com/tumyp351
+description: "Права и группы"
+
+permissions:
+  perms.*:
+    description: "Разрешить игроку все команды и возможности плагина"
+    default: op
+    children:
+      perms.nick:
+        description: "Разрешает игроку использовать команду смены ника"
+        default: op
+        children:
+          perms.nick.self:
+            description: "Разрешает менять ник только себе"
+            default: op
+          perms.nick.other:
+            description: "Разрешает менять ник другим игрокам"
+            default: op
+      perms.prefix:
+        description: "Разрешает игроку использовать команду смены префикса"
+        default: op
+        children:
+          perms.prefix.self:
+            description: "Разрешает менять префикс только себе"
+            default: op
+          perms.prefix.other:
+            description: "Разрешает менять префикс другим игрокам"
+            default: op
+      perms.setgroup:
+        description: "Разрешает игроку использовать команду смены группы"
+        default: op
+        children:
+          perms.prefix.self:
+            description: "Разрешает менять группу только себе"
+            default: op
+          perms.prefix.other:
+            description: "Разрешает менять группу другим игрокам"
+            default: op
+      perms.donate:
+        description: "Разрешает игроку смотреть список возможностей доната"
+        default: true
+      perms.groups:
+        description: "Разрешает игроку смотреть список групп сервера"
+        default: true
+      perms.chat:
+        description: "Полный доступ к антиспаму, цветной чат"
+        default: op

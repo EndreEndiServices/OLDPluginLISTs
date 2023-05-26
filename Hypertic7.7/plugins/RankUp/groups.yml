@@ -1,0 +1,70 @@
+---
+groups:
+  a:
+    entrance:
+    - say §6§l{name} §r§6ranked up to §aA
+    - setgroup {name} a
+    exit: []
+    perms:
+    - simplewarp.warp.a
+    - simplewarp.warp.shop
+    members:
+      1: fabyan123
+  b:
+    entrance:
+    - say §6§l{name} §r§6ranked up to §aB
+    - setgroup {name} b
+    exit: []
+    perms:
+    - simplewarp.warp.b
+    - simplewarp.warp.shop
+    members:
+    - BradTest
+  c:
+    entrance:
+    - say §6§l{name} §r§6ranked up to §aC
+    - setgroup {name} c
+    exit: []
+    perms:
+    - simplewarp.warp.c
+    - simplewarp.warp.shop
+    members: []
+  d:
+    entrance:
+    - say §6§l{name} §r§6ranked up to §aD
+    - setgroup {name} d
+    exit: []
+    perms:
+    - simplewarp.warp.d
+    - simplewarp.warp.shop
+    members: []
+  e:
+    entrance:
+    - say §6§l{name} §r§6ranked up to §aE
+    - setgroup {name} e
+    exit: []
+    perms:
+    - simplewarp.warp.e
+    - simplewarp.warp.shop
+    members: []
+  f:
+    entrance:
+    - say §6§l{name} §r§6ranked up to §aF
+    - setgroup {name} f
+    exit: []
+    perms:
+    - simplewarp.warp.f
+    - simplewarp.warp.shop
+    members: []
+  civilian:
+    entrance:
+    - say §6§l{name} §r§6Is now free fromprison!
+    - setgroup {name} civilian
+    exit: []
+    perms:
+    - simplewarp.warp.free
+    - simplewarp.warp.shop
+    - slapper.seeId
+    members:
+    - Bradderss2001
+...

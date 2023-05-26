@@ -1,0 +1,37 @@
+---
+version: 1.2.0
+'# settings': features
+settings:
+  '# currency': Item to use for currency
+  currency: GOLD_INGOT
+  '# signs': set to true to enable shops|casino signs
+  signs: true
+'# trade-goods': List of tradeable goods
+trade-goods: []
+defaults:
+  '# payment': default payment when tapping on a player
+  payment: 1
+  '# timeout': how long a transaction may last
+  timeout: 30
+'# signs': Text used to identify GoldStd signs
+signs:
+  shop:
+  - '[SHOP]'
+  casino:
+  - '[CASINO]'
+  trade:
+  - '[TRADE]'
+  effects:
+  - '[POTIONS]'
+shop-keepers:
+  '# enable': enable/disable shopkeep functionality
+  enable: true
+  '# range': How far away to engage players in chat
+  range: 4
+  '# ticks': How often to check player positions
+  ticks: 20
+  '# freq': How often to  spam players (in seconds)
+  freq: 60
+'# weapons': List of offensive weapons
+weapons: []
+...

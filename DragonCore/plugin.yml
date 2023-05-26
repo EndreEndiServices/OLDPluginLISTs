@@ -1,0 +1,11 @@
+name: DragonCore
+main: hola\Main
+author: jose
+version: 2.0.0 pro
+api: [1.0.0]
+
+commands:
+  setrank:
+    description: "RankSet"
+  dtp:
+    description: "tplobby"

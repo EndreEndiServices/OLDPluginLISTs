@@ -1,0 +1,5 @@
+name: AdrenalineCore
+author: AppleDevelops
+api: [3.0.0-ALPHA5]
+main: Adrenaline\CoreLoader
+version: 1.0.0-BETA2

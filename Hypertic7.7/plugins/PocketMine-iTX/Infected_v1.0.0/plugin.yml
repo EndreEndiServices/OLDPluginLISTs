@@ -1,0 +1,9 @@
+name: Infected
+main: Infected\Infected
+version: 1.0.0
+api: 1.0.0
+
+commands:
+    inf:
+        usage: /inf
+        description: Infected-Commands

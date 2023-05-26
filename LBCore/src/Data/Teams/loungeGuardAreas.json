@@ -1,0 +1,31 @@
+[
+	{
+		"area": {"minX": -5, "maxX": 2, "minY": 28, "maxY": 31, "minZ": 85, "maxZ": 95},
+		"guardSpawnPoints": [
+			{"x": 1.5, "y": 29, "z": 87.5},
+			{"x": 1.5, "y": 29, "z": 91.5}
+		],
+		"guardRotation": {"yaw": 90, "pitch": 0},
+		"knockbackVector": {"x": -1.6, "y": 0.2, "z": 0}
+	},
+
+	{
+		"area": {"minX": 14, "maxX": 18, "minY": 28, "maxY": 31, "minZ": 93, "maxZ": 98},
+		"guardSpawnPoints": [
+			{"x": 14.5, "y": 29, "z": 94.5},
+			{"x": 16.5, "y": 29, "z": 94.5}
+		],
+		"guardRotation": {"yaw": 0, "pitch": 0},
+		"knockbackVector": {"x": 0, "y": 0.2, "z": 1.6}
+	},
+	
+	{
+		"area": {"minX": 25, "maxX": 31, "minY": 28, "maxY": 31, "minZ": 85, "maxZ": 95},
+		"guardSpawnPoints": [
+			{"x": 29.5, "y": 29, "z": 87.5},
+			{"x": 29.5, "y": 29, "z": 91.5}
+		],
+		"guardRotation": {"yaw": -90, "pitch": 0},
+		"knockbackVector": {"x": 1.6, "y": 0.2, "z": 0}
+	}
+]

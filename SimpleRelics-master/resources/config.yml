@@ -1,0 +1,13 @@
+---
+# Rewards for relics
+# Use item IDs
+
+relic-loot:
+- "1"
+- "2"
+- "3"
+
+# Max amount of items you can get
+
+relic-max: 64
+...

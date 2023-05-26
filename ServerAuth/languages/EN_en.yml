@@ -1,0 +1,55 @@
+#ServerAuth plugin English language file
+#Translation by Flavius12, EvolSoft
+---
+join-message: "§7--> §5SeuServidor §7Network!\n§7--> §5Twitter: §f@TwttDoSeuServer!\n§7--> &5Site: §fseusitedoserver.jimdo.com!"
+single-auth: "&cUm Jogador Já está logado com essa conta!"
+mysql-success: "&aServerAuth successfully connected to the MySQL database!"
+mysql-restored: "&aMySQL connection restored!"
+mysql-fail: "&cServerAuth can't connect to the MySQL database. Data will be saved locally. Error: {MYSQL_ERROR}" 
+config-reloaded: "&aConfiguration reloaded!"
+operation-cancelled: "&cOperation cancelled"
+login:
+  message: "§7--> §f Logue-se digitando a senha no chat!"
+  disabled: "&cLogin dos anões in this server"
+  command: "&cUse: /login <password>"
+  ip-login: "&4Logado pelo IP!"
+  login-success: "&7Vc Foi Logado!"
+  login-timeout: "&cLogin Tempo esgotado :/"
+  already-login: "&aVoce Já está logado :D"
+  too-many-attempts: "&cToo many login attempts!"
+register: 
+  message: "§7--> &fRegistre-se digitando sua senha no chat!"
+  message-conf: "&bRepita sua senha para finalizar!"
+  disabled: "&cRegister disabled in this server"
+  command: "&cUse: /register <şifre>"
+  command-conf: "&cUsage: /register <şifre> <yenişifre>"
+  register-success: "&fRegistrado com sucesso!"
+  register-timeout: "&cRegistro Tempo esgotado"
+  already-registered: "&aZaten Kayıt Oldunuz"
+changepassword:
+  disabled: "&cChange password disabled in this server"
+  login-required: "&cYou need to be logged in to change password"
+  command: "&cUsage: /changepassword <newPassword>"
+  command-conf: "&cUsage: /changepassword <newPassword> <confirmPassword>"
+  changepassword-success: "&aŞifreniz Başarıyla Değiştirildi!"
+logout:
+  disabled: "&cServerde /logout komutu kullanılmıyor"
+  logout-success: "&aYou have been logged out"
+unregister:
+  disabled: "&cUnregister disabled in this server"
+  login-required: "&cYou need to be logged in to unregister"
+  command: "&cUsage: /unregister <password>"
+  command-cons: "&cUsage: /unregister <player>"
+  unregister-success: "&cDigite Sua senha 2 vezes para troca de senha novamente!"
+  unregister-success-3rd: ""
+errors:
+  generic: "&cAn error has occurred"
+  wrong-password: "&cSenha errada"
+  password-no-match: "&cAs Senhas não são a mesma =/"
+  password-too-short: "&cSenha muito Curta"
+  password-too-long: "&cSenha muito grande"
+  user-not-registered: "&cDigite Sua senha 2 vezes para troca de senha novamente"
+  user-not-registered-3rd: ""
+  user-not-authenticated: ""
+  max-ip-reached: "&cVárias entradas feitas por IP."
+...

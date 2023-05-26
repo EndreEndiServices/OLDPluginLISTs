@@ -1,0 +1,29 @@
+---
+titleStat: '[a§aTop§bPlayers§f] §9Estadistica de el jugador {player}:'
+userNotExist: '[a§aTop§bPlayers§f] §eNo existe el jugador'
+
+
+# !!! PRECAUCIÓN !!!
+# Si cambias los valores count - entonces Siempre cambie de una manera grande y la tabla de la siguiente lista(coords)
+killTitle: '§eCantidad de veces §aUcideri'
+killElement: '§2{player} - §bUcideri §7{value}'
+killCount: 5 # Numar de ucideri!
+
+deathTitle: '§eCantidad de §cMorturi'
+deathElement: '§2{player} - §cMorturi §7{value} '
+deathCount: 5 # Numero de muertes
+
+breakTitle: '§eBloques §cQuitados:'
+breakElement: '§2{player} - §cQuitados §7{value}'
+breakCount: 5 # Recuento de ruptura
+
+placeTitle: '§eCantidad de §cCaidas:'
+placeElement: '§2{player} - §cCaidas §7{value}'
+placeCount: 5 # Conteo de caidas
+
+#Periodo de actualizaciones automaticas. Por defecto: 300
+# В SEGUNDOS
+autoUpdate: 300
+
+coords: []
+...

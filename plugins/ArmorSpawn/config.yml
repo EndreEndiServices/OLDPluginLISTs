@@ -1,0 +1,7 @@
+# Config file for ArmorSpawn by LDX;
+# Values: None, Leather, Chainmail, Iron, Gold, and Diamond;
+
+Head: None
+Chest: Iron
+Legs: Chainmail
+Feet: Iron

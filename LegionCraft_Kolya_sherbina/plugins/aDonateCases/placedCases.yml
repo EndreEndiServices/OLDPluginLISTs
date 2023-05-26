@@ -1,0 +1,40 @@
+---
+162.65.9:
+  name: Донат кейс
+  title: §l§bDonate-Case
+  type: donate
+  items:
+  - chance: 20
+    command: setgroup {player} Admin
+    chat: §bТы выиграл Админа!
+  - chance: 90
+    command: ""
+    chat: Ничего :с
+  - chance: 1
+    command: ban {player} Почему бы и нет?
+    chat: Бан :D
+  - chance: 10
+    command: setgroup {player} Owner
+    chat: §bТы выиграл Owner
+  - chance: 25
+    command: setgroup {player} Deluxe
+    chat: Ты выиграл Креатив!
+  - chance: 10
+    command: setgroup {player} VIP
+    chat: Ты выиграл вип!
+world: spawnsurvival
+162.65.5:
+  name: Денежный кейс
+  title: §l§aMoney-Case
+  type: money
+  items:
+  - chance: 90
+    count: 10000
+    chat: Состояние
+  - chance: 30
+    count: 1010101
+    chat: Немного денег
+  - chance: 1
+    count: 9999999999
+    chat: МИЛЛИАРДЫ!!1!
+...

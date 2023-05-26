@@ -1,0 +1,56 @@
+package BedWars.Task;
+
+import BedWars.BedWars;
+import MTCore.MTCore;
+import MTCore.Mysql.AsyncQuery;
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+
+import java.util.HashMap;
+
+public class ChangeDisplayNameTask extends AsyncQuery {
+
+    public int action;
+    public String color = "";
+
+    public ChangeDisplayNameTask(BedWars plugin, String player, int action){
+        this.player = player;
+        this.action = action;
+
+        plugin.getServer().getScheduler().scheduleAsyncTask(this);
+    }
+
+    public ChangeDisplayNameTask(BedWars plugin, String player, int action, String color){
+        this.player = player;
+        this.action = action;
+        this.color = color;
+
+        plugin.getServer().getScheduler().scheduleAsyncTask(this);
+    }
+
+    @Override
+    public void onQuery(HashMap<String, Object> data){
+        this.setResult(data.get("rank"));
+    }
+
+    @Override
+    public void onCompletion(Server server){
+
+        Player p = server.getPlayer(this.player);
+        String display = MTCore.getDisplayRank((String) this.getResult());
+        String chat = MTCore.getChatColor((String) this.getResult());
+        switch (this.action){
+            case 0:
+                p.setDisplayName("§5[Lobby] " + display + p.getName() + "§f");
+                break;
+            case 1:
+                p.setNameTag(display + " " + p.getName());
+                p.setDisplayName(display + " " + p.getName());
+                break;
+            case 2:
+                p.setNameTag(display + " " + this.color + p.getName());
+                p.setDisplayName(display + " " + this.color + p.getName());
+        }
+
+    }
+}

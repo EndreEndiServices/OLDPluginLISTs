@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Annihilation">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Annihilation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../mysql-connector-java-5.0.8-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,70 @@
+---
+### configuration for everyone
+
+# if set to true, only one game can be run on this server, and players automatically join that game after being authenticated.
+single: false
+
+integrations:
+  # available auth integrations:
+  # nil (auth on join)
+  # SimpleAuth (auth if logged in/registered with SimpleAuth)
+  # ServerAuth (auth if logged in/registered with ServerAuth)
+  auth: nil
+
+### configuration for those who turned `single` off, i.e. multiple games work on this server
+
+# methods to join a game
+joinMethods:
+  # possible types: sign, portal, key, command
+
+  # sign: click a sign with certain text on a certain line
+- type: sign
+  # if line 2 of a clicked sign is...
+  matchingLine: 2
+  # "example" (case-insensitive)
+  matches: example
+  # then let the player join Hub. Put name of the target game or "Hub" for going back to hub here.
+  target: Hub
+
+  # portal: walk into a portal between start and end
+- type: portal
+  # coordinates of one corner of the portal
+  start: [1, 5, 9]
+  # coordiantes of the diagonally opposite corner
+  end: [5, 7, 2]
+  target: ExampleGame
+  # world to activate this method in, or delete this line for all worlds (like in the first method)
+  world: world
+
+  # key: click a "key" on a "lock"
+- type: key
+  # the "key", which is an item, or any items if you delete this line
+  # in this example, item of ID 345 and damage 0 (compass) is used
+  key: {itemId: 267, damage: 0}
+  # the "lock", which is a block specified by coordinates, or any blocks if you delete this line
+  # in this example, the block at 4:5:6 is used as the lock
+  lock: [4, 5, 6]
+  target: ExampleGame
+  world: world
+
+  # command: type a command
+- type: command
+  # the command name, case-insensitive and cannot contain a colon (:) or a space
+  name: hub
+  # aliases for the command
+  aliases: [spawn, lobby, back]
+  target: Hub
+
+hub:
+  defaultItems:
+  # you can omit damage and count to let them stay at their default values of 0 and 1 respectively
+  - itemId: 345
+    count: 3
+  - itemId: 267
+    damage: 1
+
+  # world name of the hub world
+  worldName: world
+
+  # only players with the dynamichub.edit.hub permission can edit the hub world
+  protect: true

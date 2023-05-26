@@ -1,0 +1,112 @@
+name: AntiChat 
+main: ChatFilter\ChatFilter
+version: "1.0"
+author: flabberfish 
+api: "1.0.0"
+
+commands:
+ chatfilter:
+  permission: chatfilter.commands.chatfilter
+  description: Shows list of filtered list
+  usage: /chatfilter
+ filter:
+  permission: chatfilter.commands.filter
+  description: ChatFilter manage command
+  usage: /filter <add | del | reload> [message]
+ 
+permissions:
+ chatfilter.commands.*:
+  default: op
+  description: Allows all commands of ChatFilter
+  children:
+   chatfilter.commands.chatfilter:
+    default: true
+    description: Allows command to show list of filtered list
+   chatfilter.commands.filter:
+    default: op
+    description: Allows command to manage commands of ChatFilter<?php
+
+namespace ChatFilter;
+
+class ChatFilter extends \pocketmine\plugin\PluginBase implements \pocketmine\command\CommandExecutor, \pocketmine\event\Listener{
+	public function onEnable(){
+		@mkdir($this->getDataFolder());
+		$this->config = (new \pocketmine\utils\Config($this->getDataFolder()."config.yml", \pocketmine\utils\Config::YAML, array(
+			"messages" => array(
+				".ru",".cf",".net",".pro",".com",".co",".org",".info",".tk",".me",".cc",". ru",". net",". pro",". com",". co",". org",". info",". tk",". me",". cc",".RU",".NET",".PRO",".COM",".CO",".ORG",".INFO",".TK",".ME",".CC",". RU",". NET",". PRO",". COM",". CO",". ORG",". INFO",". TK",". ME",". CC",". Ru",". NET",". PRO",". COM",". Co",". ORG",". INFO",". Tk",". Me",". Cc",". rU",". NET",". PRO",". COM",". cO",". ORG",". INFO",". tK",". mE",". cC","Net","Pro","Com","Org","NEt","PRo","COm","ORg","nEt","pRo","cOm","oRg","nET","pRO","cOM","oRG","neT","prO","coM","orG","NeT","PrO","CoM","OrG","Info","INfo","INFo","iNFO","inFO","infO","InfO","InFo","iNFo",".Su",".su",".sU",".SU",". su",". Su",". sU",". SU","пидор","сука","ебал","лох","пидр","ебан","хуй","пизд","маму ебал","мама твоя","мамка твоя","в рот","SPAM","SPAM!!!","придур","шлюх","еба","долба","тварь"
+			),
+			"identify-capital-alphabet" => false,
+			"mosaic" => "*"
+		)))->getAll();
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+	}
+	
+	public function onCommand(\pocketmine\command\CommandSender $sender, \pocketmine\command\Command $command, $label, array $params){
+		switch($command->getName()){
+			case "chatfilter":
+			$output = "§8[§6AntiChat§8] §6Запрещенные слова : \n";
+			foreach($this->config["messages"] as $m){
+				$output .= $m.", ";
+			}
+			$output = substr($output, 0, -2);
+			$sender->sendMessage($output);
+			return true;
+			case "filter":
+			$sub = array_shift($params);
+			if(trim($sub) === ""){
+				usage:
+				$sender->sendMessage("§8[§6AntiChat]§8 Использование: /filter <add | del | reload> [слово]");
+				return true;
+			}
+			switch($sub){
+				case "add":
+				case "+":
+				$message = array_shift($params);
+				if(trim($message) === ""){
+					goto usage;
+				}
+				$this->config["messages"][] = $message;
+				$sender->sendMessage("§8[§6AntiChat§8]§6 Добавлено слово \"$message\" к запрещенным словам");
+				break;
+				case "rm":
+				case "del":
+				case "-":
+				$message = array_shift($params);
+				if(trim($message) === ""){
+					goto usage;
+				}
+				$key = array_search($message, $this->config["messages"]);
+				if($key === false){
+					$sender->sendMessage("§8[§6AntiChat§8]§6 \"$message\" не запрещенное слово");
+				}else{
+					unset($this->config["messages"][$key]);
+					$sender->sendMessage( "§8[§6AntiChat§8]§6 Слово \"$message\" больше не запрещенное слово");
+				}
+				break;
+				default:
+				goto usage;
+			}
+			return true;
+		}
+	}
+	
+	public function onChatEvent(\pocketmine\event\player\PlayerChatEvent $event){
+   $p = $event->getPlayer();
+		$message = $event->getMessage();
+		foreach($this->config["messages"] as $m){
+			if(($this->config["identify-capital-alphabet"] ? strpos($message, $m) : stripos($message, $m)) !== false){
+				$cnt = strlen($m);
+				$mosaic = str_repeat($this->config["mosaic"], $cnt);
+				$message = str_ireplace($m, $mosaic, $message);
+      $event->setMessage("Я дебил");
+      $p->close("", "§6Ты кикнут за нехорошее сообщение");
+			}
+		}
+	}
+	
+	public function onDisable(){
+		$config = (new \pocketmine\utils\Config($this->getDataFolder()."config.yml", \pocketmine\utils\Config::YAML));
+		$config->setAll($this->config);
+		$config->save();
+	}
+}

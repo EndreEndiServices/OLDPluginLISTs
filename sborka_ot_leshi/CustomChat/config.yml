@@ -1,0 +1,7 @@
+---
+chat-format: ➥ {DISPLAY_NAME} ═╬ {PREFIX} ╬═ ➠ {MESSAGE}
+if-player-has-no-faction: NoFaction
+enable-formatter: true
+disablechat: false
+default-player-prefix: Игрок
+...

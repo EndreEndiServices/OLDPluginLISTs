@@ -1,0 +1,46 @@
+---
+
+getQuest: '§7(§bFire§cCraft§7) §aВы взяли:§e {quest}§c!'
+getQuestInfo: '§7(§bFire§cCraft§7) §aВаше задание: §f{type} §2{target}§a в количестве§3 {count}§c!'
+questEnded: '§7(§bFire§cCraft§7) §aВы успешно завершили§e квесты, хорошая работа§c!'
+questNotExist: '§7(§bFire§cCraft§7) §aУ вас нет§e квеста. §aВозьмите его командой: §b/quest§c!'
+questHelp: '§7(§bFire§cCraft§7) §aВаш§e квест: §f{type} §2{target}§a в количестве§3 {count}§c!'
+questEnd: '§7(§bFire§cCraft§7) §aПоздравляю§c!§a Вы успешно завершили§e {quest}, §aВаша награда:§b {award}§a в количестве§f {count}§c!'
+
+# Все возможные task:
+# blockBreak - сломать блок
+# blockPlace - поставить блок
+# Если нужно сломать или поставить ЛЮБЫЕ БЛОКИ - пишем all
+# playerKill - убийство игроков
+# playerDeath - умереть (да-да, нужно умереть)
+# itemConsume - съесть что-либо
+# itemDrop - выкинуть что-либо
+quests:
+  - name: Первый квест
+    task: blockPlace
+    target: Камень
+    id: 1 
+    num: 6
+    award:
+      id: money
+      count: 150
+      name: Денюжка
+  - name: Второй квест
+    task: blockBreak
+    target: Камень
+    id: 1
+    num: 26
+    award:
+      id: money
+      count: 250
+      name: Денюжка
+  - name: Третий квест
+    task: playerKill
+    target: Игроков
+    id: 1
+    num: 28
+    award:
+      id: money
+      count: 350
+      name: Денюжка
+...

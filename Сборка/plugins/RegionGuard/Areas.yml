@@ -1,0 +1,3470 @@
+---
+benjom:
+  min:
+  - 577
+  - 56
+  - 532
+  max:
+  - 605
+  - 94
+  - 546
+  owners:
+  - pryvet
+  members: []
+  level: world
+  flags:
+    pvp: allow
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+emanovil:
+  min:
+  - -181
+  - 66
+  - -42
+  max:
+  - -166
+  - 79
+  - -32
+  owners:
+  - emanovil
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+fgy:
+  min:
+  - 18
+  - 62
+  - 622
+  max:
+  - 21
+  - 67
+  - 625
+  owners:
+  - ms_marina_
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+vlad:
+  min:
+  - -86
+  - 46
+  - -91
+  max:
+  - -59
+  - 74
+  - -63
+  owners:
+  - __vlad__
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+pink90:
+  min:
+  - 256
+  - 60
+  - 131
+  max:
+  - 265
+  - 71
+  - 140
+  owners:
+  - super_cats
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+deep:
+  min:
+  - -170
+  - 61
+  - -120
+  max:
+  - -137
+  - 77
+  - -97
+  owners:
+  - deeproodss
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+grief:
+  min:
+  - -24
+  - 60
+  - -50
+  max:
+  - -17
+  - 68
+  - -43
+  owners:
+  - funoneguy
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+deep2:
+  min:
+  - -84
+  - 61
+  - -166
+  max:
+  - -60
+  - 80
+  - -142
+  owners:
+  - deeproodss
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+fun:
+  min:
+  - -11
+  - 62
+  - -39
+  max:
+  - 4
+  - 95
+  - -8
+  owners:
+  - funoneguy
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+edik:
+  min:
+  - 105
+  - 80
+  - 911
+  max:
+  - 105
+  - 80
+  - 911
+  owners:
+  - paukolol
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+dosik:
+  min:
+  - -105
+  - 51
+  - 913
+  max:
+  - -82
+  - 76
+  - 926
+  owners:
+  - mr_razrushitel
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+travkamen:
+  min:
+  - -98
+  - 72
+  - 775
+  max:
+  - -82
+  - 86
+  - 787
+  owners:
+  - travka_psix
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+zilom:
+  min:
+  - 59
+  - 64
+  - 661
+  max:
+  - 72
+  - 68
+  - 676
+  owners:
+  - zilom
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+sos:
+  min:
+  - -43
+  - 64
+  - 771
+  max:
+  - -13
+  - 76
+  - 799
+  owners:
+  - mika_pika
+  members:
+  - vika
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+spawn:
+  min:
+  - -85
+  - 48
+  - 259
+  max:
+  - 127
+  - 120
+  - 469
+  owners:
+  - flaggerredboy_
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+040915:
+  min:
+  - -135
+  - 90
+  - 612
+  max:
+  - -106
+  - 116
+  - 644
+  owners:
+  - mater1234567890
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+pinki90:
+  min:
+  - 264
+  - 62
+  - 223
+  max:
+  - 278
+  - 71
+  - 248
+  owners:
+  - super_cats
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+gazz:
+  min:
+  - -221
+  - 59
+  - 271
+  max:
+  - -207
+  - 74
+  - 285
+  owners:
+  - gazzirovka
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+qwer:
+  min:
+  - -190
+  - 104
+  - 571
+  max:
+  - -160
+  - 119
+  - 601
+  owners:
+  - mater1234567890
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+fufjd:
+  min:
+  - 61
+  - 63
+  - 751
+  max:
+  - 77
+  - 71
+  - 766
+  owners:
+  - ms_marina_
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+gazzirovka:
+  min:
+  - -261
+  - 58
+  - 205
+  max:
+  - -243
+  - 72
+  - 221
+  owners:
+  - gazzirovka
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+2pac:
+  min:
+  - 20
+  - 57
+  - 610
+  max:
+  - 31
+  - 84
+  - 621
+  owners:
+  - kane2535
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+sstrey:
+  min:
+  - 433
+  - 53
+  - 557
+  max:
+  - 450
+  - 70
+  - 577
+  owners:
+  - sstreyproyt
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+deep3:
+  min:
+  - -348
+  - 62
+  - -199
+  max:
+  - -321
+  - 77
+  - -175
+  owners:
+  - deeproodss
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+hom:
+  min:
+  - 151
+  - 62
+  - 845
+  max:
+  - 165
+  - 70
+  - 859
+  owners:
+  - ms_marina_
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+vito:
+  min:
+  - 262
+  - 63
+  - 552
+  max:
+  - 268
+  - 68
+  - 560
+  owners:
+  - vastvitaliy
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+ais:
+  min:
+  - -23
+  - 55
+  - 114
+  max:
+  - -14
+  - 79
+  - 125
+  owners:
+  - aiskz
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+monstr:
+  min:
+  - -225
+  - 53
+  - -203
+  max:
+  - -217
+  - 71
+  - -194
+  owners:
+  - monstr
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+dosik2:
+  min:
+  - 128
+  - 65
+  - 295
+  max:
+  - 140
+  - 82
+  - 315
+  owners:
+  - mr_razrushitel
+  - vika_zr
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+maksat:
+  min:
+  - 583
+  - 54
+  - -92
+  max:
+  - 606
+  - 81
+  - -62
+  owners:
+  - killerbany
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+ddd:
+  min:
+  - -122
+  - 63
+  - 810
+  max:
+  - -102
+  - 87
+  - 847
+  owners:
+  - skynyffu228
+  - pukpvp
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+mister_s:
+  min:
+  - 301
+  - 62
+  - 612
+  max:
+  - 312
+  - 72
+  - 624
+  owners:
+  - mister_s2
+  members:
+  - xx_pbick_xx
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+bot:
+  min:
+  - -178
+  - 67
+  - -423
+  max:
+  - -163
+  - 85
+  - -414
+  owners:
+  - mr_frost_bot___
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+gg228:
+  min:
+  - 299
+  - 59
+  - 611
+  max:
+  - 313
+  - 72
+  - 625
+  owners:
+  - mister_s2
+  members:
+  - xx_pbicb_xx
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+po:
+  min:
+  - -137
+  - 55
+  - -327
+  max:
+  - -121
+  - 84
+  - -304
+  owners:
+  - bravedahil
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+lol:
+  min:
+  - 105
+  - 80
+  - 911
+  max:
+  - 105
+  - 80
+  - 911
+  owners:
+  - paukolol
+  - darkmister777
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+boot:
+  min:
+  - -102
+  - 59
+  - -131
+  max:
+  - -82
+  - 75
+  - -117
+  owners:
+  - mr_frost_bot___
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+asdf:
+  min:
+  - 463
+  - 60
+  - 483
+  max:
+  - 485
+  - 77
+  - 502
+  owners:
+  - mis_diana909
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+pauk:
+  min:
+  - 86
+  - 60
+  - 1001
+  max:
+  - 96
+  - 76
+  - 1010
+  owners:
+  - paukolol
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+page:
+  min:
+  - 153
+  - 62
+  - 828
+  max:
+  - 165
+  - 74
+  - 839
+  owners:
+  - ak_74
+  - c0nsole
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: deny
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+romrus:
+  min:
+  - -81
+  - 57
+  - 764
+  max:
+  - -71
+  - 126
+  - 775
+  owners:
+  - snikers12
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+liza:
+  min:
+  - -81
+  - 68
+  - 524
+  max:
+  - -73
+  - 72
+  - 534
+  owners:
+  - _xxx_liza_xxx_
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+domik:
+  min:
+  - 483
+  - 61
+  - 569
+  max:
+  - 513
+  - 90
+  - 596
+  owners:
+  - mis_diana909
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+1234:
+  min:
+  - -72
+  - 67
+  - 639
+  max:
+  - -52
+  - 77
+  - 660
+  owners:
+  - _dimawin_
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+12345:
+  min:
+  - 75
+  - 61
+  - 606
+  max:
+  - 82
+  - 72
+  - 625
+  owners:
+  - dzalil123
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+легендарный:
+  min:
+  - -21
+  - 62
+  - 58
+  max:
+  - -8
+  - 70
+  - 71
+  owners:
+  - lexan
+  - дом
+  members:
+  - дом
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+clan:
+  min:
+  - 484
+  - 59
+  - 533
+  max:
+  - 508
+  - 92
+  - 561
+  owners:
+  - yura_morgan_pro
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+artemedik5:
+  min:
+  - 265
+  - 50
+  - 604
+  max:
+  - 281
+  - 78
+  - 627
+  owners:
+  - xx_pbicb_xx
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+kronos:
+  min:
+  - -24
+  - 65
+  - 704
+  max:
+  - -14
+  - 70
+  - 714
+  owners:
+  - ruslan4ik
+  members:
+  - sneikrs12
+  - snikers12
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+dod:
+  min:
+  - 102
+  - 52
+  - 585
+  max:
+  - 110
+  - 69
+  - 593
+  owners:
+  - dzalil123
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+maksat1223:
+  min:
+  - -168
+  - 57
+  - -1024
+  max:
+  - -148
+  - 83
+  - -999
+  owners:
+  - killerbany
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+car:
+  min:
+  - 97
+  - 62
+  - 523
+  max:
+  - 109
+  - 62
+  - 534
+  owners:
+  - kevin
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+grif:
+  min:
+  - 494
+  - 85
+  - 1062
+  max:
+  - 503
+  - 92
+  - 1072
+  owners:
+  - koli
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+vlados:
+  min:
+  - -421
+  - 58
+  - 364
+  max:
+  - -382
+  - 78
+  - 394
+  owners:
+  - gazzirovka
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+protemon:
+  min:
+  - -84
+  - 59
+  - 471
+  max:
+  - -77
+  - 67
+  - 478
+  owners:
+  - temonguy
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+mister:
+  min:
+  - 124
+  - 65
+  - 523
+  max:
+  - 130
+  - 65
+  - 530
+  owners:
+  - maksbro
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+snuu:
+  min:
+  - -114
+  - 14
+  - 652
+  max:
+  - -109
+  - 21
+  - 661
+  owners:
+  - smokierflea782
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+0987654321:
+  min:
+  - 138
+  - 60
+  - 464
+  max:
+  - 145
+  - 69
+  - 471
+  owners:
+  - tor
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+___:
+  min:
+  - -251
+  - 57
+  - 243
+  max:
+  - -242
+  - 71
+  - 268
+  owners:
+  - duze
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+ii:
+  min:
+  - -23
+  - 66
+  - -319
+  max:
+  - -14
+  - 73
+  - -310
+  owners:
+  - bravedahil
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+sasha2005:
+  min:
+  - -91
+  - 69
+  - 382
+  max:
+  - -86
+  - 76
+  - 392
+  owners:
+  - donaldtramp
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+koks:
+  min:
+  - 242
+  - 67
+  - 819
+  max:
+  - 256
+  - 85
+  - 828
+  owners:
+  - thewolfyt
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+567890:
+  min:
+  - 151
+  - 56
+  - 481
+  max:
+  - 159
+  - 72
+  - 489
+  owners:
+  - tor
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+bbbeee:
+  min:
+  - 84
+  - 65
+  - 193
+  max:
+  - 93
+  - 87
+  - 201
+  owners:
+  - lisa123
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+sclag:
+  min:
+  - -334
+  - 62
+  - 446
+  max:
+  - -324
+  - 67
+  - 453
+  owners:
+  - koli
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+leonid2244:
+  min:
+  - -61
+  - 65
+  - 1030
+  max:
+  - -49
+  - 87
+  - 1041
+  owners:
+  - steevpro22222775
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+artur:
+  min:
+  - -2
+  - 62
+  - 526
+  max:
+  - 13
+  - 74
+  - 540
+  owners:
+  - arturvieru
+  members:
+  - mazafala
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+kenni:
+  min:
+  - -94
+  - 61
+  - 1234
+  max:
+  - -82
+  - 71
+  - 1246
+  owners:
+  - kenni
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+deep5:
+  min:
+  - 182
+  - 61
+  - -159
+  max:
+  - 189
+  - 72
+  - -148
+  owners:
+  - deeproodss
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+hyga:
+  min:
+  - 1067
+  - 64
+  - 361
+  max:
+  - 1069
+  - 64
+  - 387
+  owners:
+  - kate_love
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+op:
+  min:
+  - 233
+  - 60
+  - -609
+  max:
+  - 248
+  - 71
+  - -595
+  owners:
+  - mrkickmaster
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+qwerty:
+  min:
+  - -5
+  - 62
+  - 527
+  max:
+  - 13
+  - 65
+  - 543
+  owners:
+  - mazafala
+  members:
+  - arturvieru
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+leonid222224:
+  min:
+  - -39
+  - 61
+  - 909
+  max:
+  - -21
+  - 81
+  - 931
+  owners:
+  - steevpro22222775
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+snuu2:
+  min:
+  - -115
+  - 66
+  - 649
+  max:
+  - -107
+  - 79
+  - 657
+  owners:
+  - smokierflea782
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+ken:
+  min:
+  - -28
+  - 61
+  - 1073
+  max:
+  - -11
+  - 73
+  - 1090
+  owners:
+  - kenni
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+gamegiv:
+  min:
+  - -315
+  - 68
+  - 441
+  max:
+  - -301
+  - 68
+  - 457
+  owners:
+  - gamefataliti
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+region:
+  min:
+  - 1041
+  - 62
+  - 350
+  max:
+  - 1052
+  - 64
+  - 361
+  owners:
+  - mila_2003
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+paga:
+  min:
+  - -484
+  - 56
+  - 232
+  max:
+  - -469
+  - 77
+  - 253
+  owners:
+  - ak_74
+  members:
+  - thewolfyt
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+babi:
+  min:
+  - -257
+  - 46
+  - -144
+  max:
+  - -241
+  - 82
+  - -121
+  owners:
+  - kukonya
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+asdfghjkl:
+  min:
+  - 0
+  - 63
+  - 529
+  max:
+  - 9
+  - 65
+  - 541
+  owners:
+  - mazafala
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+leonid22225:
+  min:
+  - -148
+  - 74
+  - 711
+  max:
+  - -136
+  - 87
+  - 722
+  owners:
+  - steevpro22222775
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+krezu_sistrs:
+  min:
+  - 1067
+  - 64
+  - 358
+  max:
+  - 1079
+  - 64
+  - 386
+  owners:
+  - kate_love
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+bbbeee123:
+  min:
+  - 270
+  - 61
+  - -20
+  max:
+  - 286
+  - 66
+  - 0
+  owners:
+  - lisa123
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+leonid:
+  min:
+  - -149
+  - 68
+  - 694
+  max:
+  - -141
+  - 78
+  - 705
+  owners:
+  - steevpro22222775
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+bropro:
+  min:
+  - 57
+  - 57
+  - -47
+  max:
+  - 69
+  - 72
+  - -35
+  owners:
+  - oleg_bro_pro
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+waw:
+  min:
+  - -192
+  - 75
+  - 220
+  max:
+  - -187
+  - 75
+  - 227
+  owners:
+  - trol_228
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+olya:
+  min:
+  - 808
+  - 62
+  - 349
+  max:
+  - 821
+  - 84
+  - 359
+  owners:
+  - olya_mi
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+leonid22227:
+  min:
+  - 59
+  - 63
+  - 756
+  max:
+  - 81
+  - 75
+  - 769
+  owners:
+  - steevpro22222775
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+_kek_:
+  min:
+  - -186
+  - 68
+  - -7
+  max:
+  - -178
+  - 87
+  - 6
+  owners:
+  - _kek_
+  - mr_frost_bot___
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+domiwes:
+  min:
+  - -514
+  - 61
+  - 388
+  max:
+  - -490
+  - 79
+  - 425
+  owners:
+  - koli
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+gamefataliti:
+  min:
+  - -316
+  - 66
+  - 441
+  max:
+  - -301
+  - 66
+  - 458
+  owners:
+  - gamefataliti
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+taggeronoff:
+  min:
+  - 212
+  - 57
+  - 521
+  max:
+  - 227
+  - 72
+  - 534
+  owners:
+  - taggeron
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+kiska:
+  min:
+  - 276
+  - 57
+  - 60
+  max:
+  - 295
+  - 73
+  - 77
+  owners:
+  - pvpeer0
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+tpa:
+  min:
+  - 89
+  - 74
+  - 698
+  max:
+  - 99
+  - 76
+  - 709
+  owners:
+  - jason57236
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+kowiy:
+  min:
+  - 459
+  - 52
+  - 210
+  max:
+  - 472
+  - 91
+  - 227
+  owners:
+  - mrkickmaster
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+poplzik:
+  min:
+  - 368
+  - 67
+  - 1060
+  max:
+  - 397
+  - 78
+  - 1084
+  owners:
+  - garri
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+leonid20063:
+  min:
+  - -43
+  - 59
+  - 1012
+  max:
+  - -24
+  - 81
+  - 1029
+  owners:
+  - steevpro22222775
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+popzik:
+  min:
+  - 580
+  - 64
+  - 1265
+  max:
+  - 594
+  - 76
+  - 1277
+  owners:
+  - garri
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+mrgunter:
+  min:
+  - -475
+  - 58
+  - 425
+  max:
+  - -457
+  - 73
+  - 446
+  owners:
+  - runbob
+  - airkotyt
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+krutoi:
+  min:
+  - 535
+  - 55
+  - 1296
+  max:
+  - 551
+  - 83
+  - 1310
+  owners:
+  - garri
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+babahov:
+  min:
+  - -55
+  - 63
+  - 1118
+  max:
+  - -42
+  - 72
+  - 1131
+  owners:
+  - firetimoha23
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+rereta:
+  min:
+  - 165
+  - 61
+  - 130
+  max:
+  - 177
+  - 74
+  - 139
+  owners:
+  - propvp
+  members:
+  - supermob
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+madrator:
+  min:
+  - 77
+  - 65
+  - 206
+  max:
+  - 82
+  - 67
+  - 212
+  owners:
+  - madrator
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+maks1:
+  min:
+  - -88
+  - 69
+  - 634
+  max:
+  - -83
+  - 69
+  - 639
+  owners:
+  - maks2
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+ilyas:
+  min:
+  - -41
+  - 63
+  - 513
+  max:
+  - -29
+  - 88
+  - 525
+  owners:
+  - rubricadmin
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+aiko:
+  min:
+  - 538
+  - 65
+  - 617
+  max:
+  - 572
+  - 75
+  - 644
+  owners:
+  - mr_razrushitel
+  - vika_zr
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+mad:
+  min:
+  - 40
+  - 55
+  - 546
+  max:
+  - 47
+  - 62
+  - 554
+  owners:
+  - lol_xd232
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+do2017:
+  min:
+  - -309
+  - 65
+  - 106
+  max:
+  - -297
+  - 76
+  - 116
+  owners:
+  - masyakascar
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+qaz:
+  min:
+  - -283
+  - 54
+  - 384
+  max:
+  - -270
+  - 78
+  - 394
+  owners:
+  - shoy
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+dhehhhshsshhsshh:
+  min:
+  - -72
+  - 26
+  - -177
+  max:
+  - -68
+  - 26
+  - -173
+  owners:
+  - madrator
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+a:
+  min:
+  - 573
+  - 57
+  - 461
+  max:
+  - 586
+  - 80
+  - 481
+  owners:
+  - kriki
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+kihg:
+  min:
+  - -27
+  - 63
+  - 1051
+  max:
+  - -14
+  - 69
+  - 1066
+  owners:
+  - lexan
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+pipidon:
+  min:
+  - 18
+  - 59
+  - 877
+  max:
+  - 44
+  - 77
+  - 904
+  owners:
+  - masyakascar
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+garrik:
+  min:
+  - 1055
+  - 57
+  - 932
+  max:
+  - 1077
+  - 70
+  - 951
+  owners:
+  - garri
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+lolpol:
+  min:
+  - 856
+  - 62
+  - 1521
+  max:
+  - 878
+  - 69
+  - 1544
+  owners:
+  - garri
+  members: []
+  level: world
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: allow
+    burn: allow
+    regain: allow
+    teleport: allow
+    mob-damage: allow
+    sleep: allow
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+...

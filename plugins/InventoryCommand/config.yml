@@ -1,0 +1,33 @@
+---
+#write here the world name where you want InventoryCommand works!
+#set this field empty if you want that works on all worlds in the server
+#if you want to apply only on two or more worlds, enter the names of the worlds separated by a comma
+#example world, hungergames, lobby
+level: world
+
+
+data:
+  #write here slot + slot number (max of slots allowed 35)
+  slot1:
+    #write here item ID
+    id: 276
+    #write here item damage
+    damage: 0
+    #write here item amount
+    amount: 1
+    popup:
+    command:
+      - say fycarman is awesome!
+      -
+      -
+  slot2:
+    id: 277
+    damage: 0
+    amount: 1
+    popup:
+    command:
+      - tell {player} made by fycarman!
+      -
+      -
+#you can add more item (slot),max is 35. Also you can add infinite commands!
+...

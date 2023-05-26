@@ -1,0 +1,6 @@
+---
+token: abcd
+group: "1234"
+debug: false
+text: Игрок %name% получил привилегию %group%
+...

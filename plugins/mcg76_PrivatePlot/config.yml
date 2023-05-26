@@ -1,0 +1,14 @@
+# private plot configuration
+# version 1.0.0
+#---------------------------
+allow_NonOp_player_create_plot: false 
+player_enter_plot_on_join: true
+enable_plot_PvP: false
+plot_world: "world"
+#plotworld
+max_plots_per_player: 10
+plot_max_size: 100
+plot_max_height: 128
+plot_max_depth: 128
+
+#---------------------------

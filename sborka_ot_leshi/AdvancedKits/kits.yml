@@ -1,0 +1,29 @@
+---
+basicpvp:
+  items:
+  - "272:0:1"
+  - "260:0:5"
+  helmet: 298
+  chestplate: 299
+  leggings: 300
+  boots: 301
+  cooldown:
+    hours: 24
+    minutes: 30
+  commands:
+  - "tell {player} you got an awesome kit thanks to AdvancedKits plugin!"
+  worlds:
+  - "kitpvp"
+basicbuilder:
+  items:
+  - "4:0:25"
+  - "275:0:1"
+  - "297:0:3"
+  chestplate: 299
+  money: 20
+  cooldown:
+    minutes: 2
+  users:
+  - "luca28pet"
+  - "dioconsole"
+...

@@ -1,0 +1,12 @@
+---
+#spam
+spam-allow: false
+spam:
+  time: 5
+  warn-message: "§b• §f(§cАнтиСпам§f) §bПауза между сообщениями 5§c секунд!"
+#rep
+repeats-allow: false
+repeats:
+  max-repeats: 2
+  warn-message: "§b• §f§cАнтиСпам§f) §cПожалуйста, не повторяйте сообщения!"
+...

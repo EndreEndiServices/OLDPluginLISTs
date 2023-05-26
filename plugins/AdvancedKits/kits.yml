@@ -1,0 +1,436 @@
+---
+people:
+  items:
+  - id: 397
+    damage: 3
+    count: 1
+    name: "§eЛюди"
+  - id: 267
+    damage: 0
+    count: 1
+    name: "§eЛегендарный меч"
+    enchantment:
+      weapon_sharpness: 3
+      weapon_knockback: 2
+  - id: 320
+    damage: 0
+    count: 20
+    name: "§eСтейк"
+  - id: 264
+    damage: 0
+    count: 2
+    name: "§eАлмаз"
+  - id: 265
+    damage: 0
+    count: 2
+    name: "§eЖелезо"
+  - id: 266
+    damage: 0
+    count: 2
+    name: "§eЗолото"
+
+  helmet:
+    id: 302
+    name: "§bШапка"
+    enchantment:
+      armor_protection: 1
+
+  chestplate:
+    id: 307
+    name: "§bНагрудник"
+    enchantment:
+      armor_protection: 3
+
+  leggings:
+    id: 304
+    name: "§bШтаны"
+    enchantment:
+     armor_protection: 1
+
+  boots:
+    id: 305
+    name: "§bБотинки"
+    enchantment:
+     armor_protection: 1
+
+  cooldown: []
+
+  commands: []
+
+  effects:
+  - name: "strenght"
+    seconds: 99999999
+    amplifier: 2
+
+  worlds: []
+
+  users: []
+
+orcs:
+  items:
+  - id: 297
+    damage: 2
+    count: 1
+    name: "§eОрки"
+  - id: 279
+    damage: 0
+    count: 1
+    name: "§eТопор Орков"
+    enchantment:
+      weapon_sharpness: 4
+  - id: 320
+    damage: 0
+    count: 20
+    name: "§eСтейк"
+  - id: 264
+    damage: 0
+    count: 3
+    name: "§eАлмаз"
+  - id: 265
+    damage: 0
+    count: 3
+    name: "§eЖелезо"
+  - id: 266
+    damage: 0
+    count: 3
+    name: "§eЗолото"
+
+  helmet:
+    id: 298
+    name: "§aШапка"
+    enchantment:
+      armor_protection: 1
+
+  chestplate:
+    id: 311
+    name: "§aНагрудник"
+    enchantment:
+      armor_thorns: 3
+
+  leggings:
+    id: 300
+    name: "§aШтаны"
+    enchantment:
+     armor_protection: 1
+
+  boots:
+    id: 301
+    name: "§aБотинки"
+    enchantment:
+     armor_protection: 1
+
+  cooldown: []
+
+  commands: []
+
+  effects:
+  - name: "regeneration"
+    seconds: 9999999
+    amplifier: 2
+
+  worlds: []
+
+  users: []
+
+
+
+elf:
+  items:
+  - id: 297
+    damage: 0
+    count: 1
+    name: "§eЕльфи"
+  - id: 261
+    damage: 0
+    count: 1
+    name: "§eЛук Ельфа"
+    enchantment:
+      weapon_power: 3
+      weapon_punch: 2                         
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы"     
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы"     
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы"             
+  - id: 268
+    damage: 0
+    count: 1
+    name: "§eКинжал"     
+    enchantment:
+      weapon_smite: 1
+  - id: 320
+    damage: 0
+    count: 20
+    name: "§eСтейк"
+  - id: 264
+    damage: 0
+    count: 3
+    name: "§eАлмаз"
+  - id: 265
+    damage: 0
+    count: 3
+    name: "§eЖелезо"
+  - id: 266
+    damage: 0
+    count: 3
+    name: "§eЗолото"        
+  - id: 332
+    damage: 0
+    count: 16
+    name: "§eСнежка"     
+
+  helmet:
+    id: 298
+    name: "§aШапка"
+    enchantment:
+      armor_protection: 1
+
+  chestplate:
+    id: 303
+    name: "§aНагрудник"
+    enchantment:
+      armor_protection: 3
+
+  leggings:
+    id: 300
+    name: "§aШтаны"
+    enchantment:
+     armor_protection: 1
+
+  boots:
+    id: 301
+    name: "§aБотинки"
+    enchantment:
+     armor_protection: 1
+
+  cooldown: []
+
+  commands: []
+
+  effects:
+  - name: "boost"
+    seconds: 9999999
+    amplifier: 2
+
+  worlds: []
+
+  users: []
+
+undead:
+  items:
+  - id: 297
+    damage: 1
+    count: 1
+    name: "§eНижить"
+  - id: 369
+    damage: 0
+    count: 1
+    name: "§eСила Нежить"
+    enchantment:
+      weapon_sharpness: 4           
+  - id: 400
+    damage: 0
+    count: 20
+    name: "§eМясной торт"     
+  - id: 378
+    damage: 0
+    count: 5
+    name: "§eЭндер Перл"     
+  - id: 322
+    damage: 0
+    count: 10
+    name: "§eЗолотые яблоки"             
+  - id: 264
+    damage: 0
+    count: 3
+    name: "§eАлмаз"
+  - id: 265
+    damage: 0
+    count: 3
+    name: "§eЖелезо"
+  - id: 266
+    damage: 0
+    count: 3
+    name: "§eЗолото"        
+
+  helmet:
+    id: 298
+    name: "§aШапка"
+    enchantment:
+      armor_thorns: 1
+
+  chestplate:
+    id: 315
+    name: "§aНагрудник"
+    enchantment:
+      armor_protection: 3
+
+  leggings:
+    id: 300
+    name: "§aШтаны"
+    enchantment:
+     armor_thorns: 1
+
+  boots:
+    id: 301
+    name: "§aБотинки"
+    enchantment:
+     armor_thorns: 1
+
+  cooldown: []
+
+  commands: []
+
+  effects:
+  - name: "boost"
+    seconds: 9999999
+    amplifier: 2
+
+  worlds: []
+
+  users: []
+
+
+magg:
+  items:
+  - id: 280
+    damage: 1
+    count: 1
+    name: "§eПосох"
+    enchantment:
+      weapon_knockback: 4
+  - id: 267
+    damage: 0
+    count: 1
+    name: "§eМеч мага"
+    enchantment:
+      weapon_sharpness: 1     
+  - id: 261
+    damage: 0
+    count: 1
+    name: "§eЛук Мага"     
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы Мага"     
+  - id: 322
+    damage: 0
+    count: 10
+    name: "§eЗолотые яблоки"             
+ 
+  helmet:
+    id: 302
+    name: "§aШапка"
+    enchantment:
+      armor_thorns: 1
+
+  chestplate:
+    id: 303
+    name: "§aНагрудник"
+    enchantment:
+      armor_protection: 3
+
+  leggings:
+    id: 304
+    name: "§aШтаны"
+    enchantment:
+     armor_thorns: 1
+
+  boots:
+    id: 305
+    name: "§aБотинки"
+    enchantment:
+     armor_thorns: 1
+
+  cooldown: []
+
+  commands: []
+
+  effects:
+  - name: "boost"
+    seconds: 9999999
+    amplifier: 2
+
+  worlds: []
+
+  users: []
+
+
+
+magw:
+  items:
+  - id: 272
+    damage: 1
+    count: 1
+    name: "§eМеч"
+    enchantment:
+      weapon_knockback: 4
+      weapon_sharpness: 1   
+  - id: 261
+    damage: 0
+    count: 1
+    name: "§eЛук Мага"     
+    enchantment:
+      weapon_power: 4
+      weapon_power: 2
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы Мага"    
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы Мага"    
+  - id: 262
+    damage: 0
+    count: 64
+    name: "§eСтрелы Мага"     
+  - id: 322
+    damage: 0
+    count: 10
+    name: "§eЗолотые яблоки"             
+ 
+  helmet:
+    id: 302
+    name: "§aШапка"
+    enchantment:
+      armor_thorns: 1
+
+  chestplate:
+    id: 303
+    name: "§aНагрудник"
+    enchantment:
+      armor_protection: 4
+
+  leggings:
+    id: 304
+    name: "§aШтаны"
+    enchantment:
+     armor_thorns: 1
+
+  boots:
+    id: 305
+    name: "§aБотинки"
+    enchantment:
+     armor_thorns: 1
+
+  cooldown: []
+
+  commands: []
+
+  effects:
+  - name: "boost"
+    seconds: 9999999
+    amplifier: 2
+
+  worlds: []
+
+  users: []
+

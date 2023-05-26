@@ -1,0 +1,31 @@
+---
+version: 1.3.0
+'# settings': Tunable parameters
+settings:
+  '# tnt': true, allows explosion in spawn, false disallows it
+  tnt: true
+  '# pvp': true, allows pvp in spawn, false disallows it
+  pvp: true
+  '# reserved': number of reserved vip slots, false to disable
+  reserved: false
+  '# spawn-mode': default|world|always|home
+  spawn-mode: default
+  '# on-death-inv': false|keep|clear|perms
+  on-death-inv: false
+  '# home-cmd': command to use when spawn-mode is home
+  home-cmd: /home
+  '# death-pos': Save death location
+  death-pos: true
+'# armor': List of armor elements
+armor:
+- chain_chestplate
+- leather_pants
+- leather_boots
+'# items': List of initial inventory
+items:
+- STONE_SWORD,1
+- WOOD,16
+- COOKED_BEEF,5
+'# nest-egg': List for nest-egg
+nest-egg: []
+...

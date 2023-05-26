@@ -1,0 +1,172 @@
+<?php
+
+/*
+__PocketMine Plugin__
+name=EzKit
+description=Easy to use kits? Hmmm
+version=0.1
+author=Junyi00
+class=EzKit
+apiversion=10
+*/
+
+class EzKit implements Plugin{
+	private $api, $path, $config;
+	public function __construct(ServerAPI $api, $server = false){
+		$this->api = $api;
+	}
+	
+	public function init(){
+		$this->path = $this->api->plugin->configPath($this);
+		
+		$this->api->console->register("getkit", "obtain the items from the kit", array($this, "get"));
+		$this->api->ban->cmdWhitelist("getkit");
+		
+		$this->api->console->register("ckit", "[new/remove] [kitname] ...", array($this, "conf"));
+		
+		$this->api->addHandler("player.block.touch", array($this, "signkit"));
+		
+		$this->config = new Config($this->path."config.yml", CONFIG_YAML, array());
+	}
+	
+	public function __destruct() {}
+	
+	public function getKit($name) {
+		$cfg = $this->api->plugin->readYAML($this->path . "config.yml");
+		$kit = $cfg["$name"];
+		
+		$data = array("OP" => $kit["OP"], "items" => $kit["items"]);
+		return $data;
+	}
+	
+	public function SaveKit($name, $OP, $items) {
+		$newDat = array(
+			"$name" => array(
+				"OP" => $OP,
+				"items" => $items
+				));
+		$this->overwriteConfig($newDat);
+	}
+	
+	public function GiveKit($data, $player) {
+		$OP = $data["OP"]; 
+ 		$items = explode(",", $data["items"]);
+ 		 		
+ 		switch($OP) {
+ 			case "true":	
+ 				if (!$this->api->ban->isOp($player->username)) {
+ 					$player->sendChat("This kit is OP only!");
+ 					break;
+ 				}
+ 			case "false":
+ 				for($i=0;$i<count($items);$i++) {
+ 					list($id, $count) = explode(" ", $items[$i]);
+ 					
+ 					$item = $this->api->block->get($id);
+ 					$item->count = (int) $count;
+ 					$player->addItem($item->getID(), $item->getMetadata(), $item->count);
+ 				}
+ 		}
+	}
+	
+	public function KitExists($name) {
+		$cfg = $this->api->plugin->readYAML($this->path . "config.yml");
+		if(ARRAY_KEY_EXISTS("$name", $cfg)) {
+			if (ARRAY_KEY_EXISTS("items", $cfg["$name"])) {
+				return true;	
+			}
+			else {
+				return false;	
+			}
+		}
+		else {
+			return false;	
+		}
+		return false;
+	}
+	
+	public function conf($cmd, $arg, $issuer) {
+		switch($arg[0]) {
+			case "new":
+				$name = $arg[1];
+				$op = $arg[2];
+				array_shift($arg); array_shift($arg); array_shift($arg);
+				$items = implode(" ", $arg);
+				
+				if (!$this->KitExists($name)) {
+					$this->SaveKit($name, $op, $items);
+					$issuer->sendChat("Kit has been saved!");
+				}
+				else {
+					$issuer->sendChat("Kit already exists!");	
+				}
+				break;
+				
+			case "remove":
+				$name = $arg[1];
+				if (!$this->KitExists($name)) $issuer->sendChat("Kit does not exists!");
+				
+				if ($this->api->ban->isOp($issuer->username)) {
+					$reset = array(
+						"$name" => array()
+						);
+					$this->overwriteConfig($reset);
+					$issuer->sendChat("$name has been removed!");
+				}
+				else {
+					$issuer->sendChat("You must be an op to be able to delete kits!");
+				}
+		}
+	}
+	
+	public function get($cmd, $arg, $issuer) {
+		$kitname = $arg[0];
+		if(!$this->KitExists($kitname)) {
+			$issuer->sendChat("Kit does not exists!");
+		}
+		$this->GiveKit($this->getKit($kitname), $issuer);
+	}
+	
+	public function signkit($data, $event) {
+		$OP = false;
+		$kitName = "";
+		
+		switch($data['type']) {
+			case "place":
+				if ($data["item"]->getID() == 323) return;
+				
+				$player = $data["player"];
+				$position = new Position ($data["target"], false, false, $data["target"]->level);
+				$sign = $this->api->tile->get($position);
+				
+ 				if (($sign instanceof Tile) && $sign->class === TILE_SIGN){
+ 					$text1 = $sign->data['Text1'];
+ 					$text2 = $sign->data['Text2'];
+ 					if ($text1 != "[EzKit]") return true;
+ 					
+ 					if (!$this->KitExists($text2) == true) {
+ 						$player->sendChat("Kit does not exists!");
+ 						return;
+ 					}
+ 					$kitName = $text2; 					
+ 					$data = $this->getKit($kitName);
+ 					
+ 					$this->GiveKit($data, $player);
+ 					$player->sendChat("You have obtained the items in ".$kitName);
+ 					
+ 					return false;
+ 					
+ 				}	
+ 				
+		}
+		
+	}
+	
+	private function overwriteConfig($dat){
+		$cfg = array();
+		$cfg = $this->api->plugin->readYAML($this->path . "config.yml");
+		$result = array_merge($cfg, $dat);
+		$this->api->plugin->writeYAML($this->path."config.yml", $result);
+	}
+
+}

@@ -1,0 +1,12 @@
+---
+blockType: ArenaBoardTypes
+blocks:
+  stone1: "91"
+  stone2: "91"
+  stone3: "91"
+  stone4: "91"
+  stone5: "42"
+  stone6: "42"
+  stone8: "42"
+  GLOWSTONE_BLOCK: "89"
+...

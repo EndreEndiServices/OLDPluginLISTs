@@ -1,0 +1,77 @@
+name: PixelgamesAlias
+version: 2.4#
+api: [3.0.0-ALPHA11]
+author: ZacHack, iStrafeNubzHDyt
+description: Ermöglicht die Anzeige aller Benutzernamen, die ein Spieler verwendet hat
+main: Authors\PixelgamesAlias\PixelgamesAlias
+
+commands:
+  alias:
+    description: "Ermöglicht die Anzeige aller Benutzernamen, die ein Spieler verwendet hat für CID oder IP"
+    usage: "/alias <Benutzername>"
+    permission: "pgalias.command.alias"
+
+  setalias:
+    description: "Verändert die Einstellung von Alias"
+    usage: "/setalias <cid/ip>"
+    permission: "pgalias.command.setalias"
+    
+  aliasip:
+    description: "Benutzt IP-Daten bei Alias"
+    usage: "/aliasip <Benutzername>"
+    permission: "pgalias.command.aliasip"
+    
+  aliascid:
+    description: "Benutzt CID-Daten bei Alias"
+    usage: "/aliascid <Benutzername>"
+    permission: "pgalias.command.aliascid"
+
+  checkalias:
+    description: "Zeigt die Einstellung von Alias an"
+    usage: "/checkalias"
+    permission: "pgalias.commmand.checkalias"
+  
+  aliasinfo:
+    description: "Zeigt Details über das Plugin"
+    usage: "/aliasinfo"
+    permission: "pgalias.command.aliasinfo"
+    
+  aliashelp:
+    description: "Zeigt ein Hilfemenü an"
+    usage: "/aliashelp"
+    permission: "pgalias.command.aliashelp"
+
+
+permissions:
+    pgalias:
+        default: op
+        description: "Alle Befehle für Alias"
+        children:
+            
+            pgalias.command.alias:
+                default: op
+                description: "Ermöglicht die Anzeige aller Benutzernamen, die ein Spieler verwendet hat für CID oder IP"
+
+            pgalias.command.setalias:
+                default: op
+                description: "Verändert die Einstellung von Alias"
+
+            pgalias.command.aliasip:
+                default: op
+                description: "Benutzt IP-Daten bei Alias"
+
+            pgalias.command.aliascid:
+                default: op
+                description: "Benutzt CID-Daten bei Alias"
+
+            pgalias.command.checkalias:
+                default: op
+                description: "Zeigt die Einstellung von Alias an"
+            
+            pgalias.command.aliasinfo:
+                default: true
+                description: "Zeigt Details über das Plugin"
+            
+            pgalias.command.aliashelp:
+                default: true
+                description: "Zeigt ein Hilfemenü an"

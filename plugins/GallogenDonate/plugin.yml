@@ -1,0 +1,15 @@
+name: GallogenDonate
+description: Просмотр donate
+author: MNK
+main: GallogenDonate\Main
+load: POSTWORLD
+version: 0.0.1
+api: [2.0.0]
+commands:
+    donate:
+        usage: /donate
+        description: Просмотр donate
+permissions:
+    donate.cmd:
+        default: true
+        description: Позволяет просматривать donate

@@ -1,0 +1,24 @@
+name: JobsRP
+main: Main\JobsRP
+api: [3.0.0-ALPHA6, 3.0.0-ALPHA7]
+version: 0.1.0
+author: artem_kosh
+commands:
+ job:
+   default: true
+   description: Команды list info
+ police:
+   default: true
+   description: Устроиться в полицию
+ ychitel:
+   default: true
+   description: Устроиться учителем
+ killer:
+   default: true
+   description: Устроиться Убийцей
+ dvornik:
+   default: true
+   description: Устроиться дворником
+ terrorist:
+   default: true
+   description: Устроится террористом

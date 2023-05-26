@@ -1,0 +1,140 @@
+name: SWorldEditor
+main: Sergey_Dertan\SWorldEditor\SWorldEditorMainFolder\SWorldEditorMain
+api: 1.8.0
+version: Beta_1.5 
+author: Sergey_Dertan
+load: STARTUP
+website: http://vk.com/superator
+commands:
+ /set:
+   permission: swe.set
+   description: "Set blocks"
+ /:
+  aliases: [/help, /sworldeditor, /help]
+  description: "Help of SWorldEditor"
+  permission: swe.help
+ /pos1:
+  description: "Set 1 pos for edit world"
+  permission: swe.pos1
+ /pos2:
+  description: "Set 2 pos for edit world"
+  permission: swe.pos2
+ /reset:
+  description: "Remove selected"
+  permission: swe.reset
+ /wand:
+  description: "Get item for select area"
+  permission: swe.reset
+ /expand:
+  description: "Expand selected"
+  permission: swe.expand
+ /replace:
+  description: "Replace blocks"
+  permission: swe.replace
+ /size:
+  description: "Get size of selected area"
+  permission: swe.size
+ /copy:
+  description: "Cope selected area"
+  permission: swe.copy
+ /undo:
+  description: "Undo last changes"
+  permission: swe.undo
+ /sell:
+  description: "Clear selected"
+  permission: swe.clear
+ /info:
+  description: "Info of SWorldEditor"
+  permission: swe.info
+ /clear-clipboard:
+  description: "Clear clipboard"
+  permission: swe.clear-clipboard
+ /walls:
+  description: "Create walls"
+  permission: swe.walls
+ /redo:
+  description: "Cancel last redo"
+  permission: swe.redo
+ /set-mult:
+  description: ""
+  permission: swe.set
+ up:
+  description: ""
+  permission: swe.up
+ /limit:
+  description: "Set block change limit"
+  permission: swe.limit
+ /replace-mult:
+  description: ""
+  permission: swe.replace
+ /regen:
+  description: "Regenerate selected area"
+  permission: swe.regen
+ /bugs:
+  description: "Посмотреть известные баги"
+ /bugreport:
+  description: "Оставить отчет о баге"
+
+permissions:
+ sworldeditor:
+  default: op
+  description: "Top permissions of SWorldEditor"
+  children:
+   swe.help:
+    default: true
+    description: "Allow to use command //sworldeditor"
+   swe.set:
+    default: op
+    description: "Allow to use command //set"
+   swe.pos1:
+    default: op
+    description: "Allow to use command //pos1"
+   swe.pos2:
+    default: op
+    description: "Allow to use command //pos2"
+   swe.reset:
+    default: op
+    description: "Allow to use command //reset"
+   swe.wand:
+    default: op
+    description: "Allow to use command //wand"
+   swe.expand:
+    default: op
+    description: "Allow to use command //expand"
+   swe.replace:
+    default: op
+    description: "Allow to use command //replace"
+   swe.size:
+    default: op
+    description: "Allow to use command //size"
+   swe.copy:
+    default: op
+    description: "Allow to use command //copy"
+   swe.undo:
+    default: op
+    description: "Allow to use command //undo"
+   swe.sell:
+    default: op
+    description: "Allow to use command //sell"
+   swe.info:
+    default: true
+    description: "Allow to use command //info"
+   swe.clear-clipboard:
+    default: op
+    description: "Allow to use command //clear-clipboard"
+   swe.walls:
+    default: op
+    description: "Allow to use command //walls"
+   swe.redo:
+    default: op
+    description: "Allow to use commmand //redo"
+   swe.limit:
+    default: op
+    description: "Allow to use command //limit"
+   swe.up:
+    default: op
+    description: "Allow to use command /up"
+   swe.regen:
+    default: op
+    description: "Allow to use command //regen"
+     

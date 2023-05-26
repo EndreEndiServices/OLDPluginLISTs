@@ -1,0 +1,10 @@
+name: NFlyText
+author: NoRFoLk
+version: 1.0.0
+api: 2.0.0
+main: NFlyText\NFlyText
+website: vk.com/plugs_pe
+
+commands:
+    settext:
+        description: ??????? ?????

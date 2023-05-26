@@ -1,0 +1,9 @@
+name: FineCase
+main: Asidert\FineCase
+version: 2.3
+api: 1.0.0
+author: Asidert
+permissions:
+    finechest:
+        default: true
+        description: "Никому не нужное разрешение..."

@@ -1,0 +1,9 @@
+# Available contact services for your players to set.
+
+#contact-services:
+#    - email
+#    - phone 
+#    - skype gaby.matei2
+#    - twitter
+#    - kik
+contact-services: []

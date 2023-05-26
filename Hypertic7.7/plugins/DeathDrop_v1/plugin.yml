@@ -1,0 +1,7 @@
+## CaptainKenji plugin
+---
+name: DeathDrop
+version: 1.0
+main: DeathDrop\Main
+api: [1.12.0]
+author: CaptainKenji17

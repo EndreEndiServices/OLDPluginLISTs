@@ -1,2 +1,2 @@
-# LBComponents
-Commonly used classes and methods used by Lifeboat game plugins
+# LbCore
+The plugin of LBSG. Follow me on Twitter @KairusDS

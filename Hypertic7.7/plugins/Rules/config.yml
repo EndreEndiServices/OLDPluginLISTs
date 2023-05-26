@@ -1,0 +1,20 @@
+---
+##############################
+# xRulesx Created by xFlare! :D
+# Your using version 1.0.0
+# Check for updates regularly!
+##############################
+
+
+#Add rules below, You may leave some blank.
+rule1: "xFlare is awesome!"
+rule2: "Example"
+rule3: "Example"
+rule4: "Example"
+rule5: "Example"
+rule6: "Example"
+rule7: "Example"
+rule8: "Example"
+#Please do not add more rule slots!
+#It may corrupt the config file!
+...

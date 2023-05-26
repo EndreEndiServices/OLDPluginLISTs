@@ -1,0 +1,37 @@
+## Limited Creative (MCPE PLUGIN) ##
+# Allows you to give players on your server limited creative! #
+
+# Reset the players inventory everytime the gamemode is changed?
+reset-inventory: false
+
+#disabled-items:
+#    - 7
+#    - 46
+#    - 52
+#    - 247
+#    - 259
+#    - 325
+#    - 383
+disabled-items: []
+
+# Prevent Creative blocks when broken in survival from dropping.
+disable-item-drop: true
+
+# Prevent Creative Players from attacking players in Survival.
+disable-pvp-damage: true
+
+# Prevent Creative Players from attacking entities, ex. Mobs. while in creative
+disable-entity-damage: true
+
+# Prevent Creative Players from picking up items on the ground?
+disable-item-pickup: true
+
+# Prevent blocks placed in creative from being destroyed by explosions, such as TNT.
+# If disabled explosions will bypass the item-drop setting.
+disable-explosion-damage: true
+
+# This will disable the block update event from updating creative blocks.
+# ex. In creative you place a grass block and put a sand block over it,
+# When the bottom grass block is broken the sand will not fall.
+# This is to prevent bypassing the item-drop setting.
+disable-block-updates: true

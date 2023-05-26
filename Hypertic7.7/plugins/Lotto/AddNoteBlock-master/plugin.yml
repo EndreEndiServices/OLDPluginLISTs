@@ -1,0 +1,7 @@
+name: AddNoteBlock
+main: AddNoteBlock\AddNoteBlock
+prefix: "AddNoteBlock"
+version: "1.2"
+api: [1.13.0, 2.0.0]
+author: DeBe
+load: StartUp

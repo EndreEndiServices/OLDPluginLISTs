@@ -1,0 +1,10 @@
+name: RegionGuard
+main: Richen\RegionGuard
+version: "1.4.1"
+author: Richen
+api: [1.12.0, 2.0.0]
+
+commands:
+  rg:
+    description: "Приват территорий"
+    aliases: [region, private, privat]  

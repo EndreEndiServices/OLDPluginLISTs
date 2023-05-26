@@ -1,0 +1,62 @@
+package BedWars.Task;
+
+import BedWars.Arena.Arena;
+import BedWars.Arena.VirtualInventory;
+import BedWars.BedWars;
+import BedWars.MySQL.StatQuery;
+import MTCore.Mysql.AsyncQuery;
+import cn.nukkit.item.Item;
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.plugin.Plugin;
+
+import java.util.HashMap;
+
+public class ShopManagerDisplay extends AsyncQuery {
+
+    /*public int price;
+    public int buyItem;
+
+    public ShopManagerDisplay(BedWars plugin, String player, int price, int buyItem){
+        this.player = player;
+        this.price = price;
+        this.buyItem = buyItem;
+
+        plugin.getServer().getScheduler().scheduleAsyncTask(this);
+    }
+
+    @Override
+    public void onQuery(HashMap<String, Object> data){
+        this.setResult(data.get("tokens"));
+    }
+
+    @Override
+    public void onCompletion(Server server){
+        Player p = server.getPlayer(this.player);
+        int money = (int) this.getResult();
+        if (p.isOnline()){
+            if (this.price > money){
+                p.sendPopup(BedWars.getPrefix() + "§cNemas dostatek tokenu\n§aZiskej tokeny kupovanim ve hrach nebo v obchode");
+            }
+            else {
+                Plugin b = server.getPluginManager().getPlugin("BedWars");
+                BedWars bw = (BedWars) b;
+                Object a = bw.getPlayerArena(p);
+                if (a == null){
+                    return;
+                }
+                Arena arena = (Arena) a;
+                int count = 1;
+                if (this.buyItem == 45){
+                    count = 64;
+                }
+                Item item = Item.get(this.buyItem, 0, count);
+                VirtualInventory inv = arena.shopManager.inv.get(p.getName().toLowerCase());
+                inv.addItem(item);
+                p.sendPopup(BedWars.getPrefix() + "§aZakoupil jsi §b" + item.getName() + " §aza §e" + this.price + "aTokenu");
+                String[] players = {this.player};
+                new NormalQuery(bw, -(this.price), players);
+            }
+        }
+    }*/
+}

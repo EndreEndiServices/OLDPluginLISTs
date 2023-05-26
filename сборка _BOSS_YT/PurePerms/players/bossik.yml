@@ -1,0 +1,9 @@
+---
+userName: Bossik
+group: Guest
+permissions: []
+worlds:
+  world:
+    group: Guest
+    permissions: []
+...

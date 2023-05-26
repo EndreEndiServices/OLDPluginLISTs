@@ -1,0 +1,104 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: '...'
+groups:
+  admin:
+    default-chat: '§7➜[§cAdministrator§7]§5{display_name} §8: §a {message}'
+    default-nametag: §7[§cAdministrator§7]§6 {display_name}
+    worlds: []
+  senioradmin:
+    default-nametag: §7[§8Senior§6Admin §7]§6 {display_name}
+    default-chat: '§7[§8Senior§6Admin §7]§6{display_name} §8: §d {message}'
+  leadadmin:
+    default-nametag: §7[§8Lead§6Admin§7]§6 {display_name}
+    default-chat: §7➜[§8Lead§5Admin§7]§5{display_name} §8:§d {message}
+  owner:
+    default-nametag: §7[§cOwner§7]§6 {display_name}
+    default-chat: §7➜[§cOwner§7]§5{display_name}§8:§c {message}
+  member:
+    default-nametag: §7[§5Member§7]§6 {display_name}
+    default-chat: §7➜[§5Member§7]§5{display_name} §8:§a {message}
+  guest:
+    default-nametag: §7[§6New-User§7]§8 {display_name}
+    default-chat: ➜§7[§5New-User§7]§5{display_name}§8:§8 {message}
+  mod:
+    default-nametag: §7[§cModerator§7]§6 {display_name}
+    default-chat: §7➜[§5Moderator§7]§5{display_name} §8:§a {message}
+  vip:
+    default-nametag: §7[§2VIP§7]§6 {display_name}
+    default-chat: §7➜[§eVIP§7]§5{display_name} §8:§3 {message}
+  helper:
+    default-nametag: §7[§cHelper§7]§6 {display_name}
+    default-chat: §7➜[§5Helper§7]§5{display_name} §8:§a {message}
+  user:
+    default-nametag: §6{display_name}
+    default-chat: §7➜§5{display_name} §8:§f {message}
+  gamer:
+    default-nametag: §cGamer§6 {display_name}
+    default-chat: '§7➜[§5Gamer§7]§5{display_name} §7: §f{message}'
+  Guest:
+    default-chat: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Admin:
+    default-chat: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Owner:
+    default-chat: '{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  OP:
+    default-chat: '{COLOR_GREEN}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_BLUE}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name}'
+    worlds: []
+  Dev:
+    default-nametag: '[Dev] {display_name}'
+    default-chat: '[Dev] {display_name} > {message}'
+  Senpai:
+    default-nametag: '[Senpai] {display_name}'
+    default-chat: '[Senpai] {display_name} > {message}'
+  Ez:
+    default-nametag: '[Ez] {display_name}'
+    default-chat: '[Ez] {display_name} > {message}'
+  Loser:
+    default-nametag: '[Loser] {display_name}'
+    default-chat: '[Loser] {display_name} > {message}'
+  NumberOnePvPer:
+    default-nametag: '[NumberOnePvPer] {display_name}'
+    default-chat: '[NumberOnePvPer] {display_name} > {message}'
+  Announcer:
+    default-nametag: '[Announcer] {display_name}'
+    default-chat: '[Announcer] {display_name} > {message}'
+  Poop:
+    default-nametag: '[Poop] {display_name}'
+    default-chat: '[Poop] {display_name} > {message}'
+  SuperPoop:
+    default-nametag: '[SuperPoop] {display_name}'
+    default-chat: '[SuperPoop] {display_name} > {message}'
+  s:
+    default-nametag: '[s] {display_name}'
+    default-chat: '[s] {display_name} > {message}'
+  BestPvPerAlive:
+    default-nametag: '[BestPvPerAlive] {display_name}'
+    default-chat: '[BestPvPerAlive] {display_name} > {message}'
+  youtube:
+    default-nametag: §7[§cY§fo§cu§fT§cu§fb§ce§7]§6{display_name}
+    default-chat: §7➜[§cYou§fTube§7]§5{display_name} §8:§f {message}
+  yt1:
+    default-nametag: '[yt1] {display_name}'
+    default-chat: §7➜[§fYou§cTube§a+§7]§5{display_name}§8:§f {message}
+  OrbitOwner:
+    default-nametag: '[OrbitOwner] {display_name}'
+    default-chat: '[OrbitOwner] {display_name} > {message}'
+  membervip:
+    default-nametag: '[membervip] {display_name}'
+    default-chat: §7➜[§eVIP§a+§eMEMBER§7]§5{display_name} §8:§3 {message}
+...

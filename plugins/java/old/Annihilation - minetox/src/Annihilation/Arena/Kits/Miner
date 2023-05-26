@@ -1,0 +1,29 @@
+package Annihilation.Arena.Kits;
+
+import cn.nukkit.inventory.PlayerInventory;
+import cn.nukkit.Player;
+import Annihilation.Arena.Arena;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.enchantment.Enchantment;
+
+public class Miner extends Kit{
+
+    private static Item[] items;
+
+    public Miner(){
+        super("miner", Item.get(Item.STONE_PICKAXE));
+        Miner.items = new Item[]{
+                Item.get(Item.WOODEN_SWORD, 0, 1),
+                Item.get(Item.STONE_PICKAXE, 0, 1),
+                Item.get(Item.WOODEN_AXE, 0, 1),
+                Item.get(Item.CRAFTING_TABLE, 0, 1),
+                Item.get(Item.COMPASS, 0, 1),
+        };
+
+        Miner.items[1].addEnchantment(Enchantment.getEnchantment(Enchantment.TYPE_MINING_EFFICIENCY));
+    }
+    
+    public static Item[] give(Player p){
+        return Kit.give(p, Miner.items.clone());
+    }
+}

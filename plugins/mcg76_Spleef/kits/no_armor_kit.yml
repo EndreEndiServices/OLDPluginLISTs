@@ -1,0 +1,41 @@
+---
+kitName: no_armor_kit
+isDefault: false
+cost: 0
+health: 20
+armors:
+  helmet:
+  - 0
+  - "0"
+  - "0"
+  chestplate:
+  - 0
+  - "0"
+  - "0"
+  leggings:
+  - 0
+  - "0"
+  - "0"
+  boots:
+  - 0
+  - "0"
+  - "0"
+weapons:
+  256:
+  - 256
+  - "0"
+  - "1"
+  332:
+  - 332
+  - "0"
+  - "64"
+foods:
+  320:
+  - 320
+  - "0"
+  - "2"
+  366:
+  - 366
+  - "0"
+  - "2"
+...

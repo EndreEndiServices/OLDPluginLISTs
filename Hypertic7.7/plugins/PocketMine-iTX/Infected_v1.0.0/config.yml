@@ -1,0 +1,25 @@
+---
+time: 300
+starttime: 180
+players: 25
+infectedKit:
+  Helmet: 314
+  Chestplate: 315
+  Leggings: 316
+  Boots: 317
+  Items:
+  - 261
+  - 262
+survivorKit:
+  Helmet: 298
+  Chestplate: 299
+  Leggings: 300
+  Boots: 301
+  Items:
+  - 346
+  - 261
+  - - 262
+    - 5
+  - - 332
+    - 60
+...

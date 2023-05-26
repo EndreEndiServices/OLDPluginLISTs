@@ -1,0 +1,54 @@
+---
+groups:
+  Guest:
+    chat: "{marry}{clan}§8(§7Игрок§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§7Игрок§7) §f{name}"
+    
+  Fly:
+    chat: "{marry}{clan}§8(§3Флай§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§3Флай§7) §f{name}"
+    
+  Vip:
+    chat: "{marry}{clan}§8(§5Вип§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§5Вип§7) §f{name}"
+    
+  Premium:
+    chat: "{marry}{clan}§8(§dПремиум§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§dПремиум§7) §f{name}"
+    
+  Creative:
+    chat: "{marry}{clan}§8(§6Креатив§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§6Креатив§7) §f{name}"
+    
+  Admin:
+    chat: "{marry}{clan}§8(§4Админ§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§4Админ§7) §f{name}"
+    
+  Moderator:
+    chat: "{marry}{clan}§8(§2Модератор§8) §a{name}§8: §f{message}"
+    nametag: "{clan}§7(§2Модератор§7) §a{name}"
+    
+  SuperAdmin:
+    chat: "{marry}{clan}§8(§cСупер§fАдмин§8) §c{name}§8: §f{message}"
+    nametag: "{clan}§7(§cСупер§fАдмин§7) §c{name}"
+    
+  Antigriefer:
+    chat: "{marry}{clan}§8(§7Игрок§8) §7{name}§8: §f{message}"
+    nametag: "{clan}§7(§7Игрок§7) §f{name}"
+    
+  Creater:
+    chat: "{marry}{clan}§8(§4Создатель§8) §c{name}§8: §f{message}"
+    nametag: "{clan}§7(§4Создатель§7) §c{name}"
+    
+  Gospodin:
+    chat: "{marry}{clan}§8(§3Господин§8) §b{name}§8: §f{message}"
+    nametag: "{clan}§7(§3Господин§7) §b{name}"
+    
+  Owner:
+    chat: "{marry}{clan}§8(§aВладелец§8) §e{name}§8: §f{message}"
+    nametag: "{clan}§7(§cВладелец§7) §e{name}"
+    
+  SOwner:
+    chat: "{marry}{clan}§8(§cТех.§6Основатель§8) §e{name}§8: §f{message}"
+    nametag: "{clan}§7(§cТех.§6Основатель§7) §e{name}"
+...

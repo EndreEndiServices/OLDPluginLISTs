@@ -1,0 +1,441 @@
+{
+  "kits": [
+    {
+      "name": "Classic SG Vip+",
+      "id": 1,
+      "description": "CLASSIC_SG_VIP_KIT",
+      "inventory": [
+        {
+          "id": "279",
+          "name": "DIAMOND_AXE",
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        }
+      ],
+      "armor": [
+        {
+          "id": "298",
+          "name": "LEATHER_CAP",
+          "amount": 1,
+          "slot": 0,
+          "hotbar": true,
+          "replenish": 0
+        },
+        {
+          "id": "303",
+          "name": "CHAIN_CHESTPLATE",
+          "slot": 1,
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        },
+        {
+          "id": "304",
+          "name": "CHAIN_LEGGINGS",
+          "slot": 2,
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        },
+        {
+          "id": "305",
+          "name": "CHAIN_BOOTS",
+          "slot": 3,
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        }
+
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+      "name": "Midas",
+      "id": 2,
+      "description": "MIDAS_KIT",
+      "inventory": [
+      ],
+      "armor": [
+        {
+          "id": "314",
+          "name": "GOLD_HELMET",
+          "amount": 1,
+	  "slot": 0,
+          "hotbar": true
+        },
+        {
+          "id": "315",
+          "name": "GOLD_CHESTPLATE",
+          "amount": 1,
+	  "slot": 1,
+          "hotbar": true
+        },
+        {
+          "id": "316",
+          "name": "GOLD_LEGGINGS",
+          "amount": 1,
+	  "slot": 2,
+          "hotbar": true
+        },
+        {
+          "id": "317",
+          "name": "GOLD_BOOTS",
+          "amount": 1,
+	  "slot": 3,
+          "hotbar": true
+        }
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+      "name": "Archer",
+      "id": 3,
+      "description": "ARCHER_KIT",
+      "inventory": [
+        {
+          "id": "261",
+          "name": "BOW",
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        },
+        {
+          "id": "262",
+          "name": "ARROW",
+          "amount": 16,
+          "hotbar": true,
+          "replenish": 0
+        }
+      ],
+      "armor": [
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+      "name": "Assassin",
+      "id": 4,
+      "description": "ASSASSIN_KIT",
+      "inventory": [
+        {
+          "id": "267",
+          "name": "IRON_SWORD",
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        }
+      ],
+      "armor": [],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+      "name": "Tank",
+      "id": 5,
+      "description": "TANK_KIT",
+      "inventory": [],
+      "armor": [
+        {
+          "id": "311",
+          "name": "DIAMOND_CHESTPLATE",
+          "amount": 1,
+          "slot": 1,
+          "hotbar": true
+        }
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+      "name": "Teleporter",
+      "id": 6,
+      "description": "TELEPORTER_KIT",
+      "inventory": [
+        {
+          "id": "383",
+		  "damage": "14",
+          "name": "SPAWN_EGG",
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 60
+        }
+      ],
+      "armor": [
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+      "name": "Brawler",
+      "id": 7,
+      "description": "BRAWLER_KIT",
+      "inventory": [
+      ],
+      "armor": [
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 20,
+          "take": 20
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    },
+    {
+    "name": "Athlete",
+    "id": 8,
+    "description": "ATHLETE_KIT",
+    "inventory": [
+    ],
+    "armor": [
+    ],
+    "effects": {
+      "speed": 0,
+      "jump": 1
+    },
+    "damage": {
+      "knockback": {
+        "give": 0,
+        "take": 0
+      },
+      "damage": {
+        "give": 0,
+        "take": 0
+      }
+    },
+    "chest": {
+      "extra": false
+    },
+    "extra": {
+      "break_tree": false,
+      "throw_wood": false
+    },
+    "extra_inventory": false
+    },
+    {
+      "name": "Prospector",
+      "id": 9,
+      "description": "PROSPECTOR_KIT",
+      "inventory": [
+        {
+          "id": "278",
+          "name": "DIAMOND_PICKAXE",
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 0
+        }
+      ],
+      "armor": [
+        {
+          "id": "306",
+          "name": "IRON_HELMET",
+          "amount": 1,
+	  "slot": 0,
+          "hotbar": true
+        }
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": true
+    },
+    {
+      "name": "Creeper",
+      "id": 10,
+      "description": "CREEPER_KIT",
+      "inventory": [
+        {
+          "id": "46",
+          "name": "TNT",
+          "amount": 1,
+          "hotbar": true,
+          "replenish": 60
+        }
+      ],
+      "armor": [
+      ],
+      "effects": {
+        "speed": false,
+        "jump": false
+      },
+      "damage": {
+        "knockback": {
+          "give": 0,
+          "take": 0
+        },
+        "damage": {
+          "give": 0,
+          "take": 0
+        }
+      },
+      "chest": {
+        "extra": false
+      },
+      "extra": {
+        "break_tree": false,
+        "throw_wood": false
+      },
+      "extra_inventory": false
+    }
+  ],
+  "categories": {
+    "hardware": [1,2,3,4,5],
+    "superpower": [6,7,8,9,10]
+  }
+}

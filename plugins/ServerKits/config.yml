@@ -1,0 +1,8 @@
+---
+economy-plugin: 1
+enable-default-kit: true
+default-kit: "Start"
+use-permissions: false
+enable-signs: true
+kit-received-message: "&aYou received the {KIT_NAME} &akit"
+...

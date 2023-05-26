@@ -1,0 +1,17 @@
+name: SA
+main: Just\Main
+version: 1.0
+author: Just
+api: 2.0.0
+load: STARTUP
+website: vk.com/xakerp
+
+commands: 
+ ch:
+  permission: reglog.cp 
+  description: "Поменять пароль"
+permissions:
+ reglog.cp: 
+  default: true
+  description: "Пометять пароль"
+  

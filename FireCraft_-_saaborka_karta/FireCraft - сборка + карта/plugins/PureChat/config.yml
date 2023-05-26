@@ -1,0 +1,45 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: '...'
+groups:
+  Игрок:
+    default-chat: §8(§6{faction}§8) §8(§aИгрок§8) §b{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§aИгрок§8)§b {display_name}
+    worlds: []
+  Флай:
+    default-chat: §8(§6{faction}§8) §8(§eФлай§8) §b{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Вип:
+    default-chat: §8(§6{faction}§8) §8(§1Вип§8) §b{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Премиум:
+    default-chat: §8(§6{faction}§8) §8(§2Премиум§8) §b{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Креатив:
+    default-chat: §8(§6{faction}§8) §8(§3Креатив§8) §b{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Лорд:
+    default-chat: §8(§6{faction}§8) §8(§4Лорд§8) §b{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Модератор:
+    default-chat: §8(§6{faction}§8) §8(§fМодератор§8) §d{display_name}§e ⇢ §7{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Создатель:
+    default-chat: §8(§6{faction}§8) §8(§cСоздатель§8) §a{display_name}§e ⇢ §3{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Основатель:
+    default-chat: §8(§6{faction}§8) §8(§bОснователь§8) §a{display_name}§e ⇢ §3{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+  Бог:
+    default-chat: §8(§6{faction}§8) §8(§aБог§8) §3{display_name}§4 ⇢ §e{message}
+    default-nametag: §8(§bFire§cCraft§8)
+    worlds: []
+...

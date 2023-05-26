@@ -1,0 +1,59 @@
+---
+starter:
+- ID: 4
+  damage: 0
+  amount: 20
+- ID: 5
+  damage: 0
+  amount: 10
+- ID: 50
+  damage: 0
+  amount: 50
+- ID: 364
+  damage: 0
+  amount: 15
+vip:
+- ID: 265
+  damage: 0
+  amount: 10
+- ID: 266
+  damage: 0
+  amount: 10
+- ID: 364
+  damage: 0
+  amount: 30
+- ID: 260
+  damage: 0
+  amount: 64
+premium:
+- ID: 42
+  damage: 0
+  amount: 3
+- ID: 41
+  damage: 0
+  amount: 3
+- ID: 57
+  damage: 0
+  amount: 3
+- ID: 133
+  damage: 0
+  amount: 3
+- ID: 364
+  damage: 0
+  amount: 64
+- ID: 260
+  damage: 0
+  amount: 3
+- ID: 267
+  damage: 0
+  amount: 1
+- ID: 256
+  damage: 0
+  amount: 3
+- ID: 257
+  damage: 0
+  amount: 3
+- ID: 258
+  damage: 0
+  amount: 3
+...

@@ -1,0 +1,46 @@
+name: FApi
+main: FApi\FApi
+api: 1.12.0
+version: 0.0.1
+load: STARTUP
+
+commands:
+  warn:
+    description: "/warn"
+  back:
+    description: "/back"
+  sethome:
+    description: "/sethome"
+  home:
+    description: "/home"
+    aliases: [hm]
+  spawn:
+    description: "/spawn"
+    aliases: [sp]
+  tpall:
+    description: "/tpall"
+  clear:
+    description: "/clear"
+    aliases: [ci]
+  gm:
+    description: "/gm"
+  fly:
+    description: "/fly"
+  heal:
+    description: "/heal"
+  dupe:
+    description: "/dupe"
+  vanish:
+    description: "/vanish"
+    aliases: [v]
+  clearchat:
+    description: "/clearchat"
+    aliases: [cc]
+  vips:
+    description: "/vips add/remove"
+  suicide:
+    description: "/suicide"
+  donate:
+    description: "/donate"
+  top:
+    description: "/top"

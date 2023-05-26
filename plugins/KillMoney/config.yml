@@ -1,0 +1,6 @@
+---
+enable: "true"
+economy-plugin: Economy
+money: "5"
+message: §e[§cKill§e] §6Вы убили игрока §a{name} §6и получили за это §e{money}§a$
+...

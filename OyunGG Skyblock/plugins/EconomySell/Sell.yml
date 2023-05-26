@@ -1,0 +1,272 @@
+---
+160:5:100:world:
+  x: 160
+  "y": 5
+  z: 100
+  level: world
+  cost: 100
+  item: 2
+  itemName: Grass
+  meta: 0
+  amount: 4
+100:6:156:Lobby:
+  x: 100
+  "y": 6
+  z: 156
+  level: Lobby
+  cost: 60
+  item: 45
+  itemName: Bricks
+  meta: 0
+  amount: 12
+100:6:155:Lobby:
+  x: 100
+  "y": 6
+  z: 155
+  level: Lobby
+  cost: 40
+  item: 5
+  itemName: Oak Wood Planks
+  meta: 0
+  amount: 10
+100:6:158:Lobby:
+  x: 100
+  "y": 6
+  z: 158
+  level: Lobby
+  cost: 55
+  item: 108
+  itemName: Brick Stairs
+  meta: 0
+  amount: 16
+100:6:157:Lobby:
+  x: 100
+  "y": 6
+  z: 157
+  level: Lobby
+  cost: 65
+  item: 159
+  itemName: White Stained Clay
+  meta: 0
+  amount: 12
+100:6:154:Lobby:
+  x: 100
+  "y": 6
+  z: 154
+  level: Lobby
+  cost: 75
+  item: 48
+  itemName: Moss Stone
+  meta: 0
+  amount: 32
+100:6:153:Lobby:
+  x: 100
+  "y": 6
+  z: 153
+  level: Lobby
+  cost: 100
+  item: 98
+  itemName: Stone Bricks
+  meta: 0
+  amount: 32
+100:6:159:Lobby:
+  x: 100
+  "y": 6
+  z: 159
+  level: Lobby
+  cost: 50
+  item: 112
+  itemName: Nether Bricks
+  meta: 0
+  amount: 8
+100:6:160:Lobby:
+  x: 100
+  "y": 6
+  z: 160
+  level: Lobby
+  cost: 35
+  item: 155
+  itemName: Quartz Block
+  meta: 0
+  amount: 6
+100:6:161:Lobby:
+  x: 100
+  "y": 6
+  z: 161
+  level: Lobby
+  cost: 32
+  item: 44
+  itemName: Stone Slab
+  meta: 0
+  amount: 6
+100:6:162:Lobby:
+  x: 100
+  "y": 6
+  z: 162
+  level: Lobby
+  cost: 20
+  item: 139
+  itemName: Cobblestone Wall
+  meta: 0
+  amount: 8
+100:6:163:Lobby:
+  x: 100
+  "y": 6
+  z: 163
+  level: Lobby
+  cost: 20
+  item: 20
+  itemName: Glass
+  meta: 0
+  amount: 4
+100:6:164:Lobby:
+  x: 100
+  "y": 6
+  z: 164
+  level: Lobby
+  cost: 25
+  item: 89
+  itemName: Glowstone
+  meta: 0
+  amount: 3
+98:6:165:Lobby:
+  x: 98
+  "y": 6
+  z: 165
+  level: Lobby
+  cost: 80
+  item: 65
+  itemName: Ladder
+  meta: 0
+  amount: 16
+99:6:165:Lobby:
+  x: 99
+  "y": 6
+  z: 165
+  level: Lobby
+  cost: 55
+  item: 106
+  itemName: Vines
+  meta: 0
+  amount: 16
+120:6:164:Lobby:
+  x: 120
+  "y": 6
+  z: 164
+  level: Lobby
+  cost: 1342
+  item: 388
+  itemName: Emerald
+  meta: 0
+  amount: 1
+119:6:164:Lobby:
+  x: 119
+  "y": 6
+  z: 164
+  level: Lobby
+  cost: 1626
+  item: 266
+  itemName: Gold Ingot
+  meta: 0
+  amount: 1
+117:6:164:Lobby:
+  x: 117
+  "y": 6
+  z: 164
+  level: Lobby
+  cost: 4637
+  item: 264
+  itemName: Diamond
+  meta: 0
+  amount: 1
+115:6:163:Lobby:
+  x: 115
+  "y": 6
+  z: 163
+  level: Lobby
+  cost: 132
+  item: 295
+  itemName: Wheat Seeds
+  meta: 0
+  amount: 10
+116:6:164:Lobby:
+  x: 116
+  "y": 6
+  z: 164
+  level: Lobby
+  cost: 250
+  item: 263
+  itemName: Coal
+  meta: 0
+  amount: 64
+115:6:161:Lobby:
+  x: 115
+  "y": 6
+  z: 161
+  level: Lobby
+  cost: 30
+  item: 362
+  itemName: Melon Seeds
+  meta: 0
+  amount: 16
+115:6:162:Lobby:
+  x: 115
+  "y": 6
+  z: 162
+  level: Lobby
+  cost: 60
+  item: 361
+  itemName: Pumpkin Seeds
+  meta: 0
+  amount: 16
+115:6:160:Lobby:
+  x: 115
+  "y": 6
+  z: 160
+  level: Lobby
+  cost: 153
+  item: 458
+  itemName: Beetroot Seeds
+  meta: 0
+  amount: 3
+115:6:158:Lobby:
+  x: 115
+  "y": 6
+  z: 158
+  level: Lobby
+  cost: 172
+  item: 296
+  itemName: Wheat
+  meta: 0
+  amount: 4
+115:6:157:Lobby:
+  x: 115
+  "y": 6
+  z: 157
+  level: Lobby
+  cost: 172
+  item: 338
+  itemName: Sugar Cane
+  meta: 0
+  amount: 2
+115:6:156:Lobby:
+  x: 115
+  "y": 6
+  z: 156
+  level: Lobby
+  cost: 231
+  item: 81
+  itemName: Cactus
+  meta: 0
+  amount: 5
+100:6:152:Lobby:
+  x: 100
+  "y": 6
+  z: 152
+  level: Lobby
+  cost: 80
+  item: 4
+  itemName: Cobblestone
+  meta: 0
+  amount: 32
+...

@@ -1,0 +1,12 @@
+name: Marry
+main: Richen\Marry\Marry
+load: STARTUP
+version: 1
+api:
+- 1.14.0
+- 2.0.0
+
+commands:
+  marry:
+    default: true
+    description: Позволяет создать семью :)

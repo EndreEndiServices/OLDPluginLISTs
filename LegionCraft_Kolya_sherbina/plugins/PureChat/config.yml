@@ -1,0 +1,49 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: Без клана
+groups:
+  Guest:
+    default-chat: §8[{faction}§8] §a•••§e[ §bИгрок§e ]§a••• §e {display_name}§d> {message}
+    default-nametag: §8[{faction}§8] §e[ §bИгрок§e ]§e {display_name}
+    worlds: []
+  Admin:
+    default-chat: §b[{faction}] §4•••[ §cАдминистратор§4 ]••• §e{display_name}§d >
+      §a{message}
+    default-nametag: §9{faction}§8 ][ §cAdmin§8 ][ §7{display_name}
+    worlds: []
+  Owner:
+    default-chat: §9[{faction}] §a•••§e[ §aОператор§e ]§a••• §d[ §c{display_name}§d]
+      §f > §6{message}
+    default-nametag: §9{faction}§8 ][ §aOwner§8 ][ §7{display_name}
+    worlds: []
+  OP:
+    default-chat: §a[{faction}]§c••• §e[ §fСоздатель §e]§c••• §b[ {display_name} ]§c>
+      {message}
+    default-nametag: §a[{faction}]§c••• §e[ §fСоздатель §e]§c••• §b[ {display_name}
+      ]
+    worlds: []
+  VIP:
+    default-nametag: §9[{faction}§9]§8•••[ §3VIP§8 ]•••[ §7{display_name}
+    default-chat: §9[{faction}§9]§8•••[ §3VIP§8 ]•••[ §7{display_name} ] §a> {message}
+  Deluxe:
+    default-nametag: §8[ {faction}§8 ]•••[ §9Креатив§8 ]•••[ §7{display_name}
+    default-chat: §6[ {faction}§6 ]§a•••§8[ §9Креатив§8 ]§a•••§7[ §7{display_name}
+      ] §d > §f{message}
+  Zam:
+    default-nametag: §e[ {faction} ]§a•••[ §eСоздатель §b|•Купил•|§a ]••• §f[ §7{display_name}
+    default-chat: §e[ {faction} ] §a•••[§eСоздатель§b•§eКупил§a]••• §f[{display_name}]§d
+      > §f{message}
+  Helper:
+    default-nametag: '[Helper] {display_name}'
+    default-chat: '[Helper] {display_name} > {message}'
+  OPed:
+    default-nametag: '[OPed] {display_name}'
+    default-chat: '[OPed] {display_name} > {message}'
+  Builder:
+    default-nametag: '[§9{faction}§8]§c •••§e[ §4Архитектор §e]§c••• §6[ {display_name}'
+    default-chat: §f[§a{faction}§f]§c •••§9[ §4Архитектор §9]§c••• §6{display_name}
+      §c> {message}
+  BOG:
+    default-nametag: '[BOG] {display_name}'
+    default-chat: '[BOG] {display_name} > {message}'
+...

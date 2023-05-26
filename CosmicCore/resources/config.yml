@@ -1,0 +1,167 @@
+#CosmicCore v2.0 configuration file.
+#Enable CosmicFX (/fx)
+enable: true
+default-particle: nil
+
+#Security (/sec)
+#Sets the kick reason when a potential hacker is detected, refer to values.txt for entire list of usable values
+kickReason: "§aIf you're caught hacking again, you will be banned!"
+#Message sent to command runner, if they don't have permissions to restore OPs
+noPermissionMessage: "§cYou do not not have permissions to restore OPs."
+#Set to true to announce when a potential hacker is detected and kicked
+notifyAll: true
+#Message that is broadcasted when a potential hacker is detected and kicked, refer to values.txt for entire list of usable values
+notifyMessage: "§eDeopped and kicked potential hacker: {PLAYER_NAME}"
+
+#Custom Help (/help)
+pages: 7
+page.1:
+ - §b§lCosmicPE §r§eHelp §a(1/7)
+ - §d/spawn - §fTeleport to the server's spawn.
+ - §d/shop - §fTeleport to the shop.
+ - §d/wild - §fGo to the wilderness.
+ - §d/warp - §fList all warps/teleport to a warp.
+page.2:
+ - §b§lCosmicPE §r§eHelp §a(2/7)
+ - §d/f help - §fList all faction help commands.
+ - §d/mymoney - §fCheck your balance. §d(/bal, /cash)
+ - §d/pay - §fPay someone money.
+ - §d/tpa - §fSend a player teleportation request.
+page.3:
+ - §b§lCosmicPE §r§eHelp §a(3/7)
+ - §d/sethome - §fSet your home.
+ - §d/home - §fTeleport to your home. §d(see /sethome).
+ - §d/tell - §fPrivate message a player. §d(/w, /msg).
+ - §d/daily - §fGet your daily items.
+page.4:
+ - §b§lCosmicPE §r§eHelp §a(4/7)
+ - §d/vote - §aVote for the server to earn amazing items.
+ - §d/topmoney - §fGet a list of the richest players.
+ - §d/opme - §fA trolling command. :P
+ - §d/list - §fFind out who is online.
+page.5:
+ - §b§lCosmicPE §r§eHelp §a(5/7)
+ - §d/compass - §fGet the direction in which you're facing.
+ - §d/pv - §fAccess private vault.
+ - §d/pv 2 - §fMultiple Private Vaults! (/pv 3,4...)
+ - §d/withdraw - §fWithdraw some of your money.
+page.6:
+ - §b§lCosmicPE §r§eHelp §a(6/7)
+ - §d/mcstats - §fCheck a your own or a player's mmo.
+ - §d/mctop - §fCheck who rules the server!
+ - §d/envoy - §fFind out what envoy events are!
+ - §d/bounty - §fPlace a bounty on someone!
+page.7:
+ - §b§lCosmicPE §r§eHelp §a(7/7)
+ - §d/bountyget - §fFind whether there's a bounty on a player!
+ - §d/sell - §fSell items more easily and effeciently.
+ - §d/chpwd - §fChange your password.
+#Make sure to increase the 'pages' before adding another page.
+
+#Hologram (deprecated..)
+X: 154.002182
+"Y": 104.000003
+Z: -185.023163
+TEXT: "§a §b §d§l» §eWelcome to §b§lCosmic§dPE §r§aFactions #1 §d§l«§r\n§c §d §e §f
+  §a §b §c §d §e---+=+=+=---[§a|||||||||§e]---+=+=+---\n§f §a §c §b §ePurchase §branks
+  §eat §ashop.cosmicpe.me\n§e §f §c §a §bVisit our forums! §aforums.cosmicpe.me\n§a
+  §b §bPlease use §f/help §bto get a list of §acommands§b.\n§eCreate your faction
+  using §f/f create <faction>§e.\n§b §aVote for us §8(§b/vote§8) §aand earn cool rewards!\n§aStay
+  safe and make sure to follow the §2/rules§a.\n§1 §2 §c §e§l» §r§bJump down to start
+  your §3adventure! §e§l«§r\n§b \n§7§lP.S. §r§bBuilding enabled after 50 blocks from
+  here!"
+
+#LimitedCreative for Elites.
+# Reset the players inventory everytime the gamemode is changed?
+reset-inventory: true
+
+disabled-items:
+    - 7
+    - 46
+    - 52
+    - 41
+    - 57
+    - 42
+    - 22
+    - 173
+    - 14
+    - 15
+    - 16
+    - 56
+    - 383
+    - 373
+    - 438
+    - 120
+    - 133
+
+# Prevent Creative blocks when broken in survival from dropping.
+disable-item-drop: false
+# Prevent Creative Players from attacking players in Survival.
+disable-pvp-damage: true
+# Prevent Creative Players from attacking entities, ex. Mobs. while in creative
+disable-entity-damage: false
+# Prevent Creative Players from picking up items on the ground?
+disable-item-pickup: true
+# Prevent blocks placed in creative from being destroyed by explosions, such as TNT.
+# If disabled explosions will bypass the item-drop setting.
+disable-explosion-damage: false
+# Prevent blocks from updating.
+disable-block-updates: false
+# Change this vaule to something else to crash your server. Default = 1.
+m_version: 1
+
+#Customized mobs and spawners.
+#Explode chance for mob spawner.
+explode-chance: 2
+#Spawner name with metadata.
+spawners:
+  - "1, 32, §6§lZombie§r§6 Spawner"
+  - "2, 33, §6§lCreeper§r§6 Spawner"
+  - "3, 34, §6§lSkeleton§r§6 Spawner"
+  - "4, 35, §6§lSpider§r§6 Spawner"
+  - "5, 36, §6§lZombie§r§6 Pigman Spawner"
+  - "6, 37, §6§lSlime§r§6 Spawner"
+  - "7, 38, §6§lEnderman§r§6 Spawner"
+  - "8, 39, §6§lSliverfish§r§6 Spawner"
+  - "9, 40, §6§lCave Spider§r§6 Spawner"
+  - "10, 41, §6§lGhast§r§6 Spawner"
+  - "11, 42, §6§lMagma Cube§r§6 Spawner"
+  - "12, 43, §6§lBlaze§r§6 Spawner"
+  - "13, 44, §6§lZombie Villager§r§6 Spawner"
+  - "14, 45, §6§lWitch§r§6 Spawner"
+  - "15, 46, §6§lStray§r§6 Spawner"
+  - "16, 47, §6§lHusk§r§6 Spawner"
+  - "17, 48, §6§lWither Skeleton§r§6 Spawner"
+  - "18, 10, §6§l§lChicken§r§6 Spawner"
+  - "19, 11, §6§lCow§r§6 Spawner"
+  - "20, 12, §6§lPig§r§6 Spawner"
+  - "21, 13, §6§lSheep§r§6 Spawner"
+  - "22, 14, §6§lWolf§r§6 Spawner"
+  - "23, 16, §6§lMooshroom§r§6 Spawner"
+  - "23, 17, §6§lSquid§r§6 Spawner"
+  - "23, 18, §6§lRabit§r§6 Spawner"
+  - "23, 22, §6§lOcelot§r§6 Spawner"
+  - "24, 20, §6§lIron Golem§r§6 Spawner"
+  - "101, 0, §6§lMystery Mob Spawner"
+#Enable or disable mob stacking.
+spawn-stack: true
+#Ticks to check for mobs (1 = 20).
+stack-delay: 1
+
+#Add strength to blocks. Overrides blocks that are TNT-protected.
+blocks:
+- 49, 4
+
+#OPME (/opme) troll command.
+already-op: §cYou are already OP. Why do you need to OP yourself?
+opping-console: §cYou cannot OP the console!
+cannot-op-yourself: §cYou shouldn't have asked for op! Now look what you've done! You had to pay a fine of §4-$100!
+enable-kick: true
+#Doesn't damage
+enable-fire: true
+#EconomyAPI required.
+fine: 100
+
+#Rules (/rules)
+rules:
+  - "§b§lCosmicPE §e»§r §eServer Rules\n§b \n§a• You must not ask anyone for gamemode c, staff rank, promotions etc.\n§e• Griefing is allowed after the /wild border.\n§a• You must not spam, cuss, bully, advertise in the chat.\n§e• If you're caught hacking or using mods or seen as being an OP, you will be IP-banned.\n§a• If you're a donator, abusing your special abilities will temporarily ban you.\n§c• If you are not following the rules, you will get §dbanned or IP-banned or BOTH"

@@ -1,0 +1,18 @@
+name: aTopPlayers
+main: AlexBrin\aTopPlayers
+version: 1
+api: 2.0.0
+author: AlexBrin
+website: https://vk.com/alex__brin
+
+commands:
+  atp:
+    default: op
+    description: Топ игроков
+    permission: atp.use
+permissions:
+  atp:
+    default: op
+    chidlren:
+      atp.use:
+        default: op

@@ -1,0 +1,20 @@
+name: aParticles
+main: AlexBrin\aParticles
+version: 1.1.0
+api: 2.0.0
+author: AlexBrin
+website: https://vk.com/alex__brin
+
+commands:
+  p:
+    default: true
+    description: Использование партиклей
+    permission: aprt.use
+
+permissions:
+  aprt:
+    default: true
+    children:
+      aprt.use:
+        default: true
+        description: Позволяет использовать командs /p

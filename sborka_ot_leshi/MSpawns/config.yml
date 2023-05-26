@@ -1,0 +1,12 @@
+---
+show-prefix: true
+show-messages-onjoin: true
+force-hub: false
+enable-hub-message: true
+hub-message: Welcome to Hub, {PLAYER}
+force-spawn: false
+teleport-on-death: 1
+enable-spawn-message: true
+spawn-message: Teleported To {WORLD} Spawn
+enable-aliases: true
+...

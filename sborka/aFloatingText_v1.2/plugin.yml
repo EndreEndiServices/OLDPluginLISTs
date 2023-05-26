@@ -1,0 +1,19 @@
+name: AFT
+main: AlexBrin\aFloatingText
+version: 1.2
+api: 1.10.0
+author: AlexBrin
+website: http://vk.com/alex__brin
+
+commands:
+  addtag:
+    desctiption: Создает летающий текст на позицию игрока
+    permission: afloatingtext.addtag
+permissions:
+  afloatingtext:
+    default: op
+    desctiption: Top permission
+    childrem:
+      afloatingtext.addtag:
+        default: op
+        desctiption: Создает летающий текст на позицию игрока

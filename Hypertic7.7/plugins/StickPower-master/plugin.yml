@@ -1,0 +1,6 @@
+name: StickPower
+version: 2.0.0
+main: captainkenji17\Main
+api: [1.12.0]
+description: Stick with power to throw player
+author: captainkenji17

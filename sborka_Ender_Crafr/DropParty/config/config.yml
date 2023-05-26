@@ -1,0 +1,19 @@
+---
+World: world
+Time: 10
+Duration: 60
+Message.Started: '[DropParty] Has started!'
+Message.Ended: '[DropParty] Has ended!'
+Message.Countdown: '[DropParty] Starting in {time} mins.'
+Popup.Enabled: true
+Popup.Message: '[DropParty] Items are dropping!'
+Coordinates:
+  X: 0
+  "Y": 0
+  Z: 0
+Items:
+- 57
+- 42
+- 22
+- 41
+...

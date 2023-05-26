@@ -1,0 +1,7 @@
+name: Core
+main: Core\Loader
+version: 1.0
+api: [3.0.0-ALPHA8, 3.0.0-ALPHA9]
+author: StrafelessPvP
+description: PlexiumPE-CORE
+commands:

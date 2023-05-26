@@ -1,0 +1,36 @@
+# Открытие меню через предмет
+item: "345:0"
+
+# Если вы не напишете "on", функция будет включена.
+toggle:
+ spawn: "on"
+ warp: "on"
+ sendmoney: "on"
+ recievemoney: "on"
+ calendar: "on"
+ speaker: "on"
+ calc: "on"
+ moveisland: "on"
+ moveflat: "on"
+ moneyinfo: "on"
+ tell: "on"
+
+speaker:
+ # Banii necesari
+ need-money: 1000
+ # Lungimea maximă a mesajului
+ limit-message: 50
+
+worlds:
+# Nu toate lumile sunt permise. Orice mai puțin de 0 este permis întotdeauna.
+# Dacă este 0, nu este disponibil în lume.
+# Un exemplu. Dacă există mai multe persoane în lumea pvp, nu o puteți folosi.
+#pvp: 2
+
+# tag-uri
+# "@mymoney" au nevoie de pluginul EconomyAPI de la onebone.
+# "@playername", "@playercount", "@playermaxcount", "@motd", "@mymoney", "@health", "@maxhealth", "@year", "@month", "@day", "@hour"
+message: |-
+  §l§c≫ §ePorecla ta:§b @playername
+  §l§c≫ §etu:§a @mymoney moneda
+  §l§c≫ §eonline§a @playercount §ede la§6 @playermaxcount

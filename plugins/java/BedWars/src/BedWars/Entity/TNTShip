@@ -1,0 +1,435 @@
+package BedWars.Entity;
+
+import BedWars.Arena.Arena;
+import BedWars.Object.BedWarsData;
+import cn.nukkit.Player;
+import cn.nukkit.block.Block;
+import cn.nukkit.entity.data.ByteEntityData;
+import cn.nukkit.entity.passive.EntityAnimal;
+import cn.nukkit.event.entity.EntityDamageEvent;
+import cn.nukkit.level.Explosion;
+import cn.nukkit.level.Location;
+import cn.nukkit.level.format.FullChunk;
+import cn.nukkit.math.Vector2;
+import cn.nukkit.math.Vector3;
+import cn.nukkit.nbt.tag.CompoundTag;
+import cn.nukkit.network.protocol.AddEntityPacket;
+import cn.nukkit.network.protocol.SetEntityMotionPacket;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class TNTShip extends EntityAnimal {
+
+    public static final int NETWORK_ID = 13;
+
+    public static final int DATA_COLOR_INFO = 16;
+
+    private static Random random = new Random();
+
+    public Player target = null;
+    public int team = 0;
+    private Arena plugin;
+
+    private boolean canJump = true;
+    private int hurt = 10;
+    private Location oldv3 = this.getLocation();
+    private int yup = 20;
+    private int up = 0;
+    private double xxx = 0;
+    private double zzz = 0;
+    private int goTimer = 10;
+    private int swim = 0;
+    private double jump = 0.01;
+    private Double drop = null;
+    private int canAttack = 0;
+    private boolean knockBack = false;
+    private double motionX = 0;
+    private double motionY = 0;
+    private double motionZ = 0;
+    private double x = 0;
+    private double y = 0;
+    private double z = 0;
+    private double yaw = 0;
+    private double pitch = 0;
+
+    private int hatred_r = 16;
+    private double zo_hate_v = 1.4;
+
+    public TNTShip(FullChunk chunk, CompoundTag nbt, int team, Arena plugin) {
+        super(chunk, nbt);
+        this.plugin = plugin;
+        this.team = team;
+
+        int color = 0;
+
+        switch (team) {
+            case 1:
+                color = 11;
+                break;
+            case 2:
+                color = 14;
+                break;
+            case 3:
+                color = 4;
+                break;
+            case 4:
+                color = 13;
+                break;
+        }
+
+        this.namedTag.putByte("Color", color);
+
+        this.setDataProperty(new ByteEntityData(DATA_COLOR_INFO, color));
+
+        x = getX();
+        y = getY();
+        z = getZ();
+        yaw = getYaw();
+        pitch = getPitch();
+    }
+
+    int nextWalkCalc = 0;
+    int nextWalk = 0;
+    int nextHateWalk = 0;
+    int nextHateFinder = 0;
+
+    @Override
+    public boolean onUpdate(int diff) {
+        //super.onUpdate(diff);
+
+        if (this.age >= 30 * 20 || (this.target != null && this.age >= 7 * 20 && this.target.distance(this) < 2)) {
+            Explosion explosion = new Explosion(this, 5, this);
+            explosion.explodeB();
+            this.close();
+            return false;
+        }
+
+        int tick = getServer().getTick();
+
+        if (nextWalkCalc <= tick) {
+            SheepRandomWalkCalc();
+            nextWalkCalc = tick + 10;
+        }
+
+        if (nextWalk <= tick) {
+            SheepRandomWalk();
+            nextWalk = tick + 2;
+        }
+
+        if (nextHateFinder <= tick) {
+            this.hateFinder();
+            nextHateFinder = tick + 10;
+        }
+
+        if (nextHateWalk <= tick) {
+            this.hateWalk();
+            nextHateWalk = tick + 10;
+        }
+
+        this.age += diff;
+        return true;
+    }
+
+    @Override
+    public float getWidth() {
+        return 0.625f;
+    }
+
+    @Override
+    public float getLength() {
+        return 1.4375f;
+    }
+
+    @Override
+    public float getHeight() {
+        return 0.8f;
+    }
+
+    @Override
+    public int getNetworkId() {
+        return NETWORK_ID;
+    }
+
+    @Override
+    public void spawnTo(Player player) {
+        AddEntityPacket pk = new AddEntityPacket();
+        pk.type = this.getNetworkId();
+        pk.eid = this.getId();
+        pk.x = (float) this.x;
+        pk.y = (float) this.y;
+        pk.z = (float) this.z;
+        pk.speedX = (float) this.motionX;
+        pk.speedY = (float) this.motionY;
+        pk.speedZ = (float) this.motionZ;
+        pk.metadata = this.dataProperties;
+        player.dataPacket(pk);
+
+        super.spawnTo(player);
+    }
+
+    public void SheepRandomWalkCalc() {
+        if (target == null) {  //自由行走模式
+            if (goTimer == 0 || goTimer == 10) {
+                //限制转动幅度
+                double newmx = (random.nextInt(10) - 5) / 10;
+
+                while (Math.abs(newmx - motionX) >= 0.7) {
+                    newmx = (random.nextInt(10) - 5) / 10;
+                }
+                motionX = newmx;
+
+                double newmz = (random.nextInt(10) - 5) / 10;
+                while (Math.abs(newmz - motionZ) >= 0.7) {
+                    newmz = (random.nextInt(10) - 5) / 10;
+                }
+                motionZ = newmz;
+            } else if (goTimer >= 20 && goTimer <= 24) {
+                motionX = 0;
+                motionZ = 0;
+                //羊停止
+            }
+            goTimer += 0.5;
+            if (goTimer >= 22) goTimer = 0;  //重置走路计时器
+            //$zom['motionx'] = mt_rand(-10,10)/10;
+            //$zom['motionz'] = mt_rand(-10,10)/10;
+            yup = 0;
+            up = 0;
+            //boybook的y轴判断法
+            //$width = $this->width;
+            Vector3 pos = new Vector3(x + motionX, getFloorY() + 1, z + motionZ);  //目标坐标
+            Vector3 pos2 = new Vector3();
+
+            Double zy = AiHolder.ifjump(getLevel(), pos);
+            if (zy == null) {  //前方不可前进
+                pos2.setComponents(x, y, z);  //目标坐标
+                if (AiHolder.ifjump(getLevel(), pos2) == null) { //原坐标依然是悬空
+                    pos2.setComponents(x, y - 1, z);  //下降
+                    up = 1;
+                    yup = 0;
+                } else {
+                    motionX = -motionX;
+                    motionZ = -motionZ;
+                    //转向180度，向身后走
+                    up = 0;
+                }
+            } else {
+                pos2.setComponents(x + motionX, zy - 1, z + motionZ);  //目标坐标
+                if (pos2.y - y < 0) {
+                    up = 1;
+                } else {
+                    up = 0;
+                }
+            }
+            if (motionX == 0 && motionZ == 0) {  //羊停止
+            } else {
+                //转向计算
+                double yaw = AiHolder.getyaw(motionX, motionZ);
+                //$zo->setRotation($yaw,0);
+                this.yaw = yaw;
+                this.pitch = 0;
+            }
+            //更新坐标
+            if (!knockBack) {
+                x = pos2.getX();
+                z = pos2.getZ();
+                y = pos2.getY();
+            }
+            motionY = pos2.getY() - getY();
+            //echo($zo->getY()."\n");
+            //var_dump($pos2);
+            //var_dump($zom['motiony']);
+            setPosition(pos2);
+            //echo "SetPosition \n";
+        }
+
+    }
+
+    public void SheepRandomWalk() {
+        if (canAttack != 0) {
+            canAttack -= 1;
+        }
+        Location pos = getLocation();
+        //echo ($zom['IsChasing']."\n");
+        //真正的自由落体 by boybook
+        if (drop != null) {
+            double olddrop = drop;
+            drop += 0.5;
+            double drop = this.drop;
+            //echo $drop."\n";
+            double dropy = getY() - (olddrop * 0.05 + 0.0125);
+            Vector3 posd0 = new Vector3(Math.floor(getX()), Math.floor(dropy), Math.floor(getZ()));
+            Vector3 posd = new Vector3(getX(), dropy, getZ());
+            if (AiHolder.whatBlock(getLevel(), posd0) == Block.AIR) {
+                setPosition(posd);  //下降
+            } else {
+                for (int i = 1; i <= drop; i++) {
+                    posd0.y++;
+                    if (AiHolder.whatBlock(getLevel(), posd0) != AiHolder.BLOCK_BLOCK) {
+                        posd.y = posd0.y;
+                        //$zo->setPosition($posd);  //下降完成
+                        double h = this.drop * this.drop / 20;
+                        double damage = h - 3;
+                        //echo($h . ": " . $damage . "\n");
+                        if (damage > 0) {
+                            this.attack(new EntityDamageEvent(this, EntityDamageEvent.CAUSE_FALL, (float) damage));
+                        }
+                        this.drop = null;
+                        break;
+                    }
+                }
+            }
+        } else {
+            drop = 0d;
+        }
+        //echo ".";
+        SetEntityMotionPacket pk3 = new SetEntityMotionPacket();
+        pk3.entities = new SetEntityMotionPacket.Entry[]{new SetEntityMotionPacket.Entry(getId(), motionX / 10, 0, motionZ / 10)};
+
+        for (Player p : new ArrayList<>(this.getViewers().values())) {
+            p.dataPacket(pk3);
+        }
+    }
+
+    public void hateWalk() {
+        //$zom['yup'] = $zom['yup'] - 1;
+        if (!knockBack) {
+            oldv3 = getLocation();
+            canJump = true;
+            //僵尸碰撞检测 by boybook
+                            /*
+							foreach ($level->getEntities() as $zo0) {
+								if ($zo0 instanceof Zombie and !($zo0 == $zo)) {
+									if ($zo->distance($zo0) <= $this->width * 2) {
+										$dx = $zo->x - $zo0->x;
+										$dz = $zo->z - $zo0->z;
+										if ($dx == 0) {
+											$dx = mt_rand(-5,5) / 5;
+											if ($dx == 0) $dx = 1;
+										}
+										if ($dz == 0) {
+											$dz = mt_rand(-5,5) / 5;
+											if ($dz == 0) $dz = 1;
+										}
+										$zo->knockBack($zo0,0,$dx/5,$dz/5,0);
+										$newpos = new Vector3($zo->x + $dx * 5, $zo->y, $zo->z + $dz * 5);
+										$zom['x'] = $newpos->x;
+										$zom['y'] = $newpos->y;
+										$zom['z'] = $newpos->z;
+										$this->plugin->getServer()->getScheduler()->scheduleDelayedTask(new CallbackTask([$this->plugin,"knockBackover"],[$zo,$newpos]),5);
+									}
+								}
+							}*/
+            if (target != null) {
+                Player p = target;
+                //echo ("是属于仇恨模式\n");
+                //真正的行走方向计算
+                double xx = p.getX() - getX();
+                double zz = p.getZ() - getZ();
+                double yaw = AiHolder.getyaw(xx, zz);
+									/*
+									 * x = $xxx, z = $zzz
+									 * x0 = $xx, z0 = $zz
+									 * x^2 + z^2 = 0.7
+									 * x/z = x0/z0 => x = bi * z
+									 * =>
+									 * bi^2 * z^2 + z^2 = 0.7
+									 * z^2 * (bi^2 + 1) = 0.7
+									 * */
+                double bi;
+
+                if (zz != 0) {
+                    bi = xx / zz;
+                } else {
+                    bi = 0;
+                }
+
+                double xxx = 0;
+                double zzz = 0;
+
+                zzz = Math.sqrt((zo_hate_v / 2.5) / (bi * bi + 1));
+
+                if (zz < 0) zzz = -zzz;
+                xxx = zzz * bi;
+
+                Vector2 zo_v2 = new Vector2(getX(), getZ());
+                Vector2 p_v2 = new Vector2(p.getX(), p.getZ());
+                if (zo_v2.distance(p_v2) <= zo_hate_v / 2) {
+                    xxx = xx;
+                    zzz = zz;
+                }
+                //严重加速bug
+                this.xxx = xxx;
+                this.zzz = zzz;
+                //计算y轴
+                //$width = $this->width;
+                Vector3 pos0 = new Vector3(getX(), getY() + 1, getZ());  //原坐标
+                Vector3 pos = new Vector3(getX() + xxx, getY() + 1, getZ() + zzz);  //目标坐标
+
+                //用来写僵尸宽度的
+                //$v = $this->zo_hate_v/2;
+                //$pos_front = new Vector3 ($zo->getX() + ($xxx/$v*($v+$this->width)), $zo->getY() + 1, $zo->getZ() + ($zzz/$v*($v+$this->width)));  //前方坐标
+                //$pos_back = new Vector3 ($zo->getX() + (-$xxx/$v*(-$v-$this->width)), $zo->getY() + 1, $zo->getZ() + (-$zzz/$v*(-$v-$this->width)));  //后方坐标
+                Double zy = AiHolder.ifjump(getLevel(), pos, true);
+
+                Vector3 pos2;
+
+                if (zy == null || AiHolder.ifjump(this.getLevel(), pos0, true, true) == AiHolder.FALL) {  //前方不可前进
+                    //真正的自由落体 by boybook
+                    if (AiHolder.ifjump(getLevel(), pos0, false) == null) { //原坐标依然是悬空
+                        if (drop == null) {
+                            drop = 0d;  //僵尸下落的速度
+                        }
+                        pos2 = new Vector3(getX(), getY() - (drop / 2 + 1.25), getZ());  //下降
+
+                    } else {
+                        drop = null;
+                        if (AiHolder.whatBlock(level, pos0) == AiHolder.BLOCK_CLIMB) {  //梯子
+                            zy = pos0.y + 0.7;
+                            pos2 = new Vector3(getX(), zy - 1, getZ());  //目标坐标
+                        } else if (xxx != 0 && zzz != 0) {  //走向最近距离
+                            if (AiHolder.ifjump(getLevel(), AiHolder.v.setComponents(getX() + xxx, getY() + 1, getZ()), true) != null) {
+                                pos2 = new Vector3(getX() + xxx, Math.floor(getY()), getZ());  //目标坐标
+                            } else if (AiHolder.ifjump(getLevel(), AiHolder.v.setComponents(getX(), getY() + 1, getZ() + zzz), true) != null) {
+                                pos2 = new Vector3(getX(), Math.floor(getY()), getZ() + zzz);  //目标坐标
+                            } else {
+                                pos2 = new Vector3(getX() - xxx / 5, Math.floor(getY()), getZ() - zzz / 5);  //目标坐标
+                                //转向180度，向身后走
+                            }
+                        } else {
+                            pos2 = new Vector3(getX() - xxx / 5, Math.floor(getY()), getZ() - zzz / 5);  //目标坐标
+                        }
+                    }
+                } else {
+                    pos2 = new Vector3(getX() + xxx, zy - 1, getZ() + zzz);  //目标坐标
+                }
+
+                setPosition(pos2);
+                Vector3 pos3 = pos2;
+                pos3.y = pos3.y + 2.62;
+
+                Location ppos = p.getLocation();
+                ppos.y = ppos.y + p.getEyeHeight();
+                double pitch = AiHolder.getpitch(pos3, ppos);
+                this.yaw = yaw;
+                this.pitch = pitch;
+                if (!knockBack) {
+                    x = getX();
+                    y = getY();
+                    z = getZ();
+                }
+            }
+        }
+    }
+
+    public void hateFinder() {
+        for (BedWarsData data : new ArrayList<>(plugin.playerData.values())) {
+            if (data.getTeam().getId() == this.team || data.getPlayer().distance(this) > 15) {
+                continue;
+            }
+
+            this.target = data.getPlayer();
+            break;
+        }
+    }
+}

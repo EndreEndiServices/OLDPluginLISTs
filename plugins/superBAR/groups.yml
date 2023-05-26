@@ -1,0 +1,71 @@
+#This is config for setting every PurePerms group. Groups are automatically generated.
+#If you created new group, reload PP, and enter "/sb reload" to see it here.
+# %DEFAULT% - take the value from the default config.
+#Another strings - at the default config.
+
+membru:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+yt:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+vip:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+vipa:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+helper:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+mod:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+admin:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+op:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+protector:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+coowner:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"
+owner:
+  hot-format: "%DEFAULT%"
+  text-offset-level: "%DEFAULT%"
+  type: "%DEFAULT%"
+  time-format: "%DEFAULT%"
+  no-faction: "%DEFAULT%"

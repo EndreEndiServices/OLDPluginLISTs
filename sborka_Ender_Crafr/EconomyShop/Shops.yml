@@ -1,0 +1,202 @@
+---
+188:71:180:world:
+  x: 188
+  "y": 71
+  z: 180
+  level: world
+  price: 250
+  item: 47
+  itemName: bookshelf
+  meta: 0
+  amount: 10
+188:71:186:world:
+  x: 188
+  "y": 71
+  z: 186
+  level: world
+  price: 500
+  item: 45
+  itemName: brick
+  meta: 0
+  amount: 10
+185:71:177:world:
+  x: 185
+  "y": 71
+  z: 177
+  level: world
+  price: 1000
+  item: 49
+  itemName: obsidian
+  meta: 0
+  amount: 5
+190:71:180:world:
+  x: 190
+  "y": 71
+  z: 180
+  level: world
+  price: 250
+  item: 47
+  itemName: bookshelf
+  meta: 0
+  amount: 10
+190:71:186:world:
+  x: 190
+  "y": 71
+  z: 186
+  level: world
+  price: 500
+  item: 45
+  itemName: brick
+  meta: 0
+  amount: 10
+188:71:196:world:
+  x: 188
+  "y": 71
+  z: 196
+  level: world
+  price: 50
+  item: 5
+  itemName: woodenplank
+  meta: 0
+  amount: 32
+185:71:193:world:
+  x: 185
+  "y": 71
+  z: 193
+  level: world
+  price: 50
+  item: 4
+  itemName: cobblestone
+  meta: 0
+  amount: 32
+195:71:193:world:
+  x: 195
+  "y": 71
+  z: 193
+  level: world
+  price: 250
+  item: 98
+  itemName: stonebrick
+  meta: 0
+  amount: 10
+201:71:191:world:
+  x: 201
+  "y": 71
+  z: 191
+  level: world
+  price: 100
+  item: 24
+  itemName: sandstone
+  meta: 0
+  amount: 10
+201:71:193:world:
+  x: 201
+  "y": 71
+  z: 193
+  level: world
+  price: 100
+  item: 24
+  itemName: sandstone
+  meta: 0
+  amount: 10
+204:71:196:world:
+  x: 204
+  "y": 71
+  z: 196
+  level: world
+  price: 50
+  item: 20
+  itemName: glass
+  meta: 0
+  amount: 32
+204:71:182:world:
+  x: 204
+  "y": 71
+  z: 182
+  level: world
+  price: 10000
+  item: 388
+  itemName: emerald
+  meta: 0
+  amount: 5
+200:71:184:world:
+  x: 200
+  "y": 71
+  z: 184
+  level: world
+  price: 10000
+  item: 264
+  itemName: diamond
+  meta: 0
+  amount: 10
+200:71:186:world:
+  x: 200
+  "y": 71
+  z: 186
+  level: world
+  price: 10000
+  item: 264
+  itemName: diamond
+  meta: 0
+  amount: 10
+197:71:181:world:
+  x: 197
+  "y": 71
+  z: 181
+  level: world
+  price: 250
+  item: 89
+  itemName: glowingstone
+  meta: 0
+  amount: 32
+195:71:181:world:
+  x: 195
+  "y": 71
+  z: 181
+  level: world
+  price: 250
+  item: 89
+  itemName: glowingstone
+  meta: 0
+  amount: 32
+193:71:177:world:
+  x: 193
+  "y": 71
+  z: 177
+  level: world
+  price: 4000
+  item: 265
+  itemName: ironingot
+  meta: 0
+  amount: 10
+199:71:177:world:
+  x: 199
+  "y": 71
+  z: 177
+  level: world
+  price: 1000
+  item: 263
+  itemName: coal
+  meta: 0
+  amount: 10
+195:71:191:world:
+  x: 195
+  "y": 71
+  z: 191
+  level: world
+  price: 250
+  item: 98
+  itemName: stonebrick
+  meta: 0
+  amount: 10
+204:71:188:world:
+  x: 204
+  "y": 71
+  z: 188
+  level: world
+  price: 2000
+  item: 266
+  itemName: goldingot
+  meta: 0
+  amount: 5
+...

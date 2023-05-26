@@ -1,0 +1,11 @@
+---
+plugin-name: essentalsTp+
+sqlite-dbname: essentials_tp
+tpa-here-cooldown: "30"
+tp-home-cooldown: "5"
+tp-warp-cooldown: "5"
+tp-spawn-cooldown: "5"
+MOTD: Welcome to this awsome plugin showcase was hell for the first day but hey lol
+wild-MaxX: "300"
+wild-MaxY: "300"
+...

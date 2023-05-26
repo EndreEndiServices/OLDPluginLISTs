@@ -1,0 +1,34 @@
+---
+version: 1
+blocks:
+- x: 8
+  "y": 65
+  z: 359
+  level: world
+  commands:
+  - weather sun
+- x: 8
+  "y": 65
+  z: 357
+  level: world
+  commands:
+  - time set 4000
+- x: 15
+  "y": 65
+  z: 352
+  level: world
+  commands:
+  - weather sun
+- x: 18
+  "y": 65
+  z: 352
+  level: world
+  commands:
+  - time set day
+- x: 10
+  "y": 64
+  z: 368
+  level: world
+  commands:
+  - job
+...

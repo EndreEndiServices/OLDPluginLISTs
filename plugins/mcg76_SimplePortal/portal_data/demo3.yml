@@ -1,0 +1,28 @@
+---
+name: demo3
+type: tp
+active: true
+enterLevelName: hg_jungle
+enterDestinationLevelName: SimplePortalWorld
+enterDestinationPosX: 129.218231
+enterDestinationPosY: 65.000003
+enterDestinationPosZ: 129.575745
+portalEnter1X: 122.000000
+portalEnter1Y: 15.000000
+portalEnter1Z: 128.000000
+portalEnter2X: 119.000000
+portalEnter2Y: 19.000000
+portalEnter2Z: 130.000000
+allowIPs: []
+exitLevelName: SimplePortalWorld
+exitDestinationLevelName: hg_jungle
+exitDestinationPosX: 122.217796
+exitDestinationPosY: 15.000001
+exitDestinationPosZ: 122.504646
+portalExitPos1X: 131.000000
+portalExitPos1Y: 66.000000
+portalExitPos1Z: 135.000000
+portalExitPos2X: 128.000000
+portalExitPos2Y: 70.000000
+portalExitPos2Z: 137.000000
+...

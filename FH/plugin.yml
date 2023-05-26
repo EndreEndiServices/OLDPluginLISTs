@@ -1,0 +1,16 @@
+name: FH
+main: FH\FH
+api: 2.0.0-3.0.1
+version: 1.0
+website: https://vk.com/westplugs
+author: WestPlugs
+
+commands:
+ heal:
+  default: false
+  permission: fh.command.heal
+  description: Востановить здоровье
+ food:
+  default: false
+  permission: fh.command.food
+  description: Востановить голод

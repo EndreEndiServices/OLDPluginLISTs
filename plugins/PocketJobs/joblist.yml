@@ -1,0 +1,52 @@
+---
+woodcutter:
+  break:
+  - ID: 17
+    meta: 0
+    amount: 25
+  - ID: 17
+    meta: 1
+    amount: 25
+  - ID: 17
+    meta: 2
+    amount: 25
+  - ID: 17
+    meta: 3
+    amount: 25
+  place:
+  - ID: 6
+    meta: 0
+    amount: 1
+  - ID: 6
+    meta: 1
+    amount: 1
+  - ID: 6
+    meta: 2
+    amount: 1
+  - ID: 6
+    meta: 3
+    amount: 1
+miner:
+  break:
+  - ID: 1
+    meta: 0
+    amount: 3
+  - ID: 14
+    meta: 0
+    amount: 25
+  - ID: 15
+    meta: 0
+    amount: 20
+  - ID: 21
+    meta: 0
+    amount: 17
+  - ID: 49
+    meta: 0
+    amount: 9
+  - ID: 56
+    meta: 0
+    amount: 80
+  - ID: 73
+    meta: 0
+    amount: 10
+...

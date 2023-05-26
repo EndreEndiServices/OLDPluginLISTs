@@ -1,0 +1,256 @@
+# ---------------------------------------
+enableroof: "n"
+# ---------------------------------------
+wallheight: "5"
+# ---------------------------------------
+maxsize: "99"
+# ---------------------------------------
+minsize: "17"
+# ---------------------------------------
+# timeou ticks
+# ---------------------------------------
+play_time_out: 8000
+# ---------------------------------------
+adventuremode: "Y"
+# ---------------------------------------
+
+# ---------------------------------------
+# default Server lobby location
+# ---------------------------------------
+enable-spaw-lobby: "no"
+server-lobby-world: "world"
+server-lobby-x: "489"
+server-lobby-y: "5"
+server-lobby-z: "388"
+
+# --------------------------------------
+# default Maze Runner game location
+# --------------------------------------
+maze-game-world: "world"
+maze-game-loc-x: "91"
+maze-game-loc-y: "5"
+maze-game-loc-z: "117"
+
+# --------------------------------------
+# Maze Runner Easy Play Mode
+# Adventure Mode
+# --------------------------------------
+# simple, colorful
+# --------------------------------------
+easy-maze-1: "EASY1"
+easy-maze-1-name: "Easy Play Maze #1"
+easy-maze-1-type: "EASY"
+easy-maze-1-size: "27"
+easy-maze-1-roof: "Y"
+easy-maze-1-wall-type: "1"
+easy-maze-1-wall-height: "4"
+easy-maze-1-x: "99"
+easy-maze-1-y: "4"
+easy-maze-1-z: "45"
+
+#entrance
+# --------------------------------------
+easy-maze-2: "EASY2"
+easy-maze-2-name: "Easy Play Maze #2"
+easy-maze-2-type: "EASY"
+easy-maze-2-size: "47"
+easy-maze-2-roof: "Y"
+easy-maze-2-wall-type: "3"
+easy-maze-2-wall-height: "4"
+easy-maze-2-x: "16"
+easy-maze-2-y: "4"
+easy-maze-2-z: "12"
+
+# --------------------------------------
+# active
+#---------------------------------------
+easy-maze-3: "EASY3"
+easy-maze-3-name: "Easy Play Maze #3"
+easy-maze-3-type: "EASY"
+easy-maze-3-size: "69"
+easy-maze-3-roof: "Y"
+easy-maze-3-wall-type: "6"
+easy-maze-3-wall-height: "4"
+easy-maze-3-x: "92"
+easy-maze-3-y: "4"
+easy-maze-3-z: "14"
+
+# ----------------------------------------
+# Maze Runner Hard Play Mode
+# Adventure Mode
+# ----------------------------------------
+# Lave, fire , water, spider web in floor 
+# food may be given
+# ----------------------------------------
+hard-maze-1: "HARD1"
+hard-maze-1-name: "Hard Play Maze #1"
+hard-maze-1-type: "HARD"
+hard-maze-1-size: "31"
+hard-maze-1-roof: "Y"
+hard-maze-1-wall-type: "7"
+hard-maze-1-wall-height: "4"
+hard-maze-1-x: "3"
+hard-maze-1-y: "4"
+hard-maze-1-z: "69"
+
+# ----------------------------------------
+#hard-maze-2: "HARD2"
+#hard-maze-2-name: "Hard Play Maze #2"
+#hard-maze-2-type: "HARD"
+#hard-maze-2-size: "47"
+#hard-maze-2-roof: "Y"
+#hard-maze-2-wall-type: "2"
+#hard-maze-2-wall-height: "4"
+#hard-maze-2-x: "-26"
+#hard-maze-2-y: "4"
+#hard-maze-2-z: "133"
+
+# ----------------------------------------
+# Maze Runner - Competition Mode 
+# Survival Mode
+# enclosed roof 
+# ----------------------------------------
+# time limits, danger, hunger 
+# ----------------------------------------
+pvp-maze-home-x: "91"
+pvp-maze-home-y: "5"
+pvp-maze-home-z: "117"
+
+pvp-maze-1: "PVP1"
+pvp-maze-1-name: "PvP Play Maze #1"
+pvp-maze-1-type: "PVP"
+pvp-maze-1-size: "49"
+pvp-maze-1-roof: "Y"
+pvp-maze-1-wall-type: "8"
+pvp-maze-1-wall-height: "4"
+pvp-maze-1-x: "125"
+pvp-maze-1-y: "4"
+pvp-maze-1-z: "97"
+
+#center stage - player drop in point 
+pvp-maze-1-enter-x: "156"
+pvp-maze-1-enter-y: "4"
+pvp-maze-1-enter-z: "128"
+
+#center stage - start button - emeral green
+#player tap this to start the competition
+pvp-maze-1-start-x: "158"
+pvp-maze-1-start-y: "5"
+pvp-maze-1-start-z: "127"
+
+#center decoration fire1
+pvp-maze-1-fire1-x: "158"
+pvp-maze-1-fire1-y: "6"
+pvp-maze-1-fire1-z: "127"
+
+#center stage - exit button - yellow green
+#player tap this to exit the maze
+pvp-maze-1-exit-x: "158"
+pvp-maze-1-exit-y: "5"
+pvp-maze-1-exit-z: "129"
+
+#center decoration fire2
+pvp-maze-1-fire2-x: "158"
+pvp-maze-1-fire2-y: "6"
+pvp-maze-1-fire2-z: "129"
+
+
+#exit door reactor1 = 247
+#player tap this to declare winining
+pvp-maze-1-end1-x: "174"
+pvp-maze-1-end1-y: "4"
+pvp-maze-1-end1-z: "145"
+
+#exit door reactor2 = 247
+#player tap this to declare winining
+pvp-maze-1-end2-x: "126"
+pvp-maze-1-end2-y: "4"
+pvp-maze-1-end2-z: "99"
+
+#SIGN - check Status
+#tap this sign to show maze#1 status
+pvp-maze-1-check-status-x: "101"
+pvp-maze-1-check-status-y: "5"
+pvp-maze-1-check-status-z: "112"
+
+#SIGN - new competetion
+#tap this to start new comptetion
+pvp-maze-1-new-competition-x: "100"
+pvp-maze-1-new-competition-y: "5"
+pvp-maze-1-new-competition-z: "110"
+
+#SIGN - enter competetion
+#tap this to start new comptetion
+pvp-maze-1-enter-competition-x: "102"
+pvp-maze-1-enter-competition-y: "5"
+pvp-maze-1-enter-competition-z: "111"
+
+# ----------------------------------------
+pvp-maze-2: "PVP2"
+pvp-maze-2-name: "PvP Play Maze #2"
+pvp-maze-2-type: "PVP2"
+pvp-maze-2-size: "37"
+pvp-maze-2-roof: "Y"
+pvp-maze-2-wall-type: "8"
+pvp-maze-2-wall-height: "4"
+pvp-maze-2-x: "35"
+pvp-maze-2-y: "4"
+pvp-maze-2-z: "142"
+
+#center stage - start button - emeral green
+#player tap this to start the competition
+pvp-maze-2-enter-x: "58"
+pvp-maze-2-enter-y: "4"
+pvp-maze-2-enter-z: "165"
+
+#center stage - start button - emeral green
+#player tap this to start the competition
+pvp-maze-2-start-x: "61"
+pvp-maze-2-start-y: "5"
+pvp-maze-2-start-z: "168"
+
+#center decoration fire1
+pvp-maze-2-fire1-x: "61"
+pvp-maze-2-fire1-y: "6"
+pvp-maze-2-fire1-z: "168"
+
+#center stage - exit button - yellow green
+#player tap this to exit the maze
+pvp-maze-2-exit-x: "59"
+pvp-maze-2-exit-y: "5"
+pvp-maze-2-exit-z: "168"
+
+#center decoration fire2
+pvp-maze-2-fire2-x: "59"
+pvp-maze-2-fire2-y: "6"
+pvp-maze-2-fire2-z: "168"
+
+#exit door reactor1 = 247
+#player tap this to declare winining
+pvp-maze-2-end1-x: "36"
+pvp-maze-2-end1-y: "4"
+pvp-maze-2-end1-z: "144"
+
+#exit door reactor1 = 247
+#player tap this to declare winining
+pvp-maze-2-end2-x: "72"
+pvp-maze-2-end2-y: "4"
+pvp-maze-2-end2-z: "178"
+
+#SIGN - check Status
+#tap this sign to show maze#1 status
+pvp-maze-2-check-status-x: "88"
+pvp-maze-2-check-status-y: "8"
+pvp-maze-2-check-status-z: "132"
+
+#SIGN - new competetion
+#tap this to start new comptetion
+pvp-maze-2-new-competition-x: "88"
+pvp-maze-2-new-competition-y: "5"
+pvp-maze-2-new-competition-z: "134"
+
+#SIGN - enter competetion
+#tap this to start new comptetion
+pvp-maze-2-enter-competition-x: "89"
+pvp-maze-2-enter-competition-y: "5"
+pvp-maze-2-enter-competition-z: "135"

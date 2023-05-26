@@ -1,0 +1,119 @@
+---
+Guest:
+  inheritance: []
+  permissions:
+  - -essentials.kit
+  - -essentials.kit.other
+  - -pocketmine.command.me
+  - kits.kit.starter
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.list
+  - pperms.command.ppinfo
+  worlds: []
+  isDefault: true
+Admin:
+  inheritance:
+  - Guest
+  permissions:
+  - essentials.gamemode
+  - essentials.vanish
+  - pocketmine.broadcast
+  - pocketmine.command.ban
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.pardon
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds: []
+Owner:
+  inheritance:
+  - Guest
+  - Admin
+  permissions:
+  - -pperms.command
+  - eban.command
+  - essentials.fly.use
+  - essentials.gamemode
+  - essentials.heal.use
+  - essentials.jump
+  - pocketmine.command.ban
+  - pocketmine.command.ban-ip
+  - pocketmine.command.give
+  - pocketmine.command.pardon
+  - pocketmine.command.pardon-ip
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  - pocketmine.command.weather
+  - pockqetmine.command.kick
+  worlds: []
+OP:
+  inheritance: []
+  permissions:
+  - '*'
+  worlds: []
+VIP:
+  isDefault: false
+  inheritance:
+  - Guest
+  permissions:
+  - essentials.fly.use
+  - essentials.heal.use
+  - essentials.vanish
+  - kits.kit.premium
+  - kits.kit.vip
+  worlds: []
+Deluxe:
+  isDefault: false
+  inheritance:
+  - Guest
+  - VIP
+  permissions:
+  - essentials.fly.use
+  - essentials.gamemode
+  - essentials.heal.use
+  - essentials.vanish
+  - kits.kit.premium
+  - kits.kit.vip
+  worlds: []
+Zam:
+  inheritance:
+  - Guest
+  - Admin
+  permissions:
+  - -pocketmine.command.op
+  - -pperms.command
+  - eban.command
+  - essentials.fly.use
+  - essentials.gamemode
+  - essentials.heal.use
+  - essentials.jump
+  - pocketmine.command.ban
+  - pocketmine.command.ban-ip
+  - pocketmine.command.give
+  - pocketmine.command.pardon
+  - pocketmine.command.pardon-ip
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  - pocketmine.command.weather
+  - pockqetmine.command.kick
+  - rg.doall
+  worlds: []
+OPed:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - '*'
+  worlds: []
+BOG:
+  inheritance: []
+  permissions:
+  - '*'
+  worlds: []
+Builder:
+  inheritance: []
+  permissions:
+  - '*'
+  worlds: []
+...

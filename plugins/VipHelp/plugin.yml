@@ -1,0 +1,15 @@
+name: VipHelp
+description: Просмотр доната
+author: Mana
+main: DonateInfo\Main
+load: POSTWORLD
+version: 0.0.1
+api: [2.0.0]
+commands:
+    vip:
+        usage: /vip
+        description: Просмотр VIP команд
+permissions:
+    vip.cmd:
+        default: true
+        description: Позволяет просматривать команды

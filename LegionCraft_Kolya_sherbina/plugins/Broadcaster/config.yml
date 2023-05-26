@@ -1,0 +1,11 @@
+---
+prefix: "LegionInfo"
+suffix: "[A]"
+time: 200
+sendmessage-format: "[{TIME}] [{PREFIX}] {SUFFIX} {SENDER}> {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "§a[{PREFIX}] §2Наша группа https://vk.com/leg_piar"
+ - "§a[{PREFIX}] §2Подписывайся на группу ! (0_о)"
+...

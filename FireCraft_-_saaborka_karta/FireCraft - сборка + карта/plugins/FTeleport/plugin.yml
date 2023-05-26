@@ -1,0 +1,14 @@
+﻿name: FTeleport
+main: FTeleport\FTeleport
+version: 0.0.1
+api: [1.0.0]
+commands:
+ tpa:
+  description: Отправить запрос на телепортацию.
+  aliases: [call]
+ tpaccept:
+  description: Принять запрос на телепортацию.
+  aliases: [tpc]
+ tpdeny:
+   description: Отклонить запрос на телепортацию.
+   aliases: [tpd]

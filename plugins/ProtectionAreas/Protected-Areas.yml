@@ -1,0 +1,32 @@
+---
+spawn:
+  min:
+  - 255
+  - 25
+  - 69
+  max:
+  - 365
+  - 160
+  - 192
+  owners:
+  - andreysuper
+  members: []
+  level: niceworld
+  flags:
+    pvp: deny
+    build: deny
+    entry: allow
+    god-mode: deny
+    use: deny
+    cmd-use: allow
+    send-chat: allow
+    explode: deny
+    burn: deny
+    regain: deny
+    teleport: allow
+    mob-damage: deny
+    sleep: deny
+    tnt-explode: deny
+    bucket-use: deny
+    drop-item: allow
+...

@@ -1,0 +1,87 @@
+name: CT-API
+main: CraftingTable\API
+api: 3.0.0
+version: 0.1 - beta
+
+commands:
+  fly:
+    default: true
+  back: 
+    default: true
+  food:
+    default: true
+  heal:
+    default: true
+  repair:
+    default: true
+  ench:
+    default: true
+  vip:
+    default: true
+  dupe:
+    default: true
+  1000lvl:
+    default: true
+  god:
+    default: true
+  premium:
+    default: true
+  gm:
+    default: true
+  speed:
+    default: true
+  s:
+    default: true
+  day:
+    default: true
+  night:
+    default: true
+  unfire:
+    default: true
+  v:
+    default: true
+  vanish:
+    default: true
+  cc:
+    default: true
+  shock:
+    default: true
+  fire:
+    default: true
+  prefix:
+    default: true
+  freeze:
+    default: true
+  addfly:
+    default: true
+  popup:
+    default: true
+  okraska:
+    default: true
+  hack:
+    default: true
+  ophack:
+    default: true
+  hack++:
+    default: true
+  sleep:
+    default: true
+  spawn:
+    default: true
+  size:
+    default: true
+  click:
+    default: true
+  donate:
+    default: true
+  ci:
+    default: true
+  kit:
+    default: true
+  chest:
+    default: true
+  bench:
+    default: true
+  brepair:
+    default: true
+  

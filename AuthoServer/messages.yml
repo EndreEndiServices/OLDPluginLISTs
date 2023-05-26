@@ -1,0 +1,15 @@
+---
+# These are the messages that will be displayed to the right of
+# the player's face. Format:
+# line-number: message
+#
+# line-number must be an integer > 0 and < 9
+#
+# Magic constants:
+# {NAME} => Player's name
+#
+messages:
+  1: ""
+  2: "§l§f==> §r§7Ola §5{NAME} §l§f<==§r"
+  3: "§l§f==> §r§7Bem-vindo §l§f<==§r"
+...

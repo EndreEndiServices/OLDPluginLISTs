@@ -1,0 +1,17 @@
+---
+MaxFactionNameLength: 20
+MaxPlayersPerFaction: 15
+OnlyLeadersAndOfficersCanInvite: true
+OfficersCanClaim: false
+PlotSize: 10
+PlayersNeededInFactionToClaimAPlot: 5
+PowerNeededToClaimAPlot: 100000000000
+PowerNeededToSetOrUpdateAHome: 9900
+PowerGainedPerPlayerInFaction: 20
+PowerGainedPerKillingAnEnemy: 5
+PowerGainedPerAlly: 100
+TheDefaultPowerEveryFactionStartsWith: 5
+EnableOverClaim: false
+AllyLimitPerFaction: 5
+...
+

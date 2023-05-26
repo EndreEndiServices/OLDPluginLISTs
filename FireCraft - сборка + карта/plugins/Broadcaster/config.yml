@@ -1,0 +1,27 @@
+---
+prefix: "Broadcaster"
+suffix: "[A]"
+time: 150
+sendmessage-format: " {SUFFIX} {SENDER}> {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "§7(§bFire§cCraft§7)§f Купить донат, можно тут: §apay.fire-pe.ru"
+ - "§7(§bFire§cCraft§7)§f Наша группа в§1 ВК§f:§a vk.com/fire_craft_pe"
+ - "§7(§bFire§cCraft§7)§f Получить кит старт:§a /free"
+ - "§7(§bFire§cCraft§7)§f Помощь по кланам:§a /f help"
+ - "§7(§bFire§cCraft§7)§f Купить донат, можно тут: §apay.fire-pe.ru"
+ - "§7(§bFire§cCraft§7)§f Помощь по привату:§a /rg help"
+ - "§7(§bFire§cCraft§7)§f Список донат-услуг:§a /donate"
+ - "§7(§bFire§cCraft§7)§f Список варпов:§a /warps"
+ - "§7(§bFire§cCraft§7)§f Купить донат, можно тут: §apay.fire-pe.ru"
+ - "§7(§bFire§cCraft§7)§f У нас работает§b доплата:§a pay.fire-pe.ru"
+ - "§7(§bFire§cCraft§7)§f За рубку§b дерева§f,§e вам§f будут давать:§a 20 §2¢"
+ - "§7(§bFire§cCraft§7)§f Проверить§b Баланс§f,§e можно§6 командой:§a /money"
+ - "§7(§bFire§cCraft§7)§f Стоимость свадьбы:§a 5000§2 ¢"
+ - "§7(§bFire§cCraft§7)§f Свадьбы:§a /marry"
+ - "§7(§bFire§cCraft§7)§f Купить донат, можно тут: §apay.fire-pe.ru"
+ - "§7(§bFire§cCraft§7)§f Посмотреть команды§b сервера:§a /help"
+ - "§7(§bFire§cCraft§7)§f ¢ (Крипс)§e - §a это §bигровая§a валюта сервера§c!"
+ - "§7(§bFire§cCraft§7)§f Купить донат, можно тут: §apay.fire-pe.ru"
+...

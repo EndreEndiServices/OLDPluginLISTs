@@ -1,0 +1,6 @@
+---
+enable: "true"
+economy-plugin: EconomyAPI
+money: 40
+message: '[Finecraft] За убийство вы получили {money} монету'
+...

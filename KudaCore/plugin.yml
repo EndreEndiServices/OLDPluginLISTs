@@ -1,0 +1,78 @@
+name: KudaCore
+description: Network Core plugin Rewriten
+version: 12.1
+main: dc\main
+api: 2.0.0
+commands:
+ killmobs:
+  description: Kils all Entities in world
+ fly:
+  description: Fly Command
+  permission: drcore.cmd.fly
+ nick:
+  description: Set yourself a nickname
+  permission: drcore.cmd.nick
+ day:
+  description: Sets World time to day
+  permission: drcore.cmd.day
+ feed:
+  description: Feeds you
+  permission: drcore.feed
+ heal:
+  description: Heals you
+  permission: drcore.cmd.heal
+ gmc:
+  description: Sets gamemode to Creative
+  permission: drcore.cmd.gmc
+ gms:
+  description: Sets gamemode to Survival
+  permission: drcore.cmd.gms
+ repair:
+  description: repair item in your hand
+  permission: drcore.cmd.repair
+ ci:
+  description: Sets gamemode to Survival
+  permission: drcore.cmd.ci
+ setxp:
+  description: Sets Xp 
+  permission: drcore.cmd.killmobs
+ givexp:
+  description: Give Xp to player
+  permission: drcore.cmd.givexp
+ opcheck:
+  description: Check Online Ops
+  permission: drcore.cmd.opcheck
+ freeze:
+  description: Freeze Players from moving
+  permission: drcore.cmd.freeze
+ unfreeze:
+  description: UnFreeze Players from moving
+  permission: drcore.cmd.unfreeze
+ tag:
+  description: Set your tag
+  permission: drcore.cmd.tag
+ getpos:
+  description: Set your tag
+  permission: drcore.cmd.getpos
+ resettag:
+  description: Set your tag
+  permission: drcore.cmd.resettag
+  aliases: [rtag]
+ broadcast:
+  description: broadcast msg
+  permission: drcore.cmd.broadcast
+ givetag:
+  description: give players tags
+  permission: drcore.cmd.givetag
+ emoji:
+  description: Shows how to do in-game emojis
+  aliases: [emojis, emoj]
+ givecrate:
+  description: give players crates
+  permission: drcore.cmd.givecrate
+ ol:
+  description: test
+ permissions:
+  drcore.bypass:
+   default: op
+   description: Allows to override login

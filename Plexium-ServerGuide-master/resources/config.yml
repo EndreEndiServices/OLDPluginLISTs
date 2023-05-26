@@ -1,0 +1,28 @@
+﻿---
+# Developed by StrafelessPvP (StrafelessPvP)
+# Configuration file for ServerGuide
+
+# ServerGuide Item
+# "ID:META:NAME" - Tags: "\n" - Next Line
+item: "403:1:§r§5§lUpdates§r§7 (Tap anywhere)\n§7Check out whats new!"
+
+# HelpList Header
+header: "\n§8================================\n\n  §5§lUpdates"
+
+# HelpList settings
+# Tags: {player}, {online count}, {x}, {y}, {z}, {level}
+help.list:
+- ""
+- "    §c§lCustomPotions §r§8- §5New Feature"
+- "    §c§lMoneyPouches §r§8- §5Repaired"
+- "    §c§lBounty §r§8- §5New way to encourage killing"
+- "    §c§lSell §r§8- §5New Command: /sell hand"
+- "    §c§lKit Reset §r§8- §5One time kit: /kit reset"
+- ""
+- "§8================================"
+- ""
+
+# Version, DO NOT EDIT, for internal use only
+version: "2.0.0_Alpha7"
+
+...

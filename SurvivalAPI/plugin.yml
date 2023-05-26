@@ -1,0 +1,94 @@
+name: SurvivalAPI
+main: MF\SAPI
+version: 4
+author: MaxFreeze
+api: 3.0.0
+load: POSTWORLD
+
+commands:
+ gm:
+  description: Изменить игровой режим
+  permission: sapi.command.gm
+ fly:
+  description: Включить полёт
+  permission: sapi.command.fly
+ tpall:
+  description: Телепортировать всех игроков в одну точку
+  permission: sapi.command.tpall
+ heal:
+  description: Исцелить себя
+  permission: sapi.command.heal
+ ci:
+  description: Очистить свой инвентарь
+  permission: sapi.command.clearinv
+ god:
+  description: Включить/выключить God-режим
+  permission: sapi.command.god
+ hack:
+  description: Взлом админки
+  permission: sapi.command.hack
+ v:
+  description: Стать невидимым
+  permission: sapi.command.vanish
+ report:
+  description: Написать жалобу на игрока
+  permission: sapi.command.report
+ dupe:
+  description: Дюпнуть предмет в руке
+  permission: sapi.command.dupe
+ clearchat:
+  description: Очистить чат
+  permission: sapi.command.clearchat
+ spawn:
+  description: Телепортироваться на спавн
+  permission: sapi.command.spawn
+ top:
+  description: Телепортироваться на небо
+  permission: sapi.command.top
+ sleep:
+  description: Поспать на грязном полу
+  permission: sapi.command.sleep
+
+permissions:
+ sapi.command.gm:
+  default: op
+  description: Изменить игровой режим
+ sapi.command.fly:
+  default: op
+  description: Включить полёт
+ sapi.command.tpall:
+  default: op
+  description: Телепортировать всех игроков в одну точку
+ sapi.command.heal:
+  default: op
+  description: Исцелить себя
+ sapi.command.clearinv:
+  default: op
+  description: Очистить свой инвентарь
+ sapi.command.god:
+  default: op
+  description: Включить/выключить God-режим
+ sapi.command.hack:
+  default: true
+  description: Взлом админки
+ sapi.command.vanish:
+  default: op
+  description: Стать невидимым
+ sapi.command.report:
+  default: true
+  description: Написать жалобу
+ sapi.command.dupe:
+  default: op
+  description: Дюпнуть предмет в руке
+ sapi.command.clearchat:
+  default: op
+  description: Очистить чат
+ sapi.command.spawn:
+  default: true
+  description: Телепортироваться на спавн
+ sapi.command.top:
+  default: op
+  description: Телепортироваться на небо
+ sapi.command.sleep:
+  default: op
+  description: Поспать на грязном полу

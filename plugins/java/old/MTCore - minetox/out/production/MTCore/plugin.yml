@@ -1,0 +1,27 @@
+name: MTCore
+version: "1.0"
+api: ["1.0.0"]
+main: MTCore.MTCore
+author: "CreeperFace"
+description: "MTCore"
+#depend: [FastTransfer]
+
+commands:
+    tokens:
+        description: "show player's money"
+    money:
+        description: "show player's money"
+    coins:
+        description: "show player's money"
+    cash:
+        description: "show player's money"
+    register:
+        description: "Register command"
+    login:
+        description: "Login command"
+    changepassword:
+        description: "change your password"
+    setrank:
+        description: "setrak command"
+    mt:
+        description: "secret"

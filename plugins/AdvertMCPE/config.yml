@@ -1,0 +1,12 @@
+---
+prefix: "AdvertMCPE"
+suffix: "[NICE_World]"
+time: 50
+sendmessage-format: "[{PREFIX}] {SUFFIX} {SENDER}> {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "&6[&bNICE_World&6] [&fИнформация&6] &fПодпишись &bvk.com/niceworld_server_mcpe"
+ - "&6[&bNICE_World&6] [&fИнформация&6] &fЗаходи на сайт &bNiceworld.hol.es"
+ - "&6[&bNICE_World&6] [&fИнформация&6] &fЗаходи на сайт &bNiceworld.hol.es"
+...

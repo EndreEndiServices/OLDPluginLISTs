@@ -1,0 +1,20 @@
+---
+prefix: "§6Shou§bCraft"
+suffix: "[A]"
+time: 300
+sendmessage-format: "&b[{PREFIX}] {SUFFIX} &a{SENDER}&e>&f {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "§7[{DUYURU}§7] "
+ - "§7[{DUYURU}§7] "
+ - "§7[{DUYURU}§7] "
+popup-time: 15
+popup-duration: 5
+sendpopup-format: "&a{SENDER}&e>>&f {MESSAGE}"
+popup-broadcast-enabled: true
+popups:
+ - ""
+ - ""
+ - ""
+...

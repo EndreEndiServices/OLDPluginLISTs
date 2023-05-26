@@ -1,0 +1,11 @@
+name: IFMCPE
+version: 1.0.0
+author: RTG
+api: 2.1.0
+main: RTG\IFMCPE\Loader
+commands:
+    if:
+        permission: ifmcpe.command
+permissions:
+    ifmcpe.command:
+        default: op

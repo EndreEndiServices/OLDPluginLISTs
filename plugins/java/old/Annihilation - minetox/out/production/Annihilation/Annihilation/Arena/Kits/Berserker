@@ -1,0 +1,29 @@
+package Annihilation.Arena.Kits;
+
+import cn.nukkit.Player;
+import Annihilation.Arena.Arena;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.Potion;
+
+public class Berserker extends Kit{
+
+    public static Item[] items;
+    
+    public Berserker(){
+        super("berserker", Item.get(Item.CHAIN_CHESTPLATE));
+
+        Berserker.items = new Item[]{
+                Item.get(Item.STONE_SWORD, 0, 1),
+                Item.get(Item.WOODEN_PICKAXE, 0, 1),
+                Item.get(Item.WOODEN_AXE, 0, 1),
+                Item.get(Item.POTION, Potion.INSTANT_HEALTH, 1),
+                Item.get(Item.COMPASS, 0, 1),
+        };
+    }
+    
+    public static Item[] give(Player p){
+        p.setHealth(14);
+        p.setMaxHealth(14);
+        return Kit.give(p, items.clone());
+    }
+}

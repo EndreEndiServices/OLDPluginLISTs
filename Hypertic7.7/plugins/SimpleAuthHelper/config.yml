@@ -1,0 +1,28 @@
+---
+version: 2.0.3
+'# max-attemps': 'kick player after this many login attempts. '
+max-attempts: 5
+'# login-timeout': must authenticate within this number of seconds
+login-timeout: 260
+'# leet-mode': lets players use also /login and /register
+leet-mode: true
+'# chat-protect': prevent player to display their password in chat
+chat-protect: true
+'# hide-unauth': EXPERIMENTAL, hide unauthenticated players
+hide-unauth: true
+'# event-fixer': EXPERIMENTAL, cancels additional events
+event-fixer: true
+'# hack-login-perms': EXPERIMENTAL, overrides login permisions
+hack-login-perms: false
+'# hack-register-perms': EXPERIMENTAL, overrides register permisions
+hack-register-perms: false
+'# db-monitor': EXPERIMENTAL, enable database server monitoring
+db-monitor: false
+'# monitor-settings': Configure database monitor settings
+monitor-settings:
+  '# canary-account': account to query
+  canary-account: test user
+  '# check-interval': how to often to check database (seconds)
+  check-interval: 600
+...
+

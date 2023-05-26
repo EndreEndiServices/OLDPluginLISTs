@@ -1,0 +1,24 @@
+---
+version: 1.5.1
+'# settings': configurable variables
+settings:
+  '# dynamic updates': Signs will be udpated with the number of players in a world
+  dynamic-updates: true
+  '# xyz.cmd': If true, the **xyz** command will be available
+  xyz.cmd: true
+'# text': Text displayed on the different signs
+text:
+  '# transfer': Fast transfer signs
+  transfer:
+  - '[TRANSFER]'
+  '# world': World teleport signs
+  world:
+  - '[WORLD]'
+  '# warp': Local world teleport signs
+  warp:
+  - '[WARP]'
+  - '[SWARP]'
+  '# players': Text to use when displaying player counts
+  players:
+  - 'Players:'
+...

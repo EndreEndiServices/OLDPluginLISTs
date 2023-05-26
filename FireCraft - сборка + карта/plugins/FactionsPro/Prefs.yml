@@ -1,0 +1,30 @@
+---
+MaxFactionNameLength: 10
+MaxPlayersPerFaction: 10
+ClaimingEnabled: false
+OnlyLeadersAndOfficersCanInvite: true
+OfficersCanClaim: false
+PlotSize: 0
+Member:
+  claim: false
+  delofficer: false
+  home: true
+  invite: false
+  kick: false
+  motd: false
+  officer: false
+  sethome: false
+  unclaim: false
+  unsethome: false
+Officer:
+  claim: false
+  delofficer: false
+  home: true
+  invite: true
+  kick: true
+  motd: true
+  officer: false
+  sethome: true
+  unclaim: false
+  unsethome: true
+...

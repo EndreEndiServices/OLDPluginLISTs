@@ -1,0 +1,52 @@
+name: KitPvP_FL
+main: MF\KitPvP
+version: 1.0
+author: MaxFreeze
+api: 2.0.0
+load: POSTWORLD
+
+commands:
+ freecoins:
+  description: Получить бесплатные монеты
+  permission: kitpvp.command.freecoins
+ pvp:
+  description: Получить PvP набор
+  permission: kitpvp.command.defaultkit
+ tank:
+  description: Получить Tank набор
+  permission: kitpvp.command.donatetank
+ ninja:
+  description: Получить Ninja набор
+  permission: kitpvp.command.donateninja
+ wizard:
+  description: Получить Wizard набор
+  permission: kitpvp.command.donatewizard
+ pyro:
+  description: Получить Pyro набор
+  permission: kitpvp.command.donatepyro
+ tptkpvp:
+  description: Телепортироваться на PvP арену
+  permission: kitpvp.command.tptoarena
+
+permissions:
+ kitpvp.command.freecoins:
+  default: true
+  description: Получить бесплатные монеты
+ kitpvp.command.defaultkit:
+  default: true
+  description: Получить PvP набор
+ kitpvp.command.donatetank:
+  default: op
+  description: Получить Tank набор
+ kitpvp.command.donateninja:
+  default: op
+  description: Получить Ninja набор
+ kitpvp.command.donatewizard:
+  default: op
+  description: Получить Wizard набор
+ kitpvp.command.donatepyro:
+  default: op
+  description: Получить Pyro набор
+ kitpvp.command.tptoarena:
+  default: op
+  description: Телепортироваться на PvP арену

@@ -1,0 +1,18 @@
+#####################################################################################################################################
+# chat-format: '{WORLD_NAME}:[(Factions-Names)][{PREFIX}]<{DISPLAY_NAME}> ({Kills}) {MESSAGE}' < Need CustomChat & FactionsPo & PlayersStats ###
+######################################################################################################################################
+# chat-format: '[(Factions-Names)][{PREFIX}]<{DISPLAY_NAME}> ({Kills}) {MESSAGE}' < Need CustomChat & FactionsPo & PlayersStats ###
+#######################################################################################################################
+# chat-format: '[{PREFIX}]<{DISPLAY_NAME}> ({Kills}) {MESSAGE}'	< Need CustomChat & PlayersStats ###
+###########################################################################################
+# chat-format: '[{PREFIX}]<{DISPLAY_NAME}> {MESSAGE}'	< Need Only CustomChat ##
+#############################################################################
+#CustomChat Chat Format Color Next Version ###
+##########################################
+---
+chat-format: '➥ {DISPLAY_NAME} ═╬ {PREFIX} ╬═ ➠ {MESSAGE}'
+if-player-has-no-faction: NoFaction
+enable-formatter: true
+disablechat: false
+default-player-prefix: Игрок
+...

@@ -1,0 +1,236 @@
+name: EconomyJob
+main: onebone\economyjob\EconomyJob
+version: "2.0.3"
+api: 
+- 1.0.0
+- 1.1.0
+- 1.2.0
+- 1.2.1
+- 1.3.0
+- 1.3.1
+- 1.4.0
+- 1.4.1
+
+author: onebone
+
+commands:
+ job:
+  description: Job master command
+  usage: /job <join|retire|list|me>
+  permission: economyjob.command.job
+permissions:
+ economyjob.command.*:
+  description: Allows player to use all of job command
+  default: op
+  children:
+   economyjob.command.job:
+    description: Allows player to use /job command
+    default: true
+    children:
+     economyjob.command.job.join:
+      description: Allows player to use command that allows to join job
+      default: true
+     economyjob.command.job.retire:
+      description: Allows player to use command that allows to retire job
+      default: true
+     economyjob.command.job.list:
+      description: Allows player to use command that allows to see job list
+      default: true
+     economyjob.command.job.me:
+      description: Allows player to use command that allows to see its job<?php
+
+namespace onebone\economyjob;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
+use pocketmine\event\Listener;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+
+use onebone\economyapi\EconomyAPI;
+
+class EconomyJob extends PluginBase implements Listener{
+	/** @var Config */
+	private $jobs;
+	/** @var Config */
+	private $player;
+
+	/** @var  EconomyAPI */
+	private $api;
+
+	/** @var EconomyJob   */
+	private static $instance;
+
+	public function onEnable(){
+		@mkdir($this->getDataFolder());
+		if(!is_file($this->getDataFolder()."jobs.yml")){
+			$this->jobs = new Config($this->getDataFolder()."jobs.yml", Config::YAML, yaml_parse($this->readResource("jobs.yml")));
+		}else{
+			$this->jobs = new Config($this->getDataFolder()."jobs.yml", Config::YAML);
+		}
+		$this->player = new Config($this->getDataFolder()."players.yml", Config::YAML);
+
+		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+
+		$this->api = EconomyAPI::getInstance();
+		self::$instance = $this;
+	}
+
+	private function readResource($res){
+		$path = $this->getFile()."resources/".$res;
+		$resource = $this->getResource($res);
+		if(!is_resource($resource)){
+			$this->getLogger()->debug("Tried to load unknown resource ".TextFormat::AQUA.$res.TextFormat::RESET);
+			return false;
+		}
+		$content = stream_get_contents($resource);
+		@fclose($content);
+		return $content;
+	}
+
+	public function onDisable(){
+		$this->player->save();
+	}
+
+	/**
+		@priority LOWEST
+		@ignoreCancelled true
+	*/
+	public function onBlockBreak(BlockBreakEvent $event){
+		$player = $event->getPlayer();
+		$block = $event->getBlock();
+
+		$job = $this->jobs->get($this->player->get($player->getName()));
+		if($job !== false){
+			if(isset($job[$block->getID().":".$block->getDamage().":break"])){
+				$this->api->addMoney($player, $job[$block->getID().":".$block->getDamage().":break"]);
+			}
+		}
+	}
+
+	/**
+		@priority LOWEST
+		@ignoreCancelled true
+	*/
+	public function onBlockPlace(BlockPlaceEvent $event){
+		$player = $event->getPlayer();
+		$block = $event->getBlock();
+
+		$job = $this->jobs->get($this->player->get($player->getName()));
+		if($job !== false){
+			if(isset($job[$block->getID().":".$block->getDamage().":place"])){
+				$this->api->addMoney($player, $job[$block->getID().":".$block->getDamage().":place"]);
+			}
+		}
+	}
+
+	/**
+	 * @return EconomyJob
+	*/
+	public static function getInstance(){
+		return static::$instance;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getJobs(){
+		return $this->jobs->getAll();
+	}
+	
+	/**
+	 * @return array
+	 *
+	 */
+	public function getPlayers(){
+		return $this->player->getAll();
+	}
+	 
+	public function onCommand(CommandSender $sender, Command $command, $label, array $params){
+		switch(array_shift($params)){
+			case "join":
+				if(!$sender instanceof Player){
+					$sender->sendMessage("Please run this command in-game.");
+				}
+				if($this->player->exists($sender->getName())){
+					$sender->sendMessage("You already have joined job.");
+				}else{
+					$job = array_shift($params);
+					if(trim($job) === ""){
+						$sender->sendMessage("Usage: /job join <name>");
+						break;
+					}
+					if($this->jobs->exists($job)){
+						$this->player->set($sender->getName(), $job);
+						$sender->sendMessage("You have joined to the job \"$job\"");
+					}else{
+						$sender->sendMessage("There's no job named \"$job\"");
+					}
+				}
+				break;
+			case "retire":
+				if(!$sender instanceof Player){
+					$sender->sendMessage("Please run this command in-game.");
+				}
+				if($this->player->exists($sender->getName())){
+					$job = $this->player->get($sender->getName());
+					$this->player->remove($sender->getName());
+					$sender->sendMessage("You have retired from the job \"$job\"");
+				}else{
+					$sender->sendMessage("You don't have job that you've joined");
+				}
+				break;
+			case "list":
+
+				$max = 0;
+				foreach($this->jobs->getAll() as $d){
+					$max += count($d);
+				}
+
+				$max = ceil(($max / 5));
+
+				$page = array_shift($params);
+
+				$page = max(1, $page);
+				$page = min($max, $page);
+				$page = (int)$page;
+
+				$current = 1;
+				$n = 1;
+
+				$output = "Showing job list page $page of $max : \n";
+				foreach($this->jobs->getAll() as $name => $job){
+					$info = "";
+					foreach($job as $id => $money){
+						$cur = (int)ceil(($n / 5));
+					 	if($cur === $page){
+							$info .= $name." : ".$id." | ".EconomyAPI::getInstance()->getMonetaryUnit()."".$money."\n";
+						}elseif($cur > $page){
+							break;
+						}
+						++$n;
+					}
+					$output .= $info;
+				}
+				$sender->sendMessage($output);
+				break;
+			case "me":
+				if(!$sender instanceof Player){
+					$sender->sendMessage("Please run this command in-game.");
+				}
+				if($this->player->exists($sender->getName())){
+					$sender->sendMessage("Your job : ".$this->player->get($sender->getName()));
+				}else{
+					$sender->sendMessage("You don't have any jobs you've joined.");
+				}
+				break;
+			default:
+				$sender->sendMessage($command->getUsage());
+		}
+		return true;
+	}
+}

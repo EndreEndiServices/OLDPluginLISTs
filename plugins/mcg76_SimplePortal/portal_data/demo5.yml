@@ -1,0 +1,19 @@
+---
+name: demo5
+type: tp
+ip: false
+port: false
+active: true
+enterLevelName: SimplePortalWorld
+portalEnter1X: 122.000000
+portalEnter1Y: 65.000000
+portalEnter1Z: 85.000000
+portalEnter2X: 124.000000
+portalEnter2Y: 69.000000
+portalEnter2Z: 88.000000
+allowIPs: []
+enterDestinationLevelName: SimplePortalWorld
+enterDestinationPosX: 153
+enterDestinationPosY: 73
+enterDestinationPosZ: 276
+...

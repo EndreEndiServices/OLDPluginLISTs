@@ -1,0 +1,12 @@
+---
+name: player4
+arenaName: skywarsbase1
+type: defaullt
+spawnX: 68
+spawnY: 57
+spawnZ: 162
+button_worldName: skywarshome
+buttonX: 169
+buttonY: 64
+buttonZ: 170
+...

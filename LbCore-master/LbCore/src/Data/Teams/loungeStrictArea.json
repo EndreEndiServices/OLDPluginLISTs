@@ -1,0 +1,8 @@
+{
+	"guardAreas": [
+		{"minX": 1, "maxX": 4, "minZ": 85, "maxZ": 95, "knockbackVector": {"x": -1.6, "y": 0.2, "z": 0}}, 
+		{"minX": 26, "maxX": 29, "minZ": 85, "maxZ": 95, "knockbackVector": {"x": 1.6, "y": 0.2, "z": 0}}, 
+		{"minX": 13, "maxX": 19, "minZ": 93, "maxZ": 97, "knockbackVector": {"x": 0, "y": 0.2, "z": 1.6}}
+	],
+	"lounge": {"minX": 2, "maxX": 28, "minZ": 82, "maxZ": 95, "teleportVector": {"x": -20, "y": 45, "z": 65}}
+}

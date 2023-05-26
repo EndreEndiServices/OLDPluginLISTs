@@ -1,0 +1,26 @@
+name: PlayNoteBlockSong1
+main: PlayNoteBlockSong1\PlayNoteBlockSong
+prefix: "PlayNBS1"
+version: "1.1"
+api: [1.13.0, 2.0.0]
+depend: [AddNoteBlock]
+author: DeBe
+load: StartUp
+
+commands:
+  song1:
+    permission: PlayNoteBlockSong1.cmd1
+    description: <Play | Stop | Next | Prev | Shuffle | List | Reload>
+    usage: /Song1 <Play | Stop | Next | Prev | Shuffle | List | Reload>
+
+permissions:
+  PlayNoteBlockSong1.cmd1.*:
+    default: op
+    children:
+     PlayNoteBlockSong1.cmd1.play1:
+     PlayNoteBlockSong1.cmd1.stop1:
+     PlayNoteBlockSong1.cmd1.next1:
+     PlayNoteBlockSong1.cmd1.prev1:
+     PlayNoteBlockSong1.cmd1.shuffle1:
+     PlayNoteBlockSong1.cmd1.list1:
+     PlayNoteBlockSong1.cmd1.reload1:

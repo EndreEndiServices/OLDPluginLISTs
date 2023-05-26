@@ -1,0 +1,31 @@
+[
+	{
+		"area": {"minX": -1648, "maxX": -1641, "minY": 28, "maxY": 31, "minZ": 2038, "maxZ": 2048},
+		"guardSpawnPoints": [
+			{"x": -1641.5, "y": 29, "z": 2040.5},
+			{"x": -1641.5, "y": 29, "z": 2044.5}
+		],
+		"guardRotation": {"yaw": 90, "pitch": 0},
+		"knockbackVector": {"x": -1.6, "y": 0.2, "z": 0}
+	},
+
+	{
+		"area": {"minX": -1629, "maxX": -1625, "minY": 28, "maxY": 31, "minZ": 2046, "maxZ": 2051},
+		"guardSpawnPoints": [
+			{"x": -1628.5, "y": 29, "z": 2047.5},
+			{"x": -1626.5, "y": 29, "z": 2047.5}
+		],
+		"guardRotation": {"yaw": 0, "pitch": 0},
+		"knockbackVector": {"x": 0, "y": 0.2, "z": 1.6}
+	},
+	
+	{
+		"area": {"minX": -1618, "maxX": -1612, "minY": 28, "maxY": 31, "minZ": 2038, "maxZ": 2048},
+		"guardSpawnPoints": [
+			{"x": -1613.5, "y": 29, "z": 2040.5},
+			{"x": -1613.5, "y": 29, "z": 2044.5}
+		],
+		"guardRotation": {"yaw": -90, "pitch": 0},
+		"knockbackVector": {"x": 1.6, "y": 0.2, "z": 0}
+	}
+]

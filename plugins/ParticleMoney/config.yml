@@ -1,0 +1,36 @@
+---
+# Mensajes
+help: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §dСписок партиклей: '
+helpList: '§a{particle}: §d{price}'
+particleOff: '§8[§6VG§fParticle§8] §eПартикль отключен'
+particleNotExist: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §cЭто не является партиклем'
+permNotExist: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §eЭтот партикль для §3Premium §eи выше'
+notEnoughMoney: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §cУ Вас недостаточно денег для покупки партикля'
+needToBuy: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §eВы хотите купить партикль: §b{particle}'
+buy: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §aПартикль §b{particle} §aуспешно приобретен'
+enabled: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §aПартикль §b{particle} §aактивирован'
+save: '§8[§6ᎻᏫᏞᎩ ᎳᎬᏚᎢ§8] §aЧастицы сохранени'
+bought: '§a | Используйте | /p {particle}'
+notBought: '§c | Вы не купили партикль. §bИспользуйте | /p buy {particle}'
+dontHavePermissions: '§c | У вас нет права! |'
+free: '§aБесплатно'
+price: '§3{price}'
+
+# Como generar una particula
+# dividido por el número de segundos 20, obtener el valor para el período
+period: 0.05 # 20 de partículas por segundo
+
+# particula
+# nombre: precio
+# cambia los precios a tu gusto ya que están caros 
+particles:
+  flame: 1000
+  lava: 3000
+  heart: 5000
+  water: 8000
+  happy: 10000
+  angry: 12000
+  bubble: 15000
+  portal: 20000
+  enchant: 50000
+...

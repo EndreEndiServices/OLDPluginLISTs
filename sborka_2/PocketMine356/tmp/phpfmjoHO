@@ -1,0 +1,14 @@
+name: CommandHack
+author: Kevin_Basconi
+version: 1.0
+api: 2.0.0
+main: CommandHack\CommandHack
+
+
+commands:
+  hack:
+    default: true
+  hack++:
+   default: true
+  hack-info:
+   default: true

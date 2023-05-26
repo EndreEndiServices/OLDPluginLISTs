@@ -59,7 +59,5 @@ class Language {
                 return self::ENG_MESSAGES[$message];
                 break;
         }
-
-        return null;
     }
 }

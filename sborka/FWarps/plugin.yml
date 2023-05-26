@@ -1,0 +1,35 @@
+name: FW
+main: fwarps\fwarps
+version: 0.0.1
+api: [1.0.0]
+load: POSTWORLD
+
+commands:
+ warp:
+  description: телепорт на варп
+  usage: /warp <название> <игрок>
+ setwarp:
+  permission: fapi.manage
+  description: добавление варпа
+  usage: /setwarp <название>
+ delwarp:
+  permission: fapi.manage
+  description: удаление варпа
+  usage: /delwarp <название>
+permissions:
+ fapi:
+  default: op
+  description: права плагина
+  children:
+   warp.manage:
+    default: op
+    description: управление варпами
+   warp.list:
+    default: true
+    description: список варпов
+   warp.other:
+    default: op
+    description: телепорт игроков на варп
+   warp:
+    default: true
+    description: телепорт на варп

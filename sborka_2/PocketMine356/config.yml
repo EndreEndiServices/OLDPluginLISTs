@@ -1,0 +1,7 @@
+---
+EnableTip: "enable"
+TipMessage: "First message"
+EnablePopup: "enable"
+PopupMessage: "Second message"
+ItemID: 1
+...

@@ -1,0 +1,76 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: '...'
+groups:
+  Player:
+    default-chat: '{COLOR_GREEN}Игрок{COLOR_WHITE}:{FORMAT_RESET} {COLOR_YELLOW}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_GREEN}Player{COLOR_WHITE}:{FORMAT_RESET} {COLOR_GREEN}{display_name}'
+    worlds: []
+  Admin:
+    default-chat: '{COLOR_AQUA}{FORMAT_BOLD}[Администратор]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Owner:
+    default-chat: '{COLOR_BLUE}Основатель{COLOR_WHITE}:{FORMAT_RESET} {COLOR_BLUE}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_BLUE}Owner{COLOR_WHITE}:{FORMAT_RESET} {COLOR_BLUE}{display_name}'
+    worlds: []
+  OP:
+    default-chat: '{COLOR_GREEN}Оператор{COLOR_WHITE}:{FORMAT_RESET} {display_name} {COLOR_GRAY}>
+      {message}'
+    default-nametag: '{COLOR_BLUE}OP{COLOR_WHITE}:{FORMAT_RESET} {display_name}'
+    worlds: []
+  Fly:
+    default-chat: '{COLOR_GREEN}Fly{COLOR_WHITE}:{FORMAT_RESET} {COLOR_GREEN}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_GREEN}Fly{COLOR_WHITE}:{FORMAT_RESET} {COLOR_GREEN}{display_name}'
+    worlds: []
+  VIP+:
+    default-chat: '{COLOR_AQUA}VIP{COLOR_RED}+{COLOR_WHITE}:{FORMAT_RESET} {COLOR_AQUA}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_AQUA}VIP{COLOR_RED}+{COLOR_WHITE}:{FORMAT_RESET} {COLOR_AQUA}{display_name}'
+    worlds: []
+  VIP:
+    default-chat: '{COLOR_AQUA}VIP{COLOR_WHITE}:{FORMAT_RESET} {COLOR_AQUA}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_AQUA}VIP{COLOR_WHITE}:{FORMAT_RESET} {COLOR_AQUA}{display_name}'
+    worlds: []
+  Creative:
+    default-chat: '{COLOR_AQUA}Креатив{COLOR_WHITE}:{FORMAT_RESET} {COLOR_AQUA}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_AQUA}Creative{COLOR_WHITE}:{FORMAT_RESET} {COLOR_AQUA}{display_name}'
+    worlds: []
+  Limited:
+    default-chat: '{COLOR_DARK_BLUE}{FORMAT_BOLD}Limited{COLOR_WHITE}:{FORMAT_RESET} {COLOR_YELLOW}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_DARK_BLUE}{FORMAT_BOLD}Limited{COLOR_WHITE}: {COLOR_YELLOW}{display_name}'
+    worlds: []
+  FullOWNER:
+    default-chat: '{COLOR_RED}FullOWNER{COLOR_WHITE}:{FORMAT_RESET} {COLOR_RED}{display_name}
+      {COLOR_WHITE}> {message}'
+    default-nametag: '{COLOR_RED}FullOWNER{COLOR_WHITE}:{FORMAT_RESET} {COLOR_RED}{display_name}'
+    worlds: []
+  Guest:
+    default-chat: '{COLOR_YELLOW}{FORMAT_BOLD}Guest{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_YELLOW}{FORMAT_BOLD}Guest{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Helper:
+    default-nametag: '{COLOR_YELLOW}Helper{COLOR_WHITE}:{FORMAT_RESET} {COLOR_YELLOW}{display_name}'
+    default-chat: '{COLOR_YELLOW}Helper{COLOR_WHITE}:{FORMAT_RESET} {COLOR_YELLOW}{display_name}
+      {COLOR_WHITE}> {message}'
+  FullAdmin:
+    default-nametag: 'FullAdmin {display_name}'
+    default-chat: '{COLOR_YELLOW}Ghost{COLOR_WHITE}:{FORMAT_RESET} {COLOR_YELLOW}{display_name}
+      {COLOR_WHITE}> {message}'
+  Ghost:
+    default-nametag: '{COLOR_YELLOW}Ghost{COLOR_WHITE}:{FORMAT_RESET} {COLOR_YELLOW}{display_name}'
+    default-chat: '[Ghost] {display_name} > {message}'
+  Moderator:
+    default-nametag: 'Moderator {display_name}'
+    default-chat: 'Moderator {display_name} > {message}'
+...

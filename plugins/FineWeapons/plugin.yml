@@ -1,0 +1,5 @@
+name: FineWeapons
+main: Asidert\FineWeapons
+version: 0.2
+author: Asidert
+api: [1.4.1]

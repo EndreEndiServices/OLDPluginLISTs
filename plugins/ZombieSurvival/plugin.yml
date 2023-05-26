@@ -1,0 +1,6 @@
+name: ZombieSurvival
+version: 1.0
+api: 1.12.0
+author: CreeperFace
+description: ZombieSurvival minigame
+main: ZombieSurvival\ZombieSurvival

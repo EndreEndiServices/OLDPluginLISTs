@@ -1,0 +1,17 @@
+---
+######################################################
+# GLGFDonate Created by KagiamyWasen #
+# The Original Code is Of xFlare's xRulesx           #
+######################################################
+
+
+#Add staff below, You may leave some blank.
+donate1: "§b-=>§aInfo-Donatii§b<=-"
+donate2: "§6«VIP»§f - §e3 euro"
+donate3: "§2«Helper»§f - §e4 euro"
+donate4: "§9«Moderator»§f - §e5 euro"
+donate5: "§5«Admin»§f - §e7 euro"
+donate6: "§c«OP» §f- §e8 euro"
+#Please do not add more Staff slots!
+#It may corrupt the config file!
+...

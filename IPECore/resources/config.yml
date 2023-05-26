@@ -1,0 +1,23 @@
+---
+#Hub
+server-name: "§bCosmic§dPE"
+server-type: "§bFactions #1"
+server-shop: "shop.cosmicpe.me"
+
+#InstantTree
+per-world: false
+worlds: []
+
+#CombatLogger
+# The period of time that a player cannot logout for after damaging/getting damaged by another player
+interval: 10
+# Blocked commands
+blocked-commands:
+    - /spawn
+    - /tp
+    - /tpa
+    - /warp
+
+#AbusiveEnchants
+max-level: 5
+...

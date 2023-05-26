@@ -1,0 +1,18 @@
+name: PurePerms
+main: _64FF00\PurePerms\PurePerms
+version: "0.0.1"
+api:
+- 1.14.0
+- 2.0.0
+load: STARTUP
+permissions:
+  pperms:
+    description: "PurePerms"
+    children:
+      pperms.command:
+        description: "Разрешает использовать все команды"
+        children:
+          pperms.command.groups:
+            description: "Список групп сервера."
+          pperms.command.setgroup:
+            description: "Разрешает установить группу."

@@ -1,0 +1,14 @@
+name: Clans
+author: FahmiCyber
+description: A Plugin For Easily Managing Factions
+version: 6.9
+main: Richen\Clans\ClanMain
+api: [1.12.0]
+commands:
+  clan:
+    description: use /clan help for all parameters
+    permission: clan.command
+    aliases: [c]
+permissions:
+  clan.command:
+    default: true

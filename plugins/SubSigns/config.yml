@@ -1,0 +1,25 @@
+---
+
+#SubSigns Config File
+
+#################################################
+#						#
+#		     SubSigns                   #
+#		   By: Samueljh1		#
+#						#
+#################################################
+
+#Check Out My Youtube: http://youtube.com/samueljh1
+#My Website: http://samueljh1.net
+#My Google Play Apps! https://play.google.com/store/apps/developer?id=Samueljh1
+
+#What Will be Written on the First Line of a Sign to Become a SubSign
+sign-prefix: "[Subs]"
+
+#If an OP is Required to Create a SubSign
+op-create: "true"
+
+#Non-Op Fail Message
+non-op-create-fail-message: "You do not have Permission to Create a SubSign!"
+
+...

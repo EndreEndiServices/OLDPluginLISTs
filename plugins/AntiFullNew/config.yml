@@ -1,0 +1,15 @@
+## AntiFullNew (MCPE PLUGIN) ##
+# Ask about put disable items and block atack #
+# Autor by xacki14
+
+disabled-items:
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 46
+  - 52
+  - 247
+  - 259
+  - 325

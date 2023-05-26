@@ -1,0 +1,47 @@
+---
+addwarp-cmd: addwarp
+addwarp-desc: Add new warps.
+addwarp-usage: /addwarp <name> [<ip> <port>|<x> <y> <z> <level>|<player>]
+closewarp-cmd: closewarp
+closewarp-desc: Close existing warps.
+closewarp-usage: /closewarp <name>
+delwarp-cmd: delwarp
+delwarp-desc: Delete existing warps.
+delwarp-usage: /delwarp <name>
+listwarps-cmd: listwarps
+listwarps-desc: List all your warps.
+listwarps-usage: /listwarps
+openwarp-cmd: openwarp
+openwarp-desc: Open existing warps.
+openwarp-usage: /openwarp <name>
+warp-cmd: warp
+warp-desc: Warp around your world.
+warp-usage: /warp <name> [player]
+warp-added-xyz: You have created a warp called §b%s§r %s
+warp-added-player: You have created a warp called §b%s§r %s
+warp-added-server: You have created a warp called §b%s§r %s
+warp-added-self: You have created a warp called §b%s§r %s
+level-not-loaded: §cYou specified a level which isn't loaded.§r
+needs-fast-transfer: This warp needs §bFastTransfer§r, you will need to install it
+  to use this warp.
+player-not-loaded: §cYou specified a player which isn't loaded.§r
+addwarp-noperm: §cYou don't have permission to use this command§r
+bad-warp-name: §cThat warp name is invalid.§r
+closed-warp-1: You have closed a warp called §b%s§r
+closed-warp-2: '  Only players with the permission §b%s§r will be able to use this
+  warp.'
+warp-doesnt-exist: §cThat warp doesn't exist.§r
+closewarp-noperm: §cYou don't have permission to use this command§r
+warp-deleted: You have deleted a warp called §b%s§r
+delwarp-noperm: §cYou don't have permission to use this command§r
+opened-warp-1: You have opened a warp called §b%s§r
+opened-warp-2: '  Any player will be able to use this warp.'
+openwarp-noperm: §cYou don't have permission to use this command§r
+warping-popup: Warping...
+other-player-warped: '%s  has been warped to §b%s§r.'
+no-permission-this-warp: §cYou don't have permission to use this warp.§r
+no-permission-warp-other: §cYou don't have permission to warp other players.§r
+warp-done: You have been warped
+warp-noperm: §cYou don't have permission to use this command§r
+level-not-loaded-warp: The warp you are using is attached to a level which isn't loaded
+...

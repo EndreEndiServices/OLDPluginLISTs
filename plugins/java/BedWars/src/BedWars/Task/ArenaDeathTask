@@ -1,0 +1,40 @@
+package BedWars.Task;
+
+import BedWars.BedWars;
+import MTCore.MTCore;
+import MTCore.Mysql.AsyncQuery;
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+
+import java.util.HashMap;
+
+public class ArenaDeathTask extends AsyncQuery{
+
+    public ArenaDeathTask(MTCore plugin, String player){
+        this.player = player;
+
+        plugin.getServer().getScheduler().scheduleAsyncTask(this);
+    }
+
+    @Override
+    public void onQuery(HashMap<String, Object> data){
+        this.setResult(data.get("rank"));
+    }
+
+    @Override
+    public void onCompletion(Server server){
+        Player p = server.getPlayer(this.player);
+        String rank = (String) this.getResult();
+
+        if (p.isOnline()){
+            if (rank.equals("hrac")){
+                p.getInventory().clearAll();
+            }
+            else {
+                p.sendMessage(BedWars.getPrefix() + "§6Jsi VIP a proto jsi neztratil sve itemy!");
+            }
+        }
+
+    }
+
+}

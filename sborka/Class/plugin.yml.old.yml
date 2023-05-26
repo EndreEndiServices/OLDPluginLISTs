@@ -1,0 +1,18 @@
+main: SIvanov\Classes
+version: 0.0.1
+api:
+- 2.0.0
+- 1.14.0
+load: STARTUP
+
+name: Class
+author: Richen
+website: http://vk.com/richen
+
+commands:
+  class:
+    description: "Телепорт в банк"
+  cidon:
+    description: "Телепорт в банк"
+  cidoff:
+    description: "Телепорт в банк"

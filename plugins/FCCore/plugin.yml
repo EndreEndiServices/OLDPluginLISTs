@@ -1,0 +1,24 @@
+name: FCCore
+version: 1.0
+api: 1.12.0
+main: MTCore\MTCore
+author: CreeperFace
+description: MTCore
+
+commands:
+    tokens:
+        description: "show player's money"
+    money:
+        description: "show player's money"
+    coins:
+        description: "show player's money"
+    cash:
+        description: "show player's money"
+    register:
+        description: "Register command"
+    login:
+        description: "Login command"
+    setrank:
+        description: "setrak command"
+    gm:
+        description: "change you gamemode"

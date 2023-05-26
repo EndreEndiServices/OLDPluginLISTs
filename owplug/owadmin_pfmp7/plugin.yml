@@ -1,0 +1,16 @@
+name: owadmin
+main: ow\owadmin
+version: 0.1 beta by BlackJIeB
+api: [2.0.0]
+author: BlackJIeB
+website: vk.com/blackjieb
+commands:
+ owkick:
+  aliases: [owk]
+  description: "/owkick nickname reason"
+ owban:
+  aliases: [owb]
+  description: "/owban nickname reason"
+ owpardon:
+  aliases: [opd]
+  description: "/owpardon nickname"

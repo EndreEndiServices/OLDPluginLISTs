@@ -1,0 +1,21 @@
+Changelog PixelgamesAlias:
+
+v0.1-release: Plugin released (INSTABIL?)
+v0.1: Changelog hinzugefügt
+v0.2: onLoad hinzugefügt, Message für Console bei onEnable und onDisable
+v0.3: Übersetzung der Benutzung in Main und plugin.yml, andere Farbe (Rot) bei Benutzungshinweis
+v1.0: Alles in der Main übersetzt , Farben geändert, Übersetzungen in plugin.yml, 2 Fehler korrigiert in Main (!)
+v1.0#: Korrektur der Versionsnummer, da keine 0 angezeigt wurde bei v1.0
+v1.1#: Farbe geändert beim Hauptbefehl, eine Fehlermeldung aktualisiert (hoffentlich die beim Hauptbefehl)
+v1.2#: Beim Hauptbefehl untere Zeile jetzt kursiv (§o) (mehr oder weniger ein Optik-Test)
+v1.3#: /alias optimiert, viele verschiedene Änderungen beim Hauptbefehl
+v1.4#: /setalias optimiert, hoffentlich Fehler behoben bei /aliasip
+v1.5#: /aliasip und /aliascid optimiert (+Fehlerbehebung)
+v1.6#: plugin.yml überarbeitet inklusive Permissions, alles übersetzt
+v2.0-beta: Help und Info hinzugefügt, verschiedene Änderungen (INSTABIL?)
+v2.0.1#: Zur Fehlerbehebung bei instabilen v2.0-beta extrem viele Änderungen in Main, plugin.yml vorgenommen
+v2.1#: Autor-Name aktualisiert in Info und plugin.yml
+v2.2#: Allgemeines API-Update auf 3.0.0-ALPHA9
+v2.3#: Allgemeines API-Update auf 3.0.0-ALPHA10
+v2.4#: Allgemeines API-Update auf 3.0.0-ALPHA11
+v

@@ -1,0 +1,22 @@
+
+#PvPWorlds Config File
+
+#################################################
+#						#
+#		     PvPWorlds		        #
+#		    By Samueljh1		#
+#						#
+#################################################
+
+#Check Out My Youtube: http://youtube.com/samueljh1
+#My Google Play Apps! https://play.google.com/store/apps/developer?id=Samueljh1
+#My Website! http://samueljh1.net
+
+#Worlds That will have PvP Disabled (Separate with Commas). WARNING: You Must Enter the FOLDER NAME, not the Level Name!!
+worlds: ["lobby","parkour","world"]
+
+#The Message that a Player will Recieve if they Hit a Player in a No-PvP World. (Set to "" for No Message)
+pvp-error: "You are in a No-PvP Zone!"
+
+#If an OP Can PvP in a No-PvP World.
+enable-op: "true"

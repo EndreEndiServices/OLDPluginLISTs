@@ -1,0 +1,14 @@
+name: ServerCore
+api: [1.0.0]
+version: "1.0"
+main: ServerCore\Main
+author: SavionLegendZzz
+commands:
+ items:
+  permission: item.command.item
+  description: item Command!
+  default: true
+ death:
+  permission: death.command.death
+  description: Kill Command!
+  default: false

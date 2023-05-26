@@ -1,0 +1,11 @@
+main: mg\Main
+name: ChargeBar
+arthur: fabyan
+version: 1.0.0
+api: [1.12.0]
+description: a plugin that uses a blaze rod as a charge item
+
+commands:
+
+    
+permissions:

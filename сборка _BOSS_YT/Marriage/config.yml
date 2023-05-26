@@ -1,0 +1,6 @@
+---
+players-in-same-group-are-marriage: false
+marry-are-marriage: true
+max-marry-for-player: 2
+provider: SQL
+...

@@ -1,0 +1,5 @@
+---
+Items: []
+GiveMsg: '[SRI] Случайный предмет выдан(@item)'
+GiveItemTime: 240
+...

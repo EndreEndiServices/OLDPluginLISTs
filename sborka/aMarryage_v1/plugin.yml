@@ -1,0 +1,12 @@
+name: AM
+main: AlexBrin\aMarryage
+load: STARTUP
+version: 1
+api: [1.10.0]
+author: AlexBrin
+website: https://vk.com/alex__brin
+
+commands:
+  marry:
+    default: true
+    description: Позволяет создать семью :)

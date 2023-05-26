@@ -1,0 +1,27 @@
+# SimpleAuth 1.4.0 language file
+
+join:
+ message1: "§r§c§l@§7=========[] §r§5Hypertic v4.7 §eEU §l§7[]=========§c@"
+ message2: "§r§7§l::§r        §5Follow us twitter @HyperticMCPE        §7§l::"
+ register: "§7§l::     §r§5Please register by typing /register    §7§l::\n§c§l@§7.===============================.§c@"
+ login: "§7§l::§r  §5Please login by typing /login <password>.  §7§l::\n§c§l@§7.===============================.§c@"
+ popup: "§8>> §5Please authenticate to play."
+
+register:
+ usage: "§5/register <password>"
+ description: "Registers an account"
+ permission: "§5You do not have permission to use the register command!"
+ error:
+  password: "§5Your password is too short like your dads sausage"
+  registered: "§5This account is already registered."
+  general: "§5Error during authentication."
+
+login:
+ usage: "§5/login <password>"
+ description: "Logs into an account"
+ permission: "You do not have permission to use the login command!"
+ success: "§0-\n§0- §0-\n§0- \n§0-\n§0- \n§0-\n§0- \n§0-\n§0- \n§0-\n§0- \n§0- \n§0-\n§c@§7==============================§c@\n§7::     §5You have been authenticated.    §7::\n§7::                   §5Have fun.!               §7::\n§c@§7==============================§c@\n§0-\n§0-"
+ error:
+  password: "§cIncorrect password!"
+  registered: "§cThis account is not registered."
+  block: "§6Too many tries!"

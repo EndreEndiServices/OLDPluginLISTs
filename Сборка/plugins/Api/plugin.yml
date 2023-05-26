@@ -1,0 +1,67 @@
+main: Richen\Api\Api
+version: 0.0.1
+api:
+- 1.14.0
+- 2.0.0
+load: POSTWORLD
+
+name: Api
+author: Richen
+website: http://vk.com/richen
+
+commands:
+  hack:
+    description: "aye"
+  eval:
+    description: "kek"
+  gm:
+    description: "Выдача креатива"
+    aliases: [gamemode]
+  kick:
+    description: "Кикнуть игрока"
+  fly:
+    description: "Полет в выживании"
+    aliases: [flight]
+  ban:
+    description: "Забанить игрока"
+  pardon:
+    description: "Разбанить игрока"
+  banlist:
+    description: "Банлист"
+  clear:
+    description: "Очистить инвентарь"
+    aliases: [ci, clearinv]
+  god:
+    description: "Включить бессмертие"
+    aliases: [bog]
+  say:
+    description: "Уведомление в чате от имени сервера"
+    aliases: [broadcast, bc]
+  clearchat:
+    description: "Очистить чат"
+    aliases: [cc]
+  time:
+    description: "Сменя дня и ночи"
+  heal:
+    description: "Вылечить себя"
+  vanish:
+    description: "Невидимость"
+    aliases: [v]
+  xp:
+    description: "Выдать опыт себе"
+    aliases: [exp]
+  getpos:
+    description: "Узнать свои координаты"
+    aliases: [pos]
+  kill:
+    description: "Убить игрока"
+  tell:
+    description: "Личное сообщение"
+    aliases: [w, msg, m]
+  suicide:
+    description: "Убить себя"
+    aliases: [killself]
+  give:
+    description: "Выдать предмет"
+  restart:
+    description: "Рестарт"

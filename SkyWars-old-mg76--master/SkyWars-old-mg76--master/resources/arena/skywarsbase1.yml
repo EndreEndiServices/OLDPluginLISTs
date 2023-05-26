@@ -1,0 +1,18 @@
+---
+arenaName: skywarsbase1
+levelName: skywarsbase1
+status: IN-USE
+pvpon: false
+templateWorldName: skywarsbase1
+maxPlayers: "8"
+maxplayerSpawnLocations: "8"
+levelSpawnLocationX: 138
+levelSpawnLocationY: 157
+levelSpawnLocationZ: 129
+pos1X: 128
+pos1Y: 128
+pos1Z: 128
+pos2X: 128
+pos2Y: 128
+pos2Z: 128
+...

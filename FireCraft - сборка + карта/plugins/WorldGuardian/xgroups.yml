@@ -1,0 +1,11 @@
+---
+Member:
+  max_regions_num: 2
+  max_region_count_blocks: 2000
+VIP:
+  max_regions_num: 5
+  max_region_count_blocks: 5000
+Creative:
+  max_regions_num: 8
+  max_region_count_blocks: 15000
+...

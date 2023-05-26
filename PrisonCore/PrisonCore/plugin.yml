@@ -1,0 +1,9 @@
+name: PrisonCore
+version: 1.5.1
+main: PrisonCore\Core
+author: Az928
+api:
+- 2.1.0
+- 3.0.0
+- 3.0.0-ALPHA4
+- 3.0.0-ALPHA5

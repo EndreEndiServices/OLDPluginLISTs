@@ -6,7 +6,6 @@ namespace fcore\task;
 
 use fcore\FCore;
 use pocketmine\Player;
-use pocketmine\scheduler\Task;
 
 /**
  * Class ScheduleManager
@@ -17,7 +16,7 @@ class ScheduleManager {
     /** @var FCore $plugin */
     public $plugin;
 
-    /** @var Task[] $repeating */
+    /** @var array $repeating */
     public $repeating = [];
     
     /**
@@ -30,7 +29,7 @@ class ScheduleManager {
     }
 
     public function getScheduler() {
-        return $this->plugin->getScheduler();
+        return $this->plugin->getServer()->getScheduler();
     }
 
     public function registerTasks() {

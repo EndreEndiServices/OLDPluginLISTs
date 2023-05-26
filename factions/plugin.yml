@@ -1,0 +1,15 @@
+name: FactionsPro
+author: Tethered_
+description: Factions edit by zMarcos360
+version: 1.10.0
+main: FactionsPro\FactionMain
+api:
+- 2.0.0
+commands:
+  f:
+    description: use /f help
+    permission: f.command
+permissions:
+  f.command:
+    default: true
+    description: "Allow use of all faction commands"

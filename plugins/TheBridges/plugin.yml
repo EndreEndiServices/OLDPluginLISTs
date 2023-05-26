@@ -1,0 +1,9 @@
+name: TheBridges
+version: 1.0
+api: [1.13.0]
+main: TheBridges\TheBridges
+author: MineTox Team
+description: TheBridges plugin
+depend: [MTCore]
+
+permissions: []
