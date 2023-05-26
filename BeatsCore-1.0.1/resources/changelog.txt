@@ -1,0 +1,21 @@
+§l§aList of changelogs:§r§3§
+§
+§33/9/18 - Chat Cooldown has been added! Cooldown: 5 Seconds!§
+§
+§33/9/18 - AuctionHouse has been added! Open AuctonHouse with the command /ah!§
+§
+§33/15/18 - Spawners have been added! Buy spawners using the command /shop!§
+§
+§33/15/18 - CustomPotions have been added! Buy CustomPotions using the command /shop!§
+§
+§33/15/18 - Ender Pearls: Soon!§
+§
+§33/15/18 - Masks With Effects: Soon!§
+§
+§33/15/18 - Envoys: Soon!§
+§
+§33/15/18 - Lags currently being fixed! Stay tuned!§
+§
+§33/10/18 - Welcome to Season 1! Start your adventure using /kit once!§
+§
+§33/24/18 - Fixed the damned core! - iiFlamiinBlaze

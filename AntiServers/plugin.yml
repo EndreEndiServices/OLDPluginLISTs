@@ -1,0 +1,8 @@
+name: DragoAntiServer
+main: AntiServer\Main
+api: 3.0.0, 4.0.0
+version: 1.0.0
+description: Players think they own the sever? Not anymore!
+permission: default
+
+author: Eforce

@@ -1,0 +1,30 @@
+---
+#------------------------------------------------------------------------#
+null.server: §c§l» §r§cNo server available for your request.
+full.server: §c§l» §r§cServer available are full for your request.
+
+games.note.info: Refreshments are done every 10 seconds.
+#------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------#
+entity.max: 3 #count
+
+entity.eid.1: 1100000000 #eid
+entity.eid.2: 1200000000 #eid
+entity.eid.3: 1300000000 #eid
+
+entity.eid.NUMBER: #Example
+#------------------------------------------------------------------------#
+
+#-------------------------#
+timer.server.speed: 5
+#-------------------------#
+
+#------------------#
+mysqli.work.?: true
+
+HOST: 127.0.01
+USER: root
+PASS: "pab244"
+#------------------#
+...

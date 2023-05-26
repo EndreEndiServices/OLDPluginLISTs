@@ -1,0 +1,11 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/thebigsmileXD/MagicWE2
+projects:
+  MagicWE2:
+    path: ""
+    icon: "resources/magicwe_icon_square_small.png"
+    libs:
+      - src: BlockHorizons/libschematic/libschematic
+        version: ^0.0.6
+      - src: thebigsmilexd/customui/customui
+        version: ^3.0.0
+...

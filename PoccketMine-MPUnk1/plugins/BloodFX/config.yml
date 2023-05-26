@@ -1,0 +1,32 @@
+## BloodFX Configuration File
+
+# What block-particles do you want to perform?
+# default id: 152 (redstone_block)
+# numbers (id of a block)
+entities:
+  chicken: 152
+  cow: 152
+  creeper: 152
+  enderman: 152
+  human: 152
+  ozelot: 152
+  pig: 152
+  pigzombie: 152
+  player: 152
+  sheep: 152
+  silverfish: 152
+  skeleton: 152
+  slime: 152
+  spider: 152
+  squid: 152
+  villager: 152
+  wolf: 152
+  zombie: 152
+  
+# How much blood do u want to be sprayed?
+# Default 2 (Developers recommended)
+amplifier: 2
+
+# Config version (Updater)
+# DO NOT MODIFY THIS OTHERVISE THE PLUGIN MAY NOT WORK WELL!!
+v: "1.0.0"

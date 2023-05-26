@@ -1,0 +1,21 @@
+
+#NoExplode Config File
+
+#################################################
+#						#
+#		     No-Explode		        #
+#		    By Samueljh1		#
+#						#
+#################################################
+
+#Check Out My Youtube: http://youtube.com/samueljh1
+#My Google Play Apps! https://play.google.com/store/apps/developer?id=Samueljh1
+#My Website! http://samueljh1.net
+
+#This Plugin DISABLES Explosions, not the Acutal Placement of TNT or the Spawning of Creepers!
+
+#Worlds That will have Explosions Disabled (Separate with Commas). WARNING: You Must Enter the FODLER NAME, not the Level Name!!
+worlds: ["world","myworld","anotherworld"]
+
+#Sets if a Message to the Console Should be Sent when an Explosion is Prevented. Change to "false" to disable this!
+message-to-console: "true"

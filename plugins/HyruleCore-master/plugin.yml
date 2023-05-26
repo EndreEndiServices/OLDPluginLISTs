@@ -1,0 +1,76 @@
+name: HyPrimeCore
+main: HyPrimeCore\CoreMain
+version: "1.1-REV#202-653-918e"
+api: [3.0.0+ALPHA13]
+author: ["larryTheCoder"]
+softdepends: ['PocketVote']
+depends: ['SkyWarsForPE', 'EconomyAPI']
+
+commands:
+  core:
+    description: "The core command of this plugin."
+    default: true
+  cloak:
+    description: "The main cloak particle command"
+    default: true
+  fly:
+    description: "Ability to fly on air"
+    default: true
+    permission: "ability.fly"
+  about:
+    description: "Whats up with our server"
+    default: true
+  setupinterface:
+    description: "Setup the button interface"
+    default: op
+    permission: "admin.setup"
+  showops:
+    description: "Show the list of operators"
+    default: op
+    permission: "admin.command"
+  setblock:
+    description: "Set a temporary show block"
+    default: op
+    permission: "admin.command"
+  trampoline:
+    description: "A trampoline gadget"
+    default: op
+    permission: "core.gadget.trampoline"
+
+permissions:
+  admin.command:
+    description: "Allow to use commands for admin only"
+    default: op
+  admin.setup:
+    description: "Setup button interface"
+    default: op
+  ability.fly:
+    description: "Ability to fly on air"
+    default: op
+  core.cloak.firerings:
+    desription: "Firerings particle for all"
+    default: op
+  core.cloak.firewings:
+    desription: "Firewings particle for all"
+    default: op
+  core.cloak.frosty:
+    desription: "Frosty particle for all"
+    default: op
+  core.cloak.scanner:
+    desription: "Scanner particle for all"
+    default: op
+  core.cloak.shaman:
+    desription: "Shaman particle for all"
+    default: op
+  core.cloak.superhero:
+    desription: "Superhero particle for all"
+    default: op
+  core.gadget.trampoline:
+    description: "Gadget trampoline!"
+    default: op
+
+
+
+
+
+

@@ -1,0 +1,7 @@
+---
+chat-format: '{PREFIX}<{USER_NAME}> {MESSAGE}'
+enable-formatter: true
+message-on-group-change: Та да , теперь ты состоишь в группе {GROUP} !
+override-op-permissions: false
+message-on-insufficient-build-permission: You don't have permission to build here.
+...

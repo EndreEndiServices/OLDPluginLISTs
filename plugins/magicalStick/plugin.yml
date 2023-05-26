@@ -1,0 +1,25 @@
+name: magicalStick
+main: magicalStick\flayzer\main
+version: 0.0.1
+api: 3.0.0
+author: flayzer
+commands:
+    magicalstick:
+        description: '/magicalstick <stickone, sticktwo, stickthree>'
+        permission: magicalstick.use.flayzer
+    staffstick:
+        description: '/staffstick <staffone, stafftwo, staffthree>'
+        permission: staffstick.use.flayzer
+    staff:
+        description: '/staff <stickone, sticktwo, stickthree, staffone, stafftwo, staffthree>'
+        permission: staff.use.flayzer
+permissions:
+    magicalstick.use.flayzer:
+        description: '/magicalstick <stickone, sticktwo, stickthree>'
+        default: op
+    staffstick.use.flayzer:
+        description: '/staffstick <staffone, stafftwo, staffthree>'
+        default: op
+    staff.use.flayzer:
+        description: '/staff <stickone, sticktwo, stickthree, staffone, stafftwo, staffthree>'
+        default: op

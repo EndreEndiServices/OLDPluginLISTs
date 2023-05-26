@@ -1,0 +1,26 @@
+---
+# Лог файлы: этот плагин создает логи в которых будут дата, ник того кто использует запрещеные команды! ОК -> true, нет -> false
+log-to-file: true
+# Cum se citește jurnalul
+# (Дата(По Гринвичу))
+# [Notice] Când și cine a permis conducerea echipei
+# [Alert] care nu avea voie să execute comanda
+# Ник игрока (IP) : /(команда)
+
+
+# Permiteți consolelor să execute comenzi interzise?
+block-console: false
+
+# Refuză executarea de la distanță a comenzilor interzise?
+block-remote: true
+
+# Echipele pe care doriți să le blocați, scrieți totul după /
+blocked-command: op,deop,setuperm,stop,setgperm,unsetuperm,unsetgperm,setugroup,plugins,pl,wbog,dumpmemory,area,status,me,bcast,say,delgroup,setwarp,delwarp,openwarp,closewarp,ver,version,vanish,gmt,unlimited,setmoney,setnametag,setprefix,setsuffix,setuperm,setgperm,bcast,broadcast,about
+# blocked-command: cmd1,cmd2,cmd3,cmd4,cmd5
+
+# Jucătorii care pot executa comenzi
+whitelisted-player: MateiGamingYTB,
+# Format:
+# whitelisted-player: MateiGamingYTB,
+# Atenție: acest lucru nu le va da dreptul de a utiliza comenzile interzise !!
+...

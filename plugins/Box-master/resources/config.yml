@@ -1,0 +1,37 @@
+---
+#------------------------------------------------------------------------#
+set.message.box: §a§l» §r§aYou have set the box at a new position.
+
+0.message.key: "§c§l» §r§cYou haven't a key for this box."
+
+buy.message.cbox: §a§l» §r§aYou have buy this Box.
+open.message.cbox: §a§l» §r§aYou open this Box, wait.
+error.message.cbox: "§c§l» §r§cYou haven't enough coins for this Box, Check /coins."
+
+buy.message.ckey: §a§l» §r§aYou have buy this Key.
+error.message.ckey: "§c§l» §r§cYou haven't enough coins for this Key, Check /coins."
+
+error.message.use: This Box is already use by other player, wait.
+
+name.box.entity: "§b§l§k:!,§r §3§lLIGHTBOX §b§k,!:"
+
+win.player.message.box: "§3§l» §r§3You have found "
+
+win.all.message.0.box: " §r§7have found "
+win.all.message.1.box: " §r§7in the §3§lEPIC LIGHTBOX"
+
+permission.error: §c§l» §r§cYou do not have permission to use this option.
+#------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------#
+box.note.info: "The Box is finally here!\n This update is §lBIGGEST§r to date,\n the Box contains 60 §lITEMS§r!\n\n§cYou can §lGET§r§c 2 times the same §lITEMS§r§c!§r\n\n §lCHECK§r: §3LightFish.tk/Box§r\n "
+#------------------------------------------------------------------------#
+
+#------------------#
+mysqli.work.?: true
+
+HOST: 127.0.01
+USER: root
+PASS: ""
+#------------------#
+...

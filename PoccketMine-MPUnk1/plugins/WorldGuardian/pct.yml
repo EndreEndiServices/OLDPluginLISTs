@@ -1,0 +1,20 @@
+################################
+# PCT-GAMES #
+################################
+
+username: 'LightEnergyYTB'
+password: 'IloveMCPE'
+
+################################
+# MESSAGES #
+################################
+
+prefix: '&8[&7PCT-GAMES&8]&b '
+msg_connecting: '&eConectarea la PCT-Games.Ru. Stai ... '
+msg_fail: '&cEroare la conectarea la PCT-Games.Ru. '
+msg_bought: '&2Ati cumparat plugin WorldGuardian. Bucurați-va! :)'
+msg_notbought: '&4Trebuie sa cumperi plugin-ul de pe WorldGuardian PCT-Games.Ru, inainte sa-l utilizati! Opriti serverul... '
+msg_banned: '&4 PCT-Games.Ru Contul dvs. a fost suspendat! Opriti serverul... '
+msg_auth: '&4Logheazate intrand in 'pct.yml'' și scriind numele si parola'
+msg_error: '&4Eroare'
+msg_response: '&4Raspuns necunoscut din PCT-Games.Ru! Opriti serverul... '

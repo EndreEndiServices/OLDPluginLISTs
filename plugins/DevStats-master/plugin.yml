@@ -1,0 +1,18 @@
+name: DevStats
+main: Zedstar16\DevStats\Main
+version: 1.0.0
+api: 3.7.0
+load: POSTWORLD
+author: Zedstar16
+description: Useful Statistics
+
+commands:
+ dev:
+  description: "Enable/Disable Dev Statistics mode"
+  usage: "/dev"
+  permission: dev
+
+permissions:
+ dev:
+  default: op
+

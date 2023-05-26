@@ -1,0 +1,26 @@
+---
+setmoney:
+- setmoney
+seemoney:
+- money
+mymoney:
+- mymoney
+- bal 
+- ebal 
+- econ 
+- econs 
+- balance 
+- balanse 
+pay:
+- pay
+givemoney:
+- givemoney
+topmoney:
+- topmoney
+setlang:
+- setlang
+takemoney:
+- takemoney
+mystatus:
+- mystatus
+...

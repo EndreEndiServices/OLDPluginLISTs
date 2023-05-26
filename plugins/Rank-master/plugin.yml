@@ -1,0 +1,10 @@
+name: Rank
+main: Rank\Rank
+version: 0.0.1
+api: [3.0.0]
+author: Pab45O
+
+commands:
+
+  rank:
+    description: "/rank [user] level[0/config]"

@@ -1,0 +1,17 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/Sandertv/BlockPets
+branches:
+- master
+projects:
+  BlockPets:
+    path: ""
+    icon: resources/BlockPetsLogo.png
+    compressBuilds: false
+    fullGzip: 9
+    libs:
+      - src: Falkirks/spoondetector/spoondetector
+        version: ^0
+      - src: poggit/libasynql/libasynql
+        version: ^3.0
+      - src: muqsit/InvMenu/InvMenu
+        version: ^1.1.1
+...

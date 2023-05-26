@@ -1,0 +1,14 @@
+---
+bank1broadcast: Игрок {nick} успешно ограбил забегаловку на {count} монет
+bank1me: Вы успешно ограбили забегаловку и получили {count}
+
+bank1broadcastno: Игрок {nick} не смог ограбить забегаловку
+bank1meno: Вы не смогли ограбили забегаловку
+
+teleportspawn: Вас выпустили
+timepopup: Осталось времени: {time}
+
+jailx: 0
+jaily: 0
+jailz: 0
+...

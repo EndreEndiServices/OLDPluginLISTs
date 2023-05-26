@@ -1,0 +1,25 @@
+---
+data-provider: yamlv1
+default-language: en
+disable-op: true
+enable-multiworld-perms: false
+enable-noeul-sixtyfour: false
+mysql-settings:
+  host: PurePerms-FTW.loveyou.all
+  port: 3306
+  user: YourUsernameGoesHere
+  password: YourPasswordGoesHere
+  db: YourDBNameGoesHere
+noeul-minimum-pw-length: 6
+superadmin-ranks:
+- OP
+- Admin
+- Moderator
+- Owner
+- Helper
+- VIP
+- YouTuber
+- Manager
+- Co-Owner
+- Builder
+...

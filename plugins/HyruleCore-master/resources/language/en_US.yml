@@ -1,0 +1,59 @@
+###########################################################################################
+# This is a YML file. Be careful when editing. Check your edits in a YAML checker like    #
+# the one at http://yaml-online-parser.appspot.com                                        #
+###########################################################################################
+---
+
+language-select: "§6You selected language: §e{LANGUAGE}"
+
+error:
+ no-permission: "§cYou don't have permission to use this."
+ buy-site: "§cYou need to buy this at our website"
+ fly-not-permitted: "§cFlight is not permitted in game."
+
+# Panel configuration ONLY
+panel:
+  panel-cancelled: "§cYour request has been cancelled."
+  cloak-about: "§aCloak is about particles, there a lot of particles that you should try. You should try to check everyday for new cloak! You may need to buy these at our shop."
+  cloak-title: "§cChoose your cloak"
+  cloak-remove: "§cRemove current cloak"
+  cloak-selected: "§aSelected cloak: §7{CLOAK}"
+
+# General only message
+general:
+  flight-enabled: "§aEnjoy your flight"
+  flight-disabled: "§cDisabled your flight"
+  language-selection: "§7Selected language: {LANG}"
+
+interface:
+  about-menu: "§a{MENU} menu."
+  select: "§dSelect"
+  back: "§aBack"
+  home: "§aHome"
+  buy-site: "§cBuy at website"
+  available: "§aAvailable"
+  selection-1: "§eSelect your kit!"
+  selection-2: "§eSelect your cloak!"
+  selection-3: "§eSelect this cage!"
+  price-interface: "§ePrice: §d${VALUE}"
+  balance-interface: "§eCoins: §d${BALANCE}"
+
+# Broadcast system is here
+broadcast:
+- "§aWant to Purchase a §6[VIP] §ato help this Server? Buy at §7hyruleloja.esy.es"
+- "§aOur Twitter Server §c@HyruleNetwork69 §aTake your doubts there!"
+- "§aThere are no vacancies in the staff, If you keep asking for it, you will be §cBANNED!"
+- "§aServer is in §cBETA STATE, §aSaw some bug? Do not hesitate to report in our Twitter: §c@HyruleNetwork69!"
+- "§aServer has been §cReset! §aAll Kits, Coins, Tag Has Been Reset!"
+- "§aAww, you hate that many players around and cannot move around? Buy /fly perk at our shop!"
+- "§aOur brand new Discord Server! https://discord.gg/Cu9yZRs"
+- "§aWe are now supporting §dMulti Language§a! Set your language by setting your client locale."
+- "§aWe are now currently developing our server rapidly, every week there will be a new §eFeature!"
+- "§aLove particles? We also do the same! Check out our brand new /cloak!"
+- "§aWe are starting our server from scratch, help us by voting our server!"
+
+# Login message AKA. MOTD
+login-message:
+ - "§aWelcome to §6Hyrule§cNetwork, §e{PLAYER}"
+ - "§7Tap on the sign to join a match!"
+

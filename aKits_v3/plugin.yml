@@ -1,0 +1,19 @@
+name: aKits
+main: AlexBrin\aKits
+version: 3
+api: [2.0.0]
+author: AlexBrin
+website: https://vk.com/alex__brin
+
+commands:
+  kit:
+    default: true
+    description: Получение игрового набора
+    permission: kit.use
+permissions:
+  kit:
+    default: op
+    children:
+      kit.use:
+        default: true
+        description: Позволяет использовать команду /kit

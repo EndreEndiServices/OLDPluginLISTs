@@ -1,0 +1,41 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: ''
+groups:
+  Guest:
+    default-chat: §2{faction} §8[§aИГРОК§8]§f {display_name} {COLOR_GRAY}> {message}
+    default-nametag: §2{faction} §a[§2ИГРОК§a]§f {display_name}
+    worlds: []
+  Admin:
+    default-chat: §2{faction} §8[§cAdmin§8]§c {display_name} §c> {message}
+    default-nametag: §8[§cAdmin§8] §c {display_name}
+    worlds: []
+  Owner:
+    default-chat: §2{faction} §8[§9Owner§8]§9{display_name} > {message}
+    default-nametag: §2{faction}§8[§9Owner§8] §9 {display_name}
+    worlds: []
+  Op:
+    default-chat: §2{faction} §8[§4Создатель§8]§4 {display_name} > {message}
+    default-nametag: §2{faction}§8[§4Создатель§8]§4{display_name}
+    worlds: []
+  Mod:
+    default-chat: §2{faction}§8[§bModerator§8]§b {display_name} > {message}
+    default-nametag: §2{faction}§8[§bModerator§8]§b{display_name}
+    worlds: []
+  Creativ:
+    default-chat: §2{faction} §8[§aКреатив§8]§7 {display_name} > {message}
+    default-nametag: §2{faction}§8[§aКреатив§8]§f{display_name}
+    worlds: []
+  Vip:
+    default-chat: §2{faction} §8[§6VIP§8]§7 {display_name} > {message}
+    default-nametag: §2{faction}§8[§6VIP§8]§f{display_name}
+    worlds: []
+  Fly:
+    default-chat: §2{faction} §8[§5Fly§8]§7 {display_name} > {message}
+    default-nametag: §2{faction}§8[§5Fly§8]§f{display_name}
+    worlds: []
+  Youtube:
+    default-chat: §2{faction} §8[§fYou§4Tube§8]§6 {display_name} > {message}
+    default-nametag: §2{faction}§8[§fYou§4Tube§8]§6{display_name}
+    worlds: []
+...

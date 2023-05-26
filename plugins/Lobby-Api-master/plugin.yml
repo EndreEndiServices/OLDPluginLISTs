@@ -1,0 +1,10 @@
+name: Lobby
+main: Lobby\Lobby
+version: 0.0.1
+api: [3.0.0-ALPHA11,3.0.0-ALPHA12,3.0.0-ALPHA13,3.0.0-ALPHA14]
+author: Pab45O
+
+commands:
+
+  lobby:
+    description: "/lobby"

@@ -1,0 +1,8 @@
+name: SarchonicalCore
+version: 1.0.5-Lite
+api: [3.0.0-APLHA11]
+author: Sour
+main: SarchCore\SarchCore
+permissions:
+  note.give:
+    default: op

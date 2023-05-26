@@ -1,0 +1,140 @@
+name: PSCore
+author: xBeastMode
+version: 1.0.9
+main: PrestigeSociety\Core\PrestigeSocietyCore
+api:
+- 3.0.0-ALPHA12
+- 3.0.0
+- 3.0.1
+- 3.0.2
+- 3.0.3
+- 3.0.4
+- 3.0.5
+- 3.1
+- 3.2
+
+startup: POSTWORLD
+
+permissions:
+   land.protector.command.p1:
+      default: op
+   land.protector.command.p2:
+      default: op
+   land.protector.command.add:
+      default: op
+   land.protector.command.mode:
+      default: op
+   land.protector.command.help:
+      default: op
+   land.protector.command.remove:
+      default: op
+   land.protector.edit.place.bypass:
+      default: op
+   land.protector.edit.break.bypass:
+      default: op
+   land.protector.touch.bypass:
+      default: op
+   land.protector.selection.2:
+      default: op
+   land.protector.selection.1:
+      default: op
+   command.eat:
+      default: op
+   signs.create.garbage:
+      default: op
+   signs.create.world:
+      default: op
+   pl.vip.zone:
+      default: op
+   pl.vip.iron:
+      default: op
+   pl.vip.gold:
+      default: op
+   pl.vip.diamond:
+      default: op
+   pl.cl.admin:
+      default: op
+   pl.world:
+      default: op
+   pl.fly:
+      default: op
+   pl.setdeaths:
+      default: op
+   pl.setkills:
+      default: op
+   pl.setlevel:
+      default: op
+   pl.framedrop:
+      default: op
+   command.sm:
+      default: op
+   economy.command.addcoins:
+      default: op
+   economy.command.subcoins:
+      default: op
+   economy.command.all:
+      default: op
+   command.sban:
+      default: op
+   command.ban:
+      default: op
+   sban.bypass:
+      default: op
+   pl.givekey:
+      default: op
+   command.setspawn:
+      default: op
+   command.warp.admin:
+      default: op
+   shop.addsign:
+      default: op
+   shop.removesign:
+      default: op
+   command.lsd:
+      default: op
+   command.removeshop:
+      default: op
+   command.addshop:
+      default: op
+   command.rankup:
+      default: op
+   command.rpp:
+      default: op
+   land.protector.command.setmine:
+      default: op
+   land.protector.command.removemine:
+      default: op
+   land.protector.command.resetmine:
+      default: op
+   land.protector.command.list:
+      default: op
+   land.protector.command.listhere:
+      default: op
+   command.god:
+      default: op
+   command.addinfo:
+      default: op
+   home.instant:
+      default: op
+   spawn.instant:
+      default: op
+   warp.instant:
+      default: op
+   tpa.instant:
+      default: op
+   command.nick:
+      default: op
+   repair.free:
+      default: op
+   pv.infinite:
+      default: op
+   command.setrank:
+      default: op
+   crate.add:
+      default: op
+   crate.remove:
+      default: op
+   spam.bypass:
+      default: op
+   crate.bypass:
+      default: op

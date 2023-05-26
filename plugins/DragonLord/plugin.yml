@@ -1,0 +1,9 @@
+name: TheBridge
+version: 1.0
+api: 3.0.0
+main: bridge\Main
+author: DragonLord
+website: vk.com/dragon_dev
+commands:
+  bridge:
+    description: “Дракон жгет”

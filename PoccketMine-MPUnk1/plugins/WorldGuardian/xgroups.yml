@@ -1,0 +1,5 @@
+---
+Developer:
+  max_regions_num: 99999
+  max_region_count_blocks: 20
+...

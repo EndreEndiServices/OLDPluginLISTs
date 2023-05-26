@@ -1,0 +1,26 @@
+name: Admin
+main: Admin\Admin
+version: 6.0.2
+api: [3.0.0]
+author: Pab45O
+
+commands:
+
+  report:
+    description: "/report [user] [reason]"
+
+  xwarn:
+    description: "/xwarn [user] [reason]"
+
+  xban:
+    description: "/xban [user] [reason]"
+
+  xops:
+    description: "/xops [add/remove] [user]"
+
+  xinfo:
+    description: "/xinfo [user]"
+
+  xvanish:
+    description: "/xvanish"
+

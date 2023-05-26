@@ -1,0 +1,16 @@
+---
+#------------------------------------------------------------------------#
+kick.player.message: §cYour account is already connected.
+fake.player.count: 0 #int
+#------------------------------------------------------------------------#
+
+#------------------#
+mysqli.work.?: true
+players.update: on
+
+HOST: 127.0.01
+USER: root
+PASS: "pab244"
+#------------------#
+
+...

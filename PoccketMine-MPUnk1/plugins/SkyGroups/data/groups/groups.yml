@@ -1,0 +1,27 @@
+---
+groups:
+  player:
+    perms:
+    - your.permission
+    - your.second.permission
+    - simpleauth.command.login
+    - simpleauth.command.register
+    nametagcolor: f
+    chatformat: §7[§ePlayer§7]
+  premium:
+    perms:
+    - your.permission
+    - your.second.permission
+    - simpleauth.command.login
+    - simpleauth.command.register
+    nametagcolor: "5"
+    chatformat: §7[§5Premium§7]
+  owner:
+    perms:
+    - your.permission
+    - your.second.permission
+    - simpleauth.command.login
+    - simpleauth.command.register
+    nametagcolor: "3"
+    chatformat: §7[§4Owner§7]
+...

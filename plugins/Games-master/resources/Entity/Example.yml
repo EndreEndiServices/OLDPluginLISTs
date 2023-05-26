@@ -1,0 +1,17 @@
+---
+#Example file:
+
+entity.type: #type
+
+entity.x: #pos
+entity.y: #pos
+entity.z: #pos
+
+entity.yaw: #yaw
+entity.name: #name
+
+entity.game: #game_db
+
+entity.ui: #true/false
+
+...

@@ -1,0 +1,28 @@
+name: iFriend
+author: LilCrispy2o9/Angelo Vidrio
+description: A Plugin To Manage FoE
+version: 1.0.4-MOD_1
+main: iFriend\Main
+api: [1.11.0]
+commands:
+  friend:
+    description: Use /friend help for all parameters
+    permission: friend.command.friend
+  unfriend:
+    description: Use /friend help for all parameters
+    permission: friend.command.unfriend
+permissions:
+  friend:
+    default: false
+    description: "Allow use of all friend features"
+    children:
+      friend.command:
+        default: op
+        description: "Allow use of all friend commands"
+        children:
+          friend.command.friend:
+            default: op
+            description: "Allow use of friend command"
+          friend.command.unfriend:
+            default: op
+            description: "Allow use of unfriend command"

@@ -1,0 +1,19 @@
+---
+show-prefix: false
+show-messages-onjoin: true
+force-hub: false
+enable-hub-message: true
+hub-message: §6Te-ai/ai fost teleportat in §5HUB
+force-spawn: false
+teleport-on-death: 1
+enable-spawn-message: true
+spawn-message: Teleportat la spawn
+enable-aliases: true
+hub:
+  world: world
+  X: 232.561700
+  "Y": 44.623800
+  Z: 130.628500
+  Yaw: 1
+  Pitch: -6
+...

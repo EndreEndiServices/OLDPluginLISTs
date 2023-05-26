@@ -1,0 +1,10 @@
+name: FriendSystem
+author: Scamnex
+version: 1.1.0
+api: 3.0.0, 4.0.0
+main: FreundeSystem\friends
+description: FriendSystem by Scamnex
+commands:
+  friends:
+    description: Main Command
+    aliases: [fr]

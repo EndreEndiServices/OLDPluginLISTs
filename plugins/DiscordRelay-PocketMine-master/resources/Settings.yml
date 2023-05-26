@@ -1,0 +1,26 @@
+###  Discord-Relay v0.0.2-ALPHA configuration file  ###
+general:
+  # The default channel messages are relayed to and from discord.
+  # Will respect both relay-from-discord and relay-to-discord flags (can be set to only relay one way.)
+  default-channel: general
+  bot:
+    token: your-bot-token-here
+  channels:
+    - name: general
+      discord-id: channel ID
+      embed-color: 16771072
+      options:
+        embed: true
+        relay-from-discord: true
+        relay-to-discord: true
+    - name: log
+      discord-id: channel ID
+      options:
+        console-levels:
+          info:
+            embed: true
+            embed-color: 15184935
+    - name: errors
+      discord-id: channel ID
+      options:
+        console-levels: [emergency, alert, critical, error]

@@ -1,0 +1,13 @@
+name: TrackMyEverything
+author: UnknownBallin
+version: 1.5.7
+api: 3.0.0
+main: UnknownBallin\TrackMyEverything\TrackMe
+description: "Tracks almost everything a player does and saves it as a statistic!"
+
+commands:
+  mystats:
+    description: "Display your stats"
+    aliases:
+      - stats
+      - ms

@@ -1,0 +1,78 @@
+---
+groups:
+  Guest:
+    worlds: []
+    chat: '&3{fac_name} &8[[&5&oMember&8]] &8[[&eJucator&8]]&7 {display_name} &6>
+      &7{msg}'
+    nametag: '&3{fac_name} &8[[&5&oMemberu&8]] &8[[&eJucator&8]]&7 {display_name}'
+  ULTRA:
+    worlds: []
+    chat: '&3{fac_name} &8[[&bULTRA&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&bULTRA&8]]&7 {display_name}'
+  Admin:
+    worlds: []
+    chat: '&3{fac_name} &8[[&5Admin&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&5Admin&8]]&7 {display_name}'
+  Owner:
+    worlds: []
+    chat: '&3{fac_name} &8[[&4Creator&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&4Creator&8]]&7 {display_name}'
+  OP:
+    worlds: []
+    chat: '&3{fac_name} &8[[&cOP&8]]&f&r {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&cOP&8]]&f&r {display_name}'
+  VIP:
+    chat: '&3{fac_name} &8[[&6VIP&8]]&f&r {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&6VIP&8]]&f&r {display_name}'
+  VIP2:
+    chat: '&3{fac_name} &8[[&6VIP&9+&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&6VIP&9+&8]]&7 {display_name}'
+  UberVIP:
+    chat: '&3{fac_name} &8[[&eUber&6VIP&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&eUber&6VIP&8]]&7 {display_name}'
+  Helper:
+    chat: '&3{fac_name} &8[[&aAjutor&8]]&r &3{display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&aAjutor&8]]&r &3{display_name}'
+  Moderator:
+    chat: '&3{fac_name} &8[[&3Moderator&8]]&r {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&3Moderator&8]]&r {display_name}'
+  Builder:
+    chat: '&3{fac_name} &8[[&6%&dBuilder&6%&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&6%&dBuilder&6%&8]]&7 {display_name}'
+  Developer:
+    chat: '&3{fac_rank}{fac_name} &l&8[[&6<&3Dev&6>&8]]&r&7 {display_name}
+      &6> &7{msg}'
+    nametag: '&3{fac_rank}{fac_name} &l&8[&6<&3Dev&6>&8]&r&7 {display_name}'
+  Hero:
+    chat: '&3{fac_name} &8[[&bHERO&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&bHERO&8]]&7 {display_name}'
+  YouTuber:
+    chat: '&3{fac_rank}{fac_name} &8[[&6*&fYou&4Tuber&6*&8]]&7 {display_name}
+      &6> &7{msg}'
+    nametag: '&3{fac_rank}{fac_name} &8[[&6*&fYou&4Tuber&6*&8]]&7
+      {display_name}'
+  Co-Owner:
+    chat: '&3{fac_rank}{fac_name} &8[[&2Co-Owner&8]]&f&r {display_name}
+      &6> &7{msg}'
+    nametag: '&3{fac_rank}{fac_name} &8[[&2Co-Owner&8]]&f&r {display_name}'
+  Legend:
+    chat: '&3{fac_name} &l&8[[&aLegendary&8]]&f&r {display_name}
+      &6> &7{msg}'
+    nametag: '&3{fac_name} &l&8[[&aLegendary&8]]&f&r {display_name}'
+  Titan:
+    chat: '&3{fac_name} &8[[&eTitan&8]]&f&r {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&eTitan&8]]&f&r {display_name}'
+  ProBuilder:
+    chat: '&3{fac_name} &8[[&3Pro&cBuilder&8]]&f&r {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&3Pro&cBuilder&8]]&f&r {display_name}'
+  Ownerita:
+    worlds: []
+    chat: '&3{fac_name} &8[[&4Creatoare&8]]&7 {display_name} &6> &7{msg}'
+    nametag: '&3{fac_name} &8[[&4Creatoare&8]]&7 {display_name}'
+  Default:
+    nametag: '&8&l[Default]&f&r {display_name}'
+    chat: '&8&l[Default]&f&r {display_name} &7> {msg}'
+version: 1.4.0
+default-factions-plugin: FactionsPro
+enable-multiworld-chat: false
+...

@@ -1,0 +1,6 @@
+---
+enable: "true"
+economy-plugin: Economy
+money: "5"
+message: La-i omorât pe {name} si ai primit {money} banuti
+...

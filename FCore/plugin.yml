@@ -1,0 +1,11 @@
+name: FCore
+api: [3.0.0]
+version: 1.0.0
+author: VixikCZ
+main: fcore\FCore
+load: POSTWORLD
+
+permissions:
+  fcore.perms.vip:
+    description: VIP permissions
+    default: op

@@ -1,0 +1,53 @@
+---
+MateiGamingYTB:
+  coins: 700
+  vip: false
+  rank: guest
+  level: 0
+  chest: "null"
+  lang: eng
+  auth:
+    reg: false
+    log: false
+    pwd: ~
+  gadgets:
+    fly:
+    - false
+    - 0
+    tnt:
+    - true
+    - 4
+    giant:
+    - false
+    - 0
+    headcircle:
+    - false
+    wing:
+    - false
+  particles:
+    unicorn:
+    - false
+    helix:
+    - false
+    wing:
+    - false
+    headcircle:
+    - false
+  kits:
+    classic: false
+    warrior: true
+    archer: false
+    bomber: false
+    dwarf: false
+    vip: true
+    troll: false
+    wizard: false
+    gepl: false
+  kit: ~
+  kills: 0
+  deaths: 0
+  broken: 0
+  placed: 0
+  ew: []
+  mm: []
+...

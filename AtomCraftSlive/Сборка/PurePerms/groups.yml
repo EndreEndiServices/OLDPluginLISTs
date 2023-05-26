@@ -1,0 +1,86 @@
+---
+Guest:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - -pocketmine.command.defaultgamemode
+  - -pocketmine.command.gamemode.other
+  - -pocketmine.command.me
+  - -pocketmine.command.op.take
+  - kits.kit.starter
+  - pocketmine.command.list
+  worlds: []
+Youtube:
+  inheritance:
+  - Guest
+  - Creativ
+  permissions:
+  - broadcaster.broadcast
+  - essentials.broadcast
+  - pocketmine.command.say
+Fly:
+  inheritance:
+  - Guest
+  permissions:
+  - essentials.fly.use
+  - fly
+  - fly.use
+  worlds: []
+Vip:
+  inheritance:
+  - Guest
+  - Fly
+  permissions:
+  - essentials.fly.use
+  - pocketmine.command.gamemode
+  worlds: []
+Creativ:
+  inheritance:
+  - Guest
+  - Fly
+  - Vip
+  permissions:
+  - essentials.fly.use
+  - essentials.gamemode
+  - pocketmine.command.gamemode
+  worlds: []
+Mod:
+  inheritance:
+  - Vip
+  - Guest
+  - Fly
+  permissions:
+  - essentials.gamemode
+  - pocketmine.broadcast
+  - pocketmine.command.ban
+  - pocketmine.command.enchant
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.pardon
+  - pocketmine.command.teleport
+  - tschrock.invsee.command
+  worlds: []
+Admin:
+  inheritance:
+  - Vip
+  - Guest
+  - Mod
+  - Fly
+  permissions:
+  - pocketmine.broadcast
+  - pocketmine.command.ban-ip
+  - pocketmine.command.effect
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.pardon
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  - pocketmine.command.xp
+  worlds: []
+Op:
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+...

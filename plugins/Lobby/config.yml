@@ -1,0 +1,55 @@
+---
+#------------------------------------------------------------------------#
+lobby.check.success: §a§l» §r§aConnecting...
+lobby.list.success: §e§l» §r§eList of all lobby
+lobby.switch.success: §a§l» §r§aLobby has been switched to
+lobby.join.success: §a§l» §r§aConnected to
+
+lobby.join.off.error: §c§l» §r§cLobby is offline.
+lobby.join.exist.error: §c§l» §r§cLobby does not exist.
+lobby.join.full.error: §c§l» §r§cLobby is full.
+lobby.join.already.error: §c§l» §r§cAlready connected to this lobby.
+lobby.transfer.error: §cServer missing, try again later.
+
+lobby.switch.error: §c§l» §r§c/lobby switch [on/off].
+
+permission.error: §c§l» §r§cYou do not have permission to use this option.
+#------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------#
+lobby.note.info: Check the /lobby list for more informations.
+#------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------#
+lobby.item.id: 90 #int
+lobby.item.damage: 0 #int
+#------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------#
+xstop.success.message: §c§l» §r§cServer shutdown...
+xstop.now.transfer.message: §c§l» §r§cServer shutdown, You Going to be transferred in another lobby...
+
+xstop.error.message: §c§l» §r§cYou do not have permission to use this command.
+
+timer.restart.speed: 3600
+#------------------------------------------------------------------------#
+
+#------------------#
+mysqli.work.?: true
+
+HOST: 127.0.01
+USER: root
+PASS: "pab244"
+#------------------#
+
+#------------------#
+lobby.name: Lobby-1
+
+lobby.switch: "off"
+lobby.ip: "91.134.208.143"
+lobby.port: 19133
+
+lobby.update.speed: 5 #int
+#------------------#
+
+...

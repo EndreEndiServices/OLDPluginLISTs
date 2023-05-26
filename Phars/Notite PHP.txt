@@ -1,0 +1,5 @@
+/* Acesta este un multi-line comment
+Adica pot scrie aici cate linii vreau eu,
+atata timp cat sunt intre aceste semne. */
+
+

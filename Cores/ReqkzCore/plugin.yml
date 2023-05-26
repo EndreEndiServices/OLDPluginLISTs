@@ -1,0 +1,10 @@
+name: BlitzUHCore
+main: FRISCOWZ\Main
+api: [2.1.0 , 3.0.0-ALPHA5, 1.12.0]
+version: 2.1
+author: FRISCOWZ
+commands:
+ uhc:
+  descriptions: UHChost Commands made by FRISCOWZ!
+  permission: uhc.cmd
+  default: op

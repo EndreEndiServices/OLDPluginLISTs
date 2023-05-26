@@ -1,0 +1,46 @@
+---
+#------------------------------------------------------------------------#
+command.return.use: "§c§l» §r§cUse /stats [list]"
+command.return.list: "§c§l» §r§cList:"
+command.return.error: "§c§l» §r§cAn error occurred, try again later."
+
+stats.type: "§3§lTOP 10"
+
+stats.note.info: "The §lSTATISTICS§r are updated quickly! Compare your §lSTATISTICS§r with your friends!"
+#------------------------------------------------------------------------#
+
+#----------------------------#
+stats.points.pos.x: -11
+stats.points.pos.y: 52.5
+stats.points.pos.z: 18
+
+stats.kills.pos.x: -7
+stats.kills.pos.y: 51.5
+stats.kills.pos.z: 17
+
+stats.victories.pos.x: -12
+stats.victories.pos.y: 51.5
+stats.victories.pos.z: 14
+#----------------------------#
+
+#------------------------------------------------------------------------#
+stats.table.name.1: "SkyWars"
+
+stats.table.name.2: "UHCRun"
+
+stats.table.name.3: "BattleRoyal"
+
+#Example for add more cast: <"stats.table.name.6:", "stats.table.name.7:", "stats.table.name.8:"> and set the <"stats.utmost:">
+
+stats.utmost: 3
+#------------------------------------------------------------------------#
+
+#------------------#
+mysqli.work.?: true
+
+HOST: 127.0.01
+USER: root
+PASS: "pab244"
+#------------------#
+
+...

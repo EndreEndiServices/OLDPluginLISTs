@@ -1,0 +1,30 @@
+name: CastleRaidCore
+version: 1.4.6
+author: CastleRaid Developer Team
+api: [3.0.0]
+main: CRCore\core\Loader
+permissions:
+ castleraid.nick:
+  default: true
+ castleraid.menu:
+  default: true
+ castleraid.mp:
+  default: true
+ castleraid.cp:
+  default: true
+ castleraid.info:
+  default: true
+ castleraid.quests:
+  default: true
+ castleraid.feedback:
+  default: true
+ castleraid.mail:
+  default: true
+ castleraid.heal:
+  default: op
+ castleraid.fly:
+  default: op
+ castleraid.clearinv:
+  default: op
+ castleraid.feed:
+  default: op

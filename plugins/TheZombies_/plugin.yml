@@ -1,0 +1,7 @@
+name: TheZombies
+main: TheZombies\Main
+api: 3.0.0
+version: 0.1
+commands:
+  zombies:
+   descritpion: command

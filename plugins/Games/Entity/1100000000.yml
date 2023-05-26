@@ -1,0 +1,17 @@
+---
+#Example file:
+
+entity.type: 57 #type
+
+entity.x: -21 #pos
+entity.y: 50 #pos
+entity.z: 10 #pos
+
+entity.yaw: -90 #yaw
+entity.name: "SkyWars" #name
+
+entity.game: "SkyWars" #game_db
+
+entity.ui: false
+
+...

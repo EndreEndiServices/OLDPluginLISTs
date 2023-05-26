@@ -1,0 +1,52 @@
+name: MTCore
+version: 1.0
+api: 2.0.0
+main: MTCore\MTCore
+author: MineTox-Team, Erkam2002
+description: "ILoveMCPE Core"
+commands:
+    help:
+        description: "Help command"
+        usage: "/help"
+    ban:
+        description: "Bans cheater"
+        usage: "/ban <player> <reason>"
+    msg:
+        description: "Private message player"
+        usage: "/msg <player> <message>"
+permissions:
+    imcpe:
+        description: "Top ILoveMCPE permission level"
+        default: false
+        children:
+            imcpe.cmd:
+                description: "ILoveMCPE permission level for commands"
+                default: false
+        children:
+            imcpe.log.full:
+                description: "Can login even the server is full"
+                default: false
+            imcpe.vip:
+                description: "imcpe perm for VIP ranked players"
+                default: true
+            imcpe.vip+:
+                description: "imcpe perm for VIP+ ranked players"
+                default: true
+            imcpe.extra:
+                description: "imcpe perm for Extra ranked players"
+                default: false
+            imcpe.banner:
+                description: "imcpe perm for Banner ranked players"
+                default: false
+            imcpe.ban:
+                description: "Can ban players"
+                default: false
+            imcpe.immune:
+                description: "Can't be banned"
+                default: false
+            imcpe.color:
+                description: "Can write colorfully to the chat"
+                default: false
+            imcpe.waitbypass:
+                description: "Can chat without delay!"
+                default: false

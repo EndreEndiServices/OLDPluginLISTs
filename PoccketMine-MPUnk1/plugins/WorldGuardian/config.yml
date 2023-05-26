@@ -1,0 +1,6 @@
+---
+enable_permission_plugin_support: true
+permission_plugin: PurePerms
+default_group: Guest
+use_world_parameter: true
+...

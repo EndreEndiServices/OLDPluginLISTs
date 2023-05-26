@@ -1,0 +1,89 @@
+---
+datetime-format: "H:i:s"
+Motd:
+  update-timeout: 1
+  custom: false 
+  message: "&l&5ILOVEMCPE &c[{TOTALPLAYERS}/{MAXPLAYERS}] §eONLINE"
+OutdatedClient:
+  custom: false 
+  message: "&cClientul tau MCPE este expirat!"
+OutdatedServer:
+  custom: true
+  message: "&dOops! Versiune veche Gicule!"
+WhitelistedServer:
+  custom: true
+  message: "&4&lServer in constructie!"
+FullServer:
+  custom: true
+  message: "&e{PLAYER},&4Serverul este plin &c[{TOTALPLAYERS}/{MAXPLAYERS}]&b!\n&l&5Intra mai tarziu! :)"
+FirstJoin:
+  enable: true
+  message: "&a{PLAYER}&d a intrat pentru prima data! &l&4B&5U&6N &aV&eE&dN&7I&2T&4!&e!&1!"
+Join:
+  hide: false
+  custom: true
+  message: "&a{PLAYER}&5 a intrat pe server :3"
+Quit:
+  hide: false
+  custom: true
+  message: "&c{PLAYER}&5 a parasit jocul :("
+WorldChange:
+  enable: false 
+  message: "&a{PLAYER}&e a plecat din &c{ORIGIN}&e in &a{TARGET}"
+Death:
+  hide: false
+  custom: true
+  message: "&e{PLAYER} &ca decedat! Saracu'!"
+  death-contact-message:
+    hide: false
+    custom: true
+    message: "&4Oops! &e{PLAYER} a fost omorat de &1{BLOCK}"
+  kill-message:
+    hide: false
+    custom: true
+    message: "&4{PLAYER} &ea fost omorat de &1{KILLER}"
+  death-projectile-message:
+    hide: false
+    custom: true
+    message: "&4{PLAYER} &a fost omorat de {KILLER} &1cu sageata!"
+  death-suffocation-message:
+    hide: false
+    custom: true
+    message: "&a{PLAYER} s-a sufocat! &cCe noob..."
+  death-fall-message:
+    hide: false
+    custom: true
+    message: "&6{PLAYER} a cazut de la mare inaltime! &2Ouch!"
+  death-fire-message:
+    hide: false
+    custom: true
+    message: "&c{PLAYER} s-a dus la cer in flacari!"
+  death-on-fire-message:
+    hide: false
+    custom: true
+    message: "&4{PLAYER} s-a prajit!"
+  death-lava-message:
+    hide: false
+    custom: true
+    message: "&5{PLAYER} a incercat sa inoate in apa rosie! :D"
+  death-drowning-message:
+    hide: false
+    custom: true
+    message: "&b{PLAYER} s-a inecat cu pestii!"
+  death-explosion-message:
+    hide: false
+    custom: true
+    message: "&e{PLAYER} a facut bum-bum!"
+  death-void-message:
+    hide: false
+    custom: true
+    message: "&8{PLAYER} a cazut in void! Cum plm?!"
+  death-suicide-message:
+    hide: false
+    custom: true
+    message: "&6{PLAYER} s-a sinucis. Of! Viata asta!"
+  death-magic-message:
+    hide: false
+    custom: true
+    message: "&a{PLAYER} a fost omorat de vraji!"
+...

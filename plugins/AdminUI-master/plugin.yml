@@ -1,0 +1,12 @@
+name: AdminUI
+main: SilverzPlayz\AdminUI\Main
+version: 1.0.1
+api: 3.6.0
+author: SilverzPlayz
+commands:
+  admin:
+    description: Opens AdminUI Menu
+    aliases: ["adminui"]
+permissions:
+  adminui.command:
+    default: op

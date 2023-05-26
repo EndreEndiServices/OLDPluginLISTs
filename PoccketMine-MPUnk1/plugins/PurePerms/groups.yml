@@ -1,0 +1,207 @@
+---
+Guest:
+  isDefault: true
+  inheritance: []
+  permissions:
+  - advancedkits.arqueiro
+  - advancedkits.assassino
+  - advancedkits.basico
+  - advancedkits.creeper
+  - advancedkits.fps
+  - advancedkits.pvp
+  - essentialspe.sign.use
+  - essentialspe.warp.skypvp1
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - simplewar
+  - simplewarp.command.warp
+  - simplewarp.command.warp.other
+  - simplewarp.warp
+  worlds:
+    SkyPvP1:
+      isDefault: true
+      permissions: []
+    o.o:
+      isDefault: true
+      permissions: []
+VIP:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.kangaroo
+  - advancedkits.pvp
+  - advancedkits.vip
+  - leapers.use.feather
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - spam.bypass
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+VIP2:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.c4
+  - advancedkits.kangaroo
+  - advancedkits.pvp
+  - advancedkits.vip
+  - advancedkits.vip+
+  - leapers.use.feather
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - spam.bypass
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+MVP:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.killer
+  - advancedkits.pvp
+  - pchat.colored.format
+  - pchat.colored.nametag
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+YouTuber:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.miniyt
+  - advancedkits.pvp
+  - advancedkits.yt
+  - pchat.colored.format
+  - pchat.colored.nametag
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+Builder:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - admin.painel
+  - advancedkits.miniyt
+  - advancedkits.pvp
+  - advancedkits.vip
+  - advancedkits.vip+
+  - advancedkits.yt
+  - chat.cmd.usar
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.broadcast.admin
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.list
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  - pocketmine.command.xp
+  - punir.command
+  - spam.bypass
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+helper:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - admin.painel
+  - advancedkits.miniyt
+  - advancedkits.pvp
+  - advancedkits.vip
+  - advancedkits.yt
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.broadcast.admin
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.list
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  - pocketmine.command.xp
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+Moderator:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - admin.painel
+  - advancedkits.Killer
+  - advancedkits.miniyt
+  - advancedkits.pvp
+  - advancedkits.vip
+  - advancedkits.vip+
+  - advancedkits.yt
+  - legitop
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.ban
+  - pocketmine.command.ban-ip
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+Owner:
+  isDefault: false
+  inheritance: []
+  permissions:
+  - pchat.colored.nametag
+  worlds:
+    Arena:
+      isDefault: false
+      permissions: []
+    o.o:
+      isDefault: false
+      permissions: []
+Developer:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions:
+  - advancedkits.vip
+  worlds:
+    o.o:
+      isDefault: false
+      permissions: []
+Admin:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds:
+    o.o:
+      isDefault: false
+      permissions: []
+...

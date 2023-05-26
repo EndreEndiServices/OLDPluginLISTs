@@ -1,0 +1,40 @@
+---
+#------------------------------------------------------------------------#
+setrank.success: §a§l» §r§aRank of player has been set.
+delrank.success: §a§l» §r§aRank of player has been delete.
+
+delrank.error: §c§l» §r§cPlayer does not exist.
+command.error: §c§l» §r§cUse /rank [user] level[0/config]
+permission.error: §c§l» §r§cYou do not have permission to use this command.
+
+spam.warning: "§c§l» §r§cPlease don't spam."
+#------------------------------------------------------------------------#
+
+#------------------#
+mysqli.work.?: true
+
+HOST: 127.0.01
+USER: root
+PASS: ""
+#------------------#
+
+#------------------------------------------------------------------------#
+rank.1: §a§lVIP §r§7
+
+rank.2: §b§lVIP+ §r§7
+
+rank.3: §3§lMVP §r§7
+
+rank.4: §3§lMVP§b+ §r§7
+
+rank.5: §f§lYOU§cTUBE §r§7
+
+rank.6: §6§lSTAFF §r§7
+
+rank.7: §4§lOWNER §r§7
+
+rank.form: LFish
+#------------------------------------------------------------------------#
+
+
+...

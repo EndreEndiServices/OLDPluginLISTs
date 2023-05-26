@@ -1,0 +1,19 @@
+---
+prefix: "§7[[§5ILOVEMCPE§7]]"
+suffix: ""
+time: 310 
+sendmessage-format: "&e[{TIME}] &b[{PREFIX}] {SUFFIX} &a{SENDER}&e>&f {MESSAGE}"
+datetime-format: "H:i:s"
+broadcast-enabled: true
+messages:
+ - "&b[{PREFIX}]&f §4§oServerul §enostru §6are §4Sky§fPvP§7. "
+ - "&b[{PREFIX}]&f §o§4Owneri §fserverului §csunt §aMatei§5Gaming§4Y§eT§9B §7& §fMCPE§7_§4Expert"
+ - "&b[{PREFIX}]&f §4§aDaca iti place acest server te rog intra pe §5bit.do/ilVOTE §asi voteaza serverul daca chiar iti place§7, §efiecare vot iti va aduce cate un §bdiamant §estrange-i si fa-te cel mai tare din parcare§4!!"
+popup-time: 0 
+popup-duration: 0 
+sendpopup-format: "&a{SENDER}&e>>&f {MESSAGE}"
+popup-broadcast-enabled: true
+popups:
+ - "&a§l§oBINE ATI VENIT PE §5ILOVEMCPE"
+ - "§l§o§7DIS§6TRA§aTI§1VA"
+...

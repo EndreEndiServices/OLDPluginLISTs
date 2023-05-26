@@ -1,0 +1,23 @@
+name: Sex
+main: FaigerSYS\VeryShortSex\VeryShortSex
+version: "1.0"
+api: ["2.0.0", "3.0.0", "3.0.0-ALPHA1", "3.0.0-ALPHA2", "3.0.0-ALPHA3", "3.0.0-ALPHA4", "3.0.0-ALPHA5"]
+load: POSTWORLD
+author: FaigerSYS
+description: "Очень короткий секс для ваших игроков!"
+
+commands:
+  sex:
+    description: "Запросить секс с игроком"
+    permission: "sex.use"
+  sexyes:
+    description: "Согласится на секс"
+    permission: "sex.use"
+  sexno:
+    description: "Отказаться от секса"
+    permission: "sex.use"
+
+permissions:
+  sex.use:
+    default: op
+    description: "Возможность заниматся сексом"

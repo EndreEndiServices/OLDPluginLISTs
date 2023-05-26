@@ -1,0 +1,51 @@
+---
+name: MagicWE2
+main: xenialdan\MagicWE2\Loader
+version: 7.0.0
+api: [3.0.0]
+load: STARTUP
+authors:
+- XenialDan
+description: MagicWEv2. Harder, Better, Faster, Stronger
+prefix: 'MWE2'
+permissions:
+  we.session:
+    default: op
+  we.command:
+    default: op
+    children:
+      we.command.brush:
+        default: op
+      we.command.aset:
+        default: op
+      we.command.copy:
+        default: op
+      we.command.set:
+        default: op
+      we.command.flip:
+        default: op
+      we.command.paste:
+        default: op
+      we.command.pos:
+        default: op
+      we.command.replace:
+        default: op
+      we.command.schematic:
+        default: op
+      we.command.togglewand:
+        default: op
+      we.command.wand:
+        default: op
+      we.command.undo:
+        default: op
+      we.command.redo:
+        default: op
+      we.command.debug:
+        default: op
+      we.command.toggledebug:
+        default: op
+      we.command.rotate:
+        default: op
+      we.command.flood:
+        default: op
+...

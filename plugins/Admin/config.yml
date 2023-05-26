@@ -1,0 +1,45 @@
+---
+#------------------------------------------------------------------------#
+ban.redirect.message: "§cYour account has been banned. \n "
+
+ban.message.error: §c§l» §r§cUse /xban [user] [reason].
+warn.message.error: §c§l» §r§cUse /xwarn [user] [reason].
+info.message.error: §c§l» §r§cUse /xinfo [user].
+report.message.error: §c§l» §r§cUse /report [user] [reason].
+ops.message.error: §c§l» §r§cUse /xops [add/remove] [user].
+
+report.op.message: §chas been report, check /xinfo [user].
+warn.op.message: §chas been warn.
+ban.op.message: §chas been ban.
+unban.op.message: §chas been unban.
+
+report.message.already: §e§l» §r§ePlayer already reported.
+
+vanish.message.true: §a§l» §r§aYou have been vanish.
+vanish.message.false: §a§l» §r§aYou have been unvanish.
+
+report.message.true: §a§l» §r§aPlayer has been report.
+report.message.false: §c§l» §r§cPlayer does not exist.
+
+ops.key.code: "&*"
+
+ops.add.message.true: §a§l» §r§aPlayer has been added.
+ops.add.message.false: §c§l» §r§cPlayer already added.
+ops.del.message.true: §a§l» §r§aPlayer has been deleted.
+ops.del.message.false: §c§l» §r§cPlayer does not exist.
+
+ops.set.message.true: §a§l» §r§aYou are now op.
+
+info.list.success: §c§l» §r§cList of Player locker
+
+permission.message: §c§l» §r§cYou do not have permission to use this command.
+#------------------------------------------------------------------------#
+
+#------------------#
+mysqli.work.?: true
+
+HOST: 127.0.01
+USER: root
+PASS: "pab244"
+#------------------#
+...

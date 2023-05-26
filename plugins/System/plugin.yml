@@ -1,0 +1,14 @@
+name: System
+main: Xaoc\MainClass
+version: 0.1
+api: 3.0.0-ALPHA7
+load: POSTWORLD
+author: vk.com/ez.xaoc
+
+commands:
+ mute:
+  permission: bansystem.mute
+  description: "Мут игрока"
+ unmute:
+  permission: bansystem.mute
+  description: "Анмут Игрока"

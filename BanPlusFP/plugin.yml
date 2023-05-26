@@ -1,0 +1,14 @@
+name: BanP
+main: BanP\BanP
+author: FixPlug
+version: 1.0
+api: 2.0.0
+commands:
+ banip:
+  permission: banip.plus
+  description: бан игрока по ip
+permissions:
+    banip.plus:
+      default: op
+      description: бан игрока по ip
+

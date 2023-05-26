@@ -1,0 +1,252 @@
+---
+-1109:84:383:o.o:
+  x: -1109
+  "y": 84
+  z: 383
+  level: o.o
+  price: 0
+  item: 284
+  itemName: goldshovel
+  meta: 0
+  amount: 1
+-1417:76:1006:SkyPVP:
+  x: -1417
+  "y": 76
+  z: 1006
+  level: SkyPVP
+  price: 0
+  item: 261
+  itemName: bow
+  meta: 0
+  amount: 1
+-1419:76:1006:SkyPVP:
+  x: -1419
+  "y": 76
+  z: 1006
+  level: SkyPVP
+  price: 0
+  item: 364
+  itemName: steak
+  meta: 0
+  amount: 64
+-1412:73:1012:SkyPVP:
+  x: -1412
+  "y": 73
+  z: 1012
+  level: SkyPVP
+  price: 0
+  item: 309
+  itemName: ironboots
+  meta: 0
+  amount: 1
+-1415:67:955:SkyPVP:
+  x: -1415
+  "y": 67
+  z: 955
+  level: SkyPVP
+  price: 10
+  item: 313
+  itemName: diamondboots
+  meta: 0
+  amount: 1
+-7:125:12:MesterMC SkyPvP:
+  x: -7
+  "y": 125
+  z: 12
+  level: MesterMC SkyPvP
+  price: 50
+  item: 315
+  itemName: goldchestplate
+  meta: 0
+  amount: 1
+-49:116:-29:MesterMC SkyPvP:
+  x: -49
+  "y": 116
+  z: -29
+  level: MesterMC SkyPvP
+  price: 0
+  item: 313
+  itemName: diamondboots
+  meta: 0
+  amount: 1
+-53:120:-24:MesterMC SkyPvP:
+  x: -53
+  "y": 120
+  z: -24
+  level: MesterMC SkyPvP
+  price: 0
+  item: 283
+  itemName: goldsword
+  meta: 0
+  amount: 1
+-1037:115:439:o.o:
+  x: -1037
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 272
+  itemName: stonesword
+  meta: 0
+  amount: 1
+-1036:115:439:o.o:
+  x: -1036
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 261
+  itemName: bow
+  meta: 0
+  amount: 1
+-1035:115:439:o.o:
+  x: -1035
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 262
+  itemName: arrow
+  meta: 0
+  amount: 64
+-1034:115:439:o.o:
+  x: -1034
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 305
+  itemName: chainboots
+  meta: 0
+  amount: 1
+-1032:115:439:o.o:
+  x: -1032
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 303
+  itemName: chainchestplate
+  meta: 0
+  amount: 1
+-1033:115:439:o.o:
+  x: -1033
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 304
+  itemName: chainlegging
+  meta: 0
+  amount: 1
+-1031:115:439:o.o:
+  x: -1031
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 302
+  itemName: chairhat
+  meta: 0
+  amount: 1
+-1038:115:439:o.o:
+  x: -1038
+  "y": 115
+  z: 439
+  level: o.o
+  price: 0
+  item: 260
+  itemName: apple
+  meta: 0
+  amount: 32
+-1111:73:463:o.o:
+  x: -1111
+  "y": 73
+  z: 463
+  level: o.o
+  price: 1
+  item: 265
+  itemName: ironingot
+  meta: 0
+  amount: 1
+-1080:69:514:o.o:
+  x: -1080
+  "y": 69
+  z: 514
+  level: o.o
+  price: 5
+  item: 264
+  itemName: diamond
+  meta: 0
+  amount: 1
+-1071:51:549:o.o:
+  x: -1071
+  "y": 51
+  z: 549
+  level: o.o
+  price: 1
+  item: 283
+  itemName: goldsword
+  meta: 0
+  amount: 1
+-1001:62:498:o.o:
+  x: -1001
+  "y": 62
+  z: 498
+  level: o.o
+  price: 1
+  item: 317
+  itemName: goldboots
+  meta: 0
+  amount: 1
+-946:39:500:o.o:
+  x: -946
+  "y": 39
+  z: 500
+  level: o.o
+  price: 5
+  item: 310
+  itemName: diamondhelmet
+  meta: 0
+  amount: 1
+-1000:80:313:o.o:
+  x: -1000
+  "y": 80
+  z: 313
+  level: o.o
+  price: 10
+  item: 311
+  itemName: diamondchestplate
+  meta: 0
+  amount: 1
+-1042:52:370:o.o:
+  x: -1042
+  "y": 52
+  z: 370
+  level: o.o
+  price: 5
+  item: 351
+  itemName: lapislazuli
+  meta: 4
+  amount: 1
+-1011:57:368:o.o:
+  x: -1011
+  "y": 57
+  z: 368
+  level: o.o
+  price: 0
+  item: 283
+  itemName: goldsword
+  meta: 0
+  amount: 1
+-900:67:394:o.o:
+  x: -900
+  "y": 67
+  z: 394
+  level: o.o
+  price: 0
+  item: 280
+  itemName: stick
+  meta: 0
+  amount: 1
+...

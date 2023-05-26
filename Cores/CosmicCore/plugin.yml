@@ -1,0 +1,135 @@
+﻿name: CosmicCore
+main: CosmicCore\CosmicCore
+api: 3.0.0
+version: 2
+author: Muqsit
+commands:
+  privateopen:
+    description: Privacy
+  cc:
+    description: Personalism
+  sec:
+    description: "Security"
+  task:
+    permission: cosmicpe.noperm
+  title:
+    permission: cosmicpe.title
+  chest:
+    permission: cosmicpe.chest
+  envoy:
+    permission: cosmicpe.envoy.command
+  pv:
+    permission: cosmicpe.vault
+  sell:
+    description: "Allow players to /sell."
+  bountyget:
+    description: "Get a player's bounty!"
+  bounty:
+    usage: "§4/bounty §7<player> <amount>"
+  opme:
+    description: "Become OP!"
+  rules:
+    description: "Get a list of server rules!"
+  fx:
+    permission: cosmicpe.fx
+  gms:
+    description: "Changes your gamemode to survival"
+    permission: cosmicpe.gamemodes
+  gmc:
+    description: "Changes your gamemode to creative"
+    permission: cosmicpe.gamemodes
+  kit:
+    permission: cosmicpe.kits.command
+  akreload:
+    permission: cosmicpe.kits.admin
+  withdraw:
+    permission: cosmicpe.withdraw
+  help:
+    description: "Initial command for newbies to the server"
+  lag:
+    description: "Clear Lagg"
+  exp:
+    description: "XP Stats"
+  xpbottle:
+    description: "Redeem XP"
+  vote:
+    description: "Vote for the server!"
+    permission: cosmicpe.vote.command.vote
+permissions:
+  cosmicpe.privateopen:
+    default: false
+  cosmicpe.privateopen.on:
+    default: false
+  cosmicpe.banned.effect:
+    default: false
+  cosmicpe.noperm:
+    default: op
+  cosmicpe.title:
+    default: true
+  cosmicpe.chest:
+    default: false
+  cosmicpe.plsdont:
+    default: false
+  cosmicpe.envoy:
+    default: op
+    children:
+      cosmicpe.envoy.command:
+        default: op
+      cosmicpe.envoy.manage:
+        default: op
+  cosmicpe.freedom:
+    default: false
+  cosmicpe.vault:
+    default: true
+    children:
+      cosmicpe.vault.1:
+      default: true
+  cosmicpe.hungerfree:
+    default: false
+  cosmicpe.treecapitator:
+    default: false
+  cosmicpe.veinminer:
+    default: false
+  cosmicpe.torch:
+    default: false
+  cosmicpe.sell:
+    default: op
+  cosmicpe.security:
+    default: true
+    children:
+      cosmicpe.security.command:
+        default: true
+        children:
+        cosmicpe.security.command.security:
+          default: true
+  cosmicpe.withdraw:
+    default: true
+  cosmicpe.kits.command:
+    default: true
+  cosmicpe.kits.admin:
+    default: op
+  cosmicpe.gamemodes:
+    default: op
+  cosmicpe.limitations:
+    default: true
+  cosmicpe.fx:
+    default: op
+  cosmicpe.clearlagg:
+    default: false
+    children:
+      cosmicpe.clearlagg.command:
+        default: false
+        children:  
+          cosmicpe.clearlagg.command.clearlagg:
+            default: op
+  cosmicpe.vote:
+    default: true
+    description: "Allows access to all VoteReward features."
+    children:
+      cosmicpe.vote.command:
+        default: true
+        children:
+          cosmicpe.vote.command.vote:
+            default: true
+          cosmicpe.vote.command.reload:
+            default: op

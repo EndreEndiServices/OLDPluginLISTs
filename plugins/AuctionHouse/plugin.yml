@@ -1,0 +1,10 @@
+name: AuctionHouse
+main: sLeeD\AuctionHouseUpgraded\Main
+api: [3.0.0, 4.0.0, 5.0.0]
+version: 1.0
+author: sLeeD
+description: Edites By Eforce! Private Plugin
+
+commands:
+ ah:
+  description: opens the form

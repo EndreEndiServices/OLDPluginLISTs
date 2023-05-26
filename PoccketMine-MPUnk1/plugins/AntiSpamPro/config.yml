@@ -1,0 +1,21 @@
+---
+delay: "1"
+message1: §7[[§5ILOVEMCPE§7]] §eIncearca sa nu §cspamezi
+message2: §7[[§5ILOVEMCPE§7]] §eCalmeaza-te, daca spamezi primesti §ckick
+action: kick
+kickmessage: §cSPAM
+warnings: 3
+setkickmessage: §7[[§5ILOVEMCPE§7]] §eCei care spameaza primesc §ckick
+setbanmessage: §7[[§5ILOVEMCPE§7]] §eCei care spameaza primesc §cban
+setbanipmessage: §7[[§5ILOVEMCPE§7]] §eCei care spameaza primesc §cBan-IP
+setbancidmessage: §7[[§5ILOVEMCPE§7]] §eCei care spameaza primesc §cBan CID
+banmessage: §cSPAM
+setdelay: AntiSpamPro settings have been changed
+invaliddelay: Please use a valid delay (1, 2 or 3)
+help1: /asp kick    set the punishment to kick
+help2: /asp ban     set the punishment to ban
+help3: /asp set 1   set minimum delay (1,2 or 3)
+help4: /asp         display the current minimum delay
+lastwarning: '§7[[§5ILOVEMCPE§7]] §eUltimul avertisment, §cnu mai spama '
+antiswearwords: true
+...

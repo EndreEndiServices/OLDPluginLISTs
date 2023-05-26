@@ -1,0 +1,9 @@
+name: MXSkyBlock
+main: MXSB\GreenWix\Main 
+version: 1.0.0 
+api: [3.0.0] 
+author: Mr_Xaker
+
+permissions:
+ mx.sb:
+  default: op

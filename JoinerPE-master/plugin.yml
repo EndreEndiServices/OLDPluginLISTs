@@ -1,0 +1,13 @@
+name: ZetralJoin
+main: EnterTainerSK\Main
+api: [3.0.0]
+version: 0.1
+description: join plugin for ZC server
+
+commands:
+    lobby:
+        usage: /lobby
+        description: Teleport to server lobby
+    spawn:
+        usage: /spawn
+        description: Transfer to server spawn

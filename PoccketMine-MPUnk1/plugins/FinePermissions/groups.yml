@@ -1,0 +1,199 @@
+---
+Default:
+  alias: def
+  prefix: ""
+  suffix: ""
+  default-group: true
+  inheritance: []
+  worlds:
+    world:
+      permissions:
+      - essentialstp.command.spawn
+      - pocketmine.broadcast.user
+      - pocketmine.command.help
+      - pocketmine.command.list
+      - pocketmine.command.tell
+      - pocketmine.command.version
+      - xperms.build
+      - battlekits.kit.Начальный
+      - battlekits.kit.Палач
+      - battlekits.kit.Убийца
+      - battlekits.kit.Разбойник
+      - battlekits.kit.Опасный
+      - battlekits.kit.Несущий_Смерть
+      - battlekits.kit.Опытный_Шахтер
+      - battlekits.kit.Умелый_Шахтер
+      - battlekits.kit.Бригадир
+      - battlekits.sign
+      - battlekits
+      - battlekits.sign.use
+      - simpleauth.command.login
+      - simpleauth.command.register
+      - simplewarp.warp
+      - bouncyblocks.bounce
+      - bouncyblocks.
+      - finechest
+    NJF:
+      permissions: []
+    Finecraft:
+      permissions: []
+    o.o:
+      permissions: []
+Vip:
+  alias: v
+  prefix: '[Vip]'
+  suffix: ""
+  inheritance:
+  - Default
+  worlds:
+    NF:
+      permissions:
+      - essentialstp.command.back
+      - debe.pl
+      - debe.pl.subinventory
+    world:
+      permissions: []
+Vip+:
+  alias: v+
+  prefix: '[Vip+]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  worlds:
+    NF:
+      permissions:
+      - morecommands.heal
+    world:
+      permissions: []
+Premium:
+  alias: p
+  prefix: '[Premium]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  - Vip+
+  worlds:
+    NF:
+      permissions:
+      - godmode.toggle
+    world:
+      permissions: []
+Deluxe:
+  alias: d
+  prefix: '[Deluxe]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  - Vip+
+  - Premium
+  worlds:
+    NF:
+      permissions:
+      - essentialstp.command.addwarp
+      - essentialstp.command.delwarp
+Creative:
+  alias: c
+  prefix: '[Creative]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  worlds:
+    NF:
+      permissions:
+      - morecommands.gmc
+      - morecommands.gms
+Moderator:
+  alias: m
+  prefix: '[Moderator]'
+  suffix: ""
+  inheritance:
+  - Default
+  worlds:
+    world:
+      permissions:
+      - pocketmine.command.kick
+      - pocketmine.command.ban
+      - timerban.ban
+      - morecommands.mute
+      - morecommands.unmute
+      - godmode.toggle
+    park:
+      permissions: []
+YouTuber:
+  alias: true
+  prefix: '[YouTube]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  worlds:
+    world:
+      permissions:
+      - morecommands.heal
+YouTuber+:
+  alias: y+
+  prefix: '[YouTube+]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  - Vip+
+  - Premium
+  worlds:
+    world:
+      permissions:
+      - morecommands.gms
+      - morecommands.gmc
+      - essentialstp.command.addwarp
+      - essentialstp.command.delwarp
+Op:
+  alias: o
+  prefix: '[OP]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  - Vip+
+  - Premium
+  worlds:
+    world:
+      permissions:
+      - morecommands.gms
+      - morecommands.gmc
+Admin:
+  alias: a
+  prefix: '[Admin]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  - Vip+
+  - Premium
+  worlds:
+    world:
+      permissions:
+      - morecommands.gms
+      - morecommands.gmc
+      - essentialstp.command.addwarp
+      - essentialstp.command.delwarp
+Sozdatel:
+  alias: s
+  prefix: '[Создатель]'
+  suffix: ""
+  inheritance:
+  - Default
+  - Vip
+  - Vip+
+  - Premium
+  worlds:
+    world:
+      permissions:
+      - morecommands.gms
+      - morecommands.gmc
+      - essentialstp.command.addwarp
+      - essentialstp.command.delwarp
+...

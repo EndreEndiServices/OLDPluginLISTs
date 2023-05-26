@@ -1,0 +1,14 @@
+# {PLAYERS} = Player count in server 
+# {MAXPLAYERS} = Max player count 
+# {SONG} = Playing song name 
+# {PLAYER} = Player's Name 
+# {DISPLAYNAME} = Player's DisplayName 
+# {MONEY} = Player's Money 
+# {RANK} = Player's Money Rank 
+# {HEALTH} = Player's Health 
+# {MAXHEALTH} = Player's MaxHealth 
+# {X}, {Y}, {Z} = Player's Positions 
+# {WORLD} = Player's world name 
+# {ITEMID} = Item ID in Player's hand 
+# {ITEMDAMAGE} = Item Damage in Player's hand 
+# {ITEMNAME} = Item Name in Player's hand

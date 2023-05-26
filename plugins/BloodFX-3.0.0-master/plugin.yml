@@ -1,0 +1,5 @@
+name: BloodFX-3.0.0
+version: 7WDEV
+main: StockPE\Blood
+api: [3.0.0]
+author: 7awariGamer(7Wdev)

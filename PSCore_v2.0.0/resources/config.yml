@@ -1,0 +1,268 @@
+---
+auth:
+  enable: false
+  login_timeout_seconds: 120
+optimizer:
+  enable: true
+  optimizing_tick_seconds: 10
+anti_cheat:
+  block_kill_aura: false
+  block_anti_knockback: false
+  block_one_hit_kill: false
+  block_flying_hack: false
+  log_hacking: false
+broadcaster:
+  enable: false
+  interval_seconds: 60
+restarter:
+  time: 10800
+  broadcast_time: 30
+  enable: false
+anti_spam:
+  time: 1
+anti_swear:
+  profanity:
+  - fuck
+  - shit
+  - dick
+#in seconds
+tp_delays:
+  home_tp_delay: 7
+  spawn_tp_delayed: 5
+  tpa_tp_delay: 7
+  warp_tp_delayed: 7
+info:
+  pop:
+    title:
+    - '&a&lPrestigeSociety'
+    text:
+    - '&bWork and Progress!'
+    x: 248.613500
+    "y": 72.000000
+    z: 270.351400
+    level: world
+vip_zone_block_id: 19
+vip_iron_block_id: 42
+vip_gold_block_id: 41
+vip_diamond_block_id: 57
+op_help_format: '&4[HELP] &d@player: @explanation'
+kill_money_amount: 100
+combat_logger:
+  time: 25
+land_protector_worlds: []
+levels:
+  lv1:
+    kills: 1
+    permissions: []
+  lv2:
+    kills: 2
+    permissions: []
+  lv3:
+    kills: 3
+    permissions: []
+  lv4:
+    kills: 4
+    permissions: []
+  lv5:
+    kills: 5
+    permissions: []
+  lv6:
+    kills: 6
+    permissions: []
+  lv7:
+    kills: 7
+    permissions: []
+levels_crates:
+  1:
+    chance: 100
+    create_item_name: Crate Key Prestige 1
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+  2:
+    chance: 100
+    create_item_name: Crate Key Prestige 2
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+  3:
+    chance: 100
+    create_item_name: Crate Key Prestige 3
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+  4:
+    chance: 100
+    create_item_name: Crate Key Prestige 4
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+  5:
+    chance: 100
+    create_item_name: Crate Key Prestige 5
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+  6:
+    chance: 100
+    create_item_name: '&a&lCrate Key Prestige 6'
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+  7:
+    chance: 100
+    create_item_name: '&e&lCrate Key Prestige &d7'
+    crate_item_id: 399
+    crate_block_id: 130
+    items:
+      "276:0":
+        amount: 1
+        chance: 100
+        custom_name: '&4&lBlood Seeker III'
+        enchantments:
+        - sharpness:5
+      "264:0":
+        amount: 32
+        chance: 100
+        custom_name: '&b&lRuby VII'
+        enchantments: []
+      "368:0":
+        amount: 4
+        chance: 100
+        custom_name: '&6&lDragonBall II'
+        enchantments: []
+      16560:
+        amount: 1
+        chance: 100
+        custom_name: ""
+        enchantments: []
+shop_sign:
+- '&d[PS-SHOP]'
+- '&eItem: @item'
+- '&eAmount: @amount'
+- '&ePrice: @price'
+signs:
+  garbage_sign:
+  - '&cGARBAGE'
+  - '&aTOUCH TO'
+  - '&aCLEAR ITEM'
+  - ""
+  world_sign:
+  - '&c[WORLD]'
+  - '&e@world'
+  - ""
+  - ""
+fixable_items:
+  256: 50
+  257: 150
+  258: 150
+  261: 20
+  267: 100
+  268: 20
+  269: 10
+  270: 30
+  271: 30
+  272: 30
+  273: 15
+  274: 45
+  275: 45
+  276: 600
+  277: 300
+  278: 900
+  279: 900
+  283: 60
+  284: 30
+  285: 90
+  286: 90
+  290: 20
+  291: 30
+  292: 100
+  293: 600
+  294: 30
+ender_chest_position:
+  x: -829
+  1: 94
+  z: 598
+  level: Zephyrus
+staff_mode:
+  game_mode: 1
+  first_item_id: 351
+  first_item_meta: 10
+  first_item_name: '&aYou Are Visible'
+  first_item_id_2: 351
+  first_item_meta_2: 9
+  first_item_name_2: '&eYou Are Invisible'
+  second_item_id: 79
+  second_item_meta: 0
+  second_item_name: '&bPlayer Freezer'
+  third_item_id: 381
+  third_item_meta: 10
+  third_item_name: '&aTeleport To Random Player'
+  fourth_item_id: 288
+  fourth_item_meta: 0
+  fourth_item_name: '&aAcrobat'
+spawn_x: 248.613500
+spawn_y: 72.000000
+spawn_z: 270.351400
+spawn_level: world
+...

@@ -1,0 +1,9 @@
+name: BeatsShopUI
+main: ShopUI\Main
+api: [3.0.0-ALPHA10, 3.0.0-ALPHA11]
+version: 4.0
+author: FreakingDev
+
+commands:
+ shop:
+  description: "Purchase in-game items with a GUI."

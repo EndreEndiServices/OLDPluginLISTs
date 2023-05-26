@@ -1,0 +1,7 @@
+name: Athletic
+main: athletic\Main
+version: 1.0
+api: 4.0.0
+load: POSTWORLD
+website: https://github.com/MazaiCrafty\Athletic-plugin
+author: MazaiCrafty

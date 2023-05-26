@@ -1,0 +1,31 @@
+---
+stickone: Палочка Начального Мага
+sticktwo: Палочка Мага
+stickthree: Палочка Темного Мага
+
+staffone: Посох силы
+stafftwo: Посох голода
+staffthree: Посох тьмы
+
+addstaffone: Вам успешно выдано (Посох силы)
+addstafftwo: Вам успешно выдано (Посох голода)
+addstaffthree: Вам успешно выдано (Посох тьмы)
+
+addstickone: Вам успешно выдано (Палочка Начального Мага)
+addsticktwo: Вам успешно выдано (Палочка Мага)
+addstickthree: Вам успешно выдано (Палочка Темного Мага)
+
+errorcommand: /magicalstick <stickone, sticktwo, stickthree>
+errorcommandstaff: /staffstick <staffone, stafftwo, staffthree>
+errorcommandbuy: /staff <stickone, sticktwo, stickthree, staffone, stafftwo, staffthree>
+
+errormoney: Вам не хватает на покупку {money}
+
+countmoneystaffone: 1000
+countmoneystafftwo: 2000
+countmoneystaffthree: 3000
+
+countmoneystickone: 1000
+countmoneysticktwo: 2000
+countmoneystickthree: 3000
+...

@@ -1,0 +1,9 @@
+---
+# DO NOT EDIT THIS VALUE!
+cfg-version: 1
+
+# Enable or disable the PurePerms Support
+pureperms-support: true
+# Enable or disable EconomyAPI Support
+economyapi-support: true
+...

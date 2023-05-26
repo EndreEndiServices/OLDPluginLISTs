@@ -1,0 +1,17 @@
+name: FuncraftServerteam
+main: ElektroPrinz\FuncraftServerteam\Serverteam
+version: 1.5.3
+api: 3.9.0
+author: ElektroPrinz
+
+commands:
+    serverteam:
+        description: "Hauptbefehl für das Serverteam-Plugin"
+        usage: "/serverteam <list|info|help>"
+        permission: frcserverteam.cmd
+        
+permissions:
+    frcerverteam.cmd:
+        description: "/serverteam"
+        default: true
+        

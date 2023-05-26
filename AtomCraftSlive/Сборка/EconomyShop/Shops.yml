@@ -1,0 +1,292 @@
+---
+169:68:153:world:
+  x: 169
+  "y": 68
+  z: 153
+  level: world
+  price: 100
+  item: 364
+  itemName: steak
+  meta: 0
+  amount: 20
+170:68:153:world:
+  x: 170
+  "y": 68
+  z: 153
+  level: world
+  price: 20
+  item: 391
+  itemName: carrot
+  meta: 0
+  amount: 1
+170:68:154:world:
+  x: 170
+  "y": 68
+  z: 154
+  level: world
+  price: 80
+  item: 366
+  itemName: chicken
+  meta: 0
+  amount: 20
+170:68:157:world:
+  x: 170
+  "y": 68
+  z: 157
+  level: world
+  price: 150
+  item: 331
+  itemName: redstone
+  meta: 0
+  amount: 32
+164:68:157:world:
+  x: 164
+  "y": 68
+  z: 157
+  level: world
+  price: 130
+  item: 355
+  itemName: bed
+  meta: 0
+  amount: 1
+164:68:153:world:
+  x: 164
+  "y": 68
+  z: 153
+  level: world
+  price: 150
+  item: 330
+  itemName: irondoor
+  meta: 0
+  amount: 1
+164:68:155:world:
+  x: 164
+  "y": 68
+  z: 155
+  level: world
+  price: 160
+  item: 89
+  itemName: glowingstone
+  meta: 0
+  amount: 32
+168:68:157:world:
+  x: 168
+  "y": 68
+  z: 157
+  level: world
+  price: 10
+  item: 287
+  itemName: web
+  meta: 0
+  amount: 1
+166:68:157:world:
+  x: 166
+  "y": 68
+  z: 157
+  level: world
+  price: 130
+  item: 347
+  itemName: clock
+  meta: 0
+  amount: 1
+164:68:154:world:
+  x: 164
+  "y": 68
+  z: 154
+  level: world
+  price: 40
+  item: 58
+  itemName: craftingtable
+  meta: 0
+  amount: 1
+165:68:153:world:
+  x: 165
+  "y": 68
+  z: 153
+  level: world
+  price: 60
+  item: 61
+  itemName: furnace
+  meta: 0
+  amount: 1
+164:68:156:world:
+  x: 164
+  "y": 68
+  z: 156
+  level: world
+  price: 120
+  item: 47
+  itemName: bookshelf
+  meta: 0
+  amount: 32
+170:68:155:world:
+  x: 170
+  "y": 68
+  z: 155
+  level: world
+  price: 130
+  item: 259
+  itemName: flintandsteel
+  meta: 0
+  amount: 1
+170:68:156:world:
+  x: 170
+  "y": 68
+  z: 156
+  level: world
+  price: 50
+  item: 315
+  itemName: goldchestplate
+  meta: 0
+  amount: 1
+169:68:157:world:
+  x: 169
+  "y": 68
+  z: 157
+  level: world
+  price: 120
+  item: 345
+  itemName: compass
+  meta: 0
+  amount: 1
+167:68:157:world:
+  x: 167
+  "y": 68
+  z: 157
+  level: world
+  price: 100
+  item: 359
+  itemName: shears
+  meta: 0
+  amount: 1
+165:68:157:world:
+  x: 165
+  "y": 68
+  z: 157
+  level: world
+  price: 150
+  item: 155
+  itemName: quartzblock
+  meta: 0
+  amount: 32
+193:68:134:world:
+  x: 193
+  "y": 68
+  z: 134
+  level: world
+  price: 300
+  item: 17
+  itemName: oaklog
+  meta: 0
+  amount: 20
+191:68:134:world:
+  x: 191
+  "y": 68
+  z: 134
+  level: world
+  price: 200
+  item: 53
+  itemName: woodstair
+  meta: 0
+  amount: 10
+193:68:128:world:
+  x: 193
+  "y": 68
+  z: 128
+  level: world
+  price: 300
+  item: 280
+  itemName: stick
+  meta: 0
+  amount: 64
+190:68:134:world:
+  x: 190
+  "y": 68
+  z: 134
+  level: world
+  price: 300
+  item: 17
+  itemName: birchlog
+  meta: 2
+  amount: 20
+189:68:134:world:
+  x: 189
+  "y": 68
+  z: 134
+  level: world
+  price: 80
+  item: 12
+  itemName: sand
+  meta: 0
+  amount: 16
+192:68:134:world:
+  x: 192
+  "y": 68
+  z: 134
+  level: world
+  price: 100
+  item: 340
+  itemName: book
+  meta: 0
+  amount: 16
+192:68:128:world:
+  x: 192
+  "y": 68
+  z: 128
+  level: world
+  price: 500
+  item: 388
+  itemName: emerald
+  meta: 0
+  amount: 5
+191:68:128:world:
+  x: 191
+  "y": 68
+  z: 128
+  level: world
+  price: 700
+  item: 266
+  itemName: ""
+  meta: 0
+  amount: 15
+189:68:128:world:
+  x: 189
+  "y": 68
+  z: 128
+  level: world
+  price: 150
+  item: 15
+  itemName: ironore
+  meta: 0
+  amount: 1
+189:68:129:world:
+  x: 189
+  "y": 68
+  z: 129
+  level: world
+  price: 350
+  item: 155
+  itemName: pilliarquartz
+  meta: 2
+  amount: 20
+190:68:128:world:
+  x: 190
+  "y": 68
+  z: 128
+  level: world
+  price: 600
+  item: 265
+  itemName: ironingot
+  meta: 0
+  amount: 10
+189:68:133:world:
+  x: 189
+  "y": 68
+  z: 133
+  level: world
+  price: 1000
+  item: 49
+  itemName: Obsidian
+  meta: 0
+  amount: 32
+...

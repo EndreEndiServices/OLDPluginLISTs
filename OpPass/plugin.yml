@@ -1,0 +1,4 @@
+name: OpPass
+version: 1.0
+main: passop\opql\Loaderop
+api: 3.0.0

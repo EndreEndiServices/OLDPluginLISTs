@@ -1,0 +1,38 @@
+# NearestPlayerCompass Configuration File
+
+# This message will be sent when nearest player found
+# Replacement: @pn : Nearest Player's Name
+#              @dn : Nearest Player's Display Name
+#              @tn : Nearest Player's Name Tag
+#              @d  : Distance between player and nearest player
+
+message-found-nearest-player: '§bNearest Player:§e @pn §8,§b Distance:§e @d §em'
+
+# ----------------------------------------------------------------------------
+
+# This message will be sent if there is no nearest player
+# Replacement: No Available
+
+message-no-nearest-player: '§bNearest Player:§7 --- §8,§b Distance:§7 ---'
+
+# ----------------------------------------------------------------------------
+
+# Apply Only Operators
+# (If set true, not operators won't be sent nearest player message)
+
+apply-only-permitted-player: false
+
+# ----------------------------------------------------------------------------
+
+# Set needle to nearest player
+# (If set true, compass needle will set to nearest player's position)
+
+set-needle-to-nearest: true
+
+# ----------------------------------------------------------------------------
+
+# Sending Message Type
+# Available: chat, popup, tip
+# (Default: chat)
+
+sending-message-type: chat

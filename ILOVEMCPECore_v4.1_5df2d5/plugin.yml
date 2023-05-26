@@ -1,0 +1,13 @@
+name: ILOVEMCPECore
+author: MateiGamingYTB
+main: ILOVEMCPE\Main
+version: 4.1
+api: [3.0.0+ALPHA11]
+commands:
+  donez:
+    description: "Detalii pentru jucatorii interesati sa doneze"
+    permission: donez.command
+permissions:
+  donez.command:
+    default: true
+    description: "Detalii pentru jucatorii interesati sa doneze"

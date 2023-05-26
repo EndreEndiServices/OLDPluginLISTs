@@ -1,0 +1,28 @@
+name: AdminControlUI
+version: 1.0.0
+main: SchdowNVIDIA\AdminControlUI\Main
+api: 3.0.0
+author: SchdowNVIDIA
+description: AdminControlUI - A handy tool to manage your server!
+depend:
+  - FormAPI
+commands:
+  admincontrol:
+    permission: admincontrol.open
+    description: Open the AdminControlUI
+    aliases: ["acui", "ac"]
+permissions:
+  admincontrol.open:
+    default: op
+  admincontrol.full:
+    default: op
+    children:
+      admincontrol.ban:
+        default: op
+      admincontrol.kick:
+        default: op
+      admincontrol.economy:
+        default: op
+      admincontrol.groups:
+        default: op
+

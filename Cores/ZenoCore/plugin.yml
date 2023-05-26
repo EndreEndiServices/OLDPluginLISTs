@@ -1,0 +1,30 @@
+name: ZenoCore
+description: ZenoFaction Main CORE
+version: 2.1
+main: zeno\main
+api: 2.0.0
+commands:
+ killmobs:
+  description: Kills all Mobs & Entities.
+ fly:
+  description: Fly Command
+  permission: fly.command
+ day:
+  description: Sets time to day
+  permission: zeno.cmd.day
+ feed:
+  description: Fills your food bar
+  permission: zeno.feed
+ gm3:
+  description: Sets gamemode to 0 or 3
+  permission: zeno.cmd.gm
+ gm0:
+  description: Sets gamemode to Survival
+  permission: zeno.cmd.gm
+ pos:
+  description: Gets your position
+ permissions:
+  zeno.cmd.pos:
+   default: true
+ emoji:
+  description: Shows how to do in-game emojis

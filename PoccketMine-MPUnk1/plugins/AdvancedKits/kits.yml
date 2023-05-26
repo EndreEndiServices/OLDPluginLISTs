@@ -1,0 +1,397 @@
+---
+starter:
+  #items. name and enchantments are optional.
+  #if damage is not specified, 0 will be used
+  #if count is not specified, 1 will be used
+  items:
+  - id: 268
+    damage: 0
+    count: 1
+    name: "§bWood Sword"
+    enchantment:
+      #name: level
+      weapon_sharpness: 5
+ - id: 261
+    damage: 0
+    count: 1
+    name: "Bow"
+  - id: 262
+    damage: 0
+    count: 64
+    name: "Arrow"
+  - id: 364
+    damage: 0
+    count: 10
+    name: "Steak"
+  #helmet
+  #optional. you can remove this if you don't want a helmet
+  helmet:
+    id: 298
+    name: "§bLeather Helmet"
+    enchantment:
+      armor_protection: 1
+  #chestplate
+  #optional. you can remove this if you don't want a chestplate
+  chestplate:
+    id: 299
+    name: "§bLeather Chestplate"
+    enchantment:
+      armor_protection: 1
+  #leggings
+  #optional. you can remove this if you don't want leggings
+  leggings:
+    id: 300
+    name: "§bLeather Leggings"
+    enchantment:
+     armor_protection: 1
+  #boots
+  #optional. you can remove this if you don't want boots
+  boots:
+    id: 301
+    name: "§bLeather Boots"
+    enchantment:
+     armor_protection: 1
+  #cool down time.
+  #when a player gets this kit, he will not be able to get this again until the cool down ends
+  #this is optional. you can remove this if you don't want a cooldown
+  cooldown:
+    hours: 0
+    minutes: 5
+  #commands to execute when a player gets a kit
+  #use {player} to specify the player name
+  #optional. you can remove this if you don't want any command to be executed
+  commands:
+  - ""
+  #effects to give to the player
+  #optional. you can remove this if you don't want effects to come with this kit
+  effects:
+  - name: ""
+    seconds: 
+    amplifier: 
+  #if you do not use pureperms, use 'worlds' to specify in which worlds you want this kit to be used
+  worlds:
+  - "kitpvp"
+  #if you do not use pureperms, use 'users' to specify which players will be able to get this kit
+  users:
+  - "JOSEPER"
+  - "JOSEPER"
+
+
+MVP:
+  #items. name and enchantments are optional.
+  #if damage is not specified, 0 will be used
+  #if count is not specified, 1 will be used
+  items:
+  - id: 272
+    damage: 0
+    count: 1
+    name: "§bStone Sword"
+    enchantment:
+      weapon_sharpness: 1
+  - id: 364
+    damage: 0
+    count: 5
+    name: "Steak"
+  - id: 368
+    damage: 0
+    count: 2
+    name: "Enderpearl"
+  - id: 322
+    damage: 0
+    count: 1
+    name: "Golden Apple"
+  #helmet
+  #optional. you can remove this if you don't want a helmet
+  helmet:
+    id: 306
+    name: "§bIron Helmet"
+    enchantment:
+      armor_protection: 2
+  #chestplate
+  #optional. you can remove this if you don't want a chestplate
+  chestplate:
+    id: 303
+    name: "§bChain Chestplate"
+    enchantment:
+      armor_protection: 2
+  #leggings
+  #optional. you can remove this if you don't want leggings
+  leggings:
+    id: 304
+    name: "§bChain Leggings"
+    enchantment:
+     armor_protection: 2
+  #boots
+  #optional. you can remove this if you don't want boots
+  boots:
+    id: 309
+    name: "§bIron Boots"
+    enchantment:
+     armor_protection: 2
+  #cool down time.
+  #when a player gets this kit, he will not be able to get this again until the cool down ends
+  #this is optional. you can remove this if you don't want a cooldown
+  cooldown:
+    hours: 0
+    minutes: 1
+  #commands to execute when a player gets a kit
+  #use {player} to specify the player name
+  #optional. you can remove this if you don't want any command to be executed
+  commands:
+  - ""
+  #effects to give to the player
+  #optional. you can remove this if you don't want effects to come with this kit
+  effects:
+  - name: ""
+    seconds: 0
+    amplifier: 0
+  #if you do not use pureperms, use 'worlds' to specify in which worlds you want this kit to be used
+  worlds:
+  - "kitpvp"
+  #if you do not use pureperms, use 'users' to specify which players will be able to get this kit
+  users:
+  - "JOSEPER"
+  - "JOSEPER"
+
+
+VIP:
+  #items. name and enchantments are optional.
+  #if damage is not specified, 0 will be used
+  #if count is not specified, 1 will be used
+  items:
+  - id: 267
+    damage: 0
+    count: 1
+    name: "§bIron Sword"
+    enchantment:
+      weapon_sharpness: 2
+      weapon_knockback: 1
+  - id: 364
+    damage: 0
+    count: 5
+    name: "Steak"
+  - id: 368
+    damage: 0
+    count: 7
+    name: "Enderpearl"
+  - id: 322
+    damage: 0
+    count: 5
+    name: "Golden Apple"
+  - id: 261
+    damage: 0
+    count: 1
+    name: "Bow"
+  - id: 262
+    damage: 0
+    count: 16
+    name: "Arrow"
+  #helmet
+  #optional. you can remove this if you don't want a helmet
+  helmet:
+    id: 306
+    name: "§bIron Helmet"
+    enchantment:
+      armor_protection: 2
+  #chestplate
+  #optional. you can remove this if you don't want a chestplate
+  chestplate:
+    id: 307
+    name: "§bIron Chestplate"
+    enchantment:
+      armor_protection: 2
+  #leggings
+  #optional. you can remove this if you don't want leggings
+  leggings:
+    id: 308
+    name: "§bIron Leggings"
+    enchantment:
+     armor_protection: 2
+  #boots
+  #optional. you can remove this if you don't want boots
+  boots:
+    id: 309
+    name: "§bIron Boots"
+    enchantment:
+     armor_protection: 2
+  #cool down time.
+  #when a player gets this kit, he will not be able to get this again until the cool down ends
+  #this is optional. you can remove this if you don't want a cooldown
+  cooldown:
+    hours: 0
+    minutes: 15
+  #commands to execute when a player gets a kit
+  #use {player} to specify the player name
+  #optional. you can remove this if you don't want any command to be executed
+  commands:
+  - ""
+  #effects to give to the player
+  #optional. you can remove this if you don't want effects to come with this kit
+  effects:
+  - name: ""
+    seconds: 0
+    amplifier: 0
+  #if you do not use pureperms, use 'worlds' to specify in which worlds you want this kit to be used
+  worlds:
+  - "kitpvp"
+  #if you do not use pureperms, use 'users' to specify which players will be able to get this kit
+  users:
+  - "JOSEPER"
+  - "JOSEPER"
+
+
+Developer:
+  #items. name and enchantments are optional.
+  #if damage is not specified, 0 will be used
+  #if count is not specified, 1 will be used
+  items:
+  - id: 279
+    damage: 0
+    count: 1
+    name: "§3Developer §4Axe"
+    enchantment:
+      weapon_sharpness: 10
+      weapon_knockback: 10
+  - id: 364
+    damage: 0
+    count: 5
+    name: "Steak"
+  - id: 368
+    damage: 0
+    count: 16
+    name: "Ender Pearl"
+  - id: 466
+    damage: 0
+    count: 64
+    name: "Golden Apple"
+  - id: 261
+    damage: 0
+    count: 1
+    name: "Bow"
+  - id: 262
+    damage: 0
+    count: 64
+    name: "Arrow"
+  #helmet
+  #optional. you can remove this if you don't want a helmet
+  helmet:
+    id: 310
+    name: "§bDiamond Helmet"
+    enchantment:
+      armor_protection: 5
+  #chestplate
+  #optional. you can remove this if you don't want a chestplate
+  chestplate:
+    id: 311
+    name: "§bDiamond Chestplate"
+    enchantment:
+      armor_protection: 5
+  #leggings
+  #optional. you can remove this if you don't want leggings
+  leggings:
+    id: 312
+    name: "§bDiamond Leggings"
+    enchantment:
+     armor_protection: 5
+  #boots
+  #optional. you can remove this if you don't want boots
+  boots:
+    id: 313
+    name: "§bDiamond Boots"
+    enchantment:
+     armor_protection: 5
+  #cool down time.
+  #when a player gets this kit, he will not be able to get this again until the cool down ends
+  #this is optional. you can remove this if you don't want a cooldown
+  cooldown:
+    hours: 0
+    minutes: 0
+  #commands to execute when a player gets a kit
+  #use {player} to specify the player name
+  #optional. you can remove this if you don't want any command to be executed
+  commands:
+  - ""
+  #effects to give to the player
+  #optional. you can remove this if you don't want effects to come with this kit
+  effects:
+  - name: ""
+    seconds: 0
+    amplifier: 0
+  #if you do not use pureperms, use 'worlds' to specify in which worlds you want this kit to be used
+  worlds:
+  - "kitpvp"
+  #if you do not use pureperms, use 'users' to specify which players will be able to get this kit
+  users:
+  - "JOSEPER"
+  - "JOSEPER"
+
+
+ViP+:
+  #items. name and enchantments are optional.
+  #if damage is not specified, 0 will be used
+  #if count is not specified, 1 will be used
+  items:
+  - id: 267
+    damage: 0
+    count: 1
+    name: 
+    enchantment:
+      weapon_sharpness: 1
+  - id: 322
+    damage: 0
+    count: 16
+    name: 
+  - id: 282
+    damage: 0
+    count: 16
+  #helmet
+  #optional. you can remove this if you don't want a helmet
+  helmet:
+    id: 310
+    name: 
+    enchantment:
+      armor_protection: 1
+  #chestplate
+  #optional. you can remove this if you don't want a chestplate
+  chestplate:
+    id: 307
+    name: 
+    enchantment:
+      armor_protection: 1
+  #leggings
+  #optional. you can remove this if you don't want leggings
+  leggings:
+    id: 308
+    name: 
+    enchantment:
+      armor_protection: 1
+  #boots
+  #optional. you can remove this if you don't want boots
+  boots:
+    id: 309
+    name: 
+    enchantment:
+      armor_protection: 1
+  #cool down time.
+  #when a player gets this kit, he will not be able to get this again until the cool down ends
+  #this is optional. you can remove this if you don't want a cooldown
+  cooldown:
+    hours: 0
+    minutes: 0
+  #commands to execute when a player gets a kit
+  #use {player} to specify the player name
+  #optional. you can remove this if you don't want any command to be executed
+  commands:
+  #effects to give to the player
+  #optional. you can remove this if you don't want effects to come with this kit
+  effects:
+  #if you do not use pureperms, use 'worlds' to specify in which worlds you want this kit to be used
+  worlds:
+  - "SkyPvP1"
+  - "SkyPvP2"
+  - "SkyPvP3"
+  #if you do not use pureperms, use 'users' to specify which players will be able to get this kit
+  users:
+  - "dioconsole"
+  - "lucaspet28"
+...
