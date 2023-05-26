@@ -1,0 +1,24 @@
+---
+name: The Hunger Games -1- Wolf
+type: mod
+eid: 354998
+networkId: 14
+levelName: "Hunger Games Lobby"
+message: "Welcome to the Hunger Games - 1 Survival"
+itemOnHand: "267"
+armorHelmet: ~
+armorChestplate: ~
+armorLegging: ~
+armorBoots: ~
+positionX: -26
+positionY: 39
+positionZ: -415
+cost: 0
+kitName: false
+kitBlock: 35
+particles: "splash"
+destinationLevelName: "Hunger Games Lobby"
+destinationPosX: 139.000000
+destinationPosY: 67.000000
+destinationPosZ: -54.000000
+...

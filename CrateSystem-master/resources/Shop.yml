@@ -1,0 +1,12 @@
+---
+Common:
+  cost: 100
+Vote:
+  cost: 200
+Rare:
+  cost: 300
+Mythic:
+  cost: 400
+Legendary:
+  cost: 500
+...

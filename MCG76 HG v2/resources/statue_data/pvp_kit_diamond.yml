@@ -1,0 +1,19 @@
+---
+name: pvp_kit_diamond
+type: npc
+category: kit
+networkId: 190101
+levelName: lobby
+itemOnHand: "276"
+armorHelmet: "310"
+armorChestplate: "311"
+armorLegging: "312"
+armorBoots: "313"
+positionX: -991
+positionY: 25
+positionZ: 1516
+cost: 100
+message: "PvP Diamond Kit"
+kitName: diamond_kit
+kitBlock: 52
+...

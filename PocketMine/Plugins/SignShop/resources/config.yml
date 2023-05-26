@@ -1,0 +1,13 @@
+---
+version: oneone
+signCreated: all
+lastChange: 1453878935
+server1: http://xionbig.netsons.org/plugins/SignShop/translate/download.php
+dataProvider: YAML
+dataProviderSettings:
+  host: 127.0.0.1
+  port: 3306
+  user: usernameDatabase
+  password: passwordDatabase
+  database: databaseName
+...

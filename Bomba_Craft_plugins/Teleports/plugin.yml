@@ -1,0 +1,18 @@
+﻿name: Teleports
+main: Richen\Teleports\Teleports
+version: 0.0.1
+api:
+- 1.14.0
+- 2.0.0
+load: POSTWORLD
+
+commands:
+ tpa:
+  description: 'aye'
+ tpc:
+  description: 'aye'
+ tpd:
+  description: 'aye'
+ tp:
+  description: 'aye'
+  aliases: [utp]

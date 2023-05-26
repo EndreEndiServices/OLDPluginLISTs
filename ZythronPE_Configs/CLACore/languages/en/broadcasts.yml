@@ -1,0 +1,13 @@
+---
+broadcast:
+
+  #20 = 1 seconds
+  #1000 = 5 mintues
+  tick: 1000
+
+  #Messages for broadcasting
+  messages:
+    - "Multi-Games is pretty good, right?"
+    - "SkyBlock and Plots is your homes."
+    - "Parkour is cool, but you? Looking around.."
+...

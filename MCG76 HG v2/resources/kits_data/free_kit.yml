@@ -1,0 +1,39 @@
+---
+kitName: free_kit
+isDefault: false
+price: 0
+quantity: 1
+health: 20
+itemOnHand: 268
+armors:
+  helmet:
+  - 0
+  - "0"
+  - "0"
+  chestplate:
+  - 0
+  - "0"
+  - "0"
+  leggings:
+  - 0
+  - "0"
+  - "0"
+  boots:
+  - 0
+  - "0"
+  - "0"
+weapons:
+  268:
+  - 268
+  - "0"
+  - "1"
+  332:
+  - 332
+  - "0"
+  - "64"
+foods:
+  260:
+  - 260
+  - "0"
+  - "0"
+...

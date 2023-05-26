@@ -1,0 +1,74 @@
+---
+addwarp-cmd: addwarp
+addwarp-desc: Add new warps.
+addwarp-usage: /addwarp <name> [<ip> <port>|<x> <y> <z> <level>|<player>]
+addwarp-event-cancelled: A plugin has cancelled the creation of this warp.
+closewarp-cmd: closewarp
+closewarp-desc: Close existing warps.
+closewarp-usage: /closewarp <name>
+closewarp-event-cancelled: A plugin has cancelled this action.
+delwarp-cmd: delwarp
+delwarp-desc: Delete existing warps.
+delwarp-usage: /delwarp <name>
+delewarp-event-cancelled: A plugin has cancelled the deletion of this warp.
+listwarps-cmd: listwarps
+listwarps-desc: List all your warps.
+listwarps-usage: /listwarps
+listwarps-list-title: |
+  Warp list:
+listwarps-no-warps: §cNo warps found.§r
+listwarps-noperm: §cYou don't have permission to use this command§r
+openwarp-cmd: openwarp
+openwarp-desc: Open existing warps.
+openwarp-usage: /openwarp <name>
+delwarp-event-cancelled: A plugin has cancelled this action.
+warp-cmd: warp
+warp-desc: Warp around your world.
+warp-usage: /warp <name> [player]
+warp-added-xyz: You have created a warp called §b%s§r %s
+warp-added-player: You have created a warp called §b%s§r %s
+warp-added-server: You have created a warp called §b%s§r %s
+warp-added-self: You have created a warp called §b%s§r %s
+level-not-loaded: |-
+  §cYou specified a level which isn't loaded.
+  Please see http://bit.ly/levelerror for explanation.§r
+needs-external-warps: This warp needs §bFastTransfer§r or a newer version of PocketMine.
+player-not-loaded: §cYou specified a player which isn't loaded.§r
+addwarp-noperm: §cYou don't have permission to use this command§r
+bad-warp-name: §cThat warp name is invalid.§r
+closed-warp-1: You have closed a warp called §b%s§r
+closed-warp-2: '  Only players with the permission §b%s§r will be able to use this
+  warp.'
+warp-doesnt-exist: §cThat warp doesn't exist.§r
+closewarp-noperm: §cYou don't have permission to use this command§r
+warp-deleted: You have deleted a warp called §b%s§r
+delwarp-noperm: §cYou don't have permission to use this command§r
+opened-warp-1: You have opened a warp called §b%s§r
+opened-warp-2: '  Any player will be able to use this warp.'
+openwarp-noperm: §cYou don't have permission to use this command§r
+warping-popup: Warping...
+other-player-warped: '%s has been warped to §b%s§r.'
+no-permission-warp: §cYou don't have permission to use this warp.§r
+no-permission-warp-other: §cYou don't have permission to warp other players.§r
+warp-done: You have been warped
+warp-noperm: §cYou don't have permission to use this command§r
+level-not-loaded-warp: The warp you are using is attached to a level which isn't loaded
+ess-warp-doesnt-exist: §cThat warp doesn't exist.§r
+ess-warp-conflict: The warp called §b%s§r exists in both §bEssentialsPE§r and §bSimpleWarp§r.
+  The one from §bSimpleWarp§r will be used by default. If you wish to use the §bEssentialsPE§r
+  warp, prefix the warp name with §3ess:§r
+addwarp-ess-prefix-warning: Support for §bEssentialsPE§r is enabled on this server.
+  When a user wants to explicitly use an §bEssentialsPE§r warp, they can prefix their
+  command with §3ess:§r. By choosing to pick a warp name that starts with the same
+  prefix, you are making things complicated. Maybe pick a different name?
+hold-still-popup: HOLD STILL to WARP.
+hold-still-other: The target must hold still to complete the warp.
+hold-still-cancelled: The warp was unsuccessful because you moved.
+hold-still-cancelled-other: The warp was unsuccessful because the target moved.
+warp-failed-popup: §cWarp failed!§r
+warpreport-cmd: warpreport
+warpreport-desc: Report an issue with SimpleWarp.
+warpreport-usage: /warpreport [title]
+warpreport-noperm: §cYou don't have permission to use this command§r
+plugin-disabled: §cSimpleWarp is disabled and can't execute commands.§r
+...

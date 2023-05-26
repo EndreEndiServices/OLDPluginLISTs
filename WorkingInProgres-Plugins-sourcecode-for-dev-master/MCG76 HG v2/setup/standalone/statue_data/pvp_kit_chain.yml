@@ -1,0 +1,19 @@
+---
+name: pvp_kit_chain
+type: npc
+category: kit
+networkId: 180001
+levelName: lobby
+itemOnHand: 267
+armorHelmet: 302
+armorChestplate: 303
+armorLegging: 304
+armorBoots: 305
+positionX: -987
+positionY: 25
+positionZ: 1522
+cost: 50
+message: "PvP Chain Kit"
+kitName: chain_kit
+kitBlock: 52
+...

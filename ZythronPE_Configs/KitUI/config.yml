@@ -1,0 +1,12 @@
+---
+# Players can't get another kit till they die
+one-kit-per-life: true
+# Players can claim another kit if they relog(only if one-kit-per-life is true)
+reset-on-logout: false
+# Start adding items from the first slot of inventory no matter what, will delete the present item at slot
+start-from-first: false
+# Clears player inventory before adding the kit
+clear-inventory: true
+# Text on sign for kit form (case-insensitive)
+text-on-sign: "[KitUI]"
+...

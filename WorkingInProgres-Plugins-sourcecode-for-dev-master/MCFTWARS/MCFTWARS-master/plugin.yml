@@ -1,0 +1,13 @@
+name: MCFTWARS
+main: MCFTWARS\MCFTWARS
+version: "1.0"
+author: maru
+api:
+- 1.12.0
+- 1.13.0
+- 2.0.0
+
+permissions:
+ mcftwars.command.allow:
+  descript: "example permission"
+  default: true

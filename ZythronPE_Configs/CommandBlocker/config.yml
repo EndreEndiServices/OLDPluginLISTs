@@ -1,0 +1,30 @@
+---
+# Command Blocker By Thunder33345
+
+# Log to file: logs when someone executed a blocked command
+log-to-file: true
+# How to read Log files
+# (Date(In GMT))
+# [Notice] when  someone allowed to run the command runs the command
+# [Alert] when someone not allowed to run the command runs it
+# Playername(IP) : /(Command)
+# CONSOLE means executed by console
+# REMOTE means it is executed using something like rcon
+
+# True to block console commands if it is blocked and false to allow console to execute blocked command
+block-console: true
+
+# Block remote to execute blocked commands
+block-remote: true
+
+# Blocked Commands here remove the leading /
+blocked-command: sudo,rca
+# Example Format
+# blocked-command: cmd1,cmd2,cmd3,cmd4,cmd5
+
+# Player that are allowed to execute the blocked commands
+whitelisted-player: _
+# Format
+# whitelisted-player: owner,admin,trustedhelper
+# Side Note: this WONT give them the permission to execute the command it will just expent them form this plugin's check
+...

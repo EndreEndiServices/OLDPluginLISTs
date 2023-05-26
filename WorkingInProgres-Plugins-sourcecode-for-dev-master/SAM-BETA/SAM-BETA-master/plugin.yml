@@ -1,0 +1,12 @@
+name: SAM
+main: SAM\MainClass
+version: 0.0.1
+api: [1.13.0]
+author: NetherManiacsKingdom
+description: Pocketmine auth plugin for signing up at the servers website.
+
+commands:
+ login:
+  description: "Login to your account."
+  usage: "/login <password>"
+  permission: sam.login

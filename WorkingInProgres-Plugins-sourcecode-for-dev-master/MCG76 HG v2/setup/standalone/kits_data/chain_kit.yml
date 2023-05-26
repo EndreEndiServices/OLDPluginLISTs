@@ -1,0 +1,47 @@
+---
+kitName: chain_kit
+isDefault: false
+price: 50
+quantity: 1
+health: 20
+itemOnHand: 267
+armors:
+  helmet:
+  - 302
+  - "0"
+  - "1"
+  chestplate:
+  - 303
+  - "0"
+  - "1"
+  leggings:
+  - 304
+  - "0"
+  - "1"
+  boots:
+  - 305
+  - "0"
+  - "1"
+weapons:
+  267:
+  - 267
+  - "0"
+  - "1"
+  332:
+  - 332
+  - "0"
+  - "64"
+foods:
+  320:
+  - 320
+  - "0"
+  - "2"
+  366:
+  - 366
+  - "0"
+  - "2"
+  260:
+  - 260
+  - "0"
+  - "2"
+...

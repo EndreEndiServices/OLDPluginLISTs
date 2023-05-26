@@ -1,0 +1,31 @@
+#SAM plugin default configuration
+---
+prefix: [SAM]
+#Keep logged in by IP
+IPLogin: true
+#Force single authentication
+force-single-auth: true
+#Allow not authenticated users to move
+allow-move: true
+#Block chat for not authenticated users
+block-chat: true
+#Block commands for not authenticated users
+block-commands: true
+#Block all events
+block-all-events: true
+#Login/Register timeout
+timeout: 120
+#Minimum password length
+minPasswordLength: 6
+#Maximum password length
+maxPasswordLength: 16
+#Login settings
+register:
+ #Enable register for server
+ enabled: true
+ #Website domain name
+ domain: website.com
+ 
+login:
+  #Enable login on your server
+  enabled: true\

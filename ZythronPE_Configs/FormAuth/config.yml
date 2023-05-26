@@ -1,0 +1,21 @@
+already-registered: "&cYou are already registered."
+short-password: "&cThe password is too short. (Must enter with no more than 8 - 32 characters.)"
+long-password: "&cThe password is too long. (Please enter your short password, so it will easy.)"
+success-register: "&aYou have successfully registered on the server."
+ip-register: "&c The number of registrations from one IP address reached a maximum."
+auth-success: "&aYou have been logged in to &2Zythron&6PE!"
+many-password-attempts: "&cYou have enter too many password attempts."
+wrong-password: "&cYour password is incorrect, try again."
+already-auth: "&cYou has already logged in to &2Zythron&6PE!"
+
+form:
+  register-title: "Register your &bZythron &0Account&4!"
+  input-password: "&lPassword:&r\n&7Create your password with no more than 8 - 32 characters.&r"
+  confirm-input-password: "&lConfirm password:&r\n&7You have to confirm your password!.&r"
+  auth-title: "Login your &bZythron &0Account&4!"
+  input-passw: "&lPassword:&r"
+
+already-play: "&cThis nickname is already in-game server. Please change your nickname."
+
+# Debug tip message true/false
+debug-tip: false

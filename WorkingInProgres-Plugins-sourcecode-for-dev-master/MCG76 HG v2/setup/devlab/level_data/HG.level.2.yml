@@ -1,0 +1,62 @@
+---
+id: 1428726078
+name: HG level 2
+type: 2
+displayName: HG level-2
+levelName: MinigamesHub
+waitCountDown: 20
+minPlayers: 1
+maxPlayers: 24
+
+locationX: "128"
+locationY: "12"
+locationZ: "123"
+
+joinDownCounter: 8
+
+entranceX: "139"
+entranceY: "67"
+entranceZ: "-50"
+enterLevelName: MinigamesHub
+
+exitX: "126"
+exitY: "67"
+exitZ: "-62"
+exitLevelName: MinigamesHub
+
+signJoinX: "144"
+signJoinY: "68"
+signJoinZ: "-57"
+
+signExitX: "145"
+signExitY: "59"
+signExitZ: "-46"
+
+signStatsX: "144"
+signStatsY: "67"
+signStatsZ: "-57"
+
+mapselectX: "139"
+mapselectY: "67"
+mapselectZ: "-50"
+
+gatePos1X: "145"
+gatePos1Y: "67"
+gatePos1Z: "-58"
+
+gatePos2X: "143"
+gatePos2Y: "69"
+gatePos2Z: "-58"
+
+particles: "portal"
+
+portalEnter1X: "146"
+portalEnter1Y: "64"
+portalEnter1Z: "-54"
+portalEnter2X: "131"
+portalEnter2Y: "57"
+portalEnter2Z: "-44"
+
+maps:
+- 2_Catching Fire - By SwipeShot
+...

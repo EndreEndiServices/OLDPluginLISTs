@@ -1,0 +1,59 @@
+#Configuration file for EasyMessages v1.2.0
+chat:
+ colorChat: true
+ #Set to true to allow color chat
+message:
+ autoBroadcast: true
+ #Set to true to enable automatic message broadcasting
+ interval: 30
+ #Sets the interval of the broadcast in seconds, if autoBroadcast is enabled
+ messages: 
+ #Auto messages will only be sent if autoBroadcast is set to true
+ - "§eIf you get this §6message§e, it means you are playing §3Minecraft PE §eon §30.11.0§e!"
+ - "§dThis message was §l§aautomatically §r§dsent to you. How cool is that?" 
+ - "§bThis was automatically sent to you using §6EasyMessages §bby §l§aGamecrafter§r§b!"
+motd:
+ displayType: dynamic
+ #Sets how the motd will be displayed, two options: dynamic, static
+ interval: 5
+ #Sets the interval of the update in seconds, if displayType is set to dynamic
+ dynamicMotd: "§b{SERVER_NAME}§7: [§a{SERVER_PLAYER_COUNT}§7/§c{SERVER_MAX_PLAYER_COUNT}§7]"
+ #Sets the motd, it will be updated at the set interval, only if displayType is set to dynamic, refer to values.txt for entire list of usable values
+ staticMotd: "§eMinecraft: PE Server"
+ #Sets the motd, motd will not change, only if displayType is set to static
+popup:
+ displayType: blinking
+ #Sets how the tip is sent to player, four options: auto, blinking, infinite, scrolling
+ interval: 30
+ #Sets the interval of the broadcast in seconds, if displayType is set to auto
+ speed: 8
+ #Sets the speed, in ticks, of text scrolling, 1-15 recommended
+ autoMessages:
+ #Auto popups will only be sent if displayType is set to auto
+ - "§eIf you get this §6popup§e, it means you are playing §3Minecraft PE §eon §30.11.0§e!"
+ - "§dThis popup was §l§aautomatically §r§dsent to you. How cool is that?" 
+ - "§bThis was automatically sent to you using §6EasyMessages §bby §l§aGamecrafter§r§b!"
+ blinkingMessage: "§cThis is a blinking popup."
+ #Blinking popup will only be sent if displayType is set to blinking
+ infiniteMessage: "§9This popup will never disappear."
+ #Infinite popup will only be sent if displayType is set to infinite
+ scrollingMessage: "This is a scrolling popup."
+ #Scrolling tip will only be sent if displayType is set to scrolling
+tip:
+ displayType: infinite
+ #Sets how the tip is sent to player, four options: auto, blinking, infinite, scrolling
+ interval: 30
+ #Sets the interval of the broadcast in seconds, if displayType is set to auto
+ speed: 8
+ #Sets the speed, in ticks, of text scrolling, 1-15 recommended
+ autoMessages:
+ #Auto tips will only be sent if displayType is set to auto
+ - "§eIf you get this §6tip§e, it means you are playing §3Minecraft PE §eon §30.11.0§e!"
+ - "§dThis tip was §l§aautomatically §r§dsent to you. How cool is that?" 
+ - "§bThis was automatically sent to you using §6EasyMessages §bby §l§aGamecrafter§r§b!"
+ blinkingMessage: "§cThis is a blinking tip."
+ #Blinking tip will only be sent if displayType is set to blinking
+ infiniteMessage: "§9This tip will never disappear."
+ #Infinite tip will only be sent if displayType is set to infinite
+ scrollingMessage: "This is a scrolling tip."
+ #Scrolling tip will only be sent if displayType is set to scrolling

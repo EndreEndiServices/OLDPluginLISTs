@@ -1,0 +1,10 @@
+# EconomyShop configuration file
+
+# Confirm buying by tapping twice
+enable-double-tap: true
+# Save for each changes in shop data
+auto-save: true
+# Shop data provider (yaml)
+data-provider: yaml
+# Language of EconomyShop will use (ch, en, ko, jp, uk, vi)
+lang: en

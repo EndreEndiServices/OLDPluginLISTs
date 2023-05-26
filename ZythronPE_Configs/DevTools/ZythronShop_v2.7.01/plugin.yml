@@ -1,0 +1,9 @@
+name: ZythronShop
+main: EasyShop\Main
+version: 2.7.01
+api: [3.00-ALPHA10, 3.0.0-ALPHA11]
+author: Zadezter
+description: Awesome ShopGUI
+commands:
+ zshop:
+  description: Open the ZythronShop GUI.

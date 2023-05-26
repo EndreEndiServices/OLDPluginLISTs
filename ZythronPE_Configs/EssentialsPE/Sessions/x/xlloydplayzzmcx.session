@@ -1,0 +1,15 @@
+{
+    "isAFK": false,
+    "isGod": false,
+    "homes": [],
+    "isMuted": false,
+    "mutedUntil": null,
+    "nick": "\u00a7aLloyd\u00a7bThe\u00a7rYou\u00a7cTuber",
+    "ptCommands": {
+        "369": "break"
+    },
+    "ptChatMacros": false,
+    "isPvPEnabled": true,
+    "isUnlimitedEnabled": false,
+    "isVanished": false
+}

@@ -1,0 +1,22 @@
+---
+# Создатель плагина: VoodY
+# Сервер создателя плагина: www.vk.com/fworldpe
+# По поводу плагина к нему: www.vk.com/fwpe_report
+# Группа по плагинам: www.vk.com/megaplug
+# Приватные плагины: www.vk.com/plshop_voody
+
+# Что будет писать если игрок (которого нету в конфиге) ввел команду, тег команды: {cmd}.
+msg: '§eКоманда §c{cmd} §eзапрещена.'
+# Пример
+# msg: '§cКоманда {cmd} запрещена.'
+
+# Заблокированные команды.
+commands: setgroup,deop,op,stop,reload,ban,ban-ip,givecase
+# Пример
+# commands: setgroup,deop,op,stop,reload,ban,ban-ip,givecase
+
+# Кому можно использовать команды.
+players: xx_bomba_xx,dogand_tm
+# Пример
+# players: xx_bomba_xx,dogand_tm
+...

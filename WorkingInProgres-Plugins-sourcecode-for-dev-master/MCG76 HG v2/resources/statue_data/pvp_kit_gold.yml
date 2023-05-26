@@ -1,0 +1,19 @@
+---
+name: pvp_kit_gold
+type: npc
+category: kit
+networkId: 1801213
+levelName: lobby
+itemOnHand: 283
+armorHelmet: 314
+armorChestplate: 315
+armorLegging: 316
+armorBoots: 317
+positionX: -988
+positionY: 25
+positionZ: 1518
+cost: 80
+message: "PvP Gold Kit"
+kitName: gold_kit
+kitBlock: 41
+...

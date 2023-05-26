@@ -1,0 +1,105 @@
+# -------------------------------------------------------
+# Player loggin option to lobby 
+# -------------------------------------------------------
+# note: if you already have plugin spawn players to lobby 
+#       then DON'T enable this option to avoid conflict   
+# -------------------------------------------------------
+enable_spaw_lobby: "no"
+#----------------------------
+#----------------------------- 
+# play round reset timer in ticks
+#-----------------------------
+reset_scheduler: "on"
+reset_timeout: "8000"
+reset_type: "FLOOR"
+
+#----------------------------- 
+# reset continues running
+# yes | no 
+#-----------------------------
+reset_continue_running: "no"
+
+#---------------------------
+# TnTRun lobby location
+# ---------------------------
+tntrun_lobby_world: "world"
+tntrun_lobby_x: "141"
+tntrun_lobby_y: "6"
+tntrun_lobby_z: "148"
+#---------------------------
+#---------------------------
+# TnTRun Arena location
+#--------------------------- 
+tntrun_arena_world: "world"
+tntrun_arena_name: "TNT Run Arena"
+tntrun_arena_size: "26"
+tntrun_arena_floor: "3"
+#---------------------------
+tntrun_arena_x: "82"
+tntrun_arena_y: "4"
+tntrun_arena_z: "118"
+#---------------------------
+# player entrance
+tntrun_arena_enter_x: "85"
+tntrun_arena_enter_y: "46"
+tntrun_arena_enter_z: "126"
+#---------------------------
+# TnTRun button JOIN
+#--------------------------- 
+tntrun_join_button_x: "143"
+tntrun_join_button_y: "7"
+tntrun_join_button_z: "155"
+#---------------------------
+# TnTRun button START
+#--------------------------- 
+tntrun_start_button_x: "89"
+tntrun_start_button_y: "44"
+tntrun_start_button_z: "130"
+#
+#---------------------------
+# TnTRun button RESET
+#--------------------------- 
+tntrun_reset_button_x: "142"
+tntrun_reset_button_y: "7"
+tntrun_reset_button_z: "155"
+#
+#---------------------------
+# TnTRun top floor Exit button
+#--------------------------- 
+tntrun_top_exit_button_x: "87"
+tntrun_top_exit_button_y: "44"
+tntrun_top_exit_button_z: "130"
+#
+#---------------------------
+# TnTRun ground floor Exit button
+#--------------------------- 
+tntrun_ground_exit_button_x: "93"
+tntrun_ground_exit_button_y: "7"
+tntrun_ground_exit_button_z: "130"
+#---------------------------
+# TnTRun Sign JOIN
+#--------------------------- 
+tntrun_join_sign_x: "143"
+tntrun_join_sign_y: "7"
+tntrun_join_sign_z: "155"
+#
+#---------------------------
+# TnTRun Sign START
+#--------------------------- 
+tntrun_start_sign_x: "144"
+tntrun_start_sign_y: "7"
+tntrun_start_sign_z: "155"
+#
+#---------------------------
+# TnTRun Sign RESET
+#--------------------------- 
+tntrun_reset_sign_x: "142"
+tntrun_reset_sign_y: "7"
+tntrun_reset_sign_z: "155"
+#
+#---------------------------
+# TnTRun Sign STATUS
+#--------------------------- 
+tntrun_status_sign_x: "141"
+tntrun_status_sign_y: "7"
+tntrun_status_sign_z: "155"

@@ -1,0 +1,16 @@
+#----Messages----#
+# 10 is maximum allowed messages. More coming soon!
+# These messages are fully editable!
+1: Welcome
+2: Please stop
+3: Dont spam
+4: Restarting server please come back!
+5: Welcome to my server everyone! Bienvenido a mi servidor todo el mundo!
+6: Vote for our server!
+7: We have the best server around!
+8: Yes?
+9: No
+10: Goodbye!
+#----Settings----#
+#  ^Coming soon^
+enabled: true

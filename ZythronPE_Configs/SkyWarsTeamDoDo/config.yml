@@ -1,0 +1,253 @@
+---
+chestitems:
+- - 1
+  - 0
+  - 30
+- - 1
+  - 0
+  - 20
+- - 3
+  - 0
+  - 15
+- - 3
+  - 0
+  - 25
+- - 4
+  - 0
+  - 35
+- - 4
+  - 0
+  - 15
+- - 260
+  - 0
+  - 5
+- - 261
+  - 0
+  - 1
+- - 262
+  - 0
+  - 5
+- - 267
+  - 0
+  - 1
+- - 268
+  - 0
+  - 1
+- - 272
+  - 0
+  - 1
+- - 276
+  - 0
+  - 1
+- - 283
+  - 0
+  - 1
+- - 297
+  - 0
+  - 3
+- - 298
+  - 0
+  - 1
+- - 299
+  - 0
+  - 1
+- - 300
+  - 0
+  - 1
+- - 301
+  - 0
+  - 1
+- - 303
+  - 0
+  - 1
+- - 304
+  - 0
+  - 1
+- - 310
+  - 0
+  - 1
+- - 313
+  - 0
+  - 1
+- - 314
+  - 0
+  - 1
+- - 315
+  - 0
+  - 1
+- - 316
+  - 0
+  - 1
+- - 317
+  - 0
+  - 1
+- - 320
+  - 0
+  - 4
+- - 354
+  - 0
+  - 1
+- - 364
+  - 0
+  - 4
+- - 366
+  - 0
+  - 5
+- - 391
+  - 0
+  - 5
+STMSpawn1:
+- 162
+- 86
+- 519
+STMSpawn2:
+- 195
+- 86
+- 506
+STMSpawn3:
+- 225
+- 86
+- 518
+STMSpawn4:
+- 243
+- 86
+- 548
+STMSpawn5:
+- 232
+- 86
+- 582
+STMSpawn6:
+- 203
+- 86
+- 600
+STMSpawn7:
+- 173
+- 86
+- 584
+STMSpawn8:
+- 155
+- 85
+- 552
+STMSpawn9:
+- 164
+- 86
+- 522
+STMSpawn10:
+- 197
+- 85
+- 508
+STMSpawn11:
+- 223
+- 85
+- 517
+STMSpawn12:
+- 242
+- 86
+- 548
+arenas:
+- STM
+- SkyFantasy
+- FantasyLand
+STMPlayTime: 780
+STMStartTime: 10
+SkyFantasySpawn1:
+- -182
+- 33
+- 683
+SkyFantasySpawn2:
+- -218
+- 32
+- 681
+SkyFantasySpawn3:
+- -244
+- 33
+- 675
+SkyFantasySpawn4:
+- -269
+- 32
+- 653
+SkyFantasySpawn5:
+- -280
+- 32
+- 624
+SkyFantasySpawn6:
+- -277
+- 32
+- 597
+SkyFantasySpawn7:
+- -254
+- 32
+- 570
+SkyFantasySpawn8:
+- -224
+- 32
+- 561
+SkyFantasySpawn9:
+- -197
+- 32
+- 563
+SkyFantasySpawn10:
+- -170
+- 32
+- 586
+SkyFantasySpawn11:
+- -161
+- 32
+- 617
+SkyFantasySpawn12:
+- -163
+- 32
+- 643
+SkyFantasyPlayTime: 780
+SkyFantasyStartTime: 10
+FantasyLandSpawn1:
+- -220
+- 32
+- 682
+FantasyLandSpawn2:
+- -190
+- 32
+- 673
+FantasyLandSpawn3:
+- -167
+- 32
+- 652
+FantasyLandSpawn4:
+- -158
+- 32
+- 620
+FantasyLandSpawn5:
+- -167
+- 32
+- 590
+FantasyLandSpawn6:
+- -188
+- 32
+- 567
+FantasyLandSpawn7:
+- -220
+- 32
+- 558
+FantasyLandSpawn8:
+- -250
+- 32
+- 567
+FantasyLandSpawn9:
+- -273
+- 32
+- 588
+FantasyLandSpawn10:
+- -282
+- 32
+- 620
+FantasyLandSpawn11:
+- -273
+- 32
+- 650
+FantasyLandSpawn12:
+- -252
+- 32
+- 673
+FantasyLandPlayTime: 780
+FantasyLandStartTime: 90
+...

@@ -1,0 +1,19 @@
+name: SLG
+main: Sergey_Dertan\SClearLagg\SClearLaggMainFolder\SClearLaggMain
+api: 1.8.0
+load: STARTUP
+author: Sergey_Dertan
+description: "Авто очистка вещей"
+version: Beta_0.2
+commands:
+ scl:
+  permissions: scl.scl
+  description: "Помощь по SClearLagg"
+permissions:
+ sclearlagg:
+  description: "Максимальные права"
+  default: op
+  children:
+   scl.scl:
+    default: op
+    description: "Резрешить использовать команду /scl"

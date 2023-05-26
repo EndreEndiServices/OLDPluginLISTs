@@ -1,0 +1,29 @@
+---
+Игрок:
+  max_regions_num: 3
+  max_region_count_blocks: 10000
+Вип:
+  max_regions_num: 4
+  max_region_count_blocks: 40000
+Премиум:
+  max_regions_num: 5
+  max_region_count_blocks: 50000
+Креатив:
+  max_regions_num: 7
+  max_region_count_blocks: 70000
+Админ:
+  max_regions_num: 15
+  max_region_count_blocks: 150000
+Модератор:
+  max_regions_num: 9
+  max_region_count_blocks: 90000
+Оператор:
+  max_regions_num: 15
+  max_region_count_blocks: 150000
+Основатель:
+  max_regions_num: 20
+  max_region_count_blocks: 200000
+Владелец:
+  max_regions_num: 25
+  max_region_count_blocks: 250000
+...

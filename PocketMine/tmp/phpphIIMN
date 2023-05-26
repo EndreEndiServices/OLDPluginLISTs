@@ -1,0 +1,966 @@
+name: MSpawns
+main: MSpawns\Main
+version: "1.5"
+api: [1.11.0]
+load: STARTUP
+author: EvolSoft
+description: Multiple Spawns Plugin
+website: https://www.evolsoft.tk
+
+commands:
+ mspawns:
+  aliases: [ms]
+  description: MSpawns Commands.
+  permission: mspawns
+ setalias:
+  description: Set alias.
+  permission: mspawns.setalias
+ sethub:
+  aliases: [setlobby]
+  description: Set hub.
+  permission: mspawns.sethub
+ hub:
+  aliases: [lobby]
+  description: Teleport player to hub.
+  permission: mspawns.hub
+ setspawn:
+  description: Set world spawn.
+  permission: mspawns.setspawn
+ spawn:
+  description: Teleport player to world spawn.
+  permission: mspawns.spawn
+  
+permissions:
+ mspawns:
+  default: op
+  description: MSpawns commands permissions.
+  children:
+   mspawns.info:
+    default: op
+    description: Allows player to read info about MSpawns.
+   mspawns.reload:
+    default: op
+    description: Allows player to reload MSpawns.
+   mspawns.sethub:
+    default: op
+    description: Allows player to set hub.
+   mspawns.hub:
+    default: true
+    description: Teleport player to hub.
+   mspawns.setalias:
+    default: op
+    description: Allows player to set alias.
+   mspawns.setspawn:
+    default: op
+    description: Allows player to set spawn.
+   mspawns.spawn:
+    default: true
+    description: Teleport player to world spawn.<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 06/06/2015 01:26 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\CommandExecutor;
+use pocketmine\level\Level;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+class Main extends PluginBase{
+	
+	//About Plugin Const
+	const PRODUCER = "EvolSoft";
+	const VERSION = "1.5";
+	const MAIN_WEBSITE = "http://www.evolsoft.tk";
+	//Other Const
+	//Prefix
+	const PREFIX = "&7[&cMSpawns&7] ";
+	
+    public $cfg;
+    
+    public $aliases;
+	
+	public $spawns;
+	 
+
+	public function translateColors($symbol, $message){
+		
+		$message = str_replace($symbol."0", TextFormat::BLACK, $message);
+		$message = str_replace($symbol."1", TextFormat::DARK_BLUE, $message);
+		$message = str_replace($symbol."2", TextFormat::DARK_GREEN, $message);
+		$message = str_replace($symbol."3", TextFormat::DARK_AQUA, $message);
+		$message = str_replace($symbol."4", TextFormat::DARK_RED, $message);
+		$message = str_replace($symbol."5", TextFormat::DARK_PURPLE, $message);
+		$message = str_replace($symbol."6", TextFormat::GOLD, $message);
+		$message = str_replace($symbol."7", TextFormat::GRAY, $message);
+		$message = str_replace($symbol."8", TextFormat::DARK_GRAY, $message);
+		$message = str_replace($symbol."9", TextFormat::BLUE, $message);
+		$message = str_replace($symbol."a", TextFormat::GREEN, $message);
+		$message = str_replace($symbol."b", TextFormat::AQUA, $message);
+		$message = str_replace($symbol."c", TextFormat::RED, $message);
+		$message = str_replace($symbol."d", TextFormat::LIGHT_PURPLE, $message);
+		$message = str_replace($symbol."e", TextFormat::YELLOW, $message);
+		$message = str_replace($symbol."f", TextFormat::WHITE, $message);
+		
+		$message = str_replace($symbol."k", TextFormat::OBFUSCATED, $message);
+		$message = str_replace($symbol."l", TextFormat::BOLD, $message);
+		$message = str_replace($symbol."m", TextFormat::STRIKETHROUGH, $message);
+		$message = str_replace($symbol."n", TextFormat::UNDERLINE, $message);
+		$message = str_replace($symbol."o", TextFormat::ITALIC, $message);
+		$message = str_replace($symbol."r", TextFormat::RESET, $message);
+		
+		return $message;
+	}
+	
+    public function onEnable(){
+        @mkdir($this->getDataFolder());
+        $this->saveDefaultConfig();
+        $this->cfg = $this->getConfig()->getAll();
+        $this->saveResource("aliases.yml");
+        $this->saveResource("spawns.yml");
+        $this->aliases = new Config($this->getDataFolder() . "aliases.yml", Config::YAML, array());
+        $this->spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+        $this->getCommand("sethub")->setExecutor(new Commands\SetHub($this));
+        $this->getCommand("hub")->setExecutor(new Commands\Hub($this));
+        $this->getCommand("setspawn")->setExecutor(new Commands\SetSpawn($this));
+        $this->getCommand("spawn")->setExecutor(new Commands\Spawn($this));
+        $this->getCommand("setalias")->setExecutor(new Commands\SetAlias($this));
+        $this->getCommand("mspawns")->setExecutor(new Commands\Commands($this));
+        if($this->cfg["enable-aliases"] == true){
+        	$this->reloadAliases();
+        }
+	    $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+    }
+    
+    public function reloadAliases(){
+    	$aliases = new Config($this->getDataFolder() . "aliases.yml", Config::YAML, array());
+    	$aliases = $aliases->getAll();
+    	foreach($aliases as $cmd => $target){
+    		$this->getServer()->getCommandMap()->register($cmd, new Aliases($this, $cmd));
+    	}
+    }
+    
+    public function getSpawnMessage(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	if($temp["show-prefix"] == true){
+    		$format = Main::PREFIX . $temp["spawn-message"];
+    		$format = str_replace("{PLAYER}", $player->getName(), $format);
+    		$format = str_replace("{WORLD}", $player->getLevel()->getName(), $format);
+    		return $format;
+    	}else{
+    		$format = $temp["spawn-message"];
+    		$format = str_replace("{PLAYER}", $player->getName(), $format);
+    		$format = str_replace("{WORLD}", $player->getLevel()->getName(), $format);
+    		return $format;
+    	}
+    }
+    
+    public function getSpawnMessage_2(Player $player, Level $level){
+    	$temp = $this->getConfig()->getAll();
+    	if($temp["show-prefix"] == true){
+    		$format = Main::PREFIX . $temp["spawn-message"];
+    		$format = str_replace("{PLAYER}", $player->getName(), $format);
+    		$format = str_replace("{WORLD}", $level->getName(), $format);
+    		return $format;
+    	}else{
+    		$format = $temp["spawn-message"];
+    		$format = str_replace("{PLAYER}", $player->getName(), $format);
+    		$format = str_replace("{WORLD}", $level->getName(), $format);
+    		return $format;
+    	}
+    }
+    
+    public function getNoSpawnMessage(){
+    	$temp = $this->getConfig()->getAll();
+    	if($temp["show-prefix"] == true){
+    		$format = Main::PREFIX . "&cNo spawn found in this world";
+    		return $format;
+    	}else{
+    		$format = "&cNo spawn found in this world";
+    		return $format;
+    	}
+    }
+    
+    public function getHubMessage(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	if($temp["show-prefix"] == true){
+    		$format = Main::PREFIX . $temp["hub-message"];
+    		$format = str_replace("{PLAYER}", $player->getName(), $format);
+    		$format = str_replace("{WORLD}", $player->getLevel()->getName(), $format);
+    		return $format;
+    	}else{
+    		$format = $temp["hub-message"];
+    		$format = str_replace("{PLAYER}", $player->getName(), $format);
+    		$format = str_replace("{WORLD}", $player->getLevel()->getName(), $format);
+    		return $format;
+    	}
+    }
+    
+    public function getNoHubMessage(){
+    	$temp = $this->getConfig()->getAll();
+    	if($temp["show-prefix"] == true){
+    		$format = Main::PREFIX . "&cNo hub set";
+    		return $format;
+    	}else{
+    		$format = "&cNo hub set";
+    		return $format;
+    	}
+    }
+    
+    public function getNoWorldMessage(){
+    	$temp = $this->getConfig()->getAll();
+    	if($temp["show-prefix"] == true){
+    		$format = Main::PREFIX . "&cWorld not found";
+    		return $format;
+    	}else{
+    		$format = "&cWorld not found";
+    		return $format;
+    	}
+    }
+    
+
+    public function getForceSpawn_OnJoin(){
+    	$temp = $this->getConfig()->getAll();
+    	return $temp["force-spawn"];
+    }
+    
+    /*public function getForceSpawn(){
+    	$temp = $this->getConfig()->getAll();
+    	return $temp["force-spawn"];
+    }*/
+    
+    public function getForceHub_OnJoin(){
+    	$temp = $this->getConfig()->getAll();
+    	return $temp["force-hub"];
+    }
+    
+    public function SetAlias($name, $target){
+    	$cfg = $this->getConfig()->getAll();
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$spawns = $spawns->getAll();
+    	$aliases = new Config($this->getDataFolder() . "aliases.yml", Config::YAML, array());
+    	$temp = $aliases->getAll();
+    	$name = strtolower($name);
+    	//Check if spawn exists
+    	if(isset($spawns[$target])){
+    		$temp[$name] = $target;
+    		$aliases->setAll($temp);
+    		$aliases->save();
+    		if($cfg["enable-aliases"] == true){
+    			$this->reloadAliases();
+    		}
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
+    
+    public function getSpawn(Level $level){
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$spawns = $spawns->getAll();
+    	if($this->SpawnExists($level)){
+    		return $spawns[$level->getName()];
+    	}else{
+    		return false;
+    	}
+    }
+    
+    public function setSpawn(Player $player){
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$temp = $spawns->getAll();
+    	$temp[$player->getLevel()->getName()]["X"] = $player->x;
+    	$temp[$player->getLevel()->getName()]["Y"] = $player->y;
+    	$temp[$player->getLevel()->getName()]["Z"] = $player->z;
+    	$temp[$player->getLevel()->getName()]["Yaw"] = $player->yaw;
+    	$temp[$player->getLevel()->getName()]["Pitch"] = $player->pitch;
+    	$player->sendMessage($this->translateColors("&", Main::PREFIX . "&aSpawn set"));
+    	$spawns->setAll($temp);
+    	$spawns->save();
+    }
+    
+    public function SpawnExists(Level $level){
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$spawns = $spawns->getAll();
+    	return isset($spawns[$level->getName()]);
+    }
+    
+    public function getHub(){
+    	$temp = $this->getConfig()->getAll();
+    	if($this->HubExists()){
+    		return $temp["hub"];
+    	}else{
+    		return false;
+    	}
+    }
+    
+    public function setHub(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	$temp["hub"]["world"] = $player->getLevel()->getName();
+    	$temp["hub"]["X"] = $player->x;
+    	$temp["hub"]["Y"] = $player->y;
+    	$temp["hub"]["Z"] = $player->z;
+    	$temp["hub"]["Yaw"] = $player->yaw;
+    	$temp["hub"]["Pitch"] = $player->pitch;
+    	$player->sendMessage($this->translateColors("&", Main::PREFIX . "&aHub set"));
+    	$this->getConfig()->setAll($temp);
+    	$this->getConfig()->save();
+    }
+    
+    public function HubExists(){
+    	$temp = $this->getConfig()->getAll();
+    	return isset($temp["hub"]);
+    }
+    
+    public function teleportToSpawn(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$spawns = $spawns->getAll();
+    	if(isset($spawns[$player->getLevel()->getName()])){
+    		$player->teleport(new Position($spawns[$player->getLevel()->getName()]["X"], $spawns[$player->getLevel()->getName()]["Y"], $spawns[$player->getLevel()->getName()]["Z"]), $spawns[$player->getLevel()->getName()]["Yaw"], $spawns[$player->getLevel()->getName()]["Pitch"]);
+    		if($temp["enable-spawn-message"] == true){
+    			$player->sendMessage($this->translateColors("&", $this->getSpawnMessage($player)));
+    		}
+    	}else{
+    		$player->sendMessage($this->translateColors("&", $this->getNoSpawnMessage()));
+    	}
+    	return true;
+    }
+    
+    public function teleportToSpawn_2(Player $player, Level $level){
+    	$temp = $this->getConfig()->getAll();
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$spawns = $spawns->getAll();
+    	if(isset($spawns[$level->getName()])){
+    		$player->teleport(new Position($spawns[$level->getName()]["X"], $spawns[$level->getName()]["Y"], $spawns[$level->getName()]["Z"]), $spawns[$level->getName()]["Yaw"], $spawns[$level->getName()]["Pitch"]);
+    		if($temp["enable-spawn-message"] == true){
+    			$player->sendMessage($this->translateColors("&", $this->getSpawnMessage_2($player, $level)));
+    		}
+    	}else{
+    		$player->sendMessage($this->translateColors("&", $this->getNoSpawnMessage()));
+    	}
+    	return true;
+    }
+    
+    public function teleportToSpawn_OnJoin(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	$spawns = new Config($this->getDataFolder() . "spawns.yml", Config::YAML, array());
+    	$spawns = $spawns->getAll();
+    	if(isset($spawns[$player->getLevel()->getName()])){
+    		$player->teleport(new Position($spawns[$player->getLevel()->getName()]["X"], $spawns[$player->getLevel()->getName()]["Y"], $spawns[$player->getLevel()->getName()]["Z"]), $spawns[$player->getLevel()->getName()]["Yaw"], $spawns[$player->getLevel()->getName()]["Pitch"]);
+    		if($temp["enable-spawn-message"] == true && $temp["show-messages-onjoin"] == true){
+    			$player->sendMessage($this->translateColors("&", $this->getSpawnMessage($player)));
+    		}
+    	}
+    	else{
+    		$player->sendMessage($this->translateColors("&", $this->getNoSpawnMessage()));
+    	}
+    }
+    
+    public function teleportToHub(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	if(isset($temp["hub"])){
+    		if($player->getLevel()->getName()!=$temp["hub"]["world"]){
+    			if(Server::getInstance()->loadLevel($temp["hub"]["world"]) != false){
+    				$player->teleport(new Position($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"], $this->getServer()->getLevelByName($temp["hub"]["world"])), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
+    				if($temp["enable-hub-message"] == true){
+    					$player->sendMessage($this->translateColors("&", $this->getHubMessage($player)));
+    				}
+    			}else{
+    				$player->sendMessage($this->translateColors("&", $this->getNoWorldMessage()));
+    			}
+    		}else{
+    			$player->teleport(new Position($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"]), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
+    			if($temp["enable-hub-message"] == true){
+    				$player->sendMessage($this->translateColors("&", $this->getHubMessage($player)));
+    			}
+    		}
+    	}else{
+    		$player->sendMessage($this->translateColors("&", $this->getNoHubMessage()));
+    	}
+    }
+    
+    public function teleportToHub_OnJoin(Player $player){
+    	$temp = $this->getConfig()->getAll();
+    	if(isset($temp["hub"])){
+    		if($player->getLevel()->getName()!=$temp["hub"]["world"]){
+    			if(Server::getInstance()->loadLevel($temp["hub"]["world"]) != false){
+    				$player->teleport(new Vector3($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"], $this->getServer()->getLevelByName($temp["hub"]["world"])), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
+    				if($temp["enable-hub-message"] == true && $temp["show-messages-onjoin"] == true){
+    					$player->sendMessage($this->translateColors("&", $this->getHubMessage($player)));
+    				}
+    			}else{
+    				$player->sendMessage($this->translateColors("&", $this->getNoWorldMessage()));
+    			}
+    		}else{
+    			$player->teleport(new Vector3($temp["hub"]["X"], $temp["hub"]["Y"], $temp["hub"]["Z"]), $temp["hub"]["Yaw"], $temp["hub"]["Pitch"]);
+    			if($temp["enable-hub-message"] == true && $temp["show-messages-onjoin"] == true){
+    				$player->sendMessage($this->translateColors("&", $this->getHubMessage($player)));
+    			}
+    		}
+    	}else{
+    		$player->sendMessage($this->translateColors("&", $this->getNoHubMessage()));
+    	}
+    }
+    	
+}
+?>---
+show-prefix: true
+show-messages-onjoin: true
+force-hub: false
+enable-hub-message: true
+hub-message: Welcome to Hub, {PLAYER}
+force-spawn: false
+teleport-on-death: 1
+enable-spawn-message: true
+spawn-message: Teleported To {WORLD} Spawn
+enable-aliases: true
+...
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:26 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\level\Level;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use MSpawns\Main;
+
+class SetHub extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "sethub":
+    				if($sender instanceof Player){
+    					if($sender->hasPermission("mspawns.sethub")){
+    						$this->plugin->setHub($sender);
+    						return true;
+    					}else{
+    						$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    						return true;
+    					}
+    				}else{
+    					$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+					    return true;
+    				}
+				break;  
+    		}
+    	return true;
+    }
+	
+}
+    ?>
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:26 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\level\Level;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use MSpawns\Main;
+
+class Hub extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "hub":
+    				if($sender instanceof Player){
+    					if($sender->hasPermission("mspawns.hub")){
+    						$this->plugin->teleportToHub($sender);
+    						return true;
+    					}
+    					else{
+    						$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    						return true;
+    					}
+    				}else{
+    					$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+    					return true;
+    				}
+    				break;
+    		}
+    	return true;
+    }
+	
+}
+    ?>
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:26 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\level\Level;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use MSpawns\Main;
+
+class SetSpawn extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "setspawn":
+    				if($sender instanceof Player){
+    					if($sender->hasPermission("mspawns.setspawn")){
+    						$this->plugin->setSpawn($sender);
+    						return true;
+    					}else{
+    						$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    						return true;
+    					}
+    				}else{
+    					$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+					    return true;
+    				}
+				break;  
+    		}
+    	return true;
+    }
+	
+}
+    ?>
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:26 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\level\Level;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use MSpawns\Main;
+
+class Spawn extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "spawn":
+    				if($sender instanceof Player){
+    					if($sender->hasPermission("mspawns.spawn")){
+    						$this->plugin->teleportToSpawn($sender);
+    						return true;
+    					}
+    					else{
+    						$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    						return true;
+    					}
+    				}else{
+    					$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+    					return true;
+    				}
+    				break;
+    		}
+    	return true;
+    }
+	
+}
+    ?>
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 27/12/2014 01:26 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns\Commands;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\level\Level;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use MSpawns\Main;
+
+class SetAlias extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			case "setalias":
+    				if($sender->hasPermission("mspawns.setalias")){
+    					if(isset($args[0]) && isset($args[1])){
+    						if($this->plugin->setAlias($args[0], $args[1])){
+    							$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&aAlias Set"));
+    						}else{
+    							$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cCan't set alias. Spawn not found in world " . $args[1]));
+    						}
+    					}else{
+    						$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cUsage /setalias <name> <target>"));
+    					}
+    					return true;
+    				}else{
+    					$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    					return true;
+    				}
+				break;  
+    		}
+    	return true;
+    }
+	
+}
+    ?>
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 06/06/2015 01:46 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+namespace MSpawns\Commands;
+
+use pocketmine\Player;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+use MSpawns\Main;
+
+class Commands extends PluginBase implements CommandExecutor{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
+    	$fcmd = strtolower($cmd->getName());
+    	switch($fcmd){
+    			   case "mspawns":
+    			   	if(isset($args[0])) {
+    			   		$args[0] = strtolower($args[0]);
+    			   		if($args[0]=="reload"){
+    			   			if ($sender->hasPermission("mspawns.reload")) {
+    			   				$this->plugin->reloadConfig();
+    			   				$this->cfg = $this->plugin->getConfig()->getAll();
+    			   				if($this->cfg["enable-aliases"] == true){
+    			   					$this->plugin->reloadAliases();
+    			   				}
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&aConfiguration Reloaded."));
+    			   				return true;
+    			   			}
+    			   			else {
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				return true;
+    			   			}
+    			   		}
+    			   		elseif($args[0]=="info"){
+    			   			if ($sender->hasPermission("mspawns.info")) {
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&6MSpawns &cv" . Main::VERSION . " &6developed by&c " . Main::PRODUCER));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&6Website &c" . Main::MAIN_WEBSITE));
+    			   				return true;
+    			   			}
+    			   			else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				return true;
+    			   			}
+    			   		}elseif($args[0]=="setalias"){
+    			   			if($sender->hasPermission("mspawns.setalias")){
+    			   				if(isset($args[1]) && isset($args[1])){
+    			   					if($this->plugin->setAlias($args[1], $args[2])){
+    			   						$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&aAlias Set"));
+    			   					}else{
+    			   						$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cCan't set alias. Spawn not found in world " . $args[2]));
+    			   					}
+    			   				}else{
+    			   					$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cUsage /ms setalias <name> <target>"));
+    			   				}
+    			   				return true;
+    			   			}else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				return true;
+    			   			}
+    			   		}elseif($args[0]=="sethub"){
+    			   			if($sender instanceof Player){
+    			   				if($sender->hasPermission("mspawns.sethub")){
+    			   					$this->plugin->setHub($sender);
+    			   					return true;
+    			   				}
+    			   				else{
+    			   					$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   					return true;
+    			   				}
+    			   			}else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+    			   				return true;
+    			   			}
+    			   		}elseif($args[0]=="hub"){
+    			   			if($sender instanceof Player){
+    			   				if($sender->hasPermission("mspawns.hub")){
+    			   					$this->plugin->teleportToHub($sender);
+    			   					return true;
+    			   				}
+    			   				else{
+    			   					$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   					return true;
+    			   				}
+    			   			}else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+    			   				return true;
+    			   			}	
+    			   		}elseif($args[0]=="setspawn"){
+    			   			if($sender instanceof Player){
+    			   				if($sender->hasPermission("mspawns.setspawn")){
+    			   					$this->plugin->setSpawn($sender);
+    			   					return true;
+    			   				}
+    			   				else{
+    			   					$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   					return true;
+    			   				}
+    			   			}else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+    			   				return true;
+    			   			}
+    			   		}elseif($args[0]=="spawn"){
+    			   			if($sender instanceof Player){
+    			   				if($sender->hasPermission("mspawns.spawn")){
+    			   					$this->plugin->teleportToSpawn($sender);
+    			   					return true;
+    			   				}
+    			   				else{
+    			   					$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   					return true;
+    			   				}
+    			   			}else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cYou can only perform this command as a player"));
+    			   				return true;
+    			   			}
+    			   		}else{
+    			   			if($sender->hasPermission("mspawns")){
+    			   				$sender->sendMessage($this->plugin->translateColors("&", Main::PREFIX . "&cSubcommand &b" . $args[0] . " &cnot found. Use &b/ms &cto see available commands"));
+    			   				break;
+    			   			}
+    			   			else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				break;
+    			   			}
+    			   			return true;
+    			   		}
+    			   	}
+    			   	else{
+    			   		if($sender->hasPermission("mspawns")){
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&c>> &6Available Commands &c<<"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/sethub &cor &6/ms sethub &c>> &6Set hub"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/hub &cor &6/ms hub &c>> &6Teleport player to hub"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/setspawn &cor &6/ms setspawn &c>> &6Set world spawn"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/spawn &6or &6/ms spawn &c>> &6Teleport player to world spawn"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/setalias &cor &6/ms setalias &c>> &6Set alias"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/ms info &c>> &6Show info about this plugin"));
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&6/ms reload &c>> &6Reload the config"));
+    			   				break;
+    			   			}
+    			   			else{
+    			   				$sender->sendMessage($this->plugin->translateColors("&", "&cYou don't have permissions to use this command"));
+    			   				break;
+    			   			}
+    			   			return true;
+    			   	}
+    		}
+    	return true;
+    }
+	
+}
+    ?>
+<?php
+
+/*
+ * MSpawns (v1.5) by EvolSoft
+ * Developer: EvolSoft (Flavius12)
+ * Website: http://www.evolsoft.tk
+ * Date: 06/06/2015 01:27 PM (UTC)
+ * Copyright & License: (C) 2014-2015 EvolSoft
+ * Licensed under MIT (https://github.com/EvolSoft/MSpawns/blob/master/LICENSE)
+ */
+
+namespace MSpawns;
+
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\event\Listener;
+use pocketmine\event\entity\EntityLevelChangeEvent;
+use pocketmine\event\player\PlayerEvent;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\level\Position;
+use pocketmine\math\Vector3;
+use pocketmine\permission\Permission;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\utils\TextFormat;
+
+class EventListener extends PluginBase implements Listener{
+	
+	public function __construct(Main $plugin){
+        $this->plugin = $plugin;
+    }
+    
+    /* Possible implementation later
+     * public function onWorldChange(EntityLevelChangeEvent $event){
+    	$entity = $event->getEntity();
+    	//Check if Entity is a Player
+    	if($entity instanceof Player){
+    		//Check Force Spawn
+    		if($this->plugin->getForceSpawn()){
+    			$this->plugin->teleportToSpawn_2($entity, $event->getTarget());
+    		}
+    	}
+    }*/
+    
+    public function onPlayerRespawn(PlayerRespawnEvent $event){
+    	$this->cfg = $this->plugin->getConfig()->getAll();
+    	$player = $event->getPlayer();
+    	//Check if the victim is a Player
+    	if($player instanceof Player){
+    		//Teleport Player on Death: 1 = Teleport to spawn 2 = Teleport to Hub
+    		if($this->cfg["teleport-on-death"] == 1){
+    			//Check if spawn exists
+    			if($this->plugin->SpawnExists($player->getLevel())){
+    				$pos = $this->plugin->getSpawn($player->getLevel());
+    				$event->setRespawnPosition(new Position($pos["X"], $pos["Y"], $pos["Z"]), $pos["Yaw"], $pos["Pitch"]);
+    			}
+    		}elseif($this->cfg["teleport-on-death"] == 2){
+    			//Check if hub exists
+    			if($this->plugin->HubExists()){
+    				$this->plugin->teleportToHub($player);
+    			}
+    		}
+    	}
+    }
+    
+    public function onPlayerJoin(PlayerJoinEvent $event){
+    	$player = $event->getPlayer();
+    	if($this->plugin->getForceHub_OnJoin() == true){
+    		$this->plugin->teleportToHub_OnJoin($player);
+    	}else{
+    		if($this->plugin->getForceSpawn_OnJoin() == true){
+    			$this->plugin->teleportToSpawn_OnJoin($player);
+    		}
+    	}
+    }
+	
+}
+    ?>

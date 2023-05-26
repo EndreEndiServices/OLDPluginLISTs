@@ -1,0 +1,15 @@
+name: mcg76_SkyWars
+version: 2.0.0
+api: 1.0.0
+
+main: mcg76\skywars\SkyWarsPlugIn
+author: minecraftgenius76
+description: minecraftgenius76 SkyWars mini-game
+commands:
+ skw:
+  description: "minecraftgenius76 SkyWars mini-game"
+  permission: mcg76.plugin.skywars
+permissions:
+ mcg76.plugin.skywars:
+  description: "mcg76.plugin.skywars"
+  default: op

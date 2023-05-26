@@ -1,0 +1,150 @@
+---
+# THE HUNGER GAMES v2 MAIN CONFIGURATION
+version: "The Hunger Games v2 build-9"
+# execution engines parameters
+runtime_debug: false
+runtime_flow_cycle: 55
+runtime_event_cycle: 360
+runtime_score_cycle: 185
+runtime_chest_refill_cycle: 30
+# restrict player access to vip section
+enforce_vip_access: false
+# restrict game play levels
+enforce_story_level_access: false
+#--------------------------------------
+# settings for joining the server 
+#--------------------------------------
+on_spawn_tp_player_to_lobby: true
+on_join_tp_player_to_lobby: false
+on_join_clear_player_inventory: true
+on_join_clear_player_effects: true
+allow_in_game_map_break_block: false
+#---------------------------------------
+hg_default_permission_node: "mcg76.plugin.hungergames"
+#---------------------------------------
+# lobby settings
+#---------------------------------------
+hg_lobby_levelname: "Hunger Games Lobby"
+hg_lobby_spawn_x: -30
+hg_lobby_spawn_y: 38
+hg_lobby_spawn_z: -420
+
+server_lobby_levelname: "Hunger Games Lobby"
+server_lobby_spawn_x: -30
+server_lobby_spawn_y: 38
+server_lobby_spawn_z: -420
+
+#First timer message
+enable_first_time_msg: false
+hg_welcome_msg1: "Welcome to [The Hunger Games v2 Trilogy]"
+hg_welcome_msg2: "First time play this game?"
+hg_welcome_msg3: "Let's start with survival trainings"
+hg_welcome_msg4: "When ready, enter level-1 portal to play."
+hg_welcome_msg5: "Winning level-1 will unlock level-2 pass."
+hg_welcome_msg6: "Check-out VIP+ | Have fun!"
+
+#Welcome Back Message
+enable_welcome_back_msg: false
+hg_welcome_back1: "Welcome back"
+hg_welcome_back2: "Your accomplishments"
+
+#lobby help text
+show_lobby_help: true
+hg_lobby_help_x: -24
+hg_lobby_help_y: 42
+hg_lobby_help_z: -424
+
+hg_lobby_help_title: "The Hunger Games v2 Trilogy Quick Help"
+hg_lobby_help_text_exit: "[/hg lobby | exit] - return player to lobby"
+hg_lobby_help_text_vip: "[/hg vip]  - return player to VIP lodge"
+hg_lobby_help_text_parkour: "[/hg parkour]  - teleport player to lobby parkour"
+hg_lobby_help_text_help: "[/hg help] - list all commands"
+hg_lobby_help_text_scores: "[/hg mypoints] - display player game points"
+hg_lobby_help_text_rank: "[/hg toprank] - list server top 3 players"
+hg_lobby_help_text_topwins: "[/hg topwins [level | map]] - top wins by level or map"
+hg_lobby_help_text_stats: "[/hg mywins] - list player wins"
+hg_lobby_help_text_balance: "[/hg mybalance] - show player current balance coins"
+hg_lobby_help_text_profile: "[/hg myprofile] - show player profile"
+hg_lobby_help_text_players: "[/hg players] - show number of server players"
+
+# Hall of Frame
+hg_lobby_hof_x: 45
+hg_lobby_hof_y: 42
+hg_lobby_hof_z: -420
+
+hg_lobby_hof_sign_exit_x: 26
+hg_lobby_hof_sign_exit_y: 42
+hg_lobby_hof_sign_exit_z: -422
+
+hg_lobby_hof_sign_title_x: 36
+hg_lobby_hof_sign_title_y: 44
+hg_lobby_hof_sign_title_z: -420
+
+# Lobby Parkour
+hg_lobby_parkour_x: -25
+hg_lobby_parkour_y: 67
+hg_lobby_parkour_z: -419
+
+#--------------------------------------------------
+# VIP LODGE ACCESS SIGN
+#--------------------------------------------------
+hg_vip_lodge_levelname: "lobby"
+
+hg_vip_lodge_x: "-899"
+hg_vip_lodge_y: "27"
+hg_vip_lodge_z: "1494"
+
+hg_vip_enter_x: "-25"
+hg_vip_enter_y: "39"
+hg_vip_enter_z: "-418"
+
+hg_vip_exit_x: "-942"
+hg_vip_exit_y: "25"
+hg_vip_exit_z: "1489"
+
+#--------------------------------------------------
+# Admin Control Panel
+#--------------------------------------------------
+hg_admin_enter_x: -24
+hg_admin_enter_y: 27
+hg_admin_enter_z: -481
+hg_admin_enter_levelname: "Hunger Games Lobby"
+
+hg_admin_vip_enter_x: -1011
+hg_admin_vip_enter_y: 24
+hg_admin_vip_enter_z: 1449
+hg_admin_vip_enter_levelname: "lobby"
+
+#--------------------------------------------------
+# gold podium Location
+#--------------------------------------------------
+hg_podium_gold_x: "49"
+hg_podium_gold_y: "43"
+hg_podium_gold_z: "-420"
+
+hg_podium_gold_sign_x: "48"
+hg_podium_gold_sign_y: "42"
+hg_podium_gold_sign_z: "-420"
+
+#--------------------------------------------------
+# silver podium Location
+#--------------------------------------------------
+hg_podium_silver_x: "45"
+hg_podium_silver_y: "43"
+hg_podium_silver_z: "-424"
+
+hg_podium_silver_sign_x: "45"
+hg_podium_silver_sign_y: "42"
+hg_podium_silver_sign_z: "-423"
+#--------------------------------------------------
+# bronze podium Location
+#--------------------------------------------------
+hg_podium_bronze_x: "45"
+hg_podium_bronze_y: "43"
+hg_podium_bronze_z: "-416"
+
+hg_podium_bronze_sign_x: "45"
+hg_podium_bronze_sign_y: "42"
+hg_podium_bronze_sign_z: "-417"
+#--------------------------------------------------
+...

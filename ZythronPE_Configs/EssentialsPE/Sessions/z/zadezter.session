@@ -1,0 +1,24 @@
+{
+    "isAFK": false,
+    "isGod": false,
+    "homes": {
+        "drop": [
+            583,
+            4,
+            602,
+            "castellum",
+            214.78807067871094,
+            41.86236572265625
+        ]
+    },
+    "isMuted": false,
+    "mutedUntil": null,
+    "nick": "\u00a71Z\u00a72a\u00a73d\u00a7ce",
+    "ptCommands": {
+        "280": "block"
+    },
+    "ptChatMacros": false,
+    "isPvPEnabled": true,
+    "isUnlimitedEnabled": false,
+    "isVanished": false
+}

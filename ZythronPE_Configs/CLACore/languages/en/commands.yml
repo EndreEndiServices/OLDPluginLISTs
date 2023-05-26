@@ -1,0 +1,25 @@
+---
+#-----------ECONOMY----------#
+Economy: true
+
+#-----------TELEPORT----------#
+Teleport: true
+
+#-----------PING----------#
+Ping: true
+High-Ping-Kick: false
+Max-Ping: 100
+
+#-----------CLEARLAGG----------#
+Clearlagg: true
+#Types: clearall, clear, killmobs
+Clearlagg-type: clearall
+#20 = 1 seconds
+#1000 = 5 mintues
+Clearlagg-tick: 2000
+
+#-----------OTHERS----------#
+Fly: true
+Spawn: true
+ClearInventory: false
+...

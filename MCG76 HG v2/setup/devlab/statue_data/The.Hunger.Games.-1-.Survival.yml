@@ -1,0 +1,23 @@
+---
+name: The Hunger Games - Survival
+type: npc
+networkId: 180002
+levelName: MinigamesHub
+message: "Welcome to the Hunger Games - 1 Survival. Challenges yourself to win the umtimate battles!"
+itemOnHand: "261"
+armorHelmet: ~
+armorChestplate: ~
+armorLegging: ~
+armorBoots: ~
+positionX: 133
+positionY: 68
+positionZ: -71
+cost: 0
+kitName: false
+kitBlock: 35
+particles: "snowballpoof"
+destinationLevelName: MinigamesHub
+destinationPosX: 139.000000
+destinationPosY: 67.000000
+destinationPosZ: -54.000000
+...

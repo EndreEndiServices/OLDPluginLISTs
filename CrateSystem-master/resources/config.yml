@@ -1,0 +1,4 @@
+---
+#add From {user}, when use /key {key} {player}
+from-user: true
+...

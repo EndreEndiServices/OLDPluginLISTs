@@ -1,0 +1,7 @@
+---
+GTB20:
+  amplifier: 11
+  display: line
+  enabled: true
+  particle: []
+...

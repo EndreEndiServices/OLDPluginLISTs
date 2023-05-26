@@ -1,0 +1,170 @@
+---
+name: 2_Catching_Fire_1
+levelName: Catching Fire - By SwipeShot
+displayName: HG-2-C.Fire-1
+published: true
+
+locationX: "-591"
+locationY: "9"
+locationZ: "256"
+
+arenaEnterX: "-591"
+arenaEnterY: "9"
+arenaEnterZ: "256"
+enterLevelName: "Catching Fire - By SwipeShot"
+
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+huntingDuration: 480
+deathMatchDuration: 140
+
+#for testing purpose
+signJoinX: -24
+signJoinY: 29
+signJoinZ: -477
+
+signVoteX: -106
+signVoteY: 42
+signVoteZ: -420
+
+#signStatsX: 137
+#signStatsY: 68
+#signStatsZ: -59
+#joinDownCounter: 2
+
+signExitX: 128
+signExitY: 1
+signExitZ: 123
+
+deathMatchEnterX: "-746"
+deathMatchEnterY: "17"
+deathMatchEnterZ: "223"
+
+deathMatchPos1X: "-768"
+deathMatchPos1Y: "7"
+deathMatchPos1Z: "191"
+deathMatchPos2X: "-729"
+deathMatchPos2Y: "26"
+deathMatchPos2Z: "245"
+
+portalEnter1X: "128"
+portalEnter1Y: "1"
+portalEnter1Z: "123"
+portalEnter2X: "128"
+portalEnter2Y: "1"
+portalEnter2Z: "123"
+
+portalExit1X: "-512"
+portalExit1Y: "9"
+portalExit1Z: "255"
+portalExit2X: "-510"
+portalExit2Y: "9"
+portalExit2Z: "258"
+
+resetPeriod: 200
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 4
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+spawnLocations:
+- - "-561"
+  - "9"
+  - "261"
+- - "-563"
+  - "9"
+  - "266"
+- - "-568"
+  - "9"
+  - "275"
+- - "-572"
+  - "9"
+  - "279"
+- - "-580"
+  - "9"
+  - "284"
+- - "-585"
+  - "9"
+  - "286"
+- - "-596"
+  - "9"
+  - "286"
+- - "-601"
+  - "9"
+  - "285"
+- - "-610"
+  - "9"
+  - "280" 
+- - "-614"
+  - "9"
+  - "277" 
+- - "-619"
+  - "9"
+  - "267" 
+- - "-621"
+  - "9"
+  - "262" 
+- - "-621"
+  - "9"
+  - "251" 
+- - "-619"
+  - "9"
+  - "245"   
+- - "-614"
+  - "9"
+  - "236"    
+- - "-610"
+  - "9"
+  - "232"  
+- - "-602"
+  - "9"
+  - "228"
+- - "-596"
+  - "9"
+  - "227"    
+- - "-586"
+  - "9"
+  - "227"
+- - "-581"
+  - "9"
+  - "228"      
+- - "-572"
+  - "9"
+  - "233"     
+- - "-568"
+  - "9"
+  - "236"      
+- - "-563"
+  - "9"
+  - "245"   
+- - "-561"
+  - "9"
+  - "250"     
+...

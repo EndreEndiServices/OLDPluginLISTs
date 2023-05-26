@@ -1,0 +1,8 @@
+#Config file for RussianRoulette v1.0 by Smartboy320 
+2 chambers: 6 
+3 #Amount of chambers allowed, minimum: 2 default: 6 
+4 commands: 
+5 #Commands to execute if the player survives 
+6 #{player} = the player that survives 
+7 - say {player} survived! 
+8 - give {player} 264 1 

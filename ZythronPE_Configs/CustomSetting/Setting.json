@@ -1,0 +1,23 @@
+{
+  "type": "custom_form",
+  "title": "News",
+  "icon": {
+    "type": "url",
+    "data": "https://cdn.discordapp.com/attachments/410340459362385920/413472072271134731/Logopit_1517830579311.png"
+  },
+  "content": [
+    {
+      "type": "label",
+      "text": "ZythronPE | Server Updates News
+      
+      What's new in v3.2?
+      - Added Crates plugin.
+      - Added this server news to the server!
+      - Added HotBlock mini~game to this server!
+      - Some of bugs are fixed.
+      - Added AutoClearLagg plugin.
+       
+       End."
+    }
+  ]
+}

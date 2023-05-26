@@ -1,0 +1,19 @@
+---
+name: pvp_kit_iron
+type: npc
+category: kit
+networkId: 180004
+levelName: lobby
+itemOnHand: 267
+armorHelmet: 306
+armorChestplate: 307
+armorLegging: 308
+armorBoots: 309
+positionX: -995
+positionY: 25
+positionZ: 1522
+cost: 50
+message: "PvP Iron Kit"
+kitName: iron_kit
+kitBlock: 42
+...

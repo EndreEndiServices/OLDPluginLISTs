@@ -1,0 +1,26 @@
+---
+Ghost_ytpro:
+  money: 1301
+  type: 0
+  hide: false
+Ghost_ytprod:
+  money: 34
+  type: 0
+  hide: false
+Ghost:
+  money: 145
+  type: 0
+  hide: false
+CECY_00:
+  money: 500
+  type: 0
+  hide: false
+Steve:
+  money: 500
+  type: 0
+  hide: false
+GTB20:
+  money: 500
+  type: 0
+  hide: false
+...

@@ -1,0 +1,2004 @@
+name: mcg76_TNTRun
+version: 1.6.0
+api: 1.12.0
+main: mcg76\game\tntrun\TNTRun
+author: minecraftgenius76
+description: minecraftgenius76 Minigame TNT_Run Experimental build 
+commands:
+ tntrun:
+  description: "Start minecraftgenius76 Minigame TNT Run Experimental Build"
+  permission: mcg76.plugin.tntrun
+permissions:
+ mcg76.plugin.tntrun:
+  description: "mcg76.plugin.tntrun"
+  default: op<?php
+
+namespace mcg76\game\tntrun;
+
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\utils\Config;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\level\Explosion;
+use pocketmine\event\block\BlockEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\entity\EntityMoveEvent;
+use pocketmine\event\entity\EntityMotionEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\Listener;
+use pocketmine\math\Vector3 as Vector3;
+use pocketmine\math\Vector2 as Vector2;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\network\protocol\AddMobPacket;
+use pocketmine\network\protocol\AddEntityPacket;
+use pocketmine\network\protocol\UpdateBlockPacket;
+use pocketmine\block\Block;
+use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\event\server\DataPacketSendEvent;
+use pocketmine\network\protocol\DataPacket;
+use pocketmine\network\protocol\Info;
+use pocketmine\network\protocol\LoginPacket;
+use mcg76\game\util\PacketMonitor;
+use pocketmine\entity\FallingBlock;
+use mcg76\game\api\MGDatastoreConfig;
+use mcg76\game\api\MGArena;
+use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerKickEvent;
+
+/**
+ * TNT Run
+ * 
+ * Copyright (C) 2014 minecraftgenius76
+ * YouTube Channel: http://www.youtube.com/user/minecraftgenius76
+ * 
+ * @author MCG76
+ *
+ */
+class TNTRun extends PluginBase implements Listener {
+ 	// variables	
+ 	public $config; 	
+ 	public $arenaBuilder; 	
+ 	public $tntRunCommand;
+ 	public $mgdatastoreconfig;
+ 	
+ 	public $mineSweeperSessions = [];
+ 	public $mineSweeperScores = []; 
+ 	public $fallingblocks= [];	 	
+
+ 	public $arenaPlayers = [];
+ 	public $livePlayers = [];
+ 	public $tntQuickSessions = [];
+ 	
+ 	//display flag
+ 	public $pos_display_flag = 0; 	
+ 	
+ 	public $setblock_flag = 0;	 	
+ 	public $game_mode = 0;
+ 	/**
+ 	 * OnLoad 
+ 	 * (non-PHPdoc)
+ 	 * @see \pocketmine\plugin\PluginBase::onLoad()
+ 	 */
+	public function onLoad() {
+		$this->arenaBuilder = new TNTArenaBuilder($this);		
+		$this->tntRunCommand = new TNTRunCommand($this);
+	}
+	
+	
+	/**
+	 * OnEnable
+	 * 
+	 * (non-PHPdoc)
+	 * @see \pocketmine\plugin\PluginBase::onEnable()
+	 */
+	public function onEnable() {				
+		if (! file_exists ( $this->getDataFolder () . "config.yml" )) {
+			@mkdir ( $this->getDataFolder () );
+			file_put_contents ( $this->getDataFolder () . "config.yml", $this->getResource ( "config.yml" ) );
+		}
+		// read restriction
+		// $this->config = yaml_parse(file_get_contents($this->getDataFolder() . "config.yml"));
+		$this->getConfig ()->getAll ();
+		
+		$this->log( TextFormat::GREEN . "-------------------------------------------------" );
+		$this->log( TextFormat::GREEN . "- mcg76_MCPE_TNTRun- Enabled!" );
+		$this->log( TextFormat::GREEN . "-------------------------------------------------" );		
+		$this->log( TextFormat::BLUE . "- lobby world: ".$this->getConfig ()->get ( "tntrun_lobby_world"));
+		$this->log( TextFormat::BLUE . "- lobby location at x:".$this->getConfig ()->get ( "tntrun_lobby_x" ). " y:".$this->getConfig ()->get ( "tntrun_lobby_y" ). "z:".$this->getConfig ()->get ( "tntrun_lobby_z" ));
+		$this->log( TextFormat::BLUE . "- arena world: ".$this->getConfig ()->get ( "tntrun_arena_world"));
+		$this->log( TextFormat::BLUE . "- arena location at x:".$this->getConfig ()->get ( "tntrun_arena_x" ). " y:".$this->getConfig ()->get ( "tntrun_arena_y" ). "z:".$this->getConfig ()->get ( "tntrun_arena_z" ));		
+		$this->log( TextFormat::GREEN . "-------------------------------------------------" );
+						
+		$this->enabled = true;
+		$this->getServer ()->getPluginManager ()->registerEvents ( $this, $this );					
+		//schedule reset task
+		$runScheduleTask = $this->getConfig ()->get ( "reset_scheduler" );
+		if ($runScheduleTask!=null && $runScheduleTask==="on") {
+			$this->log( TextFormat::GREEN . "- Reset Scheduler Enabled!" );		
+			$resetValue = $this->getConfig ()->get ( "reset_timeout" );
+			if ($resetValue==null) {
+				$resetValue = 8000;
+			}
+			$resetTask = new PlayResetTimeout ( $this);
+			$this->getServer ()->getScheduler ()->scheduleRepeatingTask( $resetTask, $resetValue );
+			$this->log( TextFormat::GREEN . "- mcg76_MCPE_TNTRun - round reset scheduler will run in every ".$resetValue. " ticks." );
+			$this->log( TextFormat::GREEN . "-------------------------------------------------" );
+		}
+	}
+	
+	/**
+	 * OnDisable
+	 * (non-PHPdoc)
+	 * @see \pocketmine\plugin\PluginBase::onDisable()
+	 */
+	public function onDisable() {
+		$this->log( TextFormat::RED . "mcg76_TNTRun - Disabled" );
+		$this->enabled = false;
+	}
+
+	/**
+	 * OnCommand
+	 * (non-PHPdoc)
+	 * @see \pocketmine\plugin\PluginBase::onCommand()
+	 */
+public function onCommand(CommandSender $sender, Command $command, $label, array $args) {		
+		$this->tntRunCommand->onCommand($sender, $command, $label, $args);		
+	}
+
+	/**
+	 * OnBlockBreak
+	 * 
+	 * @param BlockBreakEvent $event
+	 */
+	public function onBlockBreak(BlockBreakEvent $event) {	
+		$b = $event->getBlock();
+		if ($this->pos_display_flag==1) {
+			$event->getPlayer()->sendMessage("block BREAKED: [x=".$b->x." y=".$b->y." z=".$b->z."]");
+		}
+	}
+
+	
+	public function onBlockPlace(BlockPlaceEvent $event) {
+		$b = $event->getBlock ();
+		if ($this->pos_display_flag==1) {
+			$event->getPlayer()->sendMessage("block PLACED: ".$b);
+			$event->getPlayer()->sendMessage("block PLACED: [x=".$b->x." y=".$b->y." z=".$b->z."]");
+		}
+	}
+	
+	public function onPlayerInteract (PlayerInteractEvent $event) {
+		$b = $event->getBlock();
+		if ($this->pos_display_flag==1) {
+			$event->getPlayer()->sendMessage("player TOUCHED: [x=".$b->x." y=".$b->y." z=".$b->z."]");
+			//return;
+		}		
+		$this->tntRunCommand->onPlayerInteract($event);	
+	}
+	
+	/**
+	 * OnPlayerJoin
+	 * 
+	 * @param PlayerJoinEvent $event
+	 */	
+	public function onPlayerJoin(PlayerJoinEvent $event) {		
+		$this->tntRunCommand->onPlayerJoin($event);
+	}
+
+	/**
+	 * Handle Player Move Event
+	 *
+	 * @param EntityMoveEvent $event
+	 */
+	public function onPlayerMove(PlayerMoveEvent $event) {
+		$this->tntRunCommand->onPlayerMove($event);		
+	}
+	
+	public function onEntityDamage ( EntityDamageEvent $event) {
+		$this->tntRunCommand->onEntityDamage($event);		
+	}
+				
+	/**
+	 * OnQuit
+	 *
+	 * @param PlayerQuitEvent $event
+	 */
+	public function onQuit(PlayerQuitEvent $event) {
+		$this->tntRunCommand->onQuit($event);		
+	}
+	
+	public function onPlayerKicked(PlayerKickEvent $event) {
+		$this->tntRunCommand->onPlayerKicked($event);
+	}
+	
+		
+	/**
+	 * Logging util function
+	 * 
+	 * @param unknown $msg
+	 */
+	private function log($msg){
+		$this->getLogger ()->info ($msg);
+	}
+		
+}
+<?php
+
+namespace mcg76\game\tntrun;
+
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\utils\Config;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\utils\Cache;
+use pocketmine\level\Explosion;
+use pocketmine\event\block\BlockEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\entity\EntityMoveEvent;
+use pocketmine\event\entity\EntityMotionEvent;
+use pocketmine\event\Listener;
+use pocketmine\math\Vector3 as Vector3;
+use pocketmine\math\Vector2 as Vector2;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\network\protocol\AddMobPacket;
+use pocketmine\network\protocol\AddEntityPacket;
+use pocketmine\network\protocol\UpdateBlockPacket;
+use pocketmine\block\Block;
+use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\event\server\DataPacketSendEvent;
+use pocketmine\network\protocol\DataPacket;
+use pocketmine\network\protocol\Info;
+use pocketmine\network\protocol\LoginPacket;
+use mcg76\game\util\PacketMonitor;
+use pocketmine\entity\FallingBlock;
+
+/**
+ * TNT Arena Builder
+ *
+ * Copyright (C) 2014 minecraftgenius76
+ * YouTube Channel: http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author MCG76
+ *        
+ */
+class TNTArenaBuilder {
+	// board size
+	public $boardsize = 22;
+	public $boardheight = 36;
+	public $boardBlocksTypes = [ ];
+	
+	// plug-in
+	private $pgin;
+	public function __construct(TNTRun $pg) {
+		if (! is_null ( $pg )) {
+			$this->pgin = $pg;
+		} else {
+			$this->log ( TextFormat::RED . " TNTRun - construct error (missing plugin)" );
+		}
+		
+		$this->initBoardBlockType ();
+	}
+	private function initBoardBlockType() {
+		$this->boardBlocksTypes = array (
+				"stone1" => "42",
+				"stone2" => "42",
+				"stone3" => "42",
+				"stone4" => "42",
+				"stone5" => "42",
+				"stone6" => "42",
+				"stone7" => "42",
+				"stone8" => "50",
+				"GLOWSTONE_BLOCK" => "89",
+				"Torch" => "50" 
+		);
+	}
+	
+	/**
+	 * Build Arena
+	 *
+	 * @param Player $player        	
+	 */
+	public function buildArena(Level $level, Position $lobbyloc) {
+		// $pos = $player->getPosition ();
+		$px = $lobbyloc->x;
+		$py = $lobbyloc->y;
+		$pz = $lobbyloc->z;
+		
+		if ($lobbyloc != null) {
+			$exit_x = $lobbyloc->x;
+			$exit_y = $lobbyloc->y;
+			$exit_z = $lobbyloc->z;
+		} else {
+			$exit_x = $px;
+			$exit_y = $py;
+			$exit_z = $pz;
+		}
+		
+		$bsize = $this->boardsize;
+		$bheight = $this->boardheight;
+		
+		// built a glass tower wrap around the building
+		$this->buildHoloWallByType ( $level, $bsize + 2, ($py + $bsize + 30), $px, $py, $pz, 20 );
+		
+		// water tank floor
+		$this->buildWaterTank ( $level, $bsize, $bsize, $px, ($py + 1), $pz, 8 );
+		// bottom floor 1
+		$this->buildFloor ( $level, $px, ($py + 16), $pz, $bsize );
+		// bottom floor 2
+		$this->buildFloor ( $level, $px, ($py + 26), $pz, $bsize );
+		// bottom floor 3
+		$this->buildFloor ( $level, $px, ($py + 36), $pz, $bsize );
+		// $this->buildGlassTop($player, round($px/2), ($py+46), round($pz/2), $bsize);
+		// bottom floor 4
+		// $this->buildFloor($level, $px, ($py+46), $pz, $bsize);
+		// bottom floor 5
+		// $this->buildFloor($level, $px, ($py+56), $pz, $bsize);
+		$this->addGameButtonsOnTopFloor ( $level );
+		
+		$pos = new Position ();
+		$lobbyloc->x = $px + 2;
+		$lobbyloc->y = ($py + $bsize + $bheight);
+		$lobbyloc->z = $pz + 2;
+		// $player->teleport( $pos, 332, 334);
+		
+		$arenaInfo = array (
+				"entrance_x" => $pos->x,
+				"entrance_y" => $pos->y,
+				"entrance_z" => $pos->z,
+				"exit_x" => $exit_x,
+				"exit_y" => $exit_y,
+				"exit_z" => $exit_z 
+		);
+		
+		return $arenaInfo;
+	}
+	
+	/**
+	 * Build Floor
+	 *
+	 * @param Player $player        	
+	 */
+	public function buildFloor(Level $level, $px, $py, $pz, $size) {
+		// build walls
+		$this->buildWall ( $level, $size + 1, $size + 1 - 5, $px, $py - 1, $pz, 1 );
+		// add bottom layer stone
+		$this->buildBoardLayer ( $level, $px, $py, $pz, 46, $size );
+		// add middle layer
+		$this->buildBoardLayer ( $level, $px, $py + 1, $pz, 12, $size );
+		// add top layer --98
+		$this->buildBoardLayer ( $level, $px, $py + 2, $pz, 44, $size );
+	}
+	
+	/**
+	 * Build Arena
+	 *
+	 * @param Player $player        	
+	 */
+	public function resetArenaBuilding(Level $level, Position $lobbyloc) {
+		// $pos = $player->getPosition ();
+		$px = $lobbyloc->x;
+		$py = $lobbyloc->y;
+		$pz = $lobbyloc->z;
+		
+		if ($lobbyloc != null) {
+			$exit_x = $lobbyloc->x;
+			$exit_y = $lobbyloc->y;
+			$exit_z = $lobbyloc->z;
+		} else {
+			$exit_x = $px;
+			$exit_y = $py;
+			$exit_z = $pz;
+		}
+		
+		$bsize = $this->boardsize;
+		
+		// water tank floor
+		// $this->buildWaterTank($player, $bsize, $bsize, $px, ($py+1), $pz, 8) ;
+		// bottom floor 1
+		$this->ResetFloor ( $level, $px, ($py + 16), $pz, $bsize );
+		// bottom floor 2
+		$this->ResetFloor ( $level, $px, ($py + 26), $pz, $bsize );
+		// bottom floor 3
+		$this->ResetFloor ( $level, $px, ($py + 36), $pz, $bsize );
+		// $this->buildGlassTop($player, round($px/2), ($py+46), round($pz/2), $bsize);
+		// bottom floor 4
+		// $this->ResetFloor($level, $px, ($py+46), $pz, $bsize);
+		// bottom floor 5
+		// $this->ResetFloor($level, $px, ($py+56), $pz, $bsize);
+		
+		$this->addGameButtonsOnTopFloor ( $level );
+		
+		$pos = new Position ();
+		$lobbyloc->x = $px + 2;
+		$lobbyloc->y = ($py + $bsize + 56);
+		$lobbyloc->z = $pz + 2;
+		// $player->teleport( $pos, 332, 334);
+		
+		$arenaInfo = array (
+				"entrance_x" => $pos->x,
+				"entrance_y" => $pos->y,
+				"entrance_z" => $pos->z,
+				"exit_x" => $exit_x,
+				"exit_y" => $exit_y,
+				"exit_z" => $exit_z 
+		);
+		
+		return $arenaInfo;
+	}
+	public function addGameButtonsOnTopFloor(Level $level) {
+		$greenX = $this->pgin->getConfig ()->get ( "tntrun_start_button_x" );
+		$greenY = $this->pgin->getConfig ()->get ( "tntrun_start_button_y" );
+		$greenZ = $this->pgin->getConfig ()->get ( "tntrun_start_button_z" );
+		$bgreen = $level->getBlock ( new Position ( $greenX, $greenY, $greenZ ) );
+		// emeral block = 133
+		$this->resetBlockByType ( $bgreen, $level, 133 );
+		// add a torch on top
+		$bgreen = $level->getBlock ( new Position ( $greenX, $greenY + 1, $greenZ ) );
+		// emeral block = 133
+		$this->resetBlockByType ( $bgreen, $level, 50 );
+		
+		$yellowX = $this->pgin->getConfig ()->get ( "tntrun_top_exit_button_x" );
+		$yellowY = $this->pgin->getConfig ()->get ( "tntrun_top_exit_button_y" );
+		$yellowZ = $this->pgin->getConfig ()->get ( "tntrun_top_exit_button_z" );
+		$byellow = $level->getBlock ( new Position ( $yellowX, $yellowY, $yellowZ ) );
+		// gold block = 41
+		$this->resetBlockByType ( $byellow, $level, 41 );
+		// add a torch on top
+		$byellow = $level->getBlock ( new Position ( $yellowX, $yellowY + 1, $yellowZ ) );
+		// emeral block = 133
+		$this->resetBlockByType ( $byellow, $level, 50 );
+		
+		$gexitX = $this->pgin->getConfig ()->get ( "tntrun_ground_exit_button_x" );
+		$gexitY = $this->pgin->getConfig ()->get ( "tntrun_ground_exit_button_y" );
+		$gexitZ = $this->pgin->getConfig ()->get ( "tntrun_ground_exit_button_z" );
+		$bgexit = $level->getBlock ( new Position ( $gexitX, $gexitY, $gexitZ ) );
+		// gold block = 41
+		$this->resetBlockByType ( $bgexit, $level, 41 );
+		// add a torch on top
+		$bgexit = $level->getBlock ( new Position ( $gexitX, $gexitY + 1, $gexitZ ) );
+		// emeral block = 133
+		$this->resetBlockByType ( $bgexit, $level, 50 );
+	}
+	
+	/**
+	 * Build Floor
+	 *
+	 * @param Player $player        	
+	 */
+	public function ResetFloor(Level $level, $px, $py, $pz, $size) {
+		// build walls
+		// $this->buildWall($player, $size+1, $size+1-5, $px, $py-1, $pz, 1);
+		// add bottom layer stone
+		$this->resetBoardLayer ( $level, $px, $py, $pz, 46, $size );
+		// add middle layer
+		$this->resetBoardLayer ( $level, $px, $py + 1, $pz, 12, $size );
+		// add top layer --98
+		$this->resetBoardLayer ( $level, $px, $py + 2, $pz, 44, $size );
+	}
+	
+	/**
+	 * Reset board
+	 *
+	 * @param Level $level        	
+	 * @param unknown $px        	
+	 * @param unknown $py        	
+	 * @param unknown $pz        	
+	 * @param unknown $btype        	
+	 * @param unknown $bsize        	
+	 * @return multitype:
+	 */
+	public function resetBoardLayer(Level $level, $px, $py, $pz, $btype, $bsize) {
+		$ret = [ ];
+		// $level = $p->getLevel();
+		$fx = $px;
+		$fy = $py;
+		$fz = $pz;
+		for($rx = 0; $rx < $bsize; $rx ++) {
+			// item = nulll can break anything
+			$x = $fx + $rx;
+			$y = $fy;
+			$z = $fz;
+			for($rz = 0; $rz < $bsize; $rz ++) {
+				$rb = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+				$this->resetBlockByType ( $rb, $level, $btype );
+				// $this->log (TextFormat::BLUE . "boardlayer b: ".$rb->getID()." " . $x . " " . $y . " " . $z );
+				$z ++;
+			}
+		}
+		return $ret;
+	}
+	
+	/**
+	 * build board layer
+	 *
+	 * @param Player $p        	
+	 * @param unknown $px        	
+	 * @param unknown $py        	
+	 * @param unknown $pz        	
+	 * @param unknown $btype        	
+	 * @return multitype:\pocketmine\block\Block
+	 */
+	public function buildBoardLayer(Level $level, $px, $py, $pz, $btype, $bsize) {
+		$ret = [ ];
+		// $level = $p->getLevel();
+		$fx = $px;
+		$fy = $py;
+		$fz = $pz;
+		for($rx = 0; $rx < $bsize; $rx ++) {
+			// item = nulll can break anything
+			$x = $fx + $rx;
+			$y = $fy;
+			$z = $fz;
+			for($rz = 0; $rz < $bsize; $rz ++) {
+				$rb = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+				$this->renderBlockByType ( $rb, $level, $btype );
+				// $this->log (TextFormat::BLUE . "boardlayer b: ".$rb->getID()." " . $x . " " . $y . " " . $z );
+				// $ret [] = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+				$z ++;
+			}
+		}
+		return $ret;
+	}
+	
+	/**
+	 * Render Wall
+	 *
+	 * @param Player $player        	
+	 * @param Block $block        	
+	 */
+	public function renderWall(Level $level, $width, $height, $x, $y, $z, $wallType) {
+		// $this->log ( TextFormat::RED . " render wall " );
+		if ($wallType == null) {
+			$wallType = 2;
+		}
+		$this->buildWall ( $level, $width, $height, $x, $y, $z, $wallType );
+		// update player location
+	}
+	
+	/**
+	 * Render Water Tank
+	 *
+	 * @param Player $player        	
+	 * @param unknown $radius        	
+	 * @param unknown $height        	
+	 * @param unknown $dataX        	
+	 * @param unknown $dataY        	
+	 * @param unknown $dataZ        	
+	 * @param unknown $wallType        	
+	 * @return boolean
+	 */
+	public function buildWaterTank(Level $level, $radius, $height, $dataX, $dataY, $dataZ, $wallType) {
+		// $this->log ( TextFormat::BLUE . "build Player location : " . $player->x . " " . $player->y . " " . $player->z );
+		$status = false;
+		try {
+			$doorExist = 0;
+			$x = $dataX;
+			// $level = $player->getLevel ();
+			for($rx = 0; $rx < $radius; $rx ++) {
+				$y = $dataY;
+				for($ry = 0; $ry < $height; $ry ++) {
+					$z = $dataZ;
+					for($rz = 0; $rz < $radius; $rz ++) {
+						$rb = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+						// if ($rz > round($height/2)) {
+						// $this->renderBlockByType ( $rb, $player, 0);
+						// } else {
+						$this->renderBlockByType ( $rb, $level, 0 );
+						// }
+						// $this->log ( TextFormat::BLUE . "+ remove X blocks: " . $x . " " . $y . " " . $z );
+						// build the wall at edge - $ry control the roof and base
+						if ($rx == ($radius - 1) || $rz == ($radius - 1) || $rx == 0 || $rz == 0 || $ry == ($radius - 1) || $ry == 0) {
+							// $this->renderBlockByType ( $rb, $player, $wallType );
+							if ($rx == 2 && $ry > 0 && $ry < ($radius - 1)) {
+								// KEEP DOOR OPEN
+								if (($z + $rz) == $rb->z) {
+									// $this->log ( TextFormat::BLUE . "door blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+									if ($doorExist < 2) {
+										$this->renderBlockByType ( $rb, $level, 42 );
+										$doorExist ++;
+									} else {
+										if ($ry < 3) {
+											$this->renderBlockByType ( $rb, $level, 42 );
+										} else {
+											$this->renderBlockByType ( $rb, $level, 46 );
+										}
+									}
+								} else {
+									$this->renderBlockByType ( $rb, $level, 46 );
+								}
+								// $this->renderBlockByType ( $rb, $player,89);
+							} else if ($ry == 0) {
+								// $this->log ( TextFormat::BLUE . "floor blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								$this->renderBlockByType ( $rb, $level, 24 );
+							} else if ($ry == ($radius - 1)) {
+								// $this->log ( TextFormat::BLUE . "roof blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								$this->renderBlockByType ( $rb, $level, 0 );
+							} else if ($rx == 0 || $rz == 0) {
+								$this->renderRandomBlocks ( $rb, $level );
+							} else if ($rx == ($radius - 1)) {
+								$this->renderBlockByType ( $rb, $level, 46 );
+							} else {
+								$this->renderBlockByType ( $rb, $level, 89 );
+							}
+						}
+						$z ++;
+					}
+					$y ++;
+				}
+				$x ++;
+			}
+			// update status
+			$status = true;
+		} catch ( \Exception $e ) {
+			$this->log ( "Error:" . $e->getMessage () );
+		}
+		return $status;
+	}
+	public function buildGlassTop(Level $level, $radius, $height, $dataX, $dataY, $dataZ, $wallType) {
+		// $this->log ( TextFormat::BLUE . "build Player location : " . $player->x . " " . $player->y . " " . $player->z );
+		$status = false;
+		try {
+			$doorExist = 0;
+			$x = $dataX;
+			// $level = $player->getLevel ();
+			for($rx = 0; $rx < $radius; $rx ++) {
+				$y = $dataY;
+				for($ry = 0; $ry < $height; $ry ++) {
+					$z = $dataZ;
+					for($rz = 0; $rz < $radius; $rz ++) {
+						$rb = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+						// if ($rz > round($height/2)) {
+						// $this->renderBlockByType ( $rb, $player, 0);
+						// } else {
+						$this->renderBlockByType ( $rb, $level, 0 );
+						// }
+						// $this->log ( TextFormat::BLUE . "+ remove X blocks: " . $x . " " . $y . " " . $z );
+						// build the wall at edge - $ry control the roof and base
+						if ($rx == ($radius - 1) || $rz == ($radius - 1) || $rx == 0 || $rz == 0 || $ry == ($radius - 1) || $ry == 0) {
+							// $this->renderBlockByType ( $rb, $player, $wallType );
+							if ($rx == 2 && $ry > 0 && $ry < ($radius - 1)) {
+								$this->renderBlockByType ( $rb, $level, 50 );
+							} else if ($ry == 0) {
+								// $this->log ( TextFormat::BLUE . "floor blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								$this->renderBlockByType ( $rb, $level, 20 );
+							} else if ($ry == ($radius - 1)) {
+								// $this->log ( TextFormat::BLUE . "roof blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								$this->renderBlockByType ( $rb, $level, 0 );
+							} else if ($rx == 0 || $rz == 0) {
+								$this->renderBlockByType ( $rb, $level, 20 );
+							} else if ($rx == ($radius - 1)) {
+								$this->renderBlockByType ( $rb, $level, 20 );
+							} else {
+								$this->renderBlockByType ( $rb, $level, 50 );
+							}
+						}
+						$z ++;
+					}
+					$y ++;
+				}
+				$x ++;
+			}
+			// update status
+			$status = true;
+		} catch ( \Exception $e ) {
+			$this->log ( "Error:" . $e->getMessage () );
+		}
+		return $status;
+	}
+	
+	/**
+	 * Render Wall
+	 *
+	 * @param Player $player        	
+	 * @param unknown $radius        	
+	 * @param unknown $height        	
+	 * @param unknown $dataX        	
+	 * @param unknown $dataY        	
+	 * @param unknown $dataZ        	
+	 * @param unknown $wallType        	
+	 * @return boolean
+	 */
+	public function buildWall(Level $level, $radius, $height, $dataX, $dataY, $dataZ, $wallType) {
+		// $this->log ( TextFormat::BLUE . "build Player location : " . $player->x . " " . $player->y . " " . $player->z );
+		$status = false;
+		try {
+			$doorExist = 0;
+			$x = $dataX;
+			// $level = $player->getLevel ();
+			for($rx = 0; $rx < $radius; $rx ++) {
+				$y = $dataY;
+				for($ry = 0; $ry < $height; $ry ++) {
+					$z = $dataZ;
+					for($rz = 0; $rz < $radius; $rz ++) {
+						$rb = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+						$this->removeBlocks ( $rb, $level );
+						// $this->log ( TextFormat::BLUE . "+ remove X blocks: " . $x . " " . $y . " " . $z );
+						// build the wall at edge - $ry control the roof and base
+						if ($rx == ($radius - 1) || $rz == ($radius - 1) || $rx == 0 || $rz == 0 || $ry == ($radius - 1) || $ry == 0) {
+							// $this->renderBlockByType ( $rb, $player, $wallType );
+							if ($rx == 2 && $ry > 0 && $ry < ($radius - 1)) {
+								$this->renderRandomBlocks ( $rb, $level );
+							} else if ($ry == 0) {
+								// $this->log ( TextFormat::BLUE . "floor blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								// $this->renderBlockByType ( $rb, $player, 0 );
+							} else if ($ry == ($radius - 1)) {
+								// $this->log ( TextFormat::BLUE . "roof blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								$this->renderBlockByType ( $rb, $level, 0 );
+							} else if ($rx == 0 || $rz == 0) {
+								$this->renderRandomBlocks ( $rb, $level );
+							} else if ($rx == ($radius - 1)) {
+								$this->renderRandomBlocks ( $rb, $level );
+							} else {
+								$this->renderRandomBlocks ( $rb, $level );
+							}
+						}
+						$z ++;
+					}
+					$y ++;
+				}
+				$x ++;
+			}
+			// update status
+			$status = true;
+		} catch ( \Exception $e ) {
+			$this->log ( "Error:" . $e->getMessage () );
+		}
+		return $status;
+	}
+	
+	/**
+	 * build wall by type
+	 *
+	 * @param Level $level        	
+	 * @param unknown $width        	
+	 * @param unknown $height        	
+	 * @param unknown $dataX        	
+	 * @param unknown $dataY        	
+	 * @param unknown $dataZ        	
+	 * @param unknown $blockType        	
+	 * @return boolean
+	 */
+	public function buildHoloWallByType(Level $level, $width, $height, $dataX, $dataY, $dataZ, $blockType) {
+		// $this->log ( TextFormat::BLUE . "build Player location : " . $player->x . " " . $player->y . " " . $player->z );
+		$status = false;
+		try {
+			$doorExist = 0;
+			$x = $dataX;
+			// $level = $player->getLevel ();
+			for($rx = 0; $rx < $width; $rx ++) {
+				$y = $dataY;
+				for($ry = 0; $ry < $height; $ry ++) {
+					$z = $dataZ;
+					for($rz = 0; $rz < $width; $rz ++) {
+						$rb = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+						$this->removeBlocks ( $rb, $level );
+						// $this->log ( TextFormat::BLUE . "+ remove X blocks: " . $x . " " . $y . " " . $z );
+						// build the wall at edge - $ry control the roof and base
+						if ($rx == ($width - 1) || $rz == ($width - 1) || $rx == 0 || $rz == 0 || $ry == ($width - 1) || $ry == 0) {
+							// $this->renderBlockByType ( $rb, $player, $wallType );
+							if ($rx == 2 && $ry > 0 && $ry < ($width - 1)) {
+								$this->resetBlock ( $rb, $level, $blockType );
+							} else if ($ry == 0) {
+								// $this->log ( TextFormat::BLUE . "floor blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								// $this->renderBlockByType ( $rb, $player, 0 );
+							} else if ($ry == ($width - 1)) {
+								// $this->log ( TextFormat::BLUE . "roof blocks: " . $rb->x . " " . $rb->y . " " . $rb->z );
+								$this->resetBlock ( $rb, $level, 0 );
+							} else if ($rx == 0 || $rz == 0) {
+								$this->resetBlock ( $rb, $level, $blockType );
+							} else if ($rx == ($width - 1)) {
+								$this->resetBlock ( $rb, $level, $blockType );
+							} else {
+								$this->resetBlock ( $rb, $level, 46 );
+							}
+						}
+						$z ++;
+					}
+					$y ++;
+				}
+				$x ++;
+			}
+			// update status
+			$status = true;
+		} catch ( \Exception $e ) {
+			$this->log ( "Error:" . $e->getMessage () );
+		}
+		return $status;
+	}
+	
+	/**
+	 * remove blocks
+	 *
+	 * @param array $blocks        	
+	 * @param Player $p        	
+	 */
+	public function removeBlocks(Block $block, Level $level) {
+		$this->updateBlock ( $block, $level, 0 );
+	}
+	
+	/**
+	 * optimized block removal for ingame players only
+	 *
+	 * @param Block $block        	
+	 * @param Player $p        	
+	 */
+	public function removeBlockForInGamePlayers(Block $block, Player $p, $blockType) {
+		$pk = new UpdateBlockPacket ();
+		$pk->x = $block->getX ();
+		$pk->y = $block->getY ();
+		$pk->z = $block->getZ ();
+		$pk->block = $blockType;
+		$pk->meta = 0;
+		$p->dataPacket ( $pk );
+		$p->getLevel ()->setBlockIdAt ( $block->getX (), $block->getY (), $block->getZ (), $pk->block );
+		
+		$pos = new Position ( $block->x, $block->y, $block->z );
+		$block = $p->getLevel ()->getBlock ( $pos );
+		$direct = true;
+		$update = true;
+		$p->getLevel ()->setBlock ( $pos, $block, $direct, $update );
+	}
+	
+	/**
+	 * remove floor blocks
+	 *
+	 * @param unknown $topblock        	
+	 * @param unknown $tntblock        	
+	 */
+	public function removeUpdateBlock($topblock, $tntblock) {
+		foreach ( $this->pgin->livePlayers as $livep ) {
+			// if ($livep instanceof MGArenaPlayer) {
+			// $this->pgin->arenaBuilder->removeBlocks($topblock, $livep->player);
+			// $this->pgin->arenaBuilder->removeBlocks($tntblock, $livep->player);
+			// } else {
+			// BEFORE-------------
+			// $this->pgin->arenaBuilder->removeBlocks($topblock, $livep);
+			// $this->pgin->arenaBuilder->removeBlocks($tntblock, $livep);
+			// BEFORE --------------
+			// }
+			// $this->pgin->arenaBuilder->renderBlockByType ( $sandblock, $livep, 0);
+			// this reduce number of update packets
+			$this->removeBlockForInGamePlayers ( $topblock, $livep, 0 );
+			$this->removeBlockForInGamePlayers ( $tntblock, $livep, 0 );
+		}
+	}
+	
+	/**
+	 * remove blocks
+	 *
+	 * @param array $blocks        	
+	 * @param Player $p        	
+	 */
+	public function removeEntityBlock(FallingBlock $entityblock, Level $level) {
+		$pk = new UpdateBlockPacket ();
+		$pk->x = $entityblock->getX ();
+		$pk->y = $entityblock->getY ();
+		$pk->z = $entityblock->getZ ();
+		$pk->block = 0;
+		$pk->meta = 0;
+		$entityblock->dataPacket ( $pk );
+		$entityblock->getLevel ()->setBlockIdAt ( $entityblock->getX (), $entityblock->getY (), $entityblock->getZ (), 0 );
+		
+		$pos = new Position ( $block->x, $block->y, $block->z );
+		$block = $level->getBlock ( $pos );
+		$direct = true;
+		$update = true;
+		$level->setBlock ( $pos, $block, $direct, $update );
+	}
+	
+	/**
+	 * reset block
+	 *
+	 * @param Block $block        	
+	 * @param Level $level        	
+	 * @param unknown $blockType        	
+	 */
+	public function resetBlock(Block $block, Level $level, $blockType) {
+		$players = $level->getPlayers ();
+		foreach ( $players as $p ) {
+			$pk = new UpdateBlockPacket ();
+			$pk->x = $block->getX ();
+			$pk->y = $block->getY ();
+			$pk->z = $block->getZ ();
+			$pk->block = $blockType;
+			$pk->meta = 0;
+			$p->dataPacket ( $pk );
+			$p->getLevel ()->setBlockIdAt ( $block->getX (), $block->getY (), $block->getZ (), $pk->block );
+			
+			$pos = new Position ( $block->x, $block->y, $block->z );
+			$block = $p->getLevel ()->getBlock ( $pos );
+			$direct = true;
+			$update = true;
+			$p->getLevel ()->setBlock ( $pos, $block, $direct, $update );
+		}
+	}
+	public function updateBlock(Block $block, Level $level, $blockType) {
+		$players = $level->getPlayers ();
+		foreach ( $players as $p ) {
+			$pk = new UpdateBlockPacket ();
+			$pk->x = $block->getX ();
+			$pk->y = $block->getY ();
+			$pk->z = $block->getZ ();
+			$pk->block = $blockType;
+			$pk->meta = 0;
+			$p->dataPacket ( $pk );
+			$p->getLevel ()->setBlockIdAt ( $block->getX (), $block->getY (), $block->getZ (), $pk->block );
+			
+			$pos = new Position ( $block->x, $block->y, $block->z );
+			$block = $p->getLevel ()->getBlock ( $pos );
+			$direct = true;
+			$update = true;
+			$p->getLevel ()->setBlock ( $pos, $block, $direct, $update );
+		}
+	}
+	
+	/**
+	 * render random blocks
+	 *
+	 * @param Block $block        	
+	 * @param Player $p        	
+	 */
+	public function renderRandomBlocks(Block $block, Level $level) {
+		$b = array_rand ( $this->boardBlocksTypes );
+		$blockType = $this->boardBlocksTypes [$b];
+		// randomly place a mine
+		$this->updateBlock ( $block, $level, $blockType );
+	}
+	
+	/**
+	 *
+	 * @param Block $block        	
+	 * @param Player $p        	
+	 * @param unknown $blockType        	
+	 */
+	public function renderBlockByType(Block $block, Level $level, $blockType) {
+		// randomly place a mine
+		$this->updateBlock ( $block, $level, $blockType );
+	}
+	
+	/**
+	 *
+	 * @param Block $block        	
+	 * @param Player $p        	
+	 * @param unknown $blockType        	
+	 */
+	public function resetBlockByType(Block $block, Level $level, $blockType) {
+		// randomly place a mine
+		$this->resetBlock ( $block, $level, $blockType );
+	}
+	
+	/**
+	 * remove arena
+	 *
+	 * @param unknown $player        	
+	 * @param unknown $xx        	
+	 * @param unknown $yy        	
+	 * @param unknown $zz        	
+	 */
+	public function removeArena(Level $level, $xx, $yy, $zz) {
+		// $wallheighSize = $this->pgin->getConfig ()->get ( "wallheight" );
+		$bsize = $this->boardsize;
+		$bheight = $this->boardheight;
+		
+		$wallheighSize = $yy + $bsize + $bheight;
+		$bsize = $this->boardsize;
+		$xmax = $this->boardsize + 3;
+		$ymax = $this->boardsize;
+		
+		For($z = 0; $z <= $xmax; $z ++) {
+			For($x = 0; $x <= $xmax; $x ++) {
+				For($y = 0; $y <= $wallheighSize; $y ++) {
+					$mx = $xx + $x;
+					$my = $yy + $y;
+					$mz = $zz + $z;
+					$bk = $level->getBlock ( new Vector3 ( $mx, $my, $mz ) );
+					// $this->log ( TextFormat::GREEN . ".removed: " . $bk . " at " . $bk->x . " " . $bk->y . " " . $bk->z );
+					$this->removeBlocks ( $bk, $level );
+				}
+			}
+		}
+	}
+	public function removeGlassTop($size, Level $level, $xx, $yy, $zz) {
+		// $wallheighSize = $this->pgin->getConfig ()->get ( "wallheight" );
+		$wallheighSize = 70;
+		$bsize = $size;
+		$xmax = $size + 3;
+		$ymax = $size;
+		
+		For($z = 0; $z <= $xmax; $z ++) {
+			For($x = 0; $x <= $xmax; $x ++) {
+				For($y = 0; $y <= $wallheighSize; $y ++) {
+					$mx = $xx + $x;
+					$my = $yy + $y;
+					$mz = $zz + $z;
+					$bk = $level->getBlock ( new Vector3 ( $mx, $my, $mz ) );
+					// $this->log ( TextFormat::GREEN . ".removed: " . $bk . " at " . $bk->x . " " . $bk->y . " " . $bk->z );
+					$this->renderBlockByType ( $bk, $level, 0 );
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Load World
+	 *
+	 * @param Player $sender        	
+	 * @param Level $plevel        	
+	 * @return NULL|\pocketmine\level\Level
+	 */
+	public function loadWorldLevel(Level $plevel, $tntrunhome) {
+		$homelevel = null;
+		
+		if (! $plevel->getServer ()->isLevelGenerated ( $tntrunhome )) {
+			$this->pgin->getLogger ()->info ( "generating new world :" . $tntrunhome );
+			$plevel->getServer ()->generateLevel ( $tntrunhome );
+		}
+		
+		if (! $plevel->getServer ()->isLevelLoaded ( $tntrunhome )) {
+			$this->pgin->getLogger ()->info ( "loading world :" . $tntrunhome );
+			$plevel->getServer ()->loadLevel ( $tntrunhome );
+		}
+		
+		$this->pgin->getLogger ()->info ( "getting world -" . $tntrunhome );
+		$homelevel = $sender->getServer ()->getLevelByName ( $tntrunhome );
+		
+		if ($homelevel == null) {
+			$this->pgin->getLogger ()->info ( "Unable to get world: [" . $tntrunhome . "] please contact server administrator!" );
+			return null;
+		}
+		$this->pgin->getLogger ()->info ( "found world -" . $tntrunhome );
+		return $homelevel;
+}
+	
+	
+	/**
+	 * Logging util function
+	 *
+	 * @param unknown $msg        	
+	 */
+	private function log($msg) {
+		$this->pgin->getLogger ()->info ( $msg );
+	}
+}<?php
+
+namespace mcg76\game\tntrun;
+
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\utils\Config;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\level\Explosion;
+use pocketmine\event\block\BlockEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\event\Listener;
+use pocketmine\math\Vector3 as Vector3;
+use pocketmine\math\Vector2 as Vector2;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\network\protocol\AddEntityPacket;
+use pocketmine\network\protocol\UpdateBlockPacket;
+use pocketmine\block\Block;
+use mcg76\game\util\PacketMonitor;
+use pocketmine\entity\FallingBlock;
+use mcg76\game\api\MGArenaFactory;
+use pocketmine\command\defaults\TeleportCommand;
+use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\level\format\PocketChunkParser;
+use pocketmine\event\player\PlayerKickEvent;
+use pocketmine\item\Item;
+use pocketmine\level\sound\LaunchSound;
+use pocketmine\level\sound\PopSound;
+
+/**
+ * TNT Run Command
+ *
+ * Copyright (C) 2014 minecraftgenius76
+ * YouTube Channel: http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author MCG76
+ *        
+ */
+class TNTRunCommand {
+	private $pgin;
+	public $mytaskid;
+	public $ROUND_TIMEOUT = 8000;
+	public function __construct(TNTRun $pg) {
+		$this->pgin = $pg;
+	}
+	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+		if ((strtolower ( $command->getName () ) == "tntrun") && isset ( $args [0] )) {
+			if (! ($sender instanceof Player)) {
+				$sender->sendMessage ( TextFormat::RED . "This command can only be used in-game." );
+				return true;
+			}
+			$player = $sender->getPlayer ();
+			//$this->log ( $command->getName () . " " . count ( $args ) . " " . $args [0] );			
+			if (strtolower ( $args [0] ) == "blockon") {
+				if (! $player->isOp ()) {
+					$player->sendMessage ( "* You are not authorized to use this command!*" );
+					return;
+				}
+				$this->pgin->pos_display_flag = 1;
+				$sender->sendMessage ( "TnTRun block position display ON" );
+				return;
+			}
+			if (strtolower ( $args [0] ) == "blockoff") {
+				if (! $player->isOp ()) {
+					$player->sendMessage ( "* You are not authorized to use this command!*" );
+					return;
+				}
+				$this->pgin->pos_display_flag = 0;
+				$sender->sendMessage ( "TnTRun block position display OFF" );
+				return;
+			}
+			
+			if (strtolower ( $args [0] ) == "setsize") {
+				if (! $player->isOp ()) {
+					$player->sendMessage ( "* You are not authorized to use this command!*" );
+					return;
+				}
+				$sender->sendMessage ( "TnTRun sets arena size to ".$args [1]);
+				$this->pgin->arenaBuilder->boardsize = $args [1];
+				return;
+			}
+			
+			if (strtolower ( $args [0] ) == "liveplayers") {				
+				$sender->sendMessage ( "TnTRun LIVE players: ". count($this->pgin->livePlayers));
+				foreach ($this->pgin->livePlayers as $p) {
+					$sender->sendMessage ($p->getName());
+				}
+				return;
+			}
+			if (strtolower ( $args [0] ) == "status") {
+				$this->getArenaStats($player);
+				return;
+			}
+
+			if ((strtolower ( $args [0] ) == "reset")) {
+				
+				$arenaX = $this->pgin->getConfig ()->get ( "tntrun_arena_x" );
+				$arenaY = $this->pgin->getConfig ()->get ( "tntrun_arena_y" );
+				$arenaZ = $this->pgin->getConfig ()->get ( "tntrun_arena_z" );
+				
+				$player->sendMessage ( "Reset arena floors" );
+				$arenaInfo = $this->pgin->arenaBuilder->resetArenaBuilding ( $player->getLevel (), new Position ( $arenaX, $arenaY, $arenaZ ) );
+					
+				// reset players
+				$this->pgin->livePlayers = [];
+				$this->pgin->arenaPlayers = [];
+					
+				// send the arena owner first
+				$player->sendMessage ( "***************************************" );
+				$player->sendMessage ( "* TNT Run Reset done. it's ready for play! *" );
+				$player->sendMessage ( "***************************************" );
+			}
+			
+			
+			// setup arena
+			if ((strtolower ( $args [0] ) == "create")) {
+				// add arena owner to the list
+				if (! $player->isOp ()) {
+					$player->sendMessage ( "* You are not authorized to use this command!*" );
+					return;
+				}
+				// set player to game lobby
+				$arenaName = $this->pgin->getConfig ()->get ( "tntrun_arena_name" );
+				$arenaSize = $this->pgin->getConfig ()->get ( "tntrun_arena_size" );
+				$arenaX = $this->pgin->getConfig ()->get ( "tntrun_arena_x" );
+				$arenaY = $this->pgin->getConfig ()->get ( "tntrun_arena_y" );
+				$arenaZ = $this->pgin->getConfig ()->get ( "tntrun_arena_z" );
+				
+				// build areana
+				$arenaInfo = $this->pgin->arenaBuilder->buildArena ( $player->getLevel (), new Position ( $arenaX, $arenaY, $arenaZ ) );
+				$ex = $arenaInfo ["entrance_x"];
+				$ey = $arenaInfo ["entrance_y"];
+				$ez = $arenaInfo ["entrance_z"];
+				
+				// set session for this player
+				$this->pgin->tntQuickSessions ["mcgtntrun_arena"] = $arenaInfo;
+				
+				// reset players
+				$this->pgin->livePlayers = [ ];
+				$this->pgin->arenaPlayers = [ ];
+				
+				// send the arena owner first
+				$player->sendMessage ( "***************************************" );
+				$player->sendMessage ( "* TnTRun Arena Created. ready to play! *" );
+				$player->sendMessage ( "***************************************" );
+				
+				$this->pgin->game_mode = 0;				
+				return;
+			}
+			
+			// super fast quick start
+			if (strtolower ( $args [0] ) == "start") {
+				$player->getServer ()->broadcastMessage( "TnTRun Started!" ,$sender->getLevel()->getPlayers());
+				
+				foreach ( $this->pgin->arenaPlayers as $p ) {
+					$this->pgin->livePlayers [$p->getName ()] = $p;
+					$p->sendMessage ( "TnTRun player! Go, Go, Go!!!" );
+				}				
+
+				$this->pgin->game_mode = 1;
+				
+				return;
+			}
+			
+			if (strtolower ( $args [0] ) == "cleanup") {
+				if (! $player->isOp ()) {
+					$player->sendMessage ( "* You are not authorized to use this command!*" );
+					return;
+				}
+				$player->sendMessage ( "Clean up TnTRun Arena, please wait!" );
+				$this->cleanUpArena ( $player->getLevel () );				
+				$player->sendMessage ( "use /tntrun reset to re-build arena." );	
+
+				$this->pgin->game_mode = 0;				
+				return;
+			}
+			
+			if (strtolower ( $args [0] ) == "join") {
+				
+				if (!$this->isArenaAvailable()) {
+					$player->sendMessage ( "Sorry, TnTRun game in-play. please wait!" );
+					return;
+				}
+				
+				$px = $this->pgin->getConfig ()->get ( "tntrun_arena_enter_x" );
+				$py = $this->pgin->getConfig ()->get ( "tntrun_arena_enter_y" );
+				$pz = $this->pgin->getConfig ()->get ( "tntrun_arena_enter_z" );
+				
+				if ($px == null || $py == null || $pz == null) {
+					$this->log ( "Configuration Error - missing TnTRun player join button info. please contact Ops/admin." );
+				} else {					
+					//update game mode
+					$this->pgin->game_mode = 2;					
+					
+					// add player to the list
+					$this->pgin->arenaPlayers [$player->getName ()] = $player;
+					// $this->log ( "player /join: " . $px . " " . $py . " " . $pz );
+					$player->teleport ( new Position ( $px, $py, $pz ) );
+					$player->sendMessage ( "----------------------------------------" );
+					$player->sendMessage ( "Thanks for joining TnT Run. have fun!" );
+					$player->sendMessage ( "when ready, tap the [green] block to [start]" );
+					$player->sendMessage ( "or tap the [gold] block to [exit]." );
+					$player->sendMessage ( "----------------------------------------" );					
+					$player->getServer()->broadcastMessage($player->getName ()." has Join TnT Run!");					
+				}
+			}
+		}
+		return true;
+	}
+	
+	/**
+	 *
+	 * Touched Join Button
+	 *
+	 * @param PlayerInteractEvent $event        	
+	 */
+	public function joinGame(PlayerInteractEvent $event) {
+		$blockTouched = $event->getBlock ();
+		$player = $event->getPlayer ();
+		
+		// check if hitting join sign
+		$lx = $this->pgin->getConfig ()->get ( "tntrun_join_button_x" );
+		$ly = $this->pgin->getConfig ()->get ( "tntrun_join_button_y" );
+		$lz = $this->pgin->getConfig ()->get ( "tntrun_join_button_z" );
+		
+		$sx = $this->pgin->getConfig ()->get ( "tntrun_join_sign_x" );
+		$sy = $this->pgin->getConfig ()->get ( "tntrun_join_sign_y" );
+		$sz = $this->pgin->getConfig ()->get ( "tntrun_join_sign_z" );
+		
+		// JOIN BUTTON
+		if ((round ( $blockTouched->x ) == $lx && round ( $blockTouched->y ) == $ly && round ( $blockTouched->z ) == $lz) || (round ( $blockTouched->x ) == $sx && round ( $blockTouched->y ) == $sy && round ( $blockTouched->z ) == $sz)) {
+			$px = $this->pgin->getConfig ()->get ( "tntrun_arena_enter_x" );
+			$py = $this->pgin->getConfig ()->get ( "tntrun_arena_enter_y" );
+			$pz = $this->pgin->getConfig ()->get ( "tntrun_arena_enter_z" );
+
+			//update game mode
+			$this->pgin->game_mode = 2;
+			
+			if ($px == null || $py == null || $pz == null) {
+				$this->log ( "Configuration Error - missing TnTRun player join button info. please contact Ops/admin." );
+			} else {
+				
+				if (!$this->isArenaAvailable()) {
+					$player->sendMessage ( TextFormat::RED."Sorry, TnTRun game in-play. please wait!" );
+					return;
+				}
+								
+				// add player to the list
+				$this->pgin->arenaPlayers [$player->getName ()] = $player;
+				// $this->log ( "player /join: " . $px . " " . $py . " " . $pz );
+				$player->teleport ( new Position ( $px, $py, $pz ) );
+				$player->getLevel()->updateAround($player->getPosition());
+				$player->getLevel()->updateAllLight($player->getPosition());				
+				$player->getLevel()->addSound(new LaunchSound($player->getPosition()), array($player));
+				
+				//$event->getPlayer ()->sendMessage ( "----------------------------------------" );
+				$event->getPlayer ()->sendMessage ( TextFormat::GRAY."Thanks for joining TnTRun. have fun!" );
+				$event->getPlayer ()->sendMessage ( TextFormat::GRAY."when ready, tap the ".TextFormat::GREEN."[green] block ".TextFormat::GRAY."to ".TextFormat::RED."[start]" );
+				$event->getPlayer ()->sendMessage ( TextFormat::GRAY."or tap the ".TextFormat::GOLD."[gold] block ".TextFormat::GRAY."to [exit]." );				
+				$event->getPlayer ()->sendMessage ( TextFormat::WHITE."----------------------------------------" );				
+				$event->getPlayer ()->getServer()->broadcastMessage(TextFormat::BLUE.$player->getName ()." has Join TnT Run!",$player->getLevel()->getPlayers());
+				
+				
+				
+			}
+		}
+	}
+	
+	/*
+	 * Touched Join Button @param PlayerInteractEvent $event
+	 */
+	public function returnLobby(PlayerInteractEvent $event) {
+		$blockTouched = $event->getBlock ();
+		$player = $event->getPlayer ();
+
+		//	ground floor exist	
+		$lx = $this->pgin->getConfig ()->get ( "tntrun_ground_exit_button_x" );
+		$ly = $this->pgin->getConfig ()->get ( "tntrun_ground_exit_button_y" );
+		$lz = $this->pgin->getConfig ()->get ( "tntrun_ground_exit_button_z" );		
+		// top floor exist
+		$sx = $this->pgin->getConfig ()->get ( "tntrun_top_exit_button_x" );
+		$sy = $this->pgin->getConfig ()->get ( "tntrun_top_exit_button_y" );
+		$sz = $this->pgin->getConfig ()->get ( "tntrun_top_exit_button_z" );
+		
+		// Exit BUTTON
+		if ( (round ( $blockTouched->x ) == $lx && round ( $blockTouched->y ) == $ly && round ( $blockTouched->z ) == $lz) || (round ( $blockTouched->x ) == $sx && round ( $blockTouched->y ) == $sy && round ( $blockTouched->z ) == $sz)) {
+			$px = $this->pgin->getConfig ()->get ( "tntrun_lobby_x" );
+			$py = $this->pgin->getConfig ()->get ( "tntrun_lobby_y" );
+			$pz = $this->pgin->getConfig ()->get ( "tntrun_lobby_z" );
+			
+			if ($px == null || $py == null || $pz == null) {
+				$this->log ( "Configuration Error - missing TnTRun lobby button info. please contact Ops/admin." );
+			} else {
+				// remove players from the list
+				unset ( $this->pgin->arenaPlayers [$player->getName ()] );
+				unset ( $this->pgin->livePlayers [$player->getName ()] );
+
+				$event->getPlayer ()->teleport ( new Position ( $px, $py, $pz ) );
+				$event->getPlayer ()->sendMessage (TextFormat::GOLD. "thanks for playing TnTRun!" );				
+				$event->getPlayer ()->getServer()->broadcastMessage(TextFormat::GRAY.$player->getName ()." has Left TnTRun!", $player->getLevel()->getPlayers());
+				
+				//if last player left the building, then change game mode
+				if ( count($this->pgin->livePlayers) === 0 && $this->pgin->game_mode===2 ) {
+					$this->pgin->game_mode=0;
+				}				
+			}
+		}
+	}
+	
+	/**
+	 *
+	 * Touched Start Button
+	 *
+	 * @param PlayerInteractEvent $event        	
+	 */
+	public function startGame(PlayerInteractEvent $event) {
+		$blockTouched = $event->getBlock ();
+		$player = $event->getPlayer ();
+		
+		// check if hitting join sign
+		$lx = $this->pgin->getConfig ()->get ( "tntrun_start_sign_x" );
+		$ly = $this->pgin->getConfig ()->get ( "tntrun_start_sign_y" );
+		$lz = $this->pgin->getConfig ()->get ( "tntrun_start_sign_z" );
+		// ---//
+		$sx = $this->pgin->getConfig ()->get ( "tntrun_start_button_x" );
+		$sy = $this->pgin->getConfig ()->get ( "tntrun_start_button_y" );
+		$sz = $this->pgin->getConfig ()->get ( "tntrun_start_button_z" );
+		// START BUTTON//
+		if ((round ( $blockTouched->x ) == $lx && round ( $blockTouched->y ) == $ly && round ( $blockTouched->z ) == $lz) || (round ( $blockTouched->x ) == $sx && round ( $blockTouched->y ) == $sy && round ( $blockTouched->z ) == $sz)) {
+			$this->pgin->getServer ()->broadcastMessage ( "TnTRun round Started!",$player->getLevel()->getPlayers() );
+			$this->pgin->game_mode = 1;
+			foreach ( $this->pgin->arenaPlayers as $p ) {
+				$this->pgin->livePlayers [$p->getName ()] = $p;
+				$output = TextFormat::GREEN."============================\n";
+				$output.= TextFormat::YELLOW."TnTRun Started! Go, Go, Go!!!\n";
+				$output.= TextFormat::GREEN."============================\n";
+				$output.= TextFormat::GREEN."Round players:".count($this->pgin->livePlayers)."\n";			
+				$player->sendMessage($output);				
+				if ($player->getInventory()!=null) {
+					$player->getInventory()->setItemInHand(new Item(Item::DIAMOND_SWORD,0,1));				
+				}
+				$player->getLevel()->addSound(new PopSound($player->getPosition()), $this->pgin->arenaPlayers);
+				$player->getLevel()->addSound(new PopSound($player->getPosition()), $this->pgin->arenaPlayers);
+				$player->getLevel()->addSound(new PopSound($player->getPosition()), $this->pgin->arenaPlayers);
+			}
+		}
+	}
+	
+	/**
+	 *
+	 * Touched Reset Button
+	 *
+	 * @param PlayerInteractEvent $event        	
+	 */
+	public function resetGame(PlayerInteractEvent $event) {
+		$blockTouched = $event->getBlock ();
+		$player = $event->getPlayer ();
+		
+		// check if hitting join sign
+		$lx = $this->pgin->getConfig ()->get ( "tntrun_reset_button_x" );
+		$ly = $this->pgin->getConfig ()->get ( "tntrun_reset_button_y" );
+		$lz = $this->pgin->getConfig ()->get ( "tntrun_reset_button_z" );
+		// ---//
+		$sx = $this->pgin->getConfig ()->get ( "tntrun_reset_sign_x" );
+		$sy = $this->pgin->getConfig ()->get ( "tntrun_reset_sign_y" );
+		$sz = $this->pgin->getConfig ()->get ( "tntrun_reset_sign_z" );
+		
+		// Pressed RESET BUTTON//
+		if ((round ( $blockTouched->x ) == $lx && round ( $blockTouched->y ) == $ly && round ( $blockTouched->z ) == $lz) || (round ( $blockTouched->x ) == $sx && round ( $blockTouched->y ) == $sy && round ( $blockTouched->z ) == $sz)) {
+			
+			if (!$this->isArenaAvailable()) {
+				$player->sendMessage ( TextFormat::RED."Sorry, TnTRun game in-play. please wait!");
+				return;
+			}
+
+			$this->pgin->game_mode = 0;			
+			$player->getServer ()->broadcastMessage ( TextFormat::YELLOW."Resetting TnTRun, please wait...",$player->getLevel()->getPlayers());
+			
+			$arenaName = $this->pgin->getConfig ()->get ( "tntrun_arena_name" );
+			$arenaSize = $this->pgin->getConfig ()->get ( "tntrun_arena_size" );
+			$arenaX = $this->pgin->getConfig ()->get ( "tntrun_arena_x" );
+			$arenaY = $this->pgin->getConfig ()->get ( "tntrun_arena_y" );
+			$arenaZ = $this->pgin->getConfig ()->get ( "tntrun_arena_z" );
+			
+			// build areana
+			// $arenaInfo = $this->pgin->arenaBuilder->buildArena ( $player, new Position($arenaX,$arenaY,$arenaZ) );
+			// $ex = $arenaInfo ["entrance_x"];
+			// $ey = $arenaInfo ["entrance_y"];
+			// $ez = $arenaInfo ["entrance_z"];
+			
+			// // set session for this player
+			// $this->pgin->tntQuickSessions ["mcgtntrun_arena"] = $arenaInfo;
+			//$player->sendMessage ( "Reset arena floors" );
+			$arenaInfo = $this->pgin->arenaBuilder->resetArenaBuilding ( $player->getLevel (), new Position ( $arenaX, $arenaY, $arenaZ ) );
+			
+			// reset players
+			$this->pgin->livePlayers = [ ];
+			$this->pgin->arenaPlayers = [ ];
+			
+			// send the arena owner first
+			//$player->getServer()->broadcastMessage  (TextFormat::GRAY."*****************************************",$player->getLevel()->getPlayers());
+			$player->getServer()->broadcastMessage ( TextFormat::YELLOW."* TnTRun Reset done. it's ready to play!*" ,$player->getLevel()->getPlayers());
+			$player->getServer()->broadcastMessage ( TextFormat::GREEN."* players tap [Join] sign to join now.  *" ,$player->getLevel()->getPlayers());
+			//$player->getServer()->broadcastMessage  (TextFormat::GRAY."*****************************************" ,$player->getLevel()->getPlayers());
+		}
+	}
+	
+	/**
+	 * Handle Player Move Event
+	 *
+	 * @param EntityMoveEvent $event        	
+	 */
+	public function onPlayerMove(PlayerMoveEvent $event) {
+		$player = $event->getPlayer ();
+		$x = round ( $event->getFrom ()->x );
+		$y = round ( $event->getFrom ()->y );
+		$z = round ( $event->getFrom ()->z );
+				
+		//make sure players in in the game
+		if (isset($this->pgin->livePlayers[$player->getName()])) {		
+		if ((count ( $this->pgin->livePlayers ) > 0)) {
+			$topblock = $player->getLevel ()->getBlock ( new Vector3 ( $x, $y - 1, $z ) );
+			$midblock = $player->getLevel ()->getBlock ( new Vector3 ( $x, $y - 2, $z ) );
+			$tntblock = $player->getLevel ()->getBlock ( new Vector3 ( $x, $y - 3, $z ) );					  			  
+			//there are cases, pocketmine is not returning tnt layer instead as Air
+			if ($tntblock->getID () == 46 
+					|| ($tntblock->getID () == 0 && $topblock->getID()==44 && $midblock->getID()==12) 
+					|| ($topblock->getID()==0 && $midblock->getID()==12 && $tntblock->getID () == 0) 
+				) {				
+				$this->pgin->arenaBuilder->removeUpdateBlock ( $topblock, $tntblock );
+			}						
+			//if top layer is sand, remove it
+			if ($topblock->getID()==12 && $tntblock->getID()==0 ) {
+				$this->pgin->arenaBuilder->removeUpdateBlock ( $topblock, $midblock );				
+			}					
+			
+		  }
+		}
+
+	}
+	
+	/**
+	 * Entity Damage
+	 *
+	 * @param EntityDamageEvent $event        	
+	 * @return boolean
+	 */
+	public function onEntityDamage(EntityDamageEvent $event) {
+		// check if falling block is sands
+		if ($event->getEntity () instanceof FallingBlock) {
+			$fallingblock = $event->getEntity ();			
+			if ($fallingblock->onGround) {
+				$fallingblock->scheduleUpdate ();
+				$sandblock = $fallingblock->getLevel ()->getBlock ( new Vector3 ( $fallingblock->x, $fallingblock->y + 1, $fallingblock->z ) );				
+				foreach ( $this->pgin->livePlayers as $livep ) {
+						$this->pgin->arenaBuilder->removeBlockForInGamePlayers($sandblock, $livep, 46);
+				}
+				// schedule clean up
+				$cleanuptask = new FallingBlockCleanupTask ( $this->pgin, $fallingblock, $sandblock );
+				$this->mytaskid = $this->pgin->getServer ()->getScheduler ()->scheduleDelayedTask ( $cleanuptask, 30 );
+			}
+			
+			if ($event->getEntity () instanceof Player) {
+				$player = $event->getEntity ();
+				if ($player->onGround) {
+					$topblock = $fallingblock->getLevel ()->getBlock ( new Vector3 ( $fallingblock->x, $fallingblock->y - 1, $fallingblock->z ) );
+					if ($topblock->getID () == 49) {
+						// make explosition
+						$explosion = new Explosion ( new Position ( $player->x, $player->y + 2, $player->z ), 1 );
+						$explosion->explode ();
+						
+						// game over, send player back to lobby
+						$lx = $this->pgin->getConfig ()->get ( "tntrun_lobby_x" );
+						$ly = $this->pgin->getConfig ()->get ( "tntrun_lobby_y" );
+						$lz = $this->pgin->getConfig ()->get ( "tntrun_lobby_z" );
+						// send player to lobby
+						$player->teleport ( new Position ( $lx, $ly, $lz ) );
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	public function onPlayerKicked(PlayerKickEvent $event) {
+		if (isset($this->pgin->arenaPlayers[$event->getPlayer()->getName()])) {
+			unset($this->pgin->arenaPlayers[$event->getPlayer()->getName()]);
+		}
+		if (isset($this->pgin->livePlayers[$event->getPlayer()->getName()])) {
+			unset($this->pgin->livePlayers[$event->getPlayer()->getName()]);
+		}
+	}
+	
+	/**
+	 * OnQuit
+	 *
+	 * @param PlayerQuitEvent $event        	
+	 */
+	public function onQuit(PlayerQuitEvent $event) {
+		if (isset($this->pgin->arenaPlayers[$event->getPlayer()->getName()])) {
+			unset($this->pgin->arenaPlayers[$event->getPlayer()->getName()]);
+		}
+		if (isset($this->pgin->livePlayers[$event->getPlayer()->getName()])) {
+			unset($this->pgin->livePlayers[$event->getPlayer()->getName()]);
+		}
+	}
+	public function onPlayerInteract(PlayerInteractEvent $event) {
+		$this->joinGame ( $event );
+		$this->startGame ( $event );
+		$this->resetGame ( $event );
+		$this->returnLobby ( $event );
+		$this->onStatSignClick($event);
+	}
+	public function cleanUpArena(Level $level) {
+		
+		$this->pgin->game_mode=0; 
+		$arenaWorld = $this->pgin->getConfig ()->get ( "tntrun_arena_world" );
+		$arenaSize = $this->pgin->getConfig ()->get ( "tntrun_arena_size" );
+		$arenaX = $this->pgin->getConfig ()->get ( "tntrun_arena_x" );
+		$arenaY = $this->pgin->getConfig ()->get ( "tntrun_arena_y" );
+		$arenaZ = $this->pgin->getConfig ()->get ( "tntrun_arena_z" );
+		
+		/**
+		 * TODO makesure grab the world TNT belongs
+		 */
+// 		$tntLevel = $level->getServer ()->getLevelByName ( $arenaWorld );
+// 		if ($tntLevel == null) {
+// 			$level->getServer ()->broadcastMessage ( "Unable to clean up TnTRun, please contact Ops/admin!" );
+// 			return;
+// 		}
+		$this->pgin->arenaBuilder->removeArena ( $level, $arenaX, $arenaY, $arenaZ );
+		$this->pgin->tntQuickSessions = [ ];
+		$this->pgin->livePlayers = [ ];
+		$this->pgin->arenaPlayers = [ ];
+		
+		$level->getServer ()->broadcastMessage ( "==========================" ,$level->getPlayers());
+		$level->getServer ()->broadcastMessage ( "TnTRun Arena removed!" ,$level->getPlayers());
+		$level->getServer ()->broadcastMessage ( "Thanks for playing TnT Run!" ,$level->getPlayers());
+		$level->getServer ()->broadcastMessage ( "==========================" ,$level->getPlayers());
+	}
+	
+	/**
+	 * OnPlayerJoin
+	 *
+	 * @param PlayerJoinEvent $event        	
+	 */
+	public function onPlayerJoin(PlayerJoinEvent $event) {
+		$lobbyX = $this->pgin->getConfig ()->get ( "tntrun_lobby_x" );
+		$lobbyY = $this->pgin->getConfig ()->get ( "tntrun_lobby_y" );
+		$lobbyZ = $this->pgin->getConfig ()->get ( "tntrun_lobby_z" );
+		$player = $event->getPlayer ();
+		$enableSpawnLobby = $this->pgin->getConfig ()->get ( "enable_spaw_lobby" );
+		if ($enableSpawnLobby != null && $enableSpawnLobby == "yes") {
+			$player->teleport ( new Position ( $lobbyX, $lobbyY, $lobbyZ ) );
+			//$this->log ( TextFormat::RED . "player spawn to lobby  " . $event->getPlayer ()->getName () . " at " . $lobbyX . " " . $lobbyY . " " . $lobbyZ );
+		}
+	}
+	
+	
+	public function onStatSignClick(PlayerInteractEvent $event) {
+		$lx = $this->pgin->getConfig()->get ( "tntrun_status_sign_x" );
+		$ly = $this->pgin->getConfig()->get ( "tntrun_status_sign_y" );
+		$lz = $this->pgin->getConfig()->get ( "tntrun_status_sign_z" );
+
+		$blockTouched = $event->getBlock ();
+		$player = $event->getPlayer();
+		if ((round ( $blockTouched->x ) == $lx && round ( $blockTouched->y ) == $ly && round ( $blockTouched->z ) == $lz)) {
+			$this->getArenaStats($player);	
+		}
+	}
+
+	public function isArenaAvailable() {
+		$available = false;
+		if ( count($this->pgin->livePlayers) == 0) {
+			$available = true;
+		} 
+		return $available;
+	}
+	
+	public function getArenaStats(Player $sender) {
+		
+		if ( count($this->pgin->livePlayers) > 0 ) {
+			$sender->sendMessage ( "TnTRun Arena is busy. Please wait!");
+			$sender->sendMessage ( "----------------------------------------");
+			$sender->sendMessage ( "TnTRun Joined players: ". count($this->pgin->arenaPlayers));
+			$sender->sendMessage ( "TnTRun Live players: ". count($this->pgin->livePlayers));
+			foreach ($this->pgin->livePlayers as $p) {
+				$sender->sendMessage ($p->getName());
+			}
+			$sender->sendMessage ( "----------------------------------------");
+			return;
+		}
+		
+		if ( count($this->pgin->livePlayers) == 0 && count($this->pgin->arenaPlayers) == 0 ) {
+			$sender->sendMessage ( "-------------------------------------");
+			$sender->sendMessage ( "TnTRun Arena is available for new game!");
+			$sender->sendMessage ( "tap [Reset] then [Join] to start play.");
+			$sender->sendMessage ( "-------------------------------------");
+			return;
+		}
+		
+		if ( count($this->pgin->livePlayers) == 0 && $this->pgin->game_mode==2 ) {
+			$sender->sendMessage ( "-------------------------------------");
+			$sender->sendMessage ( "Current game is available for [Join]");
+			$sender->sendMessage ( "tap [Join] to join current game.");
+			$sender->sendMessage ( "-------------------------------------");
+			return;
+		} else {
+		
+		//if ( count($this->pgin->livePlayers) == 0 ) {
+			$sender->sendMessage ( "-------------------------------------");
+			$sender->sendMessage ( "TnTRun Arena is available for new game!");
+			$sender->sendMessage ( "tap [Reset] then [Join] to start play.");
+			$sender->sendMessage ( "-------------------------------------");			
+			return;
+		} 
+
+	}
+	
+	/**
+	 * Logging util function
+	 *
+	 * @param unknown $msg        	
+	 */
+	private function log($msg) {
+		$this->pgin->getLogger ()->info ( $msg );
+	}
+}# -------------------------------------------------------
+# Player loggin option to lobby 
+# -------------------------------------------------------
+# note: if you already have plugin spawn players to lobby 
+#       then DON'T enable this option to avoid conflict   
+# -------------------------------------------------------
+enable_spaw_lobby: "no"
+#----------------------------
+#----------------------------- 
+# play round reset timer in ticks
+#-----------------------------
+reset_scheduler: "on"
+reset_timeout: "8000"
+reset_type: "FLOOR"
+
+#----------------------------- 
+# reset continues running
+# yes | no 
+#-----------------------------
+reset_continue_running: "no"
+
+#---------------------------
+# TnTRun lobby location
+# ---------------------------
+tntrun_lobby_world: "world"
+tntrun_lobby_x: "141"
+tntrun_lobby_y: "6"
+tntrun_lobby_z: "148"
+#---------------------------
+#---------------------------
+# TnTRun Arena location
+#--------------------------- 
+tntrun_arena_world: "world"
+tntrun_arena_name: "TNT Run Arena"
+tntrun_arena_size: "26"
+tntrun_arena_floor: "3"
+#---------------------------
+tntrun_arena_x: "82"
+tntrun_arena_y: "4"
+tntrun_arena_z: "118"
+#---------------------------
+# player entrance
+tntrun_arena_enter_x: "85"
+tntrun_arena_enter_y: "46"
+tntrun_arena_enter_z: "126"
+#---------------------------
+# TnTRun button JOIN
+#--------------------------- 
+tntrun_join_button_x: "143"
+tntrun_join_button_y: "7"
+tntrun_join_button_z: "155"
+#---------------------------
+# TnTRun button START
+#--------------------------- 
+tntrun_start_button_x: "89"
+tntrun_start_button_y: "44"
+tntrun_start_button_z: "130"
+#
+#---------------------------
+# TnTRun button RESET
+#--------------------------- 
+tntrun_reset_button_x: "142"
+tntrun_reset_button_y: "7"
+tntrun_reset_button_z: "155"
+#
+#---------------------------
+# TnTRun top floor Exit button
+#--------------------------- 
+tntrun_top_exit_button_x: "87"
+tntrun_top_exit_button_y: "44"
+tntrun_top_exit_button_z: "130"
+#
+#---------------------------
+# TnTRun ground floor Exit button
+#--------------------------- 
+tntrun_ground_exit_button_x: "93"
+tntrun_ground_exit_button_y: "7"
+tntrun_ground_exit_button_z: "130"
+#---------------------------
+# TnTRun Sign JOIN
+#--------------------------- 
+tntrun_join_sign_x: "143"
+tntrun_join_sign_y: "7"
+tntrun_join_sign_z: "155"
+#
+#---------------------------
+# TnTRun Sign START
+#--------------------------- 
+tntrun_start_sign_x: "144"
+tntrun_start_sign_y: "7"
+tntrun_start_sign_z: "155"
+#
+#---------------------------
+# TnTRun Sign RESET
+#--------------------------- 
+tntrun_reset_sign_x: "142"
+tntrun_reset_sign_y: "7"
+tntrun_reset_sign_z: "155"
+#
+#---------------------------
+# TnTRun Sign STATUS
+#--------------------------- 
+tntrun_status_sign_x: "141"
+tntrun_status_sign_y: "7"
+tntrun_status_sign_z: "155"
+<?php
+
+namespace mcg76\game\tntrun;
+
+use pocketmine\scheduler\PluginTask;
+use pocketmine\Server;
+use pocketmine\Player;
+use pocketmine\level\Explosion;
+use pocketmine\level\Position;
+use pocketmine\utils\TextFormat;
+
+/**
+ * Scheduled Game Reset
+ *
+ * Copyright (C) 2014 minecraftgenius76
+ * YouTube Channel: http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author MCG76
+ *        
+ */
+class PlayResetTimeout extends PluginTask {
+	private $pgin;
+	public function __construct(TNTRun $plugin) {
+		$this->pgin = $plugin;
+		parent::__construct ( $plugin );
+	}
+	public function onRun($ticks) {
+		try {
+			$this->updateSigns ();
+			
+			$this->pgin->game_mode = 0;
+			$resetScheduler = $this->pgin->getConfig ()->get ( "reset_scheduler" );
+			if ($resetScheduler === null || $resetScheduler === "no") {
+				return;
+			}
+			
+			$resetValue = $this->pgin->getConfig ()->get ( "reset_timeout" );
+			if ($resetValue == null) {
+				$resetValue = 8000;
+			}
+			
+			$resetOption = $this->pgin->getConfig ()->get ( "reset_option" );
+			$tntrunhome = $this->pgin->getConfig ()->get ( "tntrun_arena_world" );
+			$arenaName = $this->pgin->getConfig ()->get ( "tntrun_arena_name" );
+			$arenaSize = $this->pgin->getConfig ()->get ( "tntrun_arena_size" );
+			$arenaX = $this->pgin->getConfig ()->get ( "tntrun_arena_x" );
+			$arenaY = $this->pgin->getConfig ()->get ( "tntrun_arena_y" );
+			$arenaZ = $this->pgin->getConfig ()->get ( "tntrun_arena_z" );
+			
+			// new variable
+			$continuesRunning = $this->pgin->getConfig ()->get ( "reset_continue_running" );
+			// display winners
+			if (count ( $this->pgin->livePlayers ) > 0) {
+				$this->pgin->getServer ()->broadcastMessage ( "|*************************|", $this->pgin->livePlayers );
+				$this->pgin->getServer ()->broadcastMessage ( TextFormat::YELLOW . "|* CONGLATULATION!!!     *|", $this->pgin->livePlayers );
+				$this->pgin->getServer ()->broadcastMessage ( "***************************", $this->pgin->livePlayers );
+				$this->pgin->getServer ()->broadcastMessage ( "*[TnTRun] Round Winners:" . count ( $this->pgin->livePlayers ) );
+				foreach ( $this->pgin->livePlayers as $player ) {
+					$this->pgin->getServer ()->broadcastMessage ( TextFormat::GOLD . "> " . $player->getName (), $this->pgin->livePlayers );
+				}
+				/**
+				 * Oct.30 - new logic to support continue running after reset
+				 */
+				if ($continuesRunning === "yes") {
+					$this->pgin->getServer ()->broadcastMessage ( "TnTRun round Started!" ,$this->pgin->livePlayers);
+					$this->pgin->game_mode = 1;
+					foreach ( $this->pgin->arenaPlayers as $p ) {
+						$this->pgin->livePlayers [$p->getName ()] = $p;
+						$p->sendMessage ( TextFormat::GRAY . "============================" );
+						$p->sendMessage ( TextFormat::RED . "TnTRun Started! Go, Go, Go!!!" );
+						$p->sendMessage ( TextFormat::GRAY . "============================" );
+						$p->sendMessage ( TextFormat::GREEN . "Round players:" . count ( $this->pgin->livePlayers ) );
+					}
+				} else {
+					// start the game
+					foreach ( $this->pgin->arenaPlayers as $player ) {
+						// send each players back to lobby on reset
+						$lobbyX = $this->pgin->getConfig ()->get ( "tntrun_lobby_x" );
+						$lobbyY = $this->pgin->getConfig ()->get ( "tntrun_lobby_y" );
+						$lobbyZ = $this->pgin->getConfig ()->get ( "tntrun_lobby_z" );
+						$player->teleport ( new Position ( $lobbyX, $lobbyY, $lobbyZ ) );
+					}
+					// $this->pgin->getServer ()->broadcastMessage ( "***************************", $this->pgin->livePlayers );
+				}
+			}
+			
+			if ($resetOption != null && $resetOption == "FULL") {
+				// do nothing at this moment
+			} else {
+				$homelevel = $this->pgin->getServer ()->getLevelByName ( $tntrunhome );
+				if ($homelevel != null) {
+					$arenaInfo = $this->pgin->arenaBuilder->resetArenaBuilding ( $homelevel, new Position ( $arenaX, $arenaY, $arenaZ ) );
+					
+					if ($continuesRunning == "yes") {
+						// don't reset game players
+					} else {
+						$this->pgin->game_mode = 0;
+						$this->pgin->livePlayers = [ ];
+						$this->pgin->arenaPlayers = [ ];
+					}
+					
+					// send the arena owner first
+					//$this->pgin->getServer ()->broadcastMessage ( "***********************************", $homelevel->getPlayers () );
+					$this->pgin->getServer ()->broadcastMessage ( TextFormat::YELLOW."* TnTRun Arena Resetted!  *", $homelevel->getPlayers () );
+					$this->pgin->getServer ()->broadcastMessage (TextFormat::GREEN. "* Tap [Join] sign to play  *", $homelevel->getPlayers () );
+					//$this->pgin->getServer ()->broadcastMessage ( "***********************************", $homelevel->getPlayers () );
+					foreach ($homelevel->getPlayers () as $player) {
+						$player->sendTip ( TextFormat::AQUA."[TnTRun] Next Reset in " . $resetValue . " ticks");
+					}
+				} else {
+					$this->pgin->getLogger ()->info ( "TnTRun Missing Configuration: Unable to load TnTRun World [" . $tntrunhome . "]" );
+				}
+			}
+		} catch ( \Exception $e ) {
+			$this->pgin->getLogger ()->info ( $e->getMessage () . "|" . $e->getLine () . "|" . $e->getTraceAsString () );
+		}
+	}
+	public function updateSigns() {
+		$tntrunhome = $this->pgin->getConfig ()->get ( "tntrun_arena_world" );
+		$level = $this->pgin->getServer ()->getLevelByName ( $tntrunhome );
+		$sx = $this->pgin->getConfig ()->get ( "tntrun_join_sign_x" );
+		$sy = $this->pgin->getConfig ()->get ( "tntrun_join_sign_y" );
+		$sz = $this->pgin->getConfig ()->get ( "tntrun_join_sign_z" );
+		$signPos = new Position ( $sx, $sy, $sz, $level );
+		if (! empty ( $signPos )) {
+			$tile = $level->getTile ( $signPos );
+			if (! empty ( $tile )) {
+				$tile->setText ( TextFormat::RED . "[ TnTRun ]", TextFormat::GREEN . "STEP-3", TextFormat::WHITE . " [ENTER ARENA]", TextFormat::GRAY . "Players: " . TextFormat::GOLD . count ( $this->pgin->arenaPlayers ) );
+			}
+		}
+		
+		$lx = $this->pgin->getConfig ()->get ( "tntrun_status_sign_x" );
+		$ly = $this->pgin->getConfig ()->get ( "tntrun_status_sign_y" );
+		$lz = $this->pgin->getConfig ()->get ( "tntrun_status_sign_z" );
+		$signPos = new Position ( $lx, $ly, $lz, $level );
+		if (! empty ( $signPos )) {
+			$tile = $level->getTile ( $signPos );
+			if (! empty ( $tile )) {
+				$status = "available";
+				if ($this->pgin->game_mode === 0) {
+					$status = "available";
+				}
+				if ($this->pgin->game_mode === 1) {
+					$status = "Busy";
+				}
+				if ($this->pgin->game_mode === 2) {
+					$status = "Busy";
+				}
+				$tile->setText ( TextFormat::RED . "[ TnTRun ]", TextFormat::GREEN . "STEP-1", TextFormat::WHITE . " [CHECK STATUS]", TextFormat::GOLD . $status );
+			}
+		}
+		
+		$sx = $this->pgin->getConfig ()->get ( "tntrun_reset_sign_x" );
+		$sy = $this->pgin->getConfig ()->get ( "tntrun_reset_sign_y" );
+		$sz = $this->pgin->getConfig ()->get ( "tntrun_reset_sign_z" );
+		
+		$signPos = new Position ( $sx, $sy, $sz, $level );
+		if (! empty ( $signPos )) {
+			$tile = $level->getTile ( $signPos );
+			if (! empty ( $tile )) {
+				$tile->setText ( TextFormat::RED . "[ TnTRun ]", TextFormat::GREEN . "STEP-2", TextFormat::WHITE . " [RESET ARENA]", " Manual Mode" );
+			}
+		}
+	}
+	public function giveAll() {
+		$data = $this->generateData ();
+		// $this->broadcast("Random item given! (" . $data["id"] . ":" . $data["meta"] . ")");
+		foreach ( $this->pgin->getServer ()->getOnlinePlayers () as $p ) {
+			$this->give ( $p, $data );
+		}
+	}
+	public function give($p, $data) {
+		$item = new Item ( $data ["id"], $data ["meta"], $data ["amount"] );
+		$p->getInventory ()->addItem ( $item );
+	}
+	public function generateData() {
+		return $this->itemdata [rand ( 0, (count ( $this->itemdata ) - 1) )];
+	}
+	public function onCancel() {
+	}
+}

@@ -1,0 +1,118 @@
+<?php echo "PocketMine-MP plugin Diamond v1.0.0\nThis file has been generated using DevTools v1.10.0 at Fri, 25 Dec 2015 12:03:45 -0500\n----------------\n";if(extension_loaded("phar")){$phar = new \Phar(__FILE__);foreach($phar->getMetadata() as $key => $value){echo ucfirst($key).": ".(is_array($value) ? implode(", ", $value):$value)."\n";}} __HALT_COMPILER(); ?>
+Åa:9:{s:4:"name";s:7:"Diamond";s:7:"version";s:5:"1.0.0";s:4:"main";s:19:"Taki21\Diamond\Main";s:3:"api";a:1:{i:0;s:6:"1.12.0";}s:6:"depend";a:0:{}s:11:"description";s:23:"Generate Diamond Worlds";s:7:"authors";a:1:{i:0;s:6:"Taki21";}s:7:"website";N;s:12:"creationDate";i:1451063025;}
+plugin.yml„ñv}V„òÔÌ©¶src/Taki21/Diamond/Main.phpíñv}VíÍvn¶src/Taki21/Diamond/WorldGen.php\ñv}V\£ñ”¶name: Diamond
+main: Taki21\Diamond\Main
+version: 1.0.0
+api: 1.12.0
+description: Generate Diamond Worlds
+author: Taki21
+load: STARTUP<?php
+namespace Taki21\Diamond;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\level\generator\Generator;
+
+class Main extends PluginBase {
+	public function onEnable() {
+		Generator::addGenerator(WorldGen::class, WorldGen::NAME);
+	}
+}
+<?php
+namespace Taki21\Diamond;
+
+use pocketmine\plugin\PluginBase;
+use pocketmine\level\generator\Generator;
+use pocketmine\block\Block;
+use pocketmine\math\Vector3;
+use pocketmine\level\generator\biome\Biome;
+use pocketmine\level\ChunkManager;
+use pocketmine\utils\Random;
+
+class WorldGen extends Generator {
+	const NAME = "Diamond";
+	private $options;
+	private $block, $radius, $floorLevel,$biome,$baseFloor;
+	/** @var ChunkManager */
+	private $level;
+	/** @var Random */
+	private $random;
+	/** @var FullChunk Chunk master */
+	private $chunk;
+
+	public function __construct(array $options = []) {
+		$this->block = Block::DIAMOND_BLOCK;
+		$this->radius = 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+		$this->floorLevel = 64;
+		$this->biome = 1;
+		$this->options = $options;
+		$this->chunk = null;
+		$this->baseFloor = Block::GOLD_BLOCK;
+
+	}
+	public function init(ChunkManager $level, Random $random) {
+		$this->level = $level;
+		$this->random = $random;
+	}
+	protected static function inSpawn($rad2,$spx,$spz,$x,$z){
+		$xoff = $spx - $x;
+		$zoff = $spz - $z;
+		return $rad2 > ($xoff * $xoff + $zoff * $zoff);
+	}
+	public function generateChunk($chunkX, $chunkZ) {
+		$spawn = $this->getSpawn();
+
+		// Adjust spawn so it is relative to current chunk...
+		$spawn->x = $spawn->x - ($chunkX << 4);
+		$spawn->z = $spawn->z - ($chunkZ << 4);
+
+		$inSpawn = (-$this->radius <= $spawn->x && $spawn->x < 16 + $this->radius  &&
+				-$this->radius <= $spawn->z && $spawn->z < 16 + $this->radius);
+
+		if ($inSpawn || $this->chunk === null) {
+			$chunk = $this->level->getChunk($chunkX,$chunkZ);
+			$chunk->setGenerated();
+
+			$c = Biome::getBiome($this->biome)->getColor();
+			$R = $c >> 16;
+			$G = ($c >> 8) & 0xff;
+			$B = $c & 0xff;
+
+			$rad2 = $this->radius * $this->radius;
+
+			for($Z = 0; $Z < 16; ++$Z){
+				for($X = 0; $X < 16; ++$X){
+					$chunk->setBiomeId($X, $Z, $biome);
+					$chunk->setBiomeColor($X, $Z, $R, $G, $B);
+					$chunk->setBlock($X, 0, $Z, $this->baseFloor, 0);
+					for($y = 1; $y < 64; ++$y){
+						$chunk->setBlock($X, $y, $Z, Block::DIAMOND_BLOCK, 0);
+					}
+					if (self::inSpawn($rad2,$spawn->x,$spawn->z,$X,$Z)) {
+						$chunk->setBlock($X,$this->floorLevel,$Z,$this->block);
+					}
+				}
+			}
+			if (!$inSpawn) {
+				$this->chunk = clone $chunk;
+			}
+		} else {
+			$chunk = clone $this->chunk;
+		}
+		$chunk->setX($chunkX);
+		$chunk->setZ($chunkZ);
+		$this->level->setChunk($chunkX,$chunkZ,$chunk);
+	}
+
+	public function populateChunk($chunkX, $chunkZ) {
+	}
+	public function getSettings() {
+		return $this->options;
+	}
+	public function getName() {
+		return self::NAME;
+	}
+	public function getSpawn() {
+		return new Vector3(128,$this->floorLevel+1,128);
+	}
+}
+ª“º…î}2+„O'È„Î'Ýó’GBMB

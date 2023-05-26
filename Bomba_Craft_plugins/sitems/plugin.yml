@@ -1,0 +1,12 @@
+name: sitems
+main: sitems\main
+api: [1.0.0]
+author: badpig
+version: 1.0
+commands:
+ tt:
+  description: "tt"
+ addt:
+  description: "addt"
+ nh:
+  description: "nh"

@@ -1,0 +1,46 @@
+---
+version: 1.4.1
+default-factions-plugin: ~
+groups:
+  Zythic:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§aZythic§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§aZythic§7][§6{display_name}§7] > §b{msg}
+  Trainee:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§dTrainee§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§dTrainee§7][§6{display_name}§7] > §b{msg}
+  §aDeveloper:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§cDeveloper§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§cDevel§4oper§7][§6{display_name}§7] > §b{msg}
+  CoCreator:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§cCo~Creator§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§cCo-Creator§7][§6{display_name}§7] > §b{msg}
+  Moderator:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§2Mod§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§2Mod§7][§6{display_name}§7] > §b{msg}
+  DeveloperOwner:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§cDeveloper§bOwner§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§cDeveloper§bOwner§7][§6{display_name}§7] > §b{msg}
+  Creator:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§4Creator§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§4Creator§7][§6{display_name}§7] > §b{msg}
+  Admin:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§5Admin§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§5Admin§7][§6{display_name}§7] > §b{msg}
+  YouTuber:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§cYou§fTube§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§cYou§fTube§7][§6{display_name}§7] > §b{msg}
+  Mod:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§2Mod§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§2Mod§7][§6{display_name}§7] > §b{msg}
+  CoOwner:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§3CoOwner§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§3CoOwner§7][§6{display_name}§7] > §b{msg}
+  Owner:
+    nametag: §7[§e{fac_rank}{fac_name}§7][§1Owner§7][§6{display_name}§7]
+    chat: §7[§e{fac_rank}{fac_name}§7][§1Owner§7][§6{display_name}§7] > §b{msg}
+  ZythronRestart:
+    chat: §7[§cZythron§dRestart§7] §2{msg}
+  Servertroll:
+    nametag: '&8&l[Servertroll]&f&r {display_name}'
+    chat: §d[Server] {msg}
+...

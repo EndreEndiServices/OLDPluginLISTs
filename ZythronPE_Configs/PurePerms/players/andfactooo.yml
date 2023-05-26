@@ -1,0 +1,11 @@
+---
+userName: AndFactooo
+group: CoOwner
+permissions:
+- pocketmine.command.gamemode
+worlds: []
+time: -1
+expTime: -1
+prefix: Moderator&bMOD
+suffix: AndFactooo§b&
+...

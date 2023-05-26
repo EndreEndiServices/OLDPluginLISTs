@@ -1,0 +1,6 @@
+name: Animalworld
+version: 2.9.0
+api: [1.6.0]
+author: Zzm
+description: Animal AI,All for you!
+main: Animalworld\Animalworld

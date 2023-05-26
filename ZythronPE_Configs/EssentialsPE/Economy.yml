@@ -1,0 +1,17 @@
+---
+default-balance: 0
+currency-symbol: $
+max-money: 10000000000000
+min-money: 0
+worth:
+  14: 25
+  15: 20
+  16: 15
+  56: 50
+  262: 10
+  364: 15
+player-balances:
+  Jhonygamer00789: 0
+  XLloydPlayzzMCX: 0
+  FailingDust1593: 0
+...

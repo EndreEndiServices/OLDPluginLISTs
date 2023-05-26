@@ -1,0 +1,143 @@
+# EnderAuth by NetherManiacsKingdom config file.
+# Some options may not work properly yet!
+
+#------------[EnderAuth Settings]------------#
+# Type of authentication?
+# YML or MySQL?
+# MySQL is not fully implemented yet!
+autentication-type: YML
+
+# Import from SimpleAuth? This option allows EnderAuth to get players data from SimpleAuth and import them.
+# Not implemented.
+import-from-simpleauth: false
+
+# If MYSQL enabled, provide details here. No one will be able to see it.
+username: ""
+password: ""
+port: 3306
+server: ""
+
+# Authenticate players with there IP address?
+ip-auth: false
+
+# How many characters must a password be?
+max-characters: 10
+shortest-characters: 6
+
+# Use aysnc task to login? (Huge performance boost, but may cause a half a sec tick delay when receiving password)
+# Only for MySQL
+use-async: false
+
+# Enable database checks? (Recommend, checks every couple of ticks to make sure the database is online, errors, etc)
+# Only for MySQL
+database-checks: false
+
+# Enable password changing? Will enable /changepw
+enable-pass-changing: true
+
+# Confirm that you changing your password to that password
+confirmchangepw: true 
+
+# Confirm your register password
+confirmreg: true
+
+# Block simple passwords? Prevents players from easily guessing players passwords!
+simple-passcode-blocker: true
+
+# Require email? Will force players to use an email to register.
+require-email: false
+
+# Kick players after how many seconds of not being authenticated?
+enable-kick: false
+kick-after-seconds: 120
+
+# Kick players after X amount of invalid login attempts?
+enable-kick-invalid: false
+kick-after-invailds: 3
+
+#------------[EnderAuth Settings]------------#
+
+
+#------------[Auth Events]------------#
+# What to allow/disallow when not authenticated?
+allow-movement: false
+allow-commands: false
+allow-block-placing: false
+allow-block-breaking: false
+allow-shoot-arrows: false
+allow-drops: false
+allow-pvp: false
+allow-damage: false
+
+# Save settings to memory or pull from config directly?
+# Saving to memory is faster, but pulling from config is more convenient. 
+# Not implemented
+save-to-memory: true
+#------------[Auth Events]------------#
+
+
+#------------[General]------------#
+# Announce player join? EnderAuth let's you choose whether you want "player has joined the server".
+player-join: false
+
+# Announce player quit? EnderAuth let's you choose whether you want "player has left the server".
+player-quit: false
+
+# Show there auth status when not logged in? Username: "[Not-Logged-In] Steve"
+show-username-auth-status: true
+#------------[General]------------#
+
+#----------------[Messages]----------------#
+# Messages sent throughout the plugin.
+# Use a line break to split chat messages. Use: \n
+# Add a splash a color with color symbols! Use: §<letter/number>
+join: "Welcome to my server!"
+login: "Please log-in to play."
+registered: "You are now registered."
+already-registered: "This username is already registered."
+unregister: "You are now unregistered."
+disable: "EnderAuth is disabled at this moment."
+logged: "You are now logged in."
+incorrect: "Incorrect password."
+error: "An error has occured."
+confirmchangepw: "Confirm that you changing your password to that password"
+confirmreg: "Confirm that you want that password."
+short: "That password was too short!"
+long: "That password was too long!"
+please-register: "Please regster this account to play!"
+sharing: "Do not share your password!"
+ipauthed: "You have been ip-authed."
+
+# If simple-passcode-blocker enabled, here are the langs:
+simple: "That password was too simple! Please add more characters."
+
+# If brute-force messages if enabled.
+kick: "You tried to login too many times!"
+
+# Timout messages if enabled.
+timeout: "You been un-authenticated for too long!"
+#----------------[Messages]----------------#
+
+# Safe mode, if EnderAuth is not enabled due to some sort of error, don't let players do anything?
+# Protects you against bad plugins that try to use the API for bad reasons.
+safe-mode: true
+
+# API allows other plugins to access EnderAuth's data with ease, enabling it will register the API class.
+# Safe-Mode is best with this option.
+enable-api: false
+
+# Debug-mode? (Notice: You can't turn this off on beta releases)
+debug-mode: true
+
+# Creates a log file and logs console outputs. You cannot turn this off with debug.
+log-EnderAuth: false
+
+# Auto-Update EnderAuth? This is very useful for getting the latest patches instantly!
+# Not implemented
+auto-update-EnderAuth: false
+
+#-------- Danger Zone! --------#
+# Dangerous experimental setting that should not be edited!
+
+# For internal use only. Do NOT edit.
+version: "1.0.0"

@@ -1,0 +1,12 @@
+# Config file for RankPoints by JD;
+# Requires PurePerms, can be used with VoteReward or other plugins by using the 'rankpoints player' command
+# All Groups MUST exist in PurePerms groups.yml, and the default group must be the first with 0 points
+
+Ranks:
+- Guest
+- Member
+- VIP
+Points:
+- 0
+- 10
+- 50

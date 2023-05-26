@@ -1,0 +1,7 @@
+---
+version: 1.0.6-3
+'# ticks': How often to refresh the popup
+ticks: 450
+'# format': Display format
+format: ''
+...

@@ -1,0 +1,70 @@
+---
+#CLACore plugin for PocketMine-MP and forks
+#@Author: CLADevs Team
+
+#-----------RANKS----------#
+
+#Tags :
+# {name}
+# {msg}
+
+## Default ##
+Default-Tag: "§7[§eDefault§7] §b{name}"
+Default-Chat: "§7[§eDefault§7] §b{name} §f{msg}"
+
+## VIP ##
+VIP-Tag: "§7[§aVIP§7] §b{name}"
+VIP-Chat: "§7[§aVIP§7] §b{name} §f{msg}"
+
+## VIP+ ##
+VIP+-Tag: "§7[§aVIP+§7] §b{name}"
+VIP+-Chat: "§7[§aVIP+§7] §b{name} §f{msg}"
+
+## MVP ##
+MVP-Tag: "§7[§aMVP§7] §b{name}"
+MVP-Chat: "§7[§aMVP§7] §b{name} §f{msg}"
+
+## MVP+ ##
+MVP+-Tag: "§7[§aMVP+§7] §b{name}"
+MVP+-Chat: "§7[§aMVP+§7] §b{name} §f{msg}"
+
+## YouTuber ##
+YouTuber-Tag: "§7[§aYouTuber§7] §b{name}"
+YouTuber-Chat: "§7[§aYouTuber§7] §b{name} §f{msg}"
+
+## Creator ##
+Creator-Tag: "§7[§aCreator§7] §b{name}"
+Creator-Chat: "§7[§aCreator§7] §b{name} §f{msg}"
+
+## Owner ##
+Owner-Tag: "§7[§aOwner§7] §b{name}"
+Owner-Chat: "§7[§aOwner§7] §b{name} §f{msg}"
+
+## CoOwner ##
+CoOwner-Tag: "§7[§aCoOwner§7] §b{name}"
+CoOwner-Chat: "§7[§aCoOwner§7] §b{name} §f{msg}"
+
+## Admin ##
+Admin-Tag: "§7[§aAdmin§7] §b{name}"
+Admin-Chat: "§7[§aAdmin§7] §b{name} §f{msg}"
+
+## Mod ##
+Mod-Tag: "§7[§aMod§7] §b{name}"
+Mod-Chat: "§7[§aMod§7] §b{name} §f{msg}"
+
+## Developer ##
+Developer-Tag: "§7[§aDeveloper§7] §b{name}"
+Developer-Chat: "§7[§aDeveloper§7] §b{name} §f{msg}"
+
+## Helper ##
+Helper-Tag: "§7[§aHelper§7] §b{name}"
+Helper-Chat: "§7[§aHelper§7] §b{name} §f{msg}"
+
+## Staff ##
+Staff-Tag: "§7[§aStaff§7] §b{name}"
+Staff-Chat: "§7[§aStaff§7] §b{name} §f{msg}"
+
+
+## Player ##
+xXNiceAssasinl0: YouTuber
+...

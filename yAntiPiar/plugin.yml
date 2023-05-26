@@ -1,0 +1,7 @@
+name: yAntiPiar
+main: ru\yarka\antipiar\Main
+api:
+ - 2.0.0
+ - 3.0.0
+version: 0.1
+author: Yarka Ilin

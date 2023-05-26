@@ -1,0 +1,19 @@
+---
+name: pvp_kit_leather
+type: npc
+category: kit
+networkId: 180005
+levelName: lobby
+itemOnHand: 272
+armorHelmet: 298
+armorChestplate: 299
+armorLegging: 300
+armorBoots: 301
+positionX: -994
+positionY: 25
+positionZ: 1518
+cost: 10
+message: "PvP Leather Kit"
+kitName: leather_kit
+kitBlock: 5
+...

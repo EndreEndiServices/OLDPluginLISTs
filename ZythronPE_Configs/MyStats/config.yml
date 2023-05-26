@@ -1,0 +1,53 @@
+---
+# Configuration file for MyStats
+# ScoreboardStats by CzechPMDevs (@GamakCZ)
+
+# %line for new line
+
+# %name -> players name
+# %level -> players level
+# %x -> players x
+# %y -> players y
+# %z -> players z
+
+# %itemid -> players item in hand id
+# %itemname -> players item in hand name
+
+# %broken -> breaked blocks
+# %placed -> placed blocks
+# %kills -> kills
+# %deaths -> deaths
+
+# %money -> players money
+
+# %online -> count online players
+# %version -> server version
+# %ip -> server ip
+# %port -> server port
+# %tps -> server tps
+
+# & -> §
+
+# Prefix
+prefix: '&5&l[ &r&2MyStats &l&5]'
+
+
+# Economy type
+
+# Economy types: EconomyAPI
+economy: 'false'
+
+# Format on screen stats
+mainFormat: '&7--- &8[&6 MyStats &8] &7---%line&cWelcome, &9%name%line&cPlacedBlocks: &9%placed%line&cBrokenBlocks: &9%broken%line&cKills: &9%kills%line&cDeaths: &9%deaths%line&cJoins: &9%joins'
+
+# Format for command
+cmdFormat: '&7--- &8[&6 MyStats &8] &7---%line&cKills: &9%kills%line&cDeaths: &9%deaths'
+
+# Sending messages to the worlds:
+popupWorlds:
+  - Lobby
+  - Spawn
+  - PlotMe
+
+tipWorlds: []
+...

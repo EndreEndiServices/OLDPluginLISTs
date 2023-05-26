@@ -1,0 +1,16 @@
+---
+districtborder: "on"
+message: stop, this is end of hunger-game district
+blocks: "200"
+enable_debug: false
+#-------------------------
+enforce_lobby_spawn: true
+#-------------------------
+#hunger game layout portal
+#-------------------------
+mg_hub_levelname: MinigamesHub
+mg_hub_x: 124
+mg_hub_y: 67
+mg_hub_z: -66
+
+...

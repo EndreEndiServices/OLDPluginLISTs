@@ -1,0 +1,14 @@
+name: MagicCarpet
+version: 0.1
+api: 1.13.0
+main: NetherManiacsKingdom/MagicCarpet
+author: DavidJBrockway
+description: A Magic Carpet plugin for PM
+commands:
+ magiccarpet:
+  description: "List all Magic Carpet locations"
+  permission: magic.plugin.magiccarpet
+permissions:
+ mcg76.plugin.magiccarpet:
+  description: "magic.plugin.magiccarpet"
+  default: op

@@ -1,0 +1,47 @@
+---
+kitName: iron_kit
+isDefault: false
+price: 50
+quantity: 1
+health: 20
+itemOnHand: 267
+armors:
+  helmet:
+  - 306
+  - "0"
+  - "1"
+  chestplate:
+  - 307
+  - "0"
+  - "1"
+  leggings:
+  - 308
+  - "0"
+  - "1"
+  boots:
+  - 309
+  - "0"
+  - "1"
+weapons:
+  267:
+  - 267
+  - "0"
+  - "1"
+  332:
+  - 332
+  - "0"
+  - "64"
+foods:
+  364:
+  - 364
+  - "0"
+  - "2"
+  366:
+  - 366
+  - "0"
+  - "2"
+  260:
+  - 260
+  - "0"
+  - "2"
+...

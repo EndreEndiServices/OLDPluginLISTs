@@ -1,0 +1,195 @@
+---
+name: 1_HG_Island
+levelName: HG_Island
+displayName: HG-1 Survival
+joinMessage: Welcome to Hunger Games Arena
+locationX: "102"
+locationY: "12"
+locationZ: "12"
+
+arenaEnterX: "61"
+arenaEnterY: "63"
+arenaEnterZ: "290"
+
+arenaExitX: "126"
+arenaExitY: "67"
+arenaExitZ: "-62"
+
+enterLevelName: "HG_Island"
+exitLevelName: "MinigamesHub"
+
+joinDownCounter: 2
+
+signVoteX: 137
+signVoteY: 68
+signVoteZ: -51
+
+signJoinX: 137
+signJoinY: 67
+signJoinZ: -51
+
+signStatsX: 137
+signStatsY: 68
+signStatsZ: -59
+
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+deathMatchEnterX: "134"
+deathMatchEnterY: "120"
+deathMatchEnterZ: "263"
+
+deathMatchPos1X: "144"
+deathMatchPos1Y: "115"
+deathMatchPos1Z: "253"
+deathMatchPos2X: "119"
+deathMatchPos2Y: "127"
+deathMatchPos2Z: "275"
+
+portalEnter1X: "128"
+portalEnter1Y: "1"
+portalEnter1Z: "123"
+portalEnter2X: "128"
+portalEnter2Y: "1"
+portalEnter2Z: "123"
+
+portalExit1X: "63"
+portalExit1Y: "65"
+portalExit1Z: "292"
+portalExit2X: "60"
+portalExit2Y: "63"
+portalExit2Z: "293"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playStartCountdownMessage: let the game begin...
+playFinishCountdown: 5
+playFinishCountdownMessage: '[HG] remains'
+playStartingMessage: '[hg] starting..'
+
+deathMatchStartCountdown: 5
+deathMatchStartMessage: death match begins
+deathMatchFinishCountdown: 5
+deathMatchFinishMessage: game over
+
+deathMatchDuration: 40
+huntingDuration: 100
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 2
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+gatePos1X: "140"
+gatePos1Y: "69"
+gatePos1Z: "-58"
+gatePos2X: "138"
+gatePos2Y: "67"
+gatePos2Z: "-58"
+chestLocations:
+- - "128"
+  - "1"
+  - "123"
+spawnLocations:
+- - "62"
+  - "65"
+  - "278"
+- - "65"
+  - "65"
+  - "278"
+- - "68"
+  - "65"
+  - "278"
+- - "71"
+  - "65"
+  - "278"
+- - "74"
+  - "65"
+  - "278"
+- - "77"
+  - "65"
+  - "278"
+- - "80"
+  - "65"
+  - "278"
+- - "80"
+  - "65"
+  - "274"
+- - "80"
+  - "65"
+  - "271" 
+- - "80"
+  - "65"
+  - "268" 
+- - "80"
+  - "65"
+  - "268" 
+- - "80"
+  - "65"
+  - "264" 
+- - "80"
+  - "65"
+  - "261" 
+- - "80"
+  - "65"
+  - "258"   
+- - "77"
+  - "65"
+  - "258"    
+- - "74"
+  - "65"
+  - "258"  
+- - "71"
+  - "65"
+  - "258"
+- - "68"
+  - "65"
+  - "258"    
+- - "65"
+  - "65"
+  - "258"
+- - "62"
+  - "65"
+  - "258"      
+- - "59"
+  - "65"
+  - "258"     
+- - "59"
+  - "65"
+  - "261"      
+- - "59"
+  - "65"
+  - "264"   
+- - "59"
+  - "65"
+  - "267"     
+- - "59"
+  - "65"
+  - "270"    
+- - "59"
+  - "65"
+  - "273"     
+- - "59"
+  - "65"
+  - "276"       
+...

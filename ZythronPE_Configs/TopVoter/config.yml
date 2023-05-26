@@ -1,0 +1,18 @@
+#Position of the floating text particle
+Pos:
+  X: -804
+  "Y": 9
+  Z: 297
+#Worlds which will show the particle
+Worlds: [castellum]
+#API-Key of your server provided by minecraftpocket-servers.com
+API-Key: ""
+#Amount of voters who shall be shown (Max: 500)
+Amount: 10
+#Update interval of the query to the server in seconds
+#SHOULD BE ATLEAST 180! OUTPUT IS CACHED FOR 3 MINUTES!
+Update-Interval: 180
+#Header of the floating text particle
+Header: "§l§6Zythron§bPE - §aTop Voter of this Month!"
+#Text for every row after the header
+Text: "{player} Â§e§l{votes}"

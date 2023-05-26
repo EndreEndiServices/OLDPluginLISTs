@@ -1,0 +1,5 @@
+name: NetherAntiSpam
+main: NetherAntiSpam\NetherAntiSpam\Main
+version: 1.0
+author: Matthww
+description: Kicks players when they spam.

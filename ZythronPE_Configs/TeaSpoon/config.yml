@@ -1,0 +1,119 @@
+# MMP""MM""YMM               .M"""bgd
+# P'   MM   `7              ,MI    "Y
+#      MM  .gP"Ya   ,6"Yb.  `MMb.   `7MMpdMAo.  ,pW"Wq.   ,pW"Wq.`7MMpMMMb.
+#      MM ,M'   Yb 8)   MM    `YMMNq. MM   `Wb 6W'   `Wb 6W'   `Wb MM    MM
+#      MM 8M""""""  ,pm9MM  .     `MM MM    M8 8M     M8 8M     M8 MM    MM
+#      MM YM.    , 8M   MM  Mb     dM MM   ,AP YA.   ,A9 YA.   ,A9 MM    MM
+#    .JMML.`Mbmmd' `Moo9^Yo.P"Ybmmd"  MMbmmd'   `Ybmd9'   `Ybmd9'.JMML  JMML.
+#                                     MM
+#                                   .JMML.
+# TeaSpoon Configuration File
+
+# Config Version Number [DO-NOT-MODIFY]
+version: 21
+
+entities:
+ # Weather to register Vanilla Entities (Set to false if you're going to use a MobAI Plugin such as, PureEntitiesX etc...) or not
+ register: true
+ # Enable Lightning Fire & Damage
+ lightningFire: true
+ # Enable EndCrystal Explosion
+ endCrystalExplosion: true
+
+enchantments:
+ # Weather to enable & register Vanilla Enchantments (Set to false if you're going to use VanillaEnchantments plugin etc...) or not
+ register: true
+ enchantingTableEnabled: true
+
+dimensions:
+ # Enable / Disable Dimensions
+ enable: true
+ nether:
+  levelName: "nether"
+  # Vanilla-Like Nether Tranfer is not perfect and would take more time (possibly lag)...
+  vanillaNetherTranfer: false
+ end:
+  levelName: "ender"
+ # SET TO BLANK ("") TO DISABLE
+ overrideOverworldLevel: ""
+
+misc:
+ # !!!   ONLY ENABLE THIS IF YOU ARE SURE THAT ALL YOUR    !!!
+ # !!! PLUGINS ARE COMPATIBLE WITH YOUR CURRENT PMMP BUILD !!!
+ loadAllAPIs: false
+ # Enable to generate new Fishing LootTables everyday
+ randomFishingLootTables: false
+ 
+enderPearl:
+ enable: true
+ cooldown: 2
+ damage: 5
+
+chorusFruit:
+ enable: true
+ cooldown: 2
+
+weather: 
+ enable: true
+ # Minimum Weather Duration (IN TICKS)
+ minDuration: 6000
+ # Maximum Weather Duration (IN TICKS)
+ maxDuration: 12000
+ # If lightning should be spawned in stormy weather
+ lightning: true
+
+player:
+ # Enable to dis-allow container interactions & item dropping when in creative
+ limitedCreative: false
+ # In vanilla, this is false... In Genisys, its true
+ clearInventoryOnGameModeChange: false
+ # Armor Damage toggle
+ armorDamage: true
+ instantArmor:
+  enable: true
+ # Toggle to replace current armor or not (Vanilla-Way: false) [might cause glitches/bugs on server lag]
+  replace: false
+ # Elytra configuration
+ elytra:
+  enable: true
+  enableElytraBoost: true
+  elytraBoostParticles: true
+ totemOfUndying: true
+ fishing: true
+
+mobSpawner:
+ enable: true
+ # Drop spawners on silk touch (damageAsEID needs to be enabled)
+ silkTouchSpawners: false
+ # Use MonsterSpawner Damage Value as the Entity ID -- False in vanilla minecraft
+ damageAsEID: false
+
+fireworks:
+ enable: true
+
+Xp:
+ # ExperienceOrb Override -- Enabling this will override PMMP's ExperienceOrb entity
+ override: true
+ dropMobExperience: true
+ # Toggle to enable/disable pickup delay when picking up XPOrbs (true in Vanilla-MineCraft) [NEEDS OVERRIDE TO BE ENABLED]
+ pickupDelay: false
+ # Ticks till despawn -- 1 Second = 20 Ticks [NEEDS OVERRIDE TO BE ENABLED] (6000 in Vanilla-Minecraft -- according to PMMP)
+ ticksTillDespawn: 200
+
+blocks:
+ dropExperience: true
+ dragonEggTeleport: true
+
+hopper:
+ itemTransferEnable: true
+
+beacon:
+ # You can only disable effects (if it has any effect at all) because beacons are rendered client-side
+ enable: true
+ effectsEnabled: true
+
+shulkerBox:
+ enable: true
+
+anvil:
+ enable: true

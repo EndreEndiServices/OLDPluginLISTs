@@ -1,0 +1,9 @@
+name: DonateCase-AR
+main: AutoRacing\DonateCase
+version: 0.1
+author: AutoRacing 
+api: 2.0.0
+load: POSTWORLD
+commands:
+ givecase:
+  description: "Выдать кейс"

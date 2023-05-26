@@ -1,0 +1,33 @@
+name: BBI
+author: LDX
+version: "2.1"
+api: [1.0.0]
+main: LDX\BanItem\Main
+load: POSTWORLD
+commands:
+  item:
+    description: "Блокировка вещей на сервере."
+    permission: banitem.command.item
+    usage: "/item <ban/unban> <ID[:Damage]>"
+permissions:
+  banitem:
+    default: false
+    description: "Allows access to all BanItem features."
+    children:
+      banitem.*:
+        default: false
+        description: "Allows access to all BanItem features."
+      banitem.bypass:
+        default: op
+        description: "Allows access to using banned items."
+      banitem.command:
+        default: false
+        description: "Allows access to all BanItem commands."
+        children:
+          banitem.command.*:
+            default: false
+            description: "Allows access to all BanItem commands."
+            children:
+              banitem.command.item:
+                default: op
+                description: "Allows access to the item command."

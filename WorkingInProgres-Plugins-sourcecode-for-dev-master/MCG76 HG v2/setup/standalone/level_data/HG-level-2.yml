@@ -1,0 +1,68 @@
+---
+id: 102
+name: HG-level-2
+type: 2
+displayName: HG level-2
+levelName: "Hunger Games Lobby"
+particles: portal
+
+#important values
+minPlayers: 2
+maxPlayers: 24
+joinDownCounter: 18
+winnerCoins: 5
+
+locationX: "-94"
+locationY: "41"
+locationZ: "-420"
+
+entranceX: "-92"
+entranceY: "42"
+entranceZ: "-420"
+enterLevelName: "Hunger Games Lobby"
+
+exitX: "-30"
+exitY: "38"
+exitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+signJoinX: "-69"
+signJoinY: "43"
+signJoinZ: "-420"
+
+signJoin2X: "-36"
+signJoin2Y: "39"
+signJoin2Z: "-421"
+
+signExitX: "-98"
+signExitY: "42"
+signExitZ: "-418"
+
+signStatsX: "-96"
+signStatsY: "43"
+signStatsZ: "-420"
+
+mapselectX: "139"
+mapselectY: "67"
+mapselectZ: "-50"
+
+gatePos1X: "-97"
+gatePos1Y: "42"
+gatePos1Z: "-419"
+
+gatePos2X: "-97"
+gatePos2Y: "41"
+gatePos2Z: "-421"
+
+portalEnter1X: "-97"
+portalEnter1Y: "40"
+portalEnter1Z: "-426"
+
+portalEnter2X: "-107"
+portalEnter2Y: "45"
+portalEnter2Z: "-414"
+
+maps:
+- 2_Catching_Fire_1
+- 2_Catching_Fire_2
+...

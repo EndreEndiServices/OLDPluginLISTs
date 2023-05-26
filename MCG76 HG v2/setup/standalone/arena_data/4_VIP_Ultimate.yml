@@ -1,0 +1,162 @@
+---
+name: "4_VIP_Ultimate"
+levelName: The Survival Games Ultimate
+displayName: HG-VIP Ultimate
+published: true
+
+locationX: "-747"
+locationY: "12"
+locationZ: "724"
+
+enterLevelName: The Survival Games Ultimate
+arenaEnterX: "-880"
+arenaEnterY: "13"
+arenaEnterZ: "920"
+
+# Enable this for return player back to VIP lobby
+# but disable the other entry below
+#exitLevelName: "lobby"
+#arenaExitX: "-1031"
+#arenaExitY: "23"
+#arenaExitZ: "1466"
+
+exitLevelName: Hunger Games Lobby
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+
+huntingDuration: 600
+deathMatchDuration: 160
+
+signVoteX: -1028
+signVoteY: 24
+signVoteZ: 1436
+
+signJoinX: -1011
+signJoinY: 24
+signJoinZ: 1453
+
+#signStatsX: 1
+#signStatsY: 1
+#signStatsZ: 1
+#joinDownCounter: 15
+
+signExitX: 1
+signExitY: 1
+signExitZ: 1
+
+deathMatchEnterX: "-747"
+deathMatchEnterY: "12"
+deathMatchEnterZ: "724"
+
+deathMatchPos1X: "-712"
+deathMatchPos1Y: "4"
+deathMatchPos1Z: "782"
+deathMatchPos2X: "-785"
+deathMatchPos2Y: "23"
+deathMatchPos2Z: "691"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+
+minPlayers: 4
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+
+spawnLocations:
+- - "-887"
+  - "14"
+  - "934"
+- - "-890"
+  - "14"
+  - "937"
+- - "-893"
+  - "14"
+  - "940"
+- - "-896"
+  - "14"
+  - "942"
+- - "-900"
+  - "14"
+  - "942"
+- - "-904"
+  - "14"
+  - "942"
+- - "-907"
+  - "14"
+  - "940"
+- - "-910"
+  - "14"
+  - "937"
+- - "-913"
+  - "14"
+  - "934" 
+- - "-915"
+  - "14"
+  - "931" 
+- - "-915"
+  - "14"
+  - "927" 
+- - "-915"
+  - "14"
+  - "923" 
+- - "-913"
+  - "14"
+  - "920" 
+- - "-910"
+  - "14"
+  - "917"   
+- - "-907"
+  - "14"
+  - "914"    
+- - "-904"
+  - "14"
+  - "912"  
+- - "-900"
+  - "14"
+  - "912"
+- - "-896"
+  - "14"
+  - "912"    
+- - "-893"
+  - "14"
+  - "914"
+- - "-890"
+  - "14"
+  - "917"      
+- - "-887"
+  - "14"
+  - "920"     
+- - "-885"
+  - "14"
+  - "923"      
+- - "-885"
+  - "14"
+  - "927"   
+- - "-885"
+  - "14"
+  - "931"      
+...

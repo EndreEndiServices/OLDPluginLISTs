@@ -1,0 +1,88 @@
+---
+name: 4_Survival Games Map
+levelName: Survival Games Map
+displayName: MCHG
+joinMessage: Welcome to Hunger Games Arena
+locationX: "102"
+locationY: "12"
+locationZ: 12
+enterX: "128"
+enterY: "1"
+enterZ: "123"
+exitX: "128"
+exitY: "1"
+exitZ: "123"
+enterLevelName: MinigamesHub
+exitLevelName: MinigamesHub
+
+signJoinX: 128.000000
+signJoinY: 1.000000
+signJoinZ: 123.000000
+signStatsX: 128.000000
+signStatsY: 1.000000
+signStatsZ: 123.000000
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+signVoteX: 135
+signVoteY: 68
+signVoteZ: -50
+
+portalEnter1X: "128"
+portalEnter1Y: "1"
+portalEnter1Z: "123"
+portalEnter2X: "128"
+portalEnter2Y: "1"
+portalEnter2Z: "123"
+portalExit1X: "128"
+portalExit1Y: "1"
+portalExit1Z: "123"
+portalExit2X: "128"
+portalExit2Y: "1"
+portalExit2Z: "123"
+resetPeriod: 120
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 5
+playStartCountdownMessage: let the game begin...
+playFinishCountdown: 5
+playFinishCountdownMessage: '[HG] remains'
+playStartingMessage: '[hg] starting..'
+playStartTime: 1428480705.574737
+playFinishTime: 1428480705.574737
+deathMatchStartCountdown: 5
+deathMatchStartMessage: death match begins
+deathMatchFinishCountdown: 5
+deathMatchFinishMessage: game over
+deathMatchStartTime: 1428480705.574737
+deathMatchFinishTime: 1428480705.574737
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 2
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+gatePos1X: "128"
+gatePos1Y: "1"
+gatePos1Z: "123"
+gatePos2X: "123"
+gatePos2Y: "1"
+
+...

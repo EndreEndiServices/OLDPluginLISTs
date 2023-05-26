@@ -1,0 +1,5 @@
+name: AntiPvPSlive-MPE-PLAGINS
+version: 1.0.0.0 
+api: [3.0.0]  
+main: AntiPvPSlive\AntiPvPSlive\Main
+description: ---

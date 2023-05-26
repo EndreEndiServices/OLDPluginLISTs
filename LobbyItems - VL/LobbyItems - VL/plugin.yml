@@ -1,0 +1,12 @@
+name: LobbyItems
+version: 1.0
+api: 3.0.0-ALPHA10
+main: VL\LobbyItems
+author: VL
+commands:
+    build:
+        description: Lobby Buildmode
+    lobby:
+        description: Lobby
+    fly:
+        description: Fly Command

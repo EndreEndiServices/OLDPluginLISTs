@@ -1,0 +1,88 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: Без клана
+groups:
+  Игрок:
+    default-chat: §8(§7{faction}§8) §8(§eИгрок§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§eИгрок§8) §f{display_name}
+    worlds: []
+  Флай:
+    default-chat: §8(§7{faction}§8) §8(§3Флай§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§3Флай§8) §f{display_name}
+    worlds: []
+  Вип:
+    default-chat: §8(§7{faction}§8) §8(§9Вип§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§9Вип§8) §f{display_name}
+    worlds: []
+  Премиум:
+    default-chat: §8(§7{faction}§8) §8(§6Премиум§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§6Премиум§8) §f{display_name}
+    worlds: []
+  Креатив:
+    default-chat: §8(§7{faction}§8) §8(§aКреатив§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§aКреатив§8) §f{display_name}
+    worlds: []
+  Модератор:
+    default-chat: §8(§7{faction}§8) §8(§2Модератор§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§2Модератор§8) §f{display_name}
+    worlds: []
+  Админ:
+    default-chat: §8(§7{faction}§8) §8(§bАдмин§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§bАдмин§8) §f{display_name}
+    worlds: []
+  Оператор:
+    default-chat: §8(§7{faction}§8) §8(§4Оператор§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§4Оператор§8) §f{display_name}
+    worlds: []
+  Основатель:
+    default-chat: §8(§7{faction}§8) §8(§cОснователь§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§cОснователь§8) §f{display_name}
+    worlds: []
+  Владелец:
+    default-chat: §8(§7{faction}§8) §8(§dВладелец§8) §f{display_name} §8⇒ §7{message}
+    default-nametag: §8(§dВладелец§8) §f{display_name}
+    worlds: []
+  АДМИНИСТРАТОР:
+    default-chat: §8(§7{faction}§8) §8(§cАДМИНИСТРАТОР§8) §f{display_name} §8⇒ §a{message}
+    default-nametag: §8(§cАДМИНИСТРАТОР§8) §f{display_name}
+    worlds: []
+  Заместитель:
+    default-chat: §8[§2{faction}§8] §f{display_name} §8⇒ §a{message}
+    default-nametag: §a{display_name}
+    worlds: []
+  ЗамАдминистратора:
+    default-chat: §8(§7{faction}§8) §8(§cЗам.Администратора§8) §f{display_name} §8⇒
+      §a{message}
+    default-nametag: §8(§cЗам.Администратора§8) §f{display_name}
+    worlds: []
+  Поддержка:
+    default-chat: §l§8(§dПоддержка§8) §a{display_name} §r§8⇒ §d{message}
+    default-nametag: §l§8(§dПоддержка§8) §a{display_name}
+    worlds: []
+  Guest:
+    default-chat: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Admin:
+    default-chat: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Owner:
+    default-chat: '{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  OP:
+    default-chat: '{COLOR_GREEN}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_BLUE}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name}'
+    worlds: []
+  MD:
+    default-nametag: '[MD] {display_name}'
+    default-chat: '[MD] {display_name} > {message}'
+...

@@ -1,0 +1,157 @@
+---
+name: 1_Survival_Breeze
+levelName: Breeze Island
+displayName: HG-1-Breeze
+published: true
+
+locationX: "15"
+locationY: "66"
+locationZ: "19"
+enterLevelName: Breeze Island
+arenaEnterX: "44"
+arenaEnterY: "64"
+arenaEnterZ: "-11"
+
+exitLevelName: Hunger Games Lobby
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+
+#game play time
+deathMatchDuration: 130
+huntingDuration: 400
+
+signVoteX: -30.000000
+signVoteY: 42.000000
+signVoteZ: -343.000000
+
+signJoinX: -21.000000
+signJoinY: 29.000000
+signJoinZ: -477.000000
+
+#signStatsX: 1137.000000
+#ignStatsY: 68.000000
+#signStatsZ: -59.000000
+#joinDownCounter: 10
+
+signExitX: 43.000000
+signExitY: 66.000000
+signExitZ: 4.000000
+deathMatchEnterX: "-187"
+deathMatchEnterY: "65"
+deathMatchEnterZ: "260"
+deathMatchPos1X: "-164"
+deathMatchPos1Y: "57"
+deathMatchPos1Z: "239"
+deathMatchPos2X: "-205"
+deathMatchPos2Y: "73"
+deathMatchPos2Z: "279"
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+minPlayers: 2
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+spawnLocations:
+- - "37"
+  - "65"
+  - "12"
+- - "39"
+  - "65"
+  - "18"
+- - "40"
+  - "65"
+  - "24"
+- - "39"
+  - "65"
+  - "30"
+- - "37"
+  - "65"
+  - "36"
+- - "33"
+  - "65"
+  - "42"
+- - "27"
+  - "65"
+  - "46"
+- - "21"
+  - "65"
+  - "48"
+- - "15"
+  - "65"
+  - "49"
+- - "9"
+  - "65"
+  - "48"
+- - "3"
+  - "65"
+  - "46"
+- - "-3"
+  - "65"
+  - "42"
+- - "-7"
+  - "65"
+  - "36"
+- - "-9"
+  - "65"
+  - "30"
+- - "-10"
+  - "65"
+  - "24"
+- - "-9"
+  - "65"
+  - "18"
+- - "-7"
+  - "65"
+  - "12"
+- - "-3"
+  - "65"
+  - "6"
+- - "3"
+  - "65"
+  - "2"
+- - "9"
+  - "65"
+  - "0"
+- - "15"
+  - "65"
+  - "-1"
+- - "21"
+  - "65"
+  - "0"
+- - "27"
+  - "65"
+  - "2"
+- - "33"
+  - "65"
+  - "6"
+invisibleTime: false
+status: READY
+waitCountDown: false
+playStartTime: false
+playFinishTime: false
+deathMatchStartTime: false
+deathMatchFinishTime: false
+...

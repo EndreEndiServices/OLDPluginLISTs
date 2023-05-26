@@ -1,0 +1,5 @@
+name: BlazingRodGun
+main: BlazingRodGun\BlazingRodGun
+version: 1.2
+author: Matthww
+api: [2.0.0]

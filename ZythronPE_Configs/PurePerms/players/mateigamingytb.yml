@@ -1,0 +1,20 @@
+---
+userName: MateiGamingYTB
+group: Mod
+permissions:
+- advancedkits.command
+- advancedkits.admin
+- pocketmine.*
+- pocketmine.command.*
+- pocketmine.command
+- pocketmine.command.op
+- pocketmine.command.op.take
+- pocketmine.command.op.give
+- pocketmine.command.give
+- pocketmine.command.plugins
+- pocketmine.command.status
+- pocketmine.command.gamemode
+worlds: []
+time: -1
+expTime: -1
+...

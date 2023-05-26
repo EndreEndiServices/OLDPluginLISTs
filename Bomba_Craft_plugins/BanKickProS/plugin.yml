@@ -1,0 +1,24 @@
+name: BanKickPro
+api: 1.0.0, 2.0.0, 3.0.0
+author: InvForever(MrAlecses)
+version: 1
+main: InvForever\BanKickPro
+website: vk.com/invforever
+
+commands:
+ pban:
+  default: true
+ punban:
+  default: true
+ pkick:
+  default: true
+ ptimeban:
+  default: true
+ pbancid:
+  default: true
+ pbanip:
+   default: true
+ punbanip:
+   default: true
+ phelp:
+   default: true

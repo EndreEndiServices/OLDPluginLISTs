@@ -1,0 +1,137 @@
+---
+name: 3_MockingJay_Airport
+levelName: SnowValleyAirportResort
+displayName: HG-3-Airport
+published: true
+
+locationX: "-302"
+locationY: "60"
+locationZ: "283"
+
+arenaEnterX: "-302"
+arenaEnterY: "60"
+arenaEnterZ: "283"
+enterLevelName: "SnowValleyAirportResort"
+
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+# play time
+huntingDuration: 480
+deathMatchDuration: 140
+
+#for testing purpose
+signJoinX: -29
+signJoinY: 29
+signJoinZ: -477
+
+signVoteX: -29
+signVoteY: 39
+signVoteZ: -501
+
+#signStatsX: 1
+#signStatsY: 1
+#signStatsZ: 1
+#joinDownCounter: 2
+
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+deathMatchEnterX: "-401"
+deathMatchEnterY: "81"
+deathMatchEnterZ: "311"
+
+deathMatchPos1X: "-383"
+deathMatchPos1Y: "80"
+deathMatchPos1Z: "345"
+deathMatchPos2X: "-411"
+deathMatchPos2Y: "84"
+deathMatchPos2Z: "274"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 4
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "-411"
+sectionpos1Y: "84"
+sectionpos1Z: "345"
+sectionpos2X: "-229"
+sectionpos2Y: "66"
+sectionpos2Z: "182"
+
+spawnLocations:
+- - "-275"
+  - "61"
+  - "267"
+- - "-278"
+  - "61"
+  - "260"
+- - "-287"
+  - "61"
+  - "249"
+- - "-295"
+  - "61"
+  - "246"
+- - "-314"
+  - "61"
+  - "247"
+- - "-322"
+  - "61"
+  - "250"
+- - "-331"
+  - "61"
+  - "259"
+- - "-334"
+  - "61"
+  - "286"
+- - "-334"
+  - "61"
+  - "280" 
+- - "-332"
+  - "61"
+  - "294" 
+- - "-332"
+  - "61"
+  - "294" 
+- - "-322"
+  - "61"
+  - "303" 
+- - "-315"
+  - "61"
+  - "306" 
+- - "-296"
+  - "61"
+  - "306"   
+- - "-288"
+  - "61"
+  - "303"    
+- - "-279"
+  - "61"
+  - "295"  
+- - "-276"
+  - "61"
+  - "287"     
+...

@@ -1,0 +1,33 @@
+---
+Prefix: '&l&6[&aZ&dS&eW&6]'
+language: English
+join_health: 40
+banned_command_in_game:
+- /hub
+- /lobby
+- /spawn
+- /tpa
+- /tp
+- /tpaccept
+- /back
+- /home
+- /f
+- /kill
+start_when_full: "true"
+lobby:
+  spawn_x: 989.000000
+  spawn_y: 6.000000
+  spawn_z: 967.000000
+  world: castellum
+allow_drop_item: true
+use_economy: false
+reset_zip: false
+chat:
+  enable_chat: true
+  chat_format_player: '&b[Player] &a%1 > &f%2'
+  chat_format_spectator: '&7[Spectator] &8%1 > &f%2'
+item:
+  enable_leave_item: true
+  enable_double_tap: true
+  leave_item: "120:0"
+...

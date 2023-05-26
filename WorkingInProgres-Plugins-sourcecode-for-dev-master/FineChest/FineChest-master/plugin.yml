@@ -1,0 +1,19 @@
+name: FineChests
+main: Asidert\FineChests
+version: "0.1"
+author: Asidert
+api: [1.0.0]
+load: POSTWORLD
+commands:
+ cr:
+  permission: FChestReset.command
+  description: Ресет сундуков
+  usage: /cr <add|remove|reload|reset>
+permissions:
+ FChestReset.*:
+  default: op
+  description: Перм
+  children:
+   FChestReset.command.*:
+    default: op
+    description: Юз команд

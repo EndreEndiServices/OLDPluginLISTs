@@ -1,0 +1,13 @@
+how to fix lags in minecraft?
+
+1. assign minecraft (php) process higher priority
+2. store world in fast hard-disk like SSD.
+   or store them in RAM disk if you have lots of memory
+   
+4. install additional network card
+
+
+things I've ruled out as problems:
+
+Router
+Wireless/wired makes no difference (small but has been tested both ways)

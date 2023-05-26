@@ -1,0 +1,41 @@
+## VPN GUARD (MC Pocket Edition) ##
+## Developed for Server Software: PocketMine ##
+
+# If you have purchased the premium API enter the key otherwise leave blank.
+# You can purchase a key from: http://xioax.com/host-blocker/
+api-key: ""
+
+# Enable caching of API requests? If so specify time in hours to keep the cached file
+# When the api-cache-time is reached the cached file will be updated with the API server response.
+api-cache: true
+api-cache-time: 24
+
+# Commands to run if player has connected with a anonymizer
+#command:
+#    - kick %p You seem to be using a VPN or Proxy
+command: []
+
+# Country Mode is a setting that allows you toggle between a country blacklist or whitelist.
+# Meaning you can prevent or only allow access to your server if the connecting user is on your country list.
+# To add or remove countries to your blacklist/whitelist use the command /vpnguard country
+# This feature will only work if you have the proper API Package.
+country_mode: "blacklist"
+# Kick message to display if a user tries connecting from a country that is blacklisted or not on the whitelist.
+country_ban-message: "Sorry, players connecting from your country are not permitted to join this server :("
+
+# Kick message to display if a user tries connecting with an IP that is subnet banned
+ban-message: "You are subnet banned!"
+
+# Timeout in seconds for connecting to the API server.
+# If it takes longer to connect the plugin will assume API server is down.
+timeout: 10
+
+# Console Logging, displays detailed information every time a player joins
+# the server on console.
+logging: true
+
+# Allow users to connect if API Server encounters any errors (Such as Timeout)?
+bypass-check: false
+
+# Kick message to display if bypass-check is on false.
+bypass-message: "Unable to perform anonymization checks."

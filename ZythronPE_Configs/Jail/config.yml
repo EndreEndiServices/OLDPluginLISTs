@@ -1,0 +1,66 @@
+####### Configuration file of Jail #######
+
+### Restrictions of prisoners ###
+allow-chat: true
+allow-command: false
+allow-block-break: false
+allow-block-place: false
+allow-item-drop: false
+#If false, restricts player's VECTOR3 movement, not whole POSITION
+allow-movement: true
+allow-attack: false
+disable-damage: true
+
+### Language ###
+# Supported languages: en, zh, ru
+default-lang: en
+
+### Settings ###
+#Count when the prisoner is offline?
+offline-time-counting: false
+#Enable additional penalty when players try to destroy the jail?
+enable-penalty: true
+#How much time to be added to that player as penalty?
+penalty-time: 10
+#Allow players to bail using money?
+allow-bail: true
+#Allow non-jailed players to enter a jail?
+allow-visit: true
+#How much money per second a player has to pay to bail?
+bail-per-second: 100
+#OPs can't be jailed?
+op-can-be-jailed: true
+#Enable Server-start latest version tracker?
+updater-startup-fetch: true
+#Enable frequent scheduled auto update checker?
+scheduled-update-checker: true
+#Minutes between each check? (Ignore if scheduled-update-checker=false)
+scheduled-update-checker-interval: 45
+#Number of votes that a players has to be jailed after reaching it
+votes-to-jail-player: 4
+#Show timer GUI to prisoners?
+show-prisoner-timer: true
+#Check player's UUID when they join? (Jailed players may change their name)
+check-UUID: true
+#Time unit (min|sec|hr)
+time-unit: min
+#Block type of mine (The blocks that fill the mine) (block_id)
+block: 15
+#Item type of mine (The item that prisoners can sell and earn money) (item_id)
+#The value corresponds to the item which drops when you destroy a block in mine
+item: 265
+#Money per 20 blocks
+money-per-block: 1
+
+#Update checker channel
+#   Channels:
+#   'poggit': Versions that are checked by the PocketMine team
+#   'github': Versions that are guaranteed to be UP-TO-DATE
+#   '*': Both of the above channels will be fetched (>Recommended<)
+# (Insert 'poggit' or 'github' or '*')
+update-checker-channel: '*'
+
+
+### Config version ###
+#Do not modify this, otherwise plugin may not work properly
+v: 1.2.1

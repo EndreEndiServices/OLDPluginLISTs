@@ -1,0 +1,166 @@
+---
+name: 3_SnowValleyAirportResort
+levelName: SnowValleyAirportResort
+displayName: HG-3 SnowValleyAirport
+joinMessage: Welcome to Hunger Games Arena
+
+locationX: "-302"
+locationY: "60"
+locationZ: "283"
+
+arenaEnterX: "-302"
+arenaEnterY: "60"
+arenaEnterZ: "283"
+
+arenaExitX: "126"
+arenaExitY: "67"
+arenaExitZ: "-62"
+
+enterLevelName: "SnowValleyAirportResort"
+exitLevelName: "MinigamesHub"
+
+joinDownCounter: 2
+
+signJoinX: 148
+signJoinY: 70
+signJoinZ: -51
+
+signVoteX: 148
+signVoteY: 71
+signVoteZ: -51
+
+signStatsX: 137
+signStatsY: 68
+signStatsZ: -59
+
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+deathMatchEnterX: "-401"
+deathMatchEnterY: "81"
+deathMatchEnterZ: "311"
+
+deathMatchPos1X: "-383"
+deathMatchPos1Y: "80"
+deathMatchPos1Z: "345"
+deathMatchPos2X: "-411"
+deathMatchPos2Y: "84"
+deathMatchPos2Z: "274"
+
+portalEnter1X: "128"
+portalEnter1Y: "1"
+portalEnter1Z: "123"
+portalEnter2X: "128"
+portalEnter2Y: "1"
+portalEnter2Z: "123"
+
+portalExit1X: "302"
+portalExit1Y: "60"
+portalExit1Z: "231"
+portalExit2X: "-305"
+portalExit2Y: "62"
+portalExit2Z: "233"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playStartCountdownMessage: let the game begin...
+playFinishCountdown: 5
+playFinishCountdownMessage: '[HG] remains'
+playStartingMessage: '[hg] starting..'
+
+deathMatchStartCountdown: 5
+deathMatchStartMessage: death match begins
+deathMatchFinishCountdown: 5
+deathMatchFinishMessage: game over
+
+deathMatchDuration: 100
+huntingDuration: 200
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 2
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "-411"
+sectionpos1Y: "84"
+sectionpos1Z: "345"
+sectionpos2X: "-229"
+sectionpos2Y: "66"
+sectionpos2Z: "182"
+gatePos1X: "140"
+gatePos1Y: "69"
+gatePos1Z: "-58"
+gatePos2X: "138"
+gatePos2Y: "67"
+gatePos2Z: "-58"
+chestLocations:
+- - "128"
+  - "1"
+  - "123"
+spawnLocations:
+- - "-275"
+  - "61"
+  - "267"
+- - "-278"
+  - "61"
+  - "260"
+- - "-287"
+  - "61"
+  - "249"
+- - "-295"
+  - "61"
+  - "246"
+- - "-314"
+  - "61"
+  - "247"
+- - "-322"
+  - "61"
+  - "250"
+- - "-331"
+  - "61"
+  - "259"
+- - "-334"
+  - "61"
+  - "286"
+- - "-334"
+  - "61"
+  - "280" 
+- - "-332"
+  - "61"
+  - "294" 
+- - "-332"
+  - "61"
+  - "294" 
+- - "-322"
+  - "61"
+  - "303" 
+- - "-315"
+  - "61"
+  - "306" 
+- - "-296"
+  - "61"
+  - "306"   
+- - "-288"
+  - "61"
+  - "303"    
+- - "-279"
+  - "61"
+  - "295"  
+- - "-276"
+  - "61"
+  - "287"     
+...

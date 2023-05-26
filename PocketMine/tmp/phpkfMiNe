@@ -1,0 +1,2180 @@
+#name, main, version and api are required
+name: MCG76_WorldEdit
+main: mcg76\plugin\worldedit\WorldEditPlugIn
+version: 0.5.2
+api: 1.8.0
+author: minecraftgenius76
+description: mcg76 MCPE WorldEditor 
+commands:
+ /:
+  description: "minecraftgenius76 WorldEditor"
+  permission: mcg76.plugin.worldeditor
+permissions:
+ mcg76.plugin.worldeditor:
+  description: "mcg76.plugin.worldeditor"
+  default: op<?php
+
+namespace mcg76\plugin\worldedit;
+
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\command\CommandExecutor;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\utils\Config;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\level\Explosion;
+use pocketmine\event\block\BlockEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\Listener;
+use pocketmine\math\Vector3 as Vector3;
+use pocketmine\utils\Utils;
+use pocketmine\block\Block;
+use mcg76\plugin\worldedit\commands\RemoveBlocksCommand;
+
+/**
+ * MCPE World Edit - Made by minecraftgenius76
+ *
+ * You're allowed to use for own usage only "as-is".
+ * you're not allowed to republish or resell or for any commercial purpose.
+ *
+ * Thanks for your cooperate!
+ *
+ * Copyright (C) 2015 minecraftgenius76
+ *
+ * Web site: http://www.minecraftgenius76.com/
+ * YouTube : http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author minecraftgenius76
+ *
+ */
+
+
+class WorldEditPlugIn extends PluginBase implements CommandExecutor {
+	public $weCommands;
+	public $weBuilder;
+	public $peblock;
+	public $sessions = [ ];
+	public $pos_display_flag = 0;
+	/**
+	 * Implement plugin onLoad
+	 */
+	public function onLoad() {
+		$this->peblock = new PEBlock ();
+		$this->weCommands = new WorldEditCommand ( $this );
+		$this->weBuilder = new WorldEditBuilder ( $this );
+		$this->sessions = array ();
+	}
+	
+	/**
+	 * Implement plugin onEnable function
+	 */
+	public function onEnable() {
+		$this->sessions = [ ];
+		$this->replacementBlocks = [ ];
+		if (! file_exists ( $this->getDataFolder () . "config.yml" )) {
+			@mkdir ( $this->getDataFolder () );
+			file_put_contents ( $this->getDataFolder () . "config.yml", $this->getResource ( "config.yml" ) );
+		}
+		$this->getConfig ()->getAll ();		
+		$wanditem = $this->getConfig ()->get ( "wand-item" );
+		$limit = $this->getConfig ()->get ( "block-limit" );
+
+		//alternative remove command
+		$commandMap = $this->getServer ()->getCommandMap ();		
+		$commandMap->register ( "/wremove", new RemoveBlocksCommand($this, "/wremove", "Remove Selected Blocks Command" ) );			
+		$this->enabled = true;
+		$this->getServer()->getPluginManager()->registerEvents(new WorldEditListener($this), $this);				
+		$this->log ( TextFormat::GREEN . "-MCG76 WorldEdit Enabled" );
+	}
+	
+	/**
+	 * Implement plugin onDisabled function
+	 */
+	public function onDisable() {
+		$this->enabled = false;
+		$this->log ( TextFormat::RED . "- MCG76 WorldEdit Disable" );
+	}
+	
+	/**
+	 * Handle plugin commands
+	 */
+	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+		$this->weCommands->onCommand ( $sender, $command, $label, $args );
+	}
+
+	private function log($msg) {
+		$this->getLogger ()->info ( $msg );
+	}
+}<?php
+
+namespace mcg76\plugin\worldedit;
+
+use pocketmine\block\Block;
+use pocketmine\item\ItemBlock;
+use pocketmine\item\Item;
+
+/**
+ * MCPE World Edit - Made by minecraftgenius76
+ *
+ * You're allowed to use for own usage only "as-is". 
+ * you're not allowed to republish or resell or for any commercial purpose.
+ *
+ * Thanks for your cooperate!
+ *
+ * Copyright (C) 2015 minecraftgenius76
+ * 
+ * Web site: http://www.minecraftgenius76.com/
+ * YouTube : http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author minecraftgenius76
+ *
+ */
+
+class PEBlock {
+
+	public $list = [ ];
+	public function __construct() {
+		$this->init ();
+	}
+	public function init() {
+		
+		$this->list ["AIR"] = 0;
+		$this->list ["STONE"] = 1;
+		$this->list ["GRASS"] = 2;
+		$this->list ["DIRT"] = 3;
+		$this->list ["COBBLESTONE"] = 4;
+		$this->list ["PLANKS"] = 5;
+		$this->list ["SAPLING"] = 6;
+		$this->list ["BEDROCK"] = 7;
+		$this->list ["WATER"] = 8;
+		$this->list ["STILL_WATER"] = 9;
+		$this->list ["LAVA"] = 10;
+		$this->list ["STILL_LAVA"] = 11;
+		$this->list ["SAND"] = 12;
+		$this->list ["GRAVEL"] = 13;
+		$this->list ["GOLD_ORE"] = 14;
+		$this->list ["IRON_ORE"] = 15;
+		$this->list ["COAL_ORE"] = 16;
+		$this->list ["WOOD"] = 17;
+		$this->list ["LEAVE"] = 18;
+		$this->list ["LEAVES"] = 18;
+		$this->list ["SPONGE"] = 19;
+		$this->list ["GLASS"] = 20;
+		$this->list ["LAPIS_ORE"] = 21;
+		$this->list ["LAPIS_BLOCK"] = 22;
+		$this->list ["SANDSTONE"] = 24;
+		$this->list ["BED_BLOCK"] = 26;
+		$this->list ["COBWEB"] = 30;
+		$this->list ["TALL_GRASS"] = 31;
+		$this->list ["DEAD_BUSH"] = 32;
+		$this->list ["WOOL"] = 35;
+		$this->list ["DANDELION"] = 37;
+		$this->list ["POPPY"] = 38;
+		$this->list ["BROWN_MUSHROOM"] = 39;
+		$this->list ["RED_MUSHROOM"] = 40;
+		$this->list ["GOLD_BLOCK"] = 41;
+		$this->list ["GOLD"] = 41;
+		$this->list ["IRON_BLOCK"] = 42;
+		$this->list ["IRON"] = 42;
+		$this->list ["DOUBLE_SLAB"] = 43;
+		$this->list ["SLAB"] = 44;
+		$this->list ["BRICK"] = 45;
+		$this->list ["BRICKS_BLOCK"] = 45;
+		$this->list ["TNT"] = 46;
+		$this->list ["BOOKSHELF"] = 47;
+		$this->list ["MOSS_STONE"] = 48;
+		$this->list ["MOSSY_STONE"] = 48;
+		$this->list ["OBSIDIAN"] = 49;
+		$this->list ["TORCH"] = 50;
+		$this->list ["FIRE"] = 51;
+		$this->list ["MONSTER_SPAWNER"] = 52;
+		$this->list ["OAK_WOOD_STAIRS"] = 53;
+		$this->list ["WOOD_STAIRS"] = 53;
+		$this->list ["CHEST"] = 54;
+		
+		$this->list ["DIAMOND_ORE"] = 56;
+		$this->list ["DIAMOND_BLOCK"] = 57;
+		$this->list ["DIAMOND"] = 57;		
+		$this->list ["CRAFTING_TABLE"] = 58;
+		$this->list ["WORKBENCH"] = 58;
+		$this->list ["WHEAT_BLOCK"] = 59;
+		$this->list ["FARMLAND"] = 60;
+		$this->list ["FURNACE"] = 61;
+		$this->list ["BURNING_FURNACE"] = 62;
+		$this->list ["SIGN_POST"] = 63;
+		$this->list ["WOOD_DOOR_BLOCK"] = 64;
+		$this->list ["LADDER"] = 65;
+		
+		$this->list ["COBBLESTONE_STAIRS"] = 67;
+		$this->list ["WALL_SIGN"] = 68;
+		
+		$this->list ["IRON_DOOR_BLOCK"] = 71;
+		$this->list ["REDSTONE_ORE"] = 73;
+		$this->list ["GLOWING_REDSTONE_ORE"] = 74;
+		$this->list ["SNOW"] = 78;
+		$this->list ["SNOW_LAYER"] = 78;
+		$this->list ["ICE"] = 79;
+		$this->list ["SNOW_BLOCK"] = 80;
+		$this->list ["CACTUS"] = 81;
+		$this->list ["CLAY_BLOCK"] = 82;
+		$this->list ["SUGARCANE_BLOCK"] = 83;
+		
+		$this->list ["FENCE"] = 85;
+		$this->list ["PUMPKIN"] = 86;
+		$this->list ["NETHERRACK"] = 87;
+		$this->list ["SOUL_SAND"] = 88;
+		$this->list ["GLOWSTONE_BLOCK"] = 89;
+		$this->list ["GLOWSTONE"] = 89;
+		
+		$this->list ["PUMPKIN"] = 91;
+		$this->list ["LIT_PUMPKIN"] = 91;
+		$this->list ["CAKE_BLOCK"] = 92;
+		$this->list ["CAKE"] = 92;
+		
+		$this->list ["TRAPDOOR"] = 96;
+		
+		$this->list ["STONE_BRICKS"] = 98;
+		$this->list ["IRON_BAR"] = 101;
+		$this->list ["IRON_BARS"] = 101;
+		$this->list ["GLASS_PANE"] = 102;
+		$this->list ["GLASS_PANEL"] = 102;
+		$this->list ["MELON_BLOCK"] = 103;
+		$this->list ["PUMPKIN_STEM"] = 104;
+		$this->list ["MELON_STEM"] = 104;
+		$this->list ["VINE"] = 106;
+		$this->list ["VINES"] = 106;
+		$this->list ["FENCE_GATE"] = 107;
+		$this->list ["BRICK_STAIRS"] = 108;
+		$this->list ["STONE_BRICK_STAIRS"] = 109;
+		
+		$this->list ["MYCELIUM"] = 110;
+		$this->list ["NETHER_BRICKS"] = 112;
+		$this->list ["NETHER_BRICKS_STAIRS"] = 114;
+		
+		$this->list ["END_PORTAL"] = 120;
+		$this->list ["END_STONE"] = 121;
+		$this->list ["SANDSTONE_STAIRS"] = 128;
+		$this->list ["EMERALD_ORE"] = 129;
+		
+		$this->list ["EMERALD_BLOCK"] = 133;
+		$this->list ["SPRUCE_WOOD_STAIRS"] = 134;
+		$this->list ["BIRCH_WOOD_STAIRS"] = 135;
+		$this->list ["JUNGLE_WOOD_STAIRS"] = 136;
+		$this->list ["STONE_WALL"] = 139;
+		
+		$this->list ["CARROT_BLOCK"] = 141;
+		$this->list ["POTATO_BLOCK"] = 142;
+		
+		$this->list ["QUARTZ_BLOCK"] = 155;
+		$this->list ["QUARTZ_STAIRS"] = 156;
+		$this->list ["DOUBLE_WOOD_SLAB"] = 157;
+		$this->list ["WOOD_SLAB"] = 158;
+		$this->list ["STAINED_CLAY"] = 159;
+		
+		$this->list ["LEAVES2"] = 161;
+		$this->list ["WOOD2"] = 162;
+		$this->list ["ACACIA_WOOD_STAIRS"] = 163;
+		$this->list ["DARK_OAK_WOOD_STAIRS"] = 164;
+		
+		$this->list ["HAY_BALE"] = 170;
+		$this->list ["CARPET"] = 171;
+		$this->list ["HARDENED_CLAY"] = 172;
+		$this->list ["COAL_BLOCK"] = 173;
+		
+		$this->list ["FENCE_GATE_SPRUCE"] = 183;
+		$this->list ["FENCE_GATE_BIRCH"] = 184;
+		$this->list ["FENCE_GATE_JUNGLE"] = 185;
+		$this->list ["FENCE_GATE_DARK_OAK"] = 186;
+		$this->list ["FENCE_GATE_ACACIA"] = 187;
+		$this->list ["FENCE_SPRUCE"] = 188;
+		$this->list ["FENCE_BIRCH"] = 189;
+		$this->list ["FENCE_DARK_OAK"] = 191;
+		$this->list ["FENCE_JUNGLE"] = 190;
+		$this->list ["FENCE_ACACIA"] = 192;
+		
+		$this->list ["PODZOL"] = 243;
+		$this->list ["BEETROOT"] = 244;
+		$this->list ["BEETROOT_BLOCK"] = 244;
+		$this->list ["STONECUTTER"] = 245;
+		$this->list ["GLOWING_OBSIDIAN"] = 246;
+		$this->list ["NETHER_REACTOR"] = 247;
+		
+		//inverse
+		$this->list ["0"] = 0; //"AIR";
+		$this->list ["1"] = 1;//"STONE";
+		$this->list ["2"] = 2;//"GRASS";
+		$this->list ["3"] = 3;//"DIRT";
+		$this->list ["4"] = 4;//"COBBLESTONE";
+		$this->list ["5"] = 5;//"PLANKS";
+		$this->list ["6"] = 6;//"SAPLING";
+		$this->list ["7"] = 7;//"BEDROCK";
+		$this->list ["8"] = 8;//"WATER";
+		$this->list ["9"] = 9;//"STILL_WATER";
+		$this->list ["10"] = 10;//"LAVA";
+		$this->list ["11"] = 11;//"STILL_LAVA";
+		$this->list ["12"] = 12;//"SAND";
+		$this->list ["13"] = 13;//"GRAVEL";
+		$this->list ["14"] = 14;//"GOLD_ORE";
+		$this->list ["15"] = 15;//"IRON_ORE";
+		$this->list ["16"] = 16;//"COAL_ORE";
+		$this->list ["17"] = 17;//"WOOD";
+		$this->list ["18"] = 18;//"LEAVE";
+		$this->list ["19"] = 19;//"SPONGE";
+		$this->list ["20"] = 20;//Glass;
+		$this->list ["21"] = 21;//"LAPIS_ORE";
+		$this->list ["22"] = 22;//"LAPIS_BLOCK";
+		$this->list ["24"] = 24;//"SANDSTONE";
+		$this->list ["26"] = 26;//"BED_BLOCK";
+		$this->list ["30"] = 30;//"COBWEB";
+		$this->list ["31"] = 31;//"TALL_GRASS";
+		$this->list ["32"] = 32;//"DEAD_BUSH";
+		$this->list ["35"] = 35;//"WOOL";
+		$this->list ["37"] = 37;//"DANDELION";
+		$this->list ["38"] = 38;//"POPPY";
+		$this->list ["39"] = 39;//"BROWN_MUSHROOM";
+		$this->list ["40"] = 40;//"RED_MUSHROOM";
+		$this->list ["41"] = 41;//"GOLD_BLOCK";
+		$this->list ["42"] = 42;//"IRON_BLOCK";
+		$this->list ["43"] = 43;//"DOUBLE_SLAB";
+		$this->list ["44"] = 44;//"SLAB";
+		$this->list ["45"] = 45;//"BRICK";
+		$this->list ["46"] = 46;//"TNT";
+		$this->list ["47"] = 47;//"BOOKSHELF";
+		$this->list ["48"] = 48;//"MOSS_STONE";
+		$this->list ["49"] = 49;//"OBSIDIAN";
+		$this->list ["50"] = 50;//"TORCH";
+		$this->list ["51"] = 51;//"FIRE";
+		$this->list ["52"] = 52;//"MONSTER_SPAWNER";
+		$this->list ["53"] = 53;//"WOOD_STAIRS";
+		$this->list ["54"] = 54;//"CHEST";		
+		$this->list ["56"] = 56;//"DIAMOND_ORE";
+		$this->list ["57"] = 57;//"DIAMOND_BLOCK";
+		$this->list ["58"] = 58;//"CRAFTING_TABLE";
+		$this->list ["59"] = 59;//"WHEAT_BLOCK";
+		$this->list ["60"] = 60;//"FARMLAND";
+		$this->list ["61"] = 61;//"FURNACE";
+		$this->list ["62"] = 62;//"BURNING_FURNACE";
+		$this->list ["63"] = 63;//"SIGN_POST";
+		$this->list ["64"] = 64;//"WOOD_DOOR_BLOCK";
+		$this->list ["65"] = 65;//"LADDER";		
+		$this->list ["67"] = 67;//"COBBLESTONE_STAIRS";
+		$this->list ["68"] = 68;//"WALL_SIGN";		
+		$this->list ["71"] = 71;//"IRON_DOOR_BLOCK";
+		$this->list ["73"] = 73;//"REDSTONE_ORE";
+		$this->list ["74"] = 74;//"GLOWING_REDSTONE_ORE";
+		$this->list ["78"] = 78;//"SNOW";
+		$this->list ["79"] = 79;//"ICE";
+		$this->list ["80"] = 80;//"SNOW_BLOCK";
+		$this->list ["81"] = 81;//"CACTUS";
+		$this->list ["82"] = 82;//"CLAY_BLOCK";
+		$this->list ["83"] = 83;//"SUGARCANE_BLOCK";		
+		$this->list ["85"] = 85;//"FENCE";
+		$this->list ["86"] = 86;//"PUMPKIN";
+		$this->list ["87"] = 87;//"NETHERRACK";
+		$this->list ["88"] = 88;//"SOUL_SAND";
+		$this->list ["89"] = 89;//"GLOWSTONE_BLOCK";		
+		$this->list ["91"] = 91;//"PUMPKIN";
+		$this->list ["92"] = 92;//"CAKE_BLOCK";		
+		$this->list ["96"] = 96;//"TRAPDOOR";		
+		$this->list ["98"] = 98;//"STONE_BRICKS";
+		$this->list ["101"] = 101;//"IRON_BAR";
+		$this->list ["102"] = 102;//"GLASS_PANE";
+		$this->list ["103"] = 103;//"MELON_BLOCK";
+		$this->list ["104"] = 104;//"PUMPKIN_STEM";
+		$this->list ["106"] = 106;//"VINE";
+		$this->list ["107"] = 107;//"FENCE_GATE";
+		$this->list ["108"] = 108;//"BRICK_STAIRS";
+		$this->list ["109"] = 109;//"STONE_BRICK_STAIRS";		
+		$this->list ["110"] = 110;//"MYCELIUM";
+		$this->list ["112"] = 112;//"NETHER_BRICKS";
+		$this->list ["114"] = 114;//"NETHER_BRICKS_STAIRS";		
+		$this->list ["120"] = 120;//"END_PORTAL";
+		$this->list ["121"] = 121;//"END_STONE";
+		$this->list ["128"] = 128;//"SANDSTONE_STAIRS";
+		$this->list ["129"] = 129;//"EMERALD_ORE";		
+		$this->list ["133"] = 133;//"EMERALD_BLOCK";
+		$this->list ["134"] = 134;//"SPRUCE_WOOD_STAIRS";
+		$this->list ["135"] = 135;//"BIRCH_WOOD_STAIRS";
+		$this->list ["136"] = 136;//"JUNGLE_WOOD_STAIRS";
+		$this->list ["139"] = 139;//"STONE_WALL";		
+		$this->list ["141"] = 141;//"CARROT_BLOCK";
+		$this->list ["142"] = 142;//"POTATO_BLOCK";		
+		$this->list ["155"] = 155;//"QUARTZ_BLOCK";
+		$this->list ["156"] = 156;//"QUARTZ_STAIRS";
+		$this->list ["157"] = 157;//"DOUBLE_WOOD_SLAB";
+		$this->list ["158"] = 158;//"WOOD_SLAB";
+		$this->list ["159"] = 159;//"STAINED_CLAY";		
+		$this->list ["161"] = 161;//"LEAVES2";
+		$this->list ["162"] = 162;//"WOOD2";
+		$this->list ["163"] = 163;//"ACACIA_WOOD_STAIRS";
+		$this->list ["164"] = 164;//"DARK_OAK_WOOD_STAIRS";		
+		$this->list ["170"] = 170;//"HAY_BALE";
+		$this->list ["171"] = 171;//"CARPET";
+		$this->list ["172"] = 172;//"HARDENED_CLAY";
+		$this->list ["173"] = 173;//"COAL_BLOCK";		
+		$this->list ["183"] = 183;//"FENCE_GATE_SPRUCE";
+		$this->list ["184"] = 184;//"FENCE_GATE_BIRCH";
+		$this->list ["185"] = 185;//"FENCE_GATE_JUNGLE";
+		$this->list ["186"] = 186;//"FENCE_GATE_DARK_OAK";
+		$this->list ["187"] = 187;//"FENCE_GATE_ACACIA";
+		$this->list ["188"] = 188;//"FENCE_SPRUCE";
+		$this->list ["189"] = 189;//"FENCE_BIRCH";
+		$this->list ["191"] = 191;//"FENCE_DARK_OAK";
+		$this->list ["190"] = 190;//"FENCE_JUNGLE";
+		$this->list ["192"] = 192;//"FENCE_ACACIA";		
+		$this->list ["243"] = 243;//"PODZOL";
+		$this->list ["244"] = 244;//"BEETROOT";
+		$this->list ["245"] = 245;//"STONECUTTER";
+		$this->list ["246"] = 246;//"GLOWING_OBSIDIAN";
+		$this->list ["247"] = 247;//"NETHER_REACTOR";		
+	}
+	
+	public function getItemBlock($name) {
+		 if (isset($this->list[strtoupper($name)])) {
+		 	$bid = $this->list[strtoupper($name)];
+		 	return Item::get($bid);
+		 }
+		 return null;		 		
+	}	
+}<?php
+
+namespace mcg76\plugin\worldedit;
+
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+use pocketmine\Server;
+use pocketmine\utils\Config;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\level\Explosion;
+use pocketmine\event\block\BlockEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\Listener;
+use pocketmine\math\Vector3 as Vector3;
+use pocketmine\math\Vector2 as Vector2;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\player\PlayerLoginEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerItemHeldEvent;
+use pocketmine\utils\Utils;
+use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\event\server\DataPacketSendEvent;
+use pocketmine\block\Block;
+use pocketmine\item\ItemBlock;
+use pocketmine\item\Item;
+
+/**
+ * MCPE World Edit - Made by minecraftgenius76
+ *
+ * You're allowed to use for own usage only "as-is".
+ * you're not allowed to republish or resell or for any commercial purpose.
+ *
+ * Thanks for your cooperate!
+ *
+ * Copyright (C) 2015 minecraftgenius76
+ *
+ * Web site: http://www.minecraftgenius76.com/
+ * YouTube : http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author minecraftgenius76
+ *        
+ */
+class WorldEditCommand {
+	private $pgin;
+	public function __construct(WorldEditPlugIn $pg) {
+		$this->pgin = $pg;
+	}
+	public function &session(Player $sender) {
+		if (! isset ( $this->getPlugIn ()->sessions [$sender->getName ()] )) {
+			$this->getPlugIn ()->sessions [$sender->getName ()] = array (
+					"selection" => array (
+							false,
+							false 
+					),
+					"clipboard" => false,
+					"block-limit" => - 1,
+					"wand-usage" => false,
+					"paste-pos" => false 
+			);
+		}
+		return $this->getPlugIn ()->sessions [$sender->getName ()];
+	}
+	public function setPosition1(&$session, Position $position, &$output) {
+		$session ["selection"] [0] = array (
+				round ( $position->x ),
+				round ( $position->y ),
+				round ( $position->z ),
+				$position->level 
+		);
+		$count = $this->countBlocks ( $session ["selection"] );
+		if ($count === false) {
+			$count = "";
+		} else {
+			$count = " ($count)";
+		}
+		$output .= "[WE] Position #1 set to (" . $session ["selection"] [0] [0] . ", " . $session ["selection"] [0] [1] . ", " . $session ["selection"] [0] [2] . ")$count.\n";
+		return true;
+	}
+	public function setPosition2(&$session, Position $position, &$output) {
+		$session ["selection"] [1] = array (
+				round ( $position->x ),
+				round ( $position->y ),
+				round ( $position->z ),
+				$position->level 
+		);
+		$count = $this->countBlocks ( $session ["selection"] );
+		if ($count === false) {
+			$count = "";
+		} else {
+			$count = " ($count)";
+		}
+		$output .= "[WE] Position #2 set to (" . $session ["selection"] [1] [0] . ", " . $session ["selection"] [1] [1] . ", " . $session ["selection"] [1] [2] . ")$count.\n";
+		return true;
+	}
+	
+	/**
+	 * Handle plugin commands
+	 */
+	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+		$output = "";
+		if ((strtolower ( $command->getName () ) == "/") && isset ( $args [0] )) {
+			switch ($args [0]) {
+				case "blockon" :
+					$this->pgin->pos_display_flag = 1;
+					$sender->sendMessage ( "[WE] display block on" );
+					break;
+				case "blockoff" :
+					$this->pgin->pos_display_flag = 0;
+					$sender->sendMessage ( "[WE] display block off" );
+					break;
+				case "paste" :
+					$this->handlePasteCommand ( $sender, $args );
+					break;
+				case "cylinder" :
+					$this->handleCylinderCommand ( $sender, $args );
+					break;
+				case "overlay" :
+					$this->handleOverlay ( $sender, $args );
+					break;
+				case "hcylinder" :
+					$this->handleHoloCylinderCommand ( $sender, $args );
+					break;
+				case "wall" :
+					$this->handleWallCommand ( $sender, $args );
+					break;
+				case "plant" :
+					$this->handlePlantCommand ( $sender, $args );
+					break;
+				case "copy" :
+					$this->handleCopyCommand ( $sender, $args );
+					break;
+				case "cut" :
+					$this->handleCutCommand ( $sender, $args );
+					break;
+				case "remove" :
+					$this->handleRemoveCommand ( $sender, $args );
+					break;
+				case "expand" :
+					$this->handleExpandCommand ( "expand", $sender, $args );
+					break;
+				case "grow" :
+					$this->handleGrowCommand ( "grow", $sender, $args );
+					break;
+				case "toggleeditwand" :
+					if (! ($sender instanceof Player)) {
+						$output .= "[WE] Please run this command in-game.\n";
+						$sender->sendMessage ( $output );
+						break;
+					}
+					$session = & $this->session ( $sender );
+					$session ["wand-usage"] = $session ["wand-usage"] == true ? false : true;
+					$output = "Wand Item is now " . ($session ["wand-usage"] === true ? "enabled" : "disabled") . ".\n";
+					if (isset ( $session ["wand-usage"] ) && $session ["wand-usage"] == true) {
+						$this->handleWandCommand ( $sender->getPlayer () );
+					}
+					$sender->sendMessage ( $output );
+					break;
+				case "wand" :
+					if (! ($sender instanceof Player)) {
+						$output .= "[WE]Please run this command in-game.\n";
+						$sender->sendMessage ( $output );
+						break;
+					}
+					$this->handleWandCommand ( $sender->getPlayer () );
+					break;
+				case "limit" :
+					$this->handleLimitCommand ( "limit", $sender, $args );
+					break;
+				case "pos1" :
+					$this->handlePos1Command ( $sender, $args );
+					break;
+				case "pos2" :
+					$this->handlePos2Command ( $sender, $args );
+					break;
+				case "hsphere" :
+					$this->handleSphereCommand ( "hsphere", $sender, $args, false );
+					break;
+				case "sphere" :
+					$this->handleSphereCommand ( "sphere", $sender, $args, true );
+					break;
+				case "movedown" :
+					$this->handleMoveDownCommand ( "movedown", $sender, $args );
+					break;
+				case "set" :
+					$this->handleSetCommand ( "set", $sender, $args );
+					break;
+				case "replace" :
+					$this->handleReplaceCommand ( "replace", $sender, $args );
+					break;
+				case "desel" :
+					$this->handleDeSelCommand ( $sender );
+					break;
+				default :
+				case "help" :
+					$output = "Minecraft PE WorldEdit 0.3.0\n";
+					$output .= "Commands: // cut, // copy, // paste, // sphere, // hsphere, // remove, // cylinder, // hcylinder, // plant, // overlay, // expand, //grow,  // desel, // limit, // pos1, // pos2, // set, // replace, // help, // wand, // toggleeditwand\n";
+					$sender->sendMessage ( $output );
+					break;
+			}
+		}
+	}
+	public function handleDeSelCommand($sender) {
+		$session = & $this->session ( $sender );
+		$session ["selection"] = array (
+				false,
+				false 
+		);
+		unset ( $session ["wand-pos1"] );
+		unset ( $session ["wand-pos2"] );
+		unset ( $session ["paste-pos"] );
+		$output = "[WE] Selection cleared.\n";
+		$sender->sendMessage ( $output );
+	}
+	public function handlePlantCommand(Player $sender, $args) {
+		$session = & $this->session ( $sender );
+		$output = "";
+		if (count ( $args ) < 3) {
+			$sender->sendMessage ( "[WE] Usage: // plant [type] [radius] [spaces]" );
+			return;
+		}
+		
+		$pos = $sender->getPosition ();
+		$planttype = $args [1];
+		$radius = $args [2];
+		$spaces = 0;
+		if (count ( $args ) == 4) {
+			$spaces = $args [3];
+		}
+		$sender->sendMessage ( "[WE] planting " . $planttype );
+		$this->getBuilder ()->W_plants ( $sender->getLevel (), $pos, $planttype, $radius, $spaces, $output );
+		$sender->sendMessage ( "[WE] plant " . $output );
+		if ($output != null) {
+			$sender->teleport ( new Position ( $pos->x + $radius + 1, $pos->y + $radius, $pos->z ) );
+		}
+	}
+	public function handleCylinderCommand(Player $sender, $args) {
+		$session = & $this->session ( $sender );
+		$output = "";
+		if (count ( $args ) != 4) {
+			$sender->sendMessage ( "[WE] Usage: // cylinder [block id] [radius] [height] " );
+			return;
+		}
+		$pos = $sender->getPosition ();
+		// $blockid = $args [1];
+		$radius = $args [2];
+		$height = $args [3];
+		// if (Item::get ( $blockid )->getBlock () == null) {
+		// $sender->sendMessage ( "[WE] Invalid id [" . $blockid . "]" );
+		// return;
+		// }
+		$values = explode ( ":", $args [1] );
+		$bid = null;
+		$bmeta = null;
+		$item = null;
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item = Item::get ( $args [1], $bmeta );
+		} else {
+			$item = Item::get ( $args [1] );
+		}
+		if ($item == null) {
+			$output .= "[WE] Incorrect block.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$sender->sendMessage ( "[WE] building cynlinder using block " . $item );
+		$this->getBuilder ()->W_cylinder ( $pos, $item->getBlock (), $radius, $height, $output );
+		$sender->sendMessage ( "[WE] cynlinder created " . $output );
+		if ($output != null) {
+			$sender->teleport ( new Position ( $pos->x, $pos->y + $height + 1, $pos->z ) );
+		}
+	}
+	public function handleOverlay(Player $sender, $args) {
+		$output = "";
+		if (count ( $args ) != 2) {
+			$sender->sendMessage ( "[WE] Usage: // overlay [block id:meta]" );
+			return;
+		}
+		// $blockid = $args [1];
+		// if (Item::get ( $blockid )->getBlock () == null) {
+		// $sender->sendMessage ( "[WE] Invalid id [" . $blockid . "]" );
+		// return;
+		// }
+		$values = explode ( ":", $args [1] );
+		$bid = null;
+		$bmeta = null;
+		$item = null;
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item = Item::get ( $args [1], $bmeta );
+		} else {
+			$item = Item::get ( $args [1] );
+		}
+		if ($item == null) {
+			$output .= "[WE] Incorrect block.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$sender->sendMessage ( "[WE] building overlay using block " . $item );
+		$session = & $this->session ( $sender );
+		$this->getBuilder ()->W_overlay ( $sender->getLevel (), $session ["selection"], $item->getBlock (), $output );
+		$sender->sendMessage ( "[WE] overlay created " . $output );
+	}
+	public function handleHoloCylinderCommand(Player $sender, $args) {
+		$session = & $this->session ( $sender );
+		$output = "";
+		if (count ( $args ) != 4) {
+			$sender->sendMessage ( "[WE] Usage: // hcylinder [block id] [radius] [height] " );
+			return;
+		}
+		$pos = $sender->getPosition ();
+		// $blockid = $args [1];
+		$radius = $args [2];
+		$height = $args [3];
+		// if (Item::get ( $blockid )->getBlock () == null) {
+		// $sender->sendMessage ( "[WE] Invalid id [" . $blockid . "]" );
+		// return;
+		// }
+		$values = explode ( ":", $args [1] );
+		$bid = null;
+		$bmeta = null;
+		$item = null;
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item = Item::get ( $args [1], $bmeta );
+		} else {
+			$item = Item::get ( $args [1] );
+		}
+		if ($item == null) {
+			$output .= "[WE] Incorrect block.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$sender->sendMessage ( "[WE] building holo cylinder " );
+		$this->getBuilder ()->W_holocylinder ( $pos, $item->getBlock (), $radius, $height, $output );
+		$sender->sendMessage ( "[WE] holo cylinder created " . $output );
+		if ($output != null) {
+			$sender->teleport ( new Position ( $pos->x, $pos->y + $height + 1, $pos->z ) );
+		}
+	}
+	public function handleWallCommand(Player $sender, $args) {
+		$output = "";
+		if (count ( $args ) != 2) {
+			$sender->sendMessage ( "[WE] Usage: // wall [block id]" );
+			return;
+		}
+		// $blockid = $args [1];
+		// if (Item::get ( $blockid )->getBlock () == null) {
+		// $sender->sendMessage ( "[WE] Invalid id [" . $blockid . "]" );
+		// return;
+		// }
+		$values = explode ( ":", $args [1] );
+		$bid = null;
+		$bmeta = null;
+		$item = null;
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item = Item::get ( $args [1], $bmeta );
+		} else {
+			$item = Item::get ( $args [1] );
+		}
+		if ($item == null) {
+			$output .= "[WE] Incorrect block.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$sender->sendMessage ( "[WE] building wall using block " . $item );
+		$this->getBuilder ()->W_wall ( $sender->getLevel (), $session ["selection"], $item->getBlock (), $output );
+		$sender->sendMessage ( "[WE] wall created " . $output );
+	}
+	public function handlePasteCommand($sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$pastePos = $sender->getPosition ();
+		if (isset ( $session ["paste-pos"] )) {
+			if ($session ["paste-pos"] instanceof Position) {
+				$pastePos = $session ["paste-pos"];
+			}
+		}
+		$this->getBuilder ()->W_paste ( $session ["clipboard"], $pastePos, $output );
+		$sender->sendMessage ( "[WE] " . $output . " Pasted." );
+	}
+	public function handleCopyCommand($sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$count = $this->countBlocks ( $session ["selection"], $startX, $startY, $startZ );
+		// disable restriction
+		if ($count > $session ["block-limit"] and $session ["block-limit"] > 0) {
+			$output .= "[WE] Block limit of " . $session ["block-limit"] . " exceeded, tried to copy $count block(s).\n";
+			$sender->sendMessage ( "[WE]  " . $output );
+			return;
+		}
+		// @FIXME - avoid liquid
+		$blocks = $this->getBuilder ()->W_copy ( $session ["selection"], $output );
+		if (count ( $blocks ) > 0) {
+			$offset = array (
+					$startX - $sender->x - 0.5,
+					$startY - $sender->y,
+					$startZ - $sender->z - 0.5 
+			);
+			$session ["clipboard"] = array (
+					$offset,
+					$blocks 
+			);
+		}
+		$sender->sendMessage ( $output );
+	}
+	public function handleLimitCommand($cmd, $sender, $args) {
+		$output = "";
+		if (! isset ( $args [1] ) or trim ( $args [1] ) === "") {
+			$output .= "[WE] Usage: //limit <limit>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (! is_numeric ( $args [1] )) {
+			$output .= "[WE] Usage: //" . $cmd . " < # of blocks MUST be a numeric value>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$limit = $args [1];
+		if ($limit < 0) {
+			$limit = - 1;
+		}
+		// @DISABLE
+		// if ($this->getPlugIn ()->getConfig ()->get ( "block-limit" ) > 0) {
+		// $limit = $limit == - 1 ? $this->getPlugIn ()->getConfig ()->get ( "block-limit" ) : min ( $this->getPlugIn ()->getConfig ()->get ( "block-limit" ), $limit );
+		// }
+		$session = & $this->session ( $sender );
+		$session ["block-limit"] = $limit;
+		$output = "[WE] Block limit set to " . ($limit == - 1 ? "infinite" : $limit) . " block(s).\n";
+		$sender->sendMessage ( $output );
+	}
+	public function handleCutCommand($sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$count = $this->countBlocks ( $session ["selection"], $startX, $startY, $startZ );
+		// @FIXME AVOID LIQUID
+		// remove restriction, takes more blocks in-memory
+		if ($count > $session ["block-limit"] and $session ["block-limit"] > 0) {
+			$output .= "[WE] Block limit of " . $session ["block-limit"] . " exceeded, tried to cut $count block(s).\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$blocks = $this->getBuilder ()->W_cut ( $session ["selection"], $output );
+		if (count ( $blocks ) > 0) {
+			$offset = array (
+					$startX - $sender->x - 0.5,
+					$startY - $sender->y,
+					$startZ - $sender->z - 0.5 
+			);
+			$session ["clipboard"] = array (
+					$offset,
+					$blocks 
+			);
+		}
+		$sender->sendMessage ( $output );
+	}
+	public function handleMoveDownCommand($cmd, $sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		
+		if (! isset ( $args [1] ) or $args [1] == "") {
+			$output .= "[WE] Usage: //" . $cmd . " <number of blocks>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$delta = $args [1];
+		$session = & $this->session ( $sender );
+		$count = $this->countBlocks ( $session ["selection"], $startX, $startY, $startZ );
+		// remove restriction, takes more blocks in-memory
+		if ($count > $session ["block-limit"] and $session ["block-limit"] > 0) {
+			$output .= "[WE] Block limit of " . $session ["block-limit"] . " exceeded, tried to cut $count block(s).\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$this->getBuilder ()->W_moveDown ( $session ["selection"], $session ["clipboard"], $delta, $output );
+		// update selection
+		// startY
+		$session ["selection"] [0] [1] = $session ["selection"] [0] [1] - $delta;
+		// endY
+		$session ["selection"] [0] [1] = $session ["selection"] [1] [1] - $delta;
+		$sender->sendMessage ( $output );
+	}
+	public function handleExpandCommand($cmd, $sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (! isset ( $args [1] ) or $args [1] == "") {
+			$output .= "[WE] Usage: //" . $cmd . " <size in # times>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (! is_numeric ( $args [1] )) {
+			$output .= "[WE] Usage: //" . $cmd . " <size MUST be a numeric value>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$size = intval ( $args [1] );
+		$session = & $this->session ( $sender );
+		
+		$startX = min ( $session ["selection"] [0] [0], $session ["selection"] [1] [0] );
+		$endX = max ( $session ["selection"] [0] [0], $session ["selection"] [1] [0] );
+		$startZ = min ( $session ["selection"] [0] [2], $session ["selection"] [1] [2] );
+		$endZ = max ( $session ["selection"] [0] [2], $session ["selection"] [1] [2] );
+		if ($startX < 0) {
+			$session ["selection"] [1] [0] = $session ["selection"] [1] [0] - ($endX - $startX + 1) * $size;
+		} else {
+			$session ["selection"] [1] [0] = $session ["selection"] [1] [0] + ($endX - $startX + 1) * $size;
+		}
+		if ($startZ < 0) {
+			$session ["selection"] [1] [2] = $session ["selection"] [1] [2] - ($endZ - $startZ + 1) * $size;
+		} else {
+			$session ["selection"] [1] [2] = $session ["selection"] [1] [2] + ($endZ - $startZ + 1) * $size;
+		}
+		$count = $this->countBlocks ( $session ["selection"] );
+		// remove restriction, takes more blocks in-memory
+		if ($count > $session ["block-limit"] and $session ["block-limit"] > 0) {
+			$output .= "Block limit of " . $session ["block-limit"] . " exceeded, tried to cut $count block(s).\n";
+			$sender->sendMessage ( $output );
+			break;
+		}
+		$output = "[WE] Expanded $size times with total blocks " . $count;
+		$sender->sendMessage ( $output );
+	}
+	public function handleGrowCommand($cmd, $sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (! isset ( $args [1] ) or $args [1] == "") {
+			$output .= "[WE] Usage: //" . $cmd . " <size in # times>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (! is_numeric ( $args [1] )) {
+			$output .= "[WE] Usage: //" . $cmd . " <size MUST be a numeric value>\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$size = intval ( $args [1] );
+		$session = & $this->session ( $sender );
+		
+		$startX = min ( $session ["selection"] [0] [0], $session ["selection"] [1] [0] );
+		$endX = max ( $session ["selection"] [0] [0], $session ["selection"] [1] [0] );
+		
+		$startY = min ( $session ["selection"] [0] [1], $session ["selection"] [1] [1] );
+		$endY = max ( $session ["selection"] [0] [1], $session ["selection"] [1] [1] );
+		
+		$startZ = min ( $session ["selection"] [0] [2], $session ["selection"] [1] [2] );
+		$endZ = max ( $session ["selection"] [0] [2], $session ["selection"] [1] [2] );
+		
+		if ($startX < 0) {
+			$session ["selection"] [1] [0] = $session ["selection"] [1] [0] - ($endX - $startX + 1) * $size;
+		} else {
+			$session ["selection"] [1] [0] = $session ["selection"] [1] [0] + ($endX - $startX + 1) * $size;
+		}
+		if ($startZ < 0) {
+			$session ["selection"] [1] [2] = $session ["selection"] [1] [2] - ($endZ - $startZ + 1) * $size;
+		} else {
+			$session ["selection"] [1] [2] = $session ["selection"] [1] [2] + ($endZ - $startZ + 1) * $size;
+		}
+		
+		$session ["selection"] [1] [1] = $session ["selection"] [1] [1] + ($endY - $startY + 1) * $size;
+		
+		$count = $this->countBlocks ( $session ["selection"] );
+		// remove restriction, takes more blocks in-memory
+		if ($count > $session ["block-limit"] and $session ["block-limit"] > 0) {
+			$output .= "[WE] Block limit of " . $session ["block-limit"] . " exceeded, tried to cut $count block(s).\n";
+			$sender->sendMessage ( $output );
+			break;
+		}
+		$output = "[WE] Grow $size times with total blocks " . $count;
+		$sender->sendMessage ( $output );
+	}
+	public function handleRemoveCommand($sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$count = $this->countBlocks ( $session ["selection"], $startX, $startY, $startZ );
+		$blocks = $this->getBuilder ()->W_remove ( $session ["selection"], $output );
+		if (count ( $blocks ) > 0) {
+			$offset = array (
+					$startX - $sender->x - 0.5,
+					$startY - $sender->y,
+					$startZ - $sender->z - 0.5 
+			);
+			$session ["clipboard"] = array (
+					$offset,
+					$blocks 
+			);
+		}
+		$sender->sendMessage ( $output );
+	}
+	public function handlePos1Command($sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$this->setPosition1 ( $session, new Position ( $sender->x - 0.5, $sender->y, $sender->z - 0.5, $sender->getLevel () ), $output );
+		$sender->sendMessage ( $output );
+	}
+	public function handlePos2Command($sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$this->setPosition2 ( $session, new Position ( $sender->x - 0.5, $sender->y, $sender->z - 0.5, $sender->getLevel () ), $output );
+		$sender->sendMessage ( $output );
+	}
+	public function handleWandCommand(Player $player) {
+		$session = & $this->session ( $player );
+		if ($session ["wand-usage"]) {
+			$session ["wand-usage"] = false;
+			$player->sendMessage ( "Wand Deselected" );
+			$this->handleDeSelCommand ( $player );
+		} else {
+			$session ["wand-usage"] = true;
+			$player->sendMessage ( "Wand selected" );
+			if ($player->getInventory ()->getItemInHand ()->getId () != 292) {
+				$player->getInventory ()->setItemInHand ( new Item ( 292 ) );
+			}
+			$player->sendMessage ( "[WE] Break a block to set the #1 position.\n" );
+		}
+	}
+	public function handleSetPastePositionCommand(Player $player) {
+		$session = & $this->session ( $player );
+		$session ["paste-pos"] = true;
+		$player->sendMessage ( "[WE] Set Paste Location selected" );
+		$player->sendMessage ( "[WE] Break a block to set Paste position.\n" );
+	}
+	public function handleReplaceCommand($cmd, $sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			return;
+		}
+		$session = & $this->session ( $sender );
+		$count = $this->countBlocks ( $session ["selection"] );
+		
+		if (! isset ( $args [1] ) or $args [1] == "") {
+			$output .= "Usage: //" . $cmd . " <block1> <block2>.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (! isset ( $args [2] ) or $args [2] == "") {
+			$output .= "Usage: //" . $cmd . " <block1> <block2>.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$bid = null;
+		$bmeta = null;
+		$item1 = null;
+		$item2 = null;
+		$values = [ ];
+		$values = explode ( ":", $args [1] );
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item1 = Item::get ( $args [1], $bmeta );
+		} else {
+			$item1 = Item::get ( $args [1] );
+		}
+		if ($item1 == null) {
+			$output .= "[WE] Incorrect block #1.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		
+		$values = [ ];
+		$values = explode ( ":", $args [2] );
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item2 = Item::get ( $args [2], $bmeta );
+		} else {
+			$item2 = Item::get ( $args [2] );
+		}
+		if ($item2 == null) {
+			$output .= "[WE] Incorrect block #2.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$this->getBuilder ()->W_replace ( $session ["selection"], $item1->getBlock (), $item2->getBlock (), $output );
+		$sender->sendMessage ( $output );
+	}
+	public function handleSetCommand($cmd, $sender, $args) {
+		$output = "";
+		if (! ($sender instanceof Player)) {
+			$output = "[WE] Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		if (count ( $args ) != 2) {
+			$output = "Usage: // set <block id:meta>.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		
+		$session = & $this->session ( $sender );
+		$count = $this->countBlocks ( $session ["selection"] );
+		// remove restriction
+		if ($count > $session ["block-limit"] and $session ["block-limit"] > 0) {
+			$output = "[WE] Block limit of " . $session ["block-limit"] . " exceeded, tried to change $count block(s).\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$values = explode ( ":", $args [1] );
+		$bid = null;
+		$bmeta = null;
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item = Item::get ( $args [1], $bmeta );
+		} else {
+			$item = Item::get ( $args [1] );
+		}
+		if ($item == null) {
+			$output .= "[WE] Incorrect block.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$output = "[WE] setting block " . $item;
+		$sender->sendMessage ( $output );
+		
+		$this->getBuilder ()->W_set ( $session ["selection"], $item->getBlock (), $output );
+		$sender->sendMessage ( $output );
+	}
+	public function handleSphereCommand($cmd, $sender, $args, $filled = true) {
+		$output = " ";
+		if (! ($sender instanceof Player)) {
+			$output .= "[WE] Please run this command in-game.\n";
+			return;
+		}
+		
+		if (count ( $args ) != 3) {
+			$output .= "[WE] Usage: sphere <block id:meta> <radius>.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$radius = abs ( floatval ( $args [2] ) );
+		$session = & $this->session ( $sender );
+		
+		$bid = null;
+		$bmeta = null;
+		$values = explode ( ":", $args [1] );
+		if (count ( $values ) == 1) {
+			$bid = $values [0];
+		} elseif (count ( $values ) == 2) {
+			$bid = $values [0];
+			$bmeta = $values [1];
+		}
+		if ($bmeta != null) {
+			$item = Item::get ( $args [1], $bmeta );
+		} else {
+			$item = Item::get ( $args [1] );
+		}
+		if ($item == null) {
+			$output .= "[WE] Incorrect block.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$pos = $sender->getPosition ();
+		$pos->x = $pos->x - 0.5;
+		$pos->y = $pos->y - 0.5;
+		$pos->z = $pos->z - 0.5;
+		
+		$sender->sendMessage ( "[WE] Building Sphere - Radius " . $radius . " at " . $pos->x . " " . $pos->y . " " . $pos->z . " using block " . $item . "\n" );
+		$this->getBuilder ()->W_sphere ( $pos, $item->getBlock (), $radius, $radius, $radius, $filled, $output );
+		$sender->sendMessage ( $output );
+		
+		// move player away from block
+		$pos->x = $pos->x + $radius + 3;
+		$pos->y = $pos->y + $radius + 2;
+		$sender->teleport ( new Vector3 ( $pos->x, $pos->y, $pos->z ) );
+	}
+	public function countBlocks($selection, &$startX = null, &$startY = null, &$startZ = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			return false;
+		}
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		return ($endX - $startX + 1) * ($endY - $startY + 1) * ($endZ - $startZ + 1);
+	}
+	public static function lengthSq($x, $y, $z) {
+		return ($x * $x) + ($y * $y) + ($z * $z);
+	}
+	private function log($msg) {
+		$this->pgin->getLogger ()->info ( $msg );
+	}
+	protected function getBuilder() {
+		return new WorldEditBuilder ( $this->pgin );
+	}
+	protected function getPlugIn() {
+		return $this->pgin;
+	}
+}
+<?php
+
+namespace mcg76\plugin\worldedit;
+
+use pocketmine\block\Block;
+use pocketmine\command\Command;
+use pocketmine\command\CommandExecutor;
+use pocketmine\command\CommandSender;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerQuitEvent;
+use pocketmine\math\Vector3;
+use pocketmine\network\protocol\UpdateBlockPacket;
+use pocketmine\Player;
+use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
+use pocketmine\level\Position;
+use pocketmine\level\Level;
+use pocketmine\item\Item;
+use pocketmine\block\Sapling;
+use pocketmine\math\Math;
+use pocketmine\utils\Random;
+use pocketmine\level\generator\object\Tree;
+
+/**
+ * MCPE World Edit - Made by minecraftgenius76
+ *
+ * You're allowed to use for own usage only "as-is".
+ * you're not allowed to republish or resell or for any commercial purpose.
+ *
+ * Thanks for your cooperate!
+ *
+ * Copyright (C) 2015 minecraftgenius76
+ *
+ * Web site: http://www.minecraftgenius76.com/
+ * YouTube : http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author minecraftgenius76
+ *        
+ */
+class WorldEditBuilder {
+	private $pgin;
+	
+	/**
+	 * Constructor
+	 *
+	 * @param UndoMain $pg        	
+	 */
+	public function __construct(WorldEditPlugIn $pg) {
+		$this->pgin = $pg;
+	}
+	public static function lengthSq($x, $y, $z) {
+		return ($x * $x) + ($y * $y) + ($z * $z);
+	}
+	public function generateTree(Level $level, $pos, $type, $a, $b, $c) {
+		$pos1 = new Position ( $pos->x + $a, $pos->y, $pos->z + $c, $level );
+		$level->setBlock ( $pos1, new Sapling ( $type ), true, true );
+		Tree::growTree ( $level, $pos1->x, $pos1->y, $pos1->z, new Random ( mt_rand () ), 0 & 0x07 );
+	}
+	public function W_plants(Level $level, Position $pos, $planttype, $radius, $spaces = 0, &$output) {
+		$invalid = false;
+		
+		switch (strtolower ( $planttype )) {
+			case "stone" :
+				$type = Item::STONE;
+				break;
+			case "water" :
+				$type = Item::STILL_WATER;
+				break;
+			case "lava" :
+				$type = Item::STILL_LAVA;
+				break;
+			case "grass" :
+				$type = Item::GRASS;
+				break;
+			case "tallgrass" :
+				$type = Item::TALL_GRASS;
+				break;
+			case "tree" :
+				$type = Sapling::OAK;
+				break;
+			case "oak" :
+				$type = Sapling::OAK;
+				break;
+			case "darkoak" :
+				$type = Sapling::DARK_OAK;
+				break;
+			case "birch" :
+				$type = Sapling::BIRCH;
+				break;
+			case "acacia" :
+				$type = Sapling::ACACIA;
+				break;
+			case "redwood" :
+				$type = Sapling::SPRUCE;
+				break;
+			case "jungle" :
+				$type = Sapling::JUNGLE;
+				break;
+			case "spruce" :
+				$type = Sapling::SPRUCE;
+				break;
+			case "redmushroom" :
+				$type = Item::RED_MUSHROOM;
+				break;
+			case "brownmushroom" :
+				$type = Item::BROWN_MUSHROOM;
+				break;
+			case "rose" :
+				$type = Item::ROSE;
+				break;
+			case "dandelion" :
+				$type = Item::DANDELION;
+				break;
+			case "leave" :
+				$type = Item::LEAVES;
+				break;
+			case "log" :
+				$type = Item::LOG;
+				break;
+			case "pumpkin" :
+				$type = Item::PUMPKIN;
+				break;
+			case "lantern" :
+				$type = Item::JACK_O_LANTERN;
+				break;
+			case "cobweb" :
+				$type = Item::COBWEB;
+				break;
+			default :
+				$invalid = true;
+				break;
+		}
+		if ($invalid) {
+			$output = "[WE] Invalid plant type!";
+			return;
+		}
+		
+		if ($radius > 1) {
+			$changed = 0;
+			for($a = - $radius; $a <= $radius; $a ++) {
+				for($b = - $radius; $b <= $radius; $b ++) {
+					for($c = - $radius; $c <= $radius; $c ++) {
+						if ($a * $a + $b * $b + $c * $c <= $radius * $radius) {
+							if ($type == item::GRASS || $type == item::TALL_GRASS || $type == item::STILL_LAVA || $type == item::STILL_WATER || $type == item::STONE || $type == item::JACK_O_LANTERN || $type == item::PUMPKIN || $type == item::COBWEB || $type == item::LEAVE || $type == item::LOG || $type == item::RED_MUSHROOM || $type == item::BROWN_MUSHROOM || $type == item::ROSE || $type == item::DANDELION) {
+								$pos1 = new Position ( $pos->x + $a * rand ( 1, $radius ), $pos->y, $pos->z + $c * rand ( 1, $radius ), $level );
+								$bid = $level->getBlockIdAt ( $pos1->x, $pos1->y, $pos1->z );
+								if ($bid == item::AIR) {
+									$level->setBlock ( $pos1, Item::get ( $type )->getBlock (), false, false );
+									$changed ++;
+								}
+							} else {
+								$bid = $level->getBlockIdAt ( $pos->x, $pos->y - 1, $pos->z );
+								if (($bid == iTEM::GRASS || $bid == iTEM::DIRT || $bid == iTEM::PODZOL)) {
+									if ($spaces == 0) {
+										$this->generateTree ( $level, $pos, $type, $a * rand ( 1, $radius ), $b, $c * rand ( 1, $radius ) );
+									} else {
+										$this->generateTree ( $level, $pos, $type, $a * $spaces, $b, $c * $spaces );
+									}
+									$changed ++;
+								}
+							}
+						}
+					}
+				}
+			}
+			$output = $changed . " " . $planttype . " created.";
+		} else {
+			if ($type == item::GRASS || $type == item::TALL_GRASS || $type == item::RED_MUSHROOM || $type == item::BROWN_MUSHROOM || $type == item::ROSE || $type == item::DANDELION) {
+				$pos1 = new Position ( $pos->x + $a * rand ( 1, $radius ), $pos->y, $pos->z + $c * rand ( 1, $radius ) );
+				$level->setBlock ( $pos1, Item::get ( $type )->getBlock (), false, false );
+			} else {
+				$this->generateTree ( $level, $pos, $type, 0, 0, 0 );
+			}
+			$output = $planttype . " created.";
+		}
+	}
+	
+	public function Y(Level $level, $x, $z, $maxY, $minY) {
+		for($y = $maxY; $y >= $minY; $y --) {
+			if ($level->getBlockIdAt ( $x, $y, $z ) != 0) {
+				return $y;
+				break;
+			}
+		}
+	}
+	public function W_overlay(Level $level, $selection, $block, &$output) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return array ();
+		}
+		$changed = 0;
+		$minX = min ( $selection [0] [0], $selection [1] [0] );
+		$maxX = max ( $selection [0] [0], $selection [1] [0] );
+		$minY = min ( $selection [0] [1], $selection [1] [1] );
+		$maxY = max ( $selection [0] [1], $selection [1] [1] );
+		$minZ = min ( $selection [0] [2], $selection [1] [2] );
+		$maxZ = max ( $selection [0] [2], $selection [1] [2] );
+		
+		for($a = $minX; $a <= $maxX; $a ++) {
+			for($c = $minZ; $c <= $maxZ; $c ++) {
+				$bid1 = $level->getBlockIdAt ( $a, $this->Y ( $level, $a, $c, $maxY, $minY ), $c );
+				$bid2 = $level->getBlockIdAt ( $a, $this->Y ( $level, $a, $c, $maxY, $minY ) + 1, $c );
+				if ($bid1 != 0 && $bid2 == 0) {
+					$level->setBlock ( new Position ( $a, $this->Y ( $level, $a, $c, $maxY, $minY ) + 1, $c, $level ), $block, false, true );
+					$changed ++;
+				}
+			}
+		}
+		$output = $changed + " block(s) have been added.";
+	}
+	public function W_wall(Level $level, $selection, $block, &$output) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return array ();
+		}
+		
+		$changed = 0;
+		$minX = min ( $selection [0] [0], $selection [1] [0] );
+		$maxX = max ( $selection [0] [0], $selection [1] [0] );
+		$minY = min ( $selection [0] [1], $selection [1] [1] );
+		$maxY = max ( $selection [0] [1], $selection [1] [1] );
+		$minZ = min ( $selection [0] [2], $selection [1] [2] );
+		$maxZ = max ( $selection [0] [2], $selection [1] [2] );
+		
+		for($a = $minX; $a <= $maxX; $a ++) {
+			for($b = $minY; $b <= $maxY; $b ++) {
+				for($c = $minZ; $c <= $maxZ; $c ++) {
+					if ($a == $minX || $a == $maxX || $c == $minZ || $c == $maxZ) {
+						$level->setBlock ( new Position ( $a, $b, $c ,$level), $block, false, true );
+						$changed ++;
+					}
+				}
+			}
+		}
+		$output = $changed + " block(s) have been created.";
+	}
+	public function W_cylinder(Position $pos, $block, $radius, $height, &$output) {
+		$changed = 0;
+		for($a = - $radius; $a <= $radius; $a ++) {
+			for($b = 0; $b < $height; $b ++) {
+				for($c = - $radius; $c <= $radius; $c ++) {
+					if ($a * $a + $c * $c <= $radius * $radius) {
+						// $block = Item::get ( $blockid )->getBlock ();
+						$pos->getLevel ()->setBlock ( new Position ( $pos->x + $a, $pos->y + $b, $pos->z + $c , $pos->getLevel () ), $block, true, false );
+						$changed ++;
+					}
+				}
+			}
+		}
+		$output = $changed . " block(s) have been created.";
+	}
+	public function W_holocylinder(Position $pos, $block, $radius, $height, &$output) {
+		$changed = 0;
+		for($a = - $radius; $a <= $radius; $a ++) {
+			for($b = 0; $b < $height; $b ++) {
+				for($c = - $radius; $c <= $radius; $c ++) {
+					if ($a * $a + $c * $c >= ($radius - 1) * ($radius - 1)) {
+						// $block = Item::get ( $blockid )->getBlock ();
+						$pos->getLevel ()->setBlock ( new Position ( $pos->x + $a, $pos->y + $b, $pos->z + $c, $pos->getLevel () ), $block, true, false );
+						$changed ++;
+					}
+				}
+			}
+		}
+		$output = $changed . " block(s) have been created.";
+	}
+	
+	// move down current selection by Y blocks
+	public function W_moveDown($selection, $clipboard, $delta, &$output = null) {
+		$this->W_cut ( $selection );
+		$pos = new Position ( $selection [0] [0], $selection [0] [1], $selection [0] [2], $selection [0] [3] );
+		$pos->y = $pos->y - $delta + 1;
+		$this->W_paste ( $clipboard, $pos );
+		$output = "moved down by $delta blocks.\n";
+		return true;
+	}
+	public function W_sphere(Position $pos, $block, $radiusX, $radiusY, $radiusZ, $filled = true, &$output = null) {
+		$count = 0;
+		$level = $pos->getLevel ();
+		
+		$radiusX += 0.5;
+		$radiusY += 0.5;
+		$radiusZ += 0.5;
+		
+		$invRadiusX = 1 / $radiusX;
+		$invRadiusY = 1 / $radiusY;
+		$invRadiusZ = 1 / $radiusZ;
+		
+		$ceilRadiusX = ( int ) ceil ( $radiusX );
+		$ceilRadiusY = ( int ) ceil ( $radiusY );
+		$ceilRadiusZ = ( int ) ceil ( $radiusZ );
+		
+		// $bcnt = count ( $blocks ) - 1;
+		$bcnt = 1; // only use selected block
+		
+		$nextXn = 0;
+		$breakX = false;
+		for($x = 0; $x <= $ceilRadiusX and $breakX === false; ++ $x) {
+			$xn = $nextXn;
+			$nextXn = ($x + 1) * $invRadiusX;
+			$nextYn = 0;
+			$breakY = false;
+			for($y = 0; $y <= $ceilRadiusY and $breakY === false; ++ $y) {
+				$yn = $nextYn;
+				$nextYn = ($y + 1) * $invRadiusY;
+				$nextZn = 0;
+				$breakZ = false;
+				for($z = 0; $z <= $ceilRadiusZ; ++ $z) {
+					$zn = $nextZn;
+					$nextZn = ($z + 1) * $invRadiusZ;
+					$distanceSq = WorldEditBuilder::lengthSq ( $xn, $yn, $zn );
+					if ($distanceSq > 1) {
+						if ($z === 0) {
+							if ($y === 0) {
+								$breakX = true;
+								$breakY = true;
+								break;
+							}
+							$breakY = true;
+							break;
+						}
+						break;
+					}
+					
+					if ($filled === false) {
+						if (WorldEditBuilder::lengthSq ( $nextXn, $yn, $zn ) <= 1 and WorldEditBuilder::lengthSq ( $xn, $nextYn, $zn ) <= 1 and WorldEditBuilder::lengthSq ( $xn, $yn, $nextZn ) <= 1) {
+							continue;
+						}
+					}
+					$blocktype = $block->getId ();
+					$this->upsetBlock2 ( $level, $pos->add ( $x, $y, $z ), $block );
+					$count ++;
+					$this->upsetBlock2 ( $level, $pos->add ( - $x, $y, $z ), $block );
+					$count ++;
+					$this->upsetBlock2 ( $level, $pos->add ( $x, - $y, $z ), $block );
+					$count ++;
+					$this->upsetBlock2 ( $level, $pos->add ( $x, $y, - $z ), $block );
+					$count ++;
+					
+					$this->upsetBlock2 ( $level, $pos->add ( - $x, - $y, $z ), $block );
+					$count ++;
+					$this->upsetBlock2 ( $level, $pos->add ( $x, - $y, - $z ), $block );
+					$count ++;
+					$this->upsetBlock2 ( $level, $pos->add ( - $x, $y, - $z ), $block );
+					$count ++;
+					$this->upsetBlock2 ( $level, $pos->add ( - $x, - $y, - $z ), $block );
+					$count ++;
+				}
+			}
+		}
+		
+		$output .= "$count block(s) have been changed.\n";
+		// $this->log ( $output );
+		return true;
+	}
+	
+	/**
+	 * Retrieve Blocks
+	 *
+	 * @param Player $p        	
+	 * @return multitype:unknown
+	 */
+	public function upsetBlock(Level $level, $pos, $blocktype) {
+		$block = $level->getBlock ( new Vector3 ( $pos->x, $pos->y, $pos->z ) );
+		$this->renderBlocks ( $block, $level, $blocktype );
+	}
+	public function upsetBlock2(Level $level, $pos, $block) {
+		$direct = true;
+		$update = true;
+		$level->setBlock ( $pos, $block, $direct, $update );
+	}
+	
+	/**
+	 * Convert block to update block packets
+	 *
+	 * @param array $blocks        	
+	 * @param Player $p        	
+	 * @param unknown $blocktype        	
+	 */
+	public function renderBlocks(Block $block, Level $level, $blocktype) {
+		$players = $level->getPlayers ();
+		foreach ( $players as $lp ) {
+			$pk = new UpdateBlockPacket ();
+			$pk->x = $block->getX ();
+			$pk->y = $block->getY ();
+			$pk->z = $block->getZ ();
+			$pk->block = $blocktype;
+			$pk->meta = 0;
+			$lp->dataPacket ( $pk );
+			$lp->getLevel ()->setBlockIdAt ( $block->getX (), $block->getY (), $block->getZ (), $blocktype );
+			
+			$pos = new Position ( $block->x, $block->y, $block->z );
+			$block = $lp->getLevel ()->getBlock ( $pos );
+			$direct = true;
+			$update = true;
+			$lp->getLevel ()->setBlock ( $pos, $block, $direct, $update );
+		}
+	}
+	public function W_set($selection, $block, &$output = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return false;
+		}
+		$totalCount = $this->countBlocks ( $selection );
+		if ($totalCount > 524288) {
+			$send = false;
+		} else {
+			$send = true;
+		}
+		$level = $selection [0] [3];
+		
+		$bcnt = 1;
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		$count = 0; // $count = $this->countBlocks($selection);
+		for($x = $startX; $x <= $endX; ++ $x) {
+			for($y = $startY; $y <= $endY; ++ $y) {
+				for($z = $startZ; $z <= $endZ; ++ $z) {
+					$level->setBlock ( new Position ( $x, $y, $z, $level ), $block, false, true );
+					$count ++;
+				}
+			}
+		}
+		if ($send === false) {
+			$forceSend = function ($X, $Y, $Z) {
+				$this->changedCount [$X . ":" . $Y . ":" . $Z] = 4096;
+			};
+			$forceSend->bindTo ( $level, $level );
+			for($X = $startX >> 4; $X <= ($endX >> 4); ++ $X) {
+				for($Y = $startY >> 4; $Y <= ($endY >> 4); ++ $Y) {
+					for($Z = $startZ >> 4; $Z <= ($endZ >> 4); ++ $Z) {
+						$forceSend ( $X, $Y, $Z );
+					}
+				}
+			}
+		}
+		$output .= "$count block(s) have been changed.\n";
+		return true;
+	}
+	public function countBlocks($selection, &$startX = null, &$startY = null, &$startZ = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			return false;
+		}
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		return ($endX - $startX + 1) * ($endY - $startY + 1) * ($endZ - $startZ + 1);
+	}
+	public function W_replace($selection, $block1, $blocks2, &$output = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return false;
+		}
+		$totalCount = $this->countBlocks ( $selection );
+		if ($totalCount > 524288) {
+			$send = false;
+		} else {
+			$send = true;
+		}
+		
+		$this->log ( "replace block type :" . $block1 . " with " . $blocks2 );
+		$level = $selection [0] [3];
+		$id1 = $block1->getId ();
+		$bcnt2 = 1;
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		$count = 0;
+		for($x = $startX; $x <= $endX; ++ $x) {
+			for($y = $startY; $y <= $endY; ++ $y) {
+				for($z = $startZ; $z <= $endZ; ++ $z) {
+					$b = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+					if ($b->getId () === $id1) {
+						$direct = false;
+						$update = true;
+						$level->setBlock ( new Position ( $x, $y, $z, $level ), $blocks2, $direct, $update );
+						$count ++;
+					}
+					unset ( $b );
+				}
+			}
+		}
+		if ($send === false) {
+			$forceSend = function ($X, $Y, $Z) {
+				$this->changedCount [$X . ":" . $Y . ":" . $Z] = 4096;
+			};
+			$forceSend->bindTo ( $level, $level );
+			for($X = $startX >> 4; $X <= ($endX >> 4); ++ $X) {
+				for($Y = $startY >> 4; $Y <= ($endY >> 4); ++ $Y) {
+					for($Z = $startZ >> 4; $Z <= ($endZ >> 4); ++ $Z) {
+						$forceSend ( $X, $Y, $Z );
+					}
+				}
+			}
+		}
+		$output .= "$count block(s) have been changed.\n";
+		return true;
+	}
+	public function W_paste($clipboard, Position $pos, &$output = null) {
+		if (count ( $clipboard ) !== 2) {
+			$output .= "[PEWE] Copy something first.\n";
+			return false;
+		}
+		
+		$clipboard [0] [0] += $pos->x - 0.5;
+		$clipboard [0] [1] += $pos->y;
+		$clipboard [0] [2] += $pos->z - 0.5;
+		$offset = array_map ( "round", $clipboard [0] );
+		$count = 0;
+		$level = $pos->getLevel ();
+		foreach ( $clipboard [1] as $x => $i ) {
+			foreach ( $i as $y => $j ) {
+				foreach ( $j as $z => $block ) {
+					$direct = false;
+					$update = true;
+					$level->setBlock ( new Position ( $x + $offset [0], $y + $offset [1], $z + $offset [2] , $level), $block, $direct, $update );
+					$count ++;
+					unset ( $block );
+				}
+			}
+		}
+		$output .= "$count block(s) have been changed.\n";
+		return true;
+	}
+	public function W_pasteWithUpdate($clipboard, Position $pos, &$output = null) {
+		if (count ( $clipboard ) !== 2) {
+			$output .= "[PEWE] Copy something first.\n";
+			return false;
+		}
+		$blocks = [ ];
+		$clipboard [0] [0] += $pos->x - 0.5;
+		$clipboard [0] [1] += $pos->y;
+		$clipboard [0] [2] += $pos->z - 0.5;
+		$offset = array_map ( "round", $clipboard [0] );
+		$count = 0;
+		$level = $pos->getLevel ();
+		foreach ( $clipboard [1] as $x => $i ) {
+			foreach ( $i as $y => $j ) {
+				foreach ( $j as $z => $block ) {
+					$direct = false;
+					$update = true;
+					$level->setBlock ( new Position ( $x + $offset [0], $y + $offset [1], $z + $offset [2], $level), $block, $direct, $update );
+					$count ++;
+					$blocks [] = $block;
+					unset ( $block );
+				}
+			}
+		}
+		$output .= "$count block(s) have been changed.\n";
+		
+		return $blocks;
+	}
+	public function W_copy($selection, &$output = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return array ();
+		}
+		$level = $selection [0] [3];
+		$blocks = array ();
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		$count = $this->countBlocks ( $selection );
+		for($x = $startX; $x <= $endX; ++ $x) {
+			$blocks [$x - $startX] = array ();
+			for($y = $startY; $y <= $endY; ++ $y) {
+				$blocks [$x - $startX] [$y - $startY] = array ();
+				for($z = $startZ; $z <= $endZ; ++ $z) {
+					$b = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+					$blocks [$x - $startX] [$y - $startY] [$z - $startZ] = $b;
+					unset ( $b );
+				}
+			}
+		}
+		$output .= "$count block(s) have been copied.\n";
+		return $blocks;
+	}
+	public function W_cut($selection, &$output = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return array ();
+		}
+		$totalCount = $this->countBlocks ( $selection );
+		if ($totalCount > 524288) {
+			$send = false;
+		} else {
+			$send = true;
+		}
+		$level = $selection [0] [3];
+		$blocks = array ();
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		// $count = $this->countBlocks ( $selection );
+		$count = 0;
+		for($x = $startX; $x <= $endX; ++ $x) {
+			$blocks [$x - $startX] = array ();
+			for($y = $startY; $y <= $endY; ++ $y) {
+				$blocks [$x - $startX] [$y - $startY] = array ();
+				for($z = $startZ; $z <= $endZ; ++ $z) {
+					$b = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+					$blocks [$x - $startX] [$y - $startY] [$z - $startZ] = $b;
+					$air = Block::get ( Block::AIR );
+					$direct = true;
+					$update = true;
+					$level->setBlock ( new Position ( $b->x, $b->y, $b->z ,$level ), $air, $direct, $update );
+					$count ++;
+					unset ( $b );
+				}
+			}
+		}
+		if ($send === false) {
+			$forceSend = function ($X, $Y, $Z) {
+				$this->changedCount [$X . ":" . $Y . ":" . $Z] = 4096;
+			};
+			$forceSend->bindTo ( $level, $level );
+			for($X = $startX >> 4; $X <= ($endX >> 4); ++ $X) {
+				for($Y = $startY >> 4; $Y <= ($endY >> 4); ++ $Y) {
+					for($Z = $startZ >> 4; $Z <= ($endZ >> 4); ++ $Z) {
+						$forceSend ( $X, $Y, $Z );
+					}
+				}
+			}
+		}
+		$output .= "$count block(s) have been cut.\n";
+		return $blocks;
+	}
+	
+	/**
+	 * Remove selection blocks permanently
+	 *
+	 * @param unknown $selection        	
+	 * @param string $output        	
+	 * @return multitype:|boolean
+	 */
+	public function W_remove($selection, &$output = null) {
+		if (! is_array ( $selection ) or $selection [0] === false or $selection [1] === false or $selection [0] [3] !== $selection [1] [3]) {
+			$output .= "Make a selection first.\n";
+			return array ();
+		}
+		$totalCount = $this->countBlocks ( $selection );
+		if ($totalCount > 524288) {
+			$send = false;
+		} else {
+			$send = true;
+		}
+		$level = $selection [0] [3];
+		$startX = min ( $selection [0] [0], $selection [1] [0] );
+		$endX = max ( $selection [0] [0], $selection [1] [0] );
+		$startY = min ( $selection [0] [1], $selection [1] [1] );
+		$endY = max ( $selection [0] [1], $selection [1] [1] );
+		$startZ = min ( $selection [0] [2], $selection [1] [2] );
+		$endZ = max ( $selection [0] [2], $selection [1] [2] );
+		$count = 0;
+		for($x = $startX; $x <= $endX; ++ $x) {
+			for($y = $startY; $y <= $endY; ++ $y) {
+				for($z = $startZ; $z <= $endZ; ++ $z) {
+					$b = $level->getBlock ( new Vector3 ( $x, $y, $z ) );
+					$air = Block::get ( Block::AIR );
+					$direct = false;
+					$update = true;
+					$level->setBlock ( new Position ( $b->x, $b->y, $b->z , $level), $air, $direct, $update );
+					$count ++;
+					unset ( $b );
+				}
+			}
+		}
+		if ($send === false) {
+			$forceSend = function ($X, $Y, $Z) {
+				$this->changedCount [$X . ":" . $Y . ":" . $Z] = 4096;
+			};
+			$forceSend->bindTo ( $level, $level );
+			for($X = $startX >> 4; $X <= ($endX >> 4); ++ $X) {
+				for($Y = $startY >> 4; $Y <= ($endY >> 4); ++ $Y) {
+					for($Z = $startZ >> 4; $Z <= ($endZ >> 4); ++ $Z) {
+						$forceSend ( $X, $Y, $Z );
+					}
+				}
+			}
+		}
+		$output .= "$count block(s) have been removed permanently.\n";
+		return $send;
+	}
+	
+	/**
+	 * simple log utility function
+	 *
+	 * @param unknown $msg        	
+	 */
+	private function log($msg) {
+		$this->pgin->getLogger ()->info ( $msg );
+	}
+}
+#world edit configuration file
+
+wand-item: 292
+block-limit: -1
+<?php
+
+namespace  mcg76\plugin\worldedit\commands;
+
+use mcg76\plugin\worldedit\WorldEditPlugIn;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+use pocketmine\command\ConsoleCommandSender;
+use pocketmine\command\PluginIdentifiableCommand;
+use pocketmine\utils\TextFormat;
+use pocketmine\Player;
+
+/**
+ * MCG76 RemoveBlocksCommand 
+ *
+ * Copyright (C) 2015 minecraftgenius76
+ * YouTube Channel: http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author MCG76
+ *
+ */
+class RemoveBlocksCommand extends Command implements PluginIdentifiableCommand {
+	
+	public function __construct(WorldEditPlugIn $plugin, $name, $description) {
+		$this->plugin = $plugin;		
+		parent::__construct ( $name, $description );
+		$this->setPermission("mcg76.plugin.worldeditor");
+	}
+	
+	public function execute(CommandSender $sender, $label, array $args) {
+		if(!$this->testPermission($sender)) {
+			return false;
+		}
+		$output = "";
+		if (!$sender instanceof Player) {
+			$output .= "Please run this command in-game.\n";
+			$sender->sendMessage ( $output );
+			return;
+		}
+		$session = &$this->getEditor()->session ( $sender );	
+		$count = $this->getEditor()->countBlocks ( $session ["selection"], $startX, $startY, $startZ );
+		$blocks = $this->getBuilder()->W_remove ( $session ["selection"], $output );
+		if (count ( $blocks ) > 0) {
+			$offset = array (
+					$startX - $sender->x - 0.5,
+					$startY - $sender->y,
+					$startZ - $sender->z - 0.5 
+			);
+			$session ["clipboard"] = array (
+					$offset,
+					$blocks 
+			);
+		}
+		$sender->sendMessage ( $output );		
+		$this->getPlugin()->getLogger()->info($output);
+		return true;
+	}
+	
+	public function getPlugin() {
+		return $this->plugin;
+	}	
+	public function getEditor() {
+		return $this->plugin->weCommands;
+	}	
+	public function getBuilder() {
+		return $this->plugin->weBuilder;
+	}
+	
+}<?php
+
+namespace mcg76\plugin\worldedit;
+
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\level\Position;
+use pocketmine\event\block\BlockEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\tile\Sign;
+use mcg76\util\SimplePortal\portal\Portal;
+use pocketmine\math\Vector3;
+use pocketmine\Player;
+use pocketmine\event\player\PlayerItemHeldEvent;
+
+/**
+ * MCPE World Edit - Made by minecraftgenius76
+ *
+ * You're allowed to use for own usage only "as-is". 
+ * you're not allowed to republish or resell or for any commercial purpose.
+ *
+ * Thanks for your cooperate!
+ *
+ * Copyright (C) 2015 minecraftgenius76
+ * 
+ * Web site: http://www.minecraftgenius76.com/
+ * YouTube : http://www.youtube.com/user/minecraftgenius76
+ *
+ * @author minecraftgenius76
+ *
+ */
+
+class WorldEditListener implements Listener {
+	public $pgin;
+	public function __construct(WorldEditPlugIn $pg) {
+		$this->pgin = $pg;
+	}
+	public function onPlayerInteract(PlayerInteractEvent $event) {
+		$block = $event->getBlock ();
+		$x = $block->x;
+		$y = $block->y;
+		$z = $block->z;
+		if ($this->getPlugIn ()->pos_display_flag == 1) {
+			$event->getPlayer ()->sendMessage ("[WE] touching ". $block . " [x=" . round($block->x) . " y=" . round($block->y) . " z=" . round($block->z) . "] " );
+		}
+	}
+	
+	public function onBlockBreak(BlockBreakEvent $event) {
+		$b = $event->getBlock ();
+		$player = $event->getPlayer ();
+		$output = "";
+		$session = &$this->getCommands ()->session ( $player );		
+		if ($session != null && $session ["wand-usage"] == true) {
+			if (! isset ( $session ["wand-pos1"] ) || $session ["wand-pos1"] == null) {
+				$session ["wand-pos1"] = $b;
+				$this->getCommands ()->setPosition1 ( $session, new Position ( $b->x - 0.5, $b->y, $b->z - 0.5, $player->getLevel () ), $output );
+				$player->sendMessage ( $output );
+				return;
+			}
+			if (! isset ( $session ["wand-pos2"] ) || $session ["wand-pos2"] == null) {
+				$session ["wand-pos2"] = $b;
+				$this->getCommands ()->setPosition2 ( $session, new Position ( $b->x - 0.5, $b->y, $b->z - 0.5, $player->getLevel () ), $output );
+				$player->sendMessage ( $output );
+				return;
+			}
+		}
+	
+	}
+	protected function getPlugIn() {
+		return $this->pgin;
+	}
+	protected function getCommands() {
+		return $this->pgin->weCommands;
+	}
+	protected function log($msg) {
+		return $this->pgin->getLogger ()->info ( $msg );
+	}
+}

@@ -1,0 +1,155 @@
+---
+name: 3_MockingJay_Highway
+levelName: "SG Highway"
+displayName: HG-3-Highway
+published: true
+
+locationX: "45"
+locationY: "61"
+locationZ: "46"
+
+arenaEnterX: "45"
+arenaEnterY: "61"
+arenaEnterZ: "46"
+
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+
+enterLevelName: "SG Highway"
+exitLevelName: "Hunger Games Lobby"
+
+joinDownCounter: 2
+
+signJoinX: -28
+signJoinY: 29
+signJoinZ: -477
+
+signVoteX: -30
+signVoteY: 39
+signVoteZ: -501
+
+#signStatsX: 1
+#signStatsY: 1
+#signStatsZ: 1
+
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+deathMatchEnterX: "-226"
+deathMatchEnterY: "65"
+deathMatchEnterZ: "14"
+
+deathMatchPos1X: "-192"
+deathMatchPos1Y: "65"
+deathMatchPos1Z: "49"
+deathMatchPos2X: "-256"
+deathMatchPos2Y: "70"
+deathMatchPos2Z: "-30"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+
+deathMatchDuration: 140
+huntingDuration: 480
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 4
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "-411"
+sectionpos1Y: "84"
+sectionpos1Z: "345"
+sectionpos2X: "-229"
+sectionpos2Y: "66"
+sectionpos2Z: "182"
+
+spawnLocations:
+- - "35"
+  - "66"
+  - "29"
+- - "31"
+  - "66"
+  - "32"
+- - "28"
+  - "66"
+  - "36"
+- - "26"
+  - "66"
+  - "41"
+- - "25"
+  - "66"
+  - "46"
+- - "26"
+  - "66"
+  - "51"
+- - "28"
+  - "66"
+  - "56"
+- - "31"
+  - "66"
+  - "60"
+- - "35"
+  - "66"
+  - "63" 
+- - "40"
+  - "66"
+  - "65" 
+- - "45"
+  - "66"
+  - "66" 
+- - "50"
+  - "66"
+  - "65" 
+- - "55"
+  - "66"
+  - "63" 
+- - "59"
+  - "66"
+  - "60"   
+- - "62"
+  - "66"
+  - "56"    
+- - "64"
+  - "66"
+  - "51"  
+- - "64"
+  - "66"
+  - "41"     
+- - "62"
+  - "66"
+  - "36"    
+- - "59"
+  - "66"
+  - "32"      
+- - "55"
+  - "66"
+  - "29"     
+- - "50"
+  - "66"
+  - "27"  
+- - "45"
+  - "66"
+  - "26"     
+- - "40"
+  - "66"
+  - "27"    
+...

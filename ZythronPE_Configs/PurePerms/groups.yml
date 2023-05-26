@@ -1,0 +1,186 @@
+---
+Zythic:
+  alias: gst
+  isDefault: true
+  inheritance: []
+  permissions:
+  - -essentials.kit
+  - -essentials.kit.other
+  - -pocketmine.command.me
+  - pchat.colored.format
+  - pchat.colored.nametag
+  - pocketmine.command.give
+  - pocketmine.command.list
+  - pocketmine.command.tp
+  - pocketmine.permission.warp
+  - pperms.command.ppinfo
+  - simplewarp.command.list
+  - simplewarp.command.list.xyz
+  - simplewarp.command.warp
+  - simplewarp.command.warp.other
+  worlds: []
+Admin:
+  alias: adm
+  inheritance:
+  - Guest
+  permissions:
+  - essentials.gamemode
+  - pocketmine.broadcast
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.time
+  worlds: []
+Owner:
+  alias: owr
+  inheritance:
+  - Admin
+  permissions:
+  - essentials
+  - pocketmine.command
+  - pperms.command
+  worlds: []
+OP:
+  alias: op
+  inheritance: []
+  permissions:
+  - '*'
+  worlds: []
+§1:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+§cOwner:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+CoOwner:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+CoCreator:
+  alias: owr
+  isDefault: false
+  inheritance: []
+  permissions:
+  - commands.generic.permission
+  - pocketmine.command
+  - pocketmine.~
+  worlds: []
+Creator:
+  alias: owr
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Servertroll:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Announceonly:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+§b§lDeveloper§e/§cOwner:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+DeveloperOwner:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+test:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Trainee:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions:
+  - essential.fly
+  - essentials.feed
+  - essentials.feed.others
+  - essentials.feed.use
+  - essentials.fly
+  - essentials.fly.others
+  - essentials.fly.use
+  - essentials.gamemode
+  - essentials.gamemode.other
+  - essentials.gamemode.use
+  - essentials.world
+  - gmc
+  - pocketmine.command.ban
+  - pocketmine.command.ban.player
+  - pocketmine.command.gamemode
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.unban
+  - pocketmine.gamemode
+  - pocketmine.permission.gamemode
+  worlds: []
+Mod:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+Moderator:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions:
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.tp
+  worlds: []
+§aDeveloper:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+YouTuber:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions:
+  - essentials.feed
+  - essentials.fly
+  - essentials.gamemode
+  - essentials.gm
+  - essentials.nick
+  - essentials.nickname
+  - pocketmine.command.fly
+  - pocketmine.nickname
+  worlds: []
+ZythronRestart:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+serveropvanish:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
+...

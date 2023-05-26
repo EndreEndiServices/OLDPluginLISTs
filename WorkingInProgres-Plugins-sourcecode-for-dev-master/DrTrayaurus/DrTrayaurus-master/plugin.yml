@@ -1,0 +1,23 @@
+name: DrTrayaurus
+main: drtrayaurus\DrTrayaurus
+version: 1.0
+author: Falkirks_And_RPG
+api: [1.10.0]
+load: POSTWORLD
+commands:
+ d:
+  permission: drtrayaurus.disguise
+  usage: /d <DrTrayaurus> [player]
+permissions:
+ drtrayaurus:
+  default: op
+  children:
+   drtrayaurus.disguise:
+    default: op
+    description: Disguise as Dr Trayaurus
+   drtrayaurus.other:
+    default: op
+    description: Disguise others as Dr Trayaurus
+   drtrayaurus.exempt:
+    default: op
+    description: See through the Dr Trayaurus disguises

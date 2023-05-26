@@ -1,0 +1,157 @@
+---
+name: 2_Catching_Fire_2
+levelName: Catching Fire
+displayName: HG-2-C.Fire-2
+published: true
+
+locationX: "-591"
+locationY: "9"
+locationZ: "256"
+
+arenaEnterX: "72"
+arenaEnterY: "65"
+arenaEnterZ: "36"
+enterLevelName: "Catching Fire"
+
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+huntingDuration: 480
+deathMatchDuration: 140
+
+#for testing purpose
+signJoinX: -25
+signJoinY: 29
+signJoinZ: -477
+
+signVoteX: -106
+signVoteY: 42
+signVoteZ: -422
+
+#signStatsX: 1137
+#signStatsY: 68
+#signStatsZ: -59
+#joinDownCounter: 2
+
+signExitX: 1128
+signExitY: 1
+signExitZ: 123
+
+deathMatchEnterX: "-36"
+deathMatchEnterY: "73"
+deathMatchEnterZ: "-173"
+
+deathMatchPos1X: "3"
+deathMatchPos1Y: "79"
+deathMatchPos1Z: "-210"
+deathMatchPos2X: "-68"
+deathMatchPos2Y: "73"
+deathMatchPos2Z: "-139"
+
+resetPeriod: 200
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+
+deathMatchDuration: 130
+huntingDuration: 480
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 4
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "3"
+sectionpos1Y: "79"
+sectionpos1Z: "-210"
+sectionpos2X: "-68"
+sectionpos2Y: "73"
+sectionpos2Z: "-139"
+
+spawnLocations:
+- - "89"
+  - "63"
+  - "90"
+- - "76"
+  - "63"
+  - "92"
+- - "-54"
+  - "63"
+  - "87"
+- - "46"
+  - "63"
+  - "85"
+- - "28"
+  - "63"
+  - "79"
+- - "19"
+  - "63"
+  - "71"
+- - "12"
+  - "63"
+  - "42"
+- - "12"
+  - "63"
+  - "20"
+- - "14"
+  - "63"
+  - "10" 
+- - "22"
+  - "63"
+  - "-6" 
+- - "27"
+  - "63"
+  - "-13" 
+- - "48"
+  - "63"
+  - "-15" 
+- - "57"
+  - "63"
+  - "-17" 
+- - "76"
+  - "63"
+  - "-15"   
+- - "82"
+  - "62"
+  - "-14"    
+- - "101"
+  - "63"
+  - "-9"  
+- - "108"
+  - "63"
+  - "-3"
+- - "112"
+  - "63"
+  - "14"    
+- - "113"
+  - "63"
+  - "21"
+- - "117"
+  - "62"
+  - "39"      
+- - "117"
+  - "63"
+  - "48"     
+- - "111"
+  - "63"
+  - "66"      
+- - "105"
+  - "63"
+  - "74"   
+...

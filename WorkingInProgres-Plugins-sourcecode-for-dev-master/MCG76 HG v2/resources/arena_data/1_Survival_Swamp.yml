@@ -1,0 +1,164 @@
+---
+name: 1_Survival_Swamp
+levelName: HG_Island
+displayName: HG-1-Swamp
+
+published: true
+locationX: "102"
+locationY: "12"
+locationZ: "12"
+
+arenaEnterX: "61"
+arenaEnterY: "63"
+arenaEnterZ: "290"
+enterLevelName: "HG_Island"
+
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+deathMatchDuration: 130
+huntingDuration: 400
+
+signVoteX: -29
+signVoteY: 42
+signVoteZ: -343
+
+signJoinX: -20
+signJoinY: 29
+signJoinZ: -477
+
+#signStatsX: 137
+#signStatsY: 68
+#signStatsZ: -59
+#joinDownCounter: 10
+
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+deathMatchEnterX: "134"
+deathMatchEnterY: "120"
+deathMatchEnterZ: "263"
+
+deathMatchPos1X: "144"
+deathMatchPos1Y: "115"
+deathMatchPos1Z: "253"
+deathMatchPos2X: "119"
+deathMatchPos2Y: "127"
+deathMatchPos2Z: "275"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 2
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+spawnLocations:
+- - "62"
+  - "65"
+  - "278"
+- - "65"
+  - "65"
+  - "278"
+- - "68"
+  - "65"
+  - "278"
+- - "71"
+  - "65"
+  - "278"
+- - "74"
+  - "65"
+  - "278"
+- - "77"
+  - "65"
+  - "278"
+- - "80"
+  - "65"
+  - "278"
+- - "80"
+  - "65"
+  - "274"
+- - "80"
+  - "65"
+  - "271" 
+- - "80"
+  - "65"
+  - "268" 
+- - "80"
+  - "65"
+  - "268" 
+- - "80"
+  - "65"
+  - "264" 
+- - "80"
+  - "65"
+  - "261" 
+- - "80"
+  - "65"
+  - "258"   
+- - "77"
+  - "65"
+  - "258"    
+- - "74"
+  - "65"
+  - "258"  
+- - "71"
+  - "65"
+  - "258"
+- - "68"
+  - "65"
+  - "258"    
+- - "65"
+  - "65"
+  - "258"
+- - "62"
+  - "65"
+  - "258"      
+- - "59"
+  - "65"
+  - "258"     
+- - "59"
+  - "65"
+  - "261"      
+- - "59"
+  - "65"
+  - "264"   
+- - "59"
+  - "65"
+  - "267"     
+- - "59"
+  - "65"
+  - "270"    
+- - "59"
+  - "65"
+  - "273"     
+- - "59"
+  - "65"
+  - "276"       
+...

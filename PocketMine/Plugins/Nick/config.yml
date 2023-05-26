@@ -1,0 +1,65 @@
+---
+# Config file for Nick
+# Nick (c) 2016 AryToNeX
+
+# Keeps the nick after leave/login/server closed/thermonuclear war
+# Boolean parameter (true, false)
+keep-nick: true
+
+# Commands
+# Here you can customize commands and descriptions!
+
+help-command: "help" # No description for it *sad help command*
+
+set-command: "set"
+set-usage: "<nick>"
+set-description: "Set a nick"
+set-admin-usage: "<nick> <player>"
+set-admin-description: "Sets a nick to another player"
+
+reset-command: "reset"
+reset-description: "Return to your real name"
+reset-admin-usage: "<player>"
+reset-admin-description: "Resets a player's nick"
+
+see-command: "see"
+see-usage: "<player nick> OR <player name>"
+see-description: "See the real name of a player or if a player setted a nick"
+
+# Messages
+# Here you can customize messages!
+
+# No permission
+no-permission-help: "§cYou don't have the permission to use /nick help!"
+no-permission-set: "§cYou don't have the permission to set a nick!"
+no-permission-admin-set: "§cYou don't have the permission to set a nick to another player!"
+no-permission-reset: "§cYou don't have the permission to reset your nick!"
+no-permission-admin-reset: "§cYou don't have the permission to reset others' nick!"
+no-permission-see: "§cYou don't have the permission to see others' real name!"
+
+# Various errors
+player-not-online: "§ePlayer is not online!"
+must-specify-player: "§eYou must specify a player!"
+must-specify-nick: "§eYou must specify a nick!"
+no-subcommand: "§eNo subcommands defined. Please run §a/nick help§e for the subcommand list."
+no-run-in-console: "§eAll commands must be used in-game!"
+
+# Help page
+help-header: "§eNick -- Help"
+help-command-colour: "§e"
+help-usage-colour: "§a"
+help-two-points-colour: "§f"
+help-description-colour: "§f"
+
+# Set
+set: "§aNick successfully setted!"
+set-by-admin: "§eAn admin setted a nick to you!"
+
+# Reset
+reset: "§aNick successfully resetted!"
+reset-by-admin: "§eAn admin resetted your nick!"
+
+# See
+see: "§a{player_nick}§e's real name is §a{player_name}"
+see-no-nick: "§eThat player hasn't a nick!"
+...

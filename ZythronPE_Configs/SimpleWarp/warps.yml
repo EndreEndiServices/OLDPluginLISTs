@@ -1,0 +1,226 @@
+---
+Parkour:
+  x: 1101.016200
+  "y": 3.000000
+  z: 1075.914700
+  level: castellum
+  public: true
+  metadata: []
+hub:
+  x: -811.456600
+  "y": 6.000000
+  z: 303.346900
+  level: castellum
+  public: false
+  metadata: []
+SkyWarsAndCTF:
+  x: 236.024600
+  "y": 24.000000
+  z: 841.382800
+  level: Servidor de Minecraft
+  public: false
+  metadata: []
+ParkourLobby:
+  x: 989.456500
+  "y": 6.000000
+  z: 967.631100
+  level: castellum
+  public: false
+  metadata: []
+DropParty:
+  x: 589.385900
+  "y": 6.000000
+  z: 601.612100
+  level: castellum
+  public: true
+  metadata: []
+MyPlot:
+  x: 250.174400
+  "y": 67.000000
+  z: 250.085100
+  level: MyPlot
+  public: false
+  metadata: []
+NewS:
+  x: -7.383800
+  "y": 64.000000
+  z: -62.828800
+  level: world
+  public: true
+  metadata: []
+Maze:
+  x: -119.999800
+  "y": 64.000000
+  z: 265.174400
+  level: LeafMaze
+  public: true
+  metadata: []
+HotBlock:
+  x: 872.568500
+  "y": 5.000000
+  z: -679.531700
+  level: HotBlock
+  public: true
+  metadata: []
+Factions:
+  x: 266.427500
+  "y": 69.000000
+  z: 177.411900
+  level: Factions-Spawn
+  public: false
+  metadata: []
+FactionsArena:
+  x: 266.325500
+  "y": 52.000000
+  z: 175.474500
+  level: Factions-Spawn
+  public: false
+  metadata: []
+TempleP:
+  x: 1706.975500
+  "y": 35.000000
+  z: 1243.697100
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+SnowP:
+  x: 1740.933600
+  "y": 35.000000
+  z: 1122.633800
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+DesertP:
+  x: 1774.966300
+  "y": 35.000000
+  z: 1243.700000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+MushroomP:
+  x: 1809.056800
+  "y": 35.000000
+  z: 1122.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+NetherP:
+  x: 1843.237800
+  "y": 35.000000
+  z: 1243.700000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+JungleP:
+  x: 1877.313600
+  "y": 35.000000
+  z: 1122.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+MineP:
+  x: 1910.843600
+  "y": 35.000000
+  z: 1243.700000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+EndP:
+  x: 1978.902300
+  "y": 35.000000
+  z: 1243.700000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+TechP:
+  x: 1945.032700
+  "y": 35.000000
+  z: 1122.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+SchoolP:
+  x: 2012.830300
+  "y": 35.000000
+  z: 1122.303600
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+FortressP:
+  x: 2046.931400
+  "y": 35.000000
+  z: 1243.700000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+lavastoneP:
+  x: 2080.841100
+  "y": 35.000000
+  z: 1278.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+VillageP:
+  x: 2080.967300
+  "y": 35.000000
+  z: 1122.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+TownP:
+  x: 1944.912000
+  "y": 35.000000
+  z: 1278.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+FarmP:
+  x: 1911.311500
+  "y": 35.000000
+  z: 1399.658000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+CandyP:
+  x: 1877.306000
+  "y": 35.000000
+  z: 1278.382800
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+WaterP:
+  x: 2046.815200
+  "y": 35.000000
+  z: 1399.700000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+SpookyP:
+  x: 2080.887500
+  "y": 35.000000
+  z: 1278.300000
+  level: Parkour Map 1.1
+  public: false
+  metadata: []
+CE:
+  x: -1324.479100
+  "y": 5.000000
+  z: 127.443400
+  level: 4 Portal Hub by snyed
+  public: false
+  metadata: []
+StaffRoom:
+  x: -22.466100
+  "y": 6.000000
+  z: 555.746100
+  level: 4 Portal Hub by snyed
+  public: false
+  metadata: []
+Nether:
+  x: 256.961300
+  "y": 58.000000
+  z: 285.300000
+  level: nether
+  public: false
+  metadata: []
+...

@@ -1,0 +1,8 @@
+name: MyBank
+main: ISRAPIL\MainClass
+version: 1.0
+api: [2.0.0, 3.0.0ALPHA1, 3.0.0ALPHA2, 3.0.0ALPHA3]
+
+commands:
+ bank:
+  description: "Банк"

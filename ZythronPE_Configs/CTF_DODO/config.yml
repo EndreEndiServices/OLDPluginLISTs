@@ -1,0 +1,27 @@
+---
+MiniCTFSpawnBLUE:
+- 298
+- 48
+- 110
+MiniCTFSpawnRED:
+- 210
+- 48
+- 110
+MiniCTFBLUEFLAG:
+- 294
+- 60
+- 110
+MiniCTFREDFLAG:
+- 214
+- 60
+- 110
+arenas:
+- MiniCTF
+- MiniCTF
+- capturetheflag
+- MiniCTF
+- MiniCTF
+- MiniCTF
+MiniCTFStartTime: 90
+capturetheflagStartTime: 90
+...

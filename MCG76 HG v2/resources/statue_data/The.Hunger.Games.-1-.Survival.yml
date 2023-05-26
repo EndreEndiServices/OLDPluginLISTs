@@ -1,0 +1,23 @@
+---
+name: The Hunger Games - Survival
+type: npc
+networkId: 1
+levelName: "Hunger Games Lobby"
+message: " The Hunger Games - 1 Survival"
+itemOnHand: "261"
+armorHelmet: ~
+armorChestplate: ~
+armorLegging: ~
+armorBoots: ~
+positionX: -27
+positionY: 39
+positionZ: -415
+cost: 0
+kitName: false
+kitBlock: 35
+particles: "snowballpoof"
+destinationLevelName: "Hunger Games Lobby"
+destinationPosX: -30
+destinationPosY: 41
+destinationPosZ: -359
+...

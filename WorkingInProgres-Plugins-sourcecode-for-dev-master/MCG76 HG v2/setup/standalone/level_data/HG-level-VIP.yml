@@ -1,0 +1,68 @@
+---
+id: 104
+name: HG-level-VIP
+type: 4
+displayName: HG level-VIP
+levelName: "lobby"
+particles: "portal"
+
+#important values
+minPlayers: 2
+maxPlayers: 24
+winnerCoins: 10
+joinDownCounter: 18
+
+locationX: "-1031"
+locationY: "25"
+locationZ: "1466"
+
+entranceX: "-1031"
+entranceY: "25"
+entranceZ: "1466"
+enterLevelName: "lobby"
+
+exitX: "-30"
+exitY: "38"
+exitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+signJoinX: "-1031"
+signJoinY: "27"
+signJoinZ: "1458"
+
+signJoin2X: "-900"
+signJoin2Y: "28"
+signJoin2Z: "1484"
+
+signStatsX: "1"
+signStatsY: "2"
+signStatsZ: "1"
+
+signExitX: "-1"
+signExitY: "1"
+signExitZ: "1"
+
+mapselectX: "148"
+mapselectY: "67"
+mapselectZ: "-59"
+
+gatePos1X: "-1032"
+gatePos1Y: "24"
+gatePos1Z: "1456"
+
+gatePos2X: "-1030"
+gatePos2Y: "27"
+gatePos2Z: "1456"
+
+portalEnter1X: "-1041"
+portalEnter1Y: "22"
+portalEnter1Z: "1452"
+
+portalEnter2X: "-1019"
+portalEnter2Y: "32"
+portalEnter2Z: "1435"
+
+maps:
+- 4_VIP_Barcos
+- 4_VIP_Ultimate
+...

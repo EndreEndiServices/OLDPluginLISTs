@@ -1,0 +1,23 @@
+---
+name: The Hunger Games -2- Catching Fire
+type: npc
+networkId: 191002
+levelName: MinigamesHub
+message: "Welcome to the Hunger Games - 2 Catching Fire. Challenges yourself to win the umtimate battles!"
+itemOnHand: "267"
+armorHelmet: ~
+armorChestplate: ~
+armorLegging: ~
+armorBoots: ~
+positionX: 139
+positionY: 68
+positionZ: -71
+cost: 0
+kitName: false
+kitBlock: 35
+particles: "flame"
+destinationLevelName: MinigamesHub
+destinationPosX: 139.000000
+destinationPosY: 67.000000
+destinationPosZ: -54.000000
+...

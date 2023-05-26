@@ -1,0 +1,48 @@
+---
+# Example Look #
+# First 3 seconds: #
+#
+# Welcome to the WolvesFortress.de Server, {player}!
+# ================----------------------------------
+#        The best server, the best minigames!
+#
+# Next 3 seconds: #
+#
+# Welcome to the WolvesFortress.de Server, {player}!
+# =================================-----------------
+#      Visit our website: wolvesfortress.de!
+#
+# If you don't define the top message, the changing messages will be displayed there. #
+
+#         Changing messages are up here :P
+# ==================================================
+head-message: "{BOLD}{AQUA}Zythron{YELLOW}PE {RED}| {WHITE}play.zythronpe.ml{RESET}"
+# Changing messages are here
+# To set the percentage of the bar add {number%} before the message!
+# Otherwise it takes the percentage that was there before.
+# Example for a 25% filled: "{25%}This is a quarter filled bar >>"
+changing-messages:
+ - "{0%} {BOLD}{WHITE}Season {RED}1 {AQUA}Is Now Here{RED}!"
+ - "{20%} {BOLD}{WHITE}You{RED}Tube{RESET}: {AQUA}BeckenPlayZMCPE"
+ - "{40%} {BOLD}{GREEN}Discord {BLUE}Server{RESET}: {YELLOW}https://discord.gg/WYxBN6Q"
+ - "{60%} {BOLD}{AQUA}Buy Ranks{RESET}: {GREEN}Coming Soon!"
+ - "{80%} {BOLD}{YELLOW}Donate at {RED}| {AQUA}paypal.me/BeckenPlayZMCPE"
+ - "{100%} {BOLD}{WHITE}More games, {AQUA}More fun..."
+# How fast the messages switch in seconds
+change-speed: 15
+# This changes the behaviour for multiple worlds
+# Mode 0: see the bar in every world
+# Mode 1: see ONLY in the worlds in the array
+# Mode 2: DON'T see in worlds in the array
+mode: 0
+# Worlds: use the worldname, seperate with " , "
+# Example: Mode 0, worlds: ["world", "lobby", "survival"]
+worlds: ["CourtyardSpawn"]
+#Formatting strings:
+#{display_name}, {name}, {world}, {x}, {y}, {z}, {level_players}, {server_players}, {server_max_players},
+#{hour}, {minute}, {second}
+#{BLACK}, {DARK_BLUE}, {DARK_GREEN}, {DARK_AQUA}, {DARK_RED}, {DARK_PURPLE}, {GOLD}, {GRAY},
+#{DARK_GRAY}, {BLUE}, {GREEN}, {AQUA}, {RED}, {LIGHT_PURPLE}, {YELLOW}, {WHITE}, {OBFUSCATED}, {BOLD}
+#{STRIKETHROUGH}, {UNDERLINE}, {ITALIC}, {RESET}
+#&0, &1, &2, &3, &4, &5, &6, &7, &8, &9, &a, &b, &c, &d, &e, &f, &k, &l, &m, &n, &o, &r
+...

@@ -1,0 +1,166 @@
+---
+name: 1_Survival_Land
+levelName: Survival Games Map
+displayName: HG-1 Survival v2
+locationX: "-215"
+locationY: "71"
+locationZ: "260"
+published: true
+
+arenaEnterX: "-215"
+arenaEnterY: "72"
+arenaEnterZ: "230"
+enterLevelName: "Survival Games Map"
+
+arenaExitX: "45"
+arenaExitY: "42"
+arenaExitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+deathMatchDuration: 130
+huntingDuration: 400
+
+signVoteX: -31
+signVoteY: 42
+signVoteZ: -343
+
+signJoinX: -22
+signJoinY: 29
+signJoinZ: -477
+
+#signStatsX: 3
+#signStatsY: 6
+#signStatsZ: 9
+#joinDownCounter: 2
+
+signExitX: 128
+signExitY: 1
+signExitZ: 123
+
+deathMatchEnterX: "-428"
+deathMatchEnterY: "64"
+deathMatchEnterZ: "434"
+
+deathMatchPos1X: "-479"
+deathMatchPos1Y: "63"
+deathMatchPos1Z: "392"
+deathMatchPos2X: "-373"
+deathMatchPos2Y: "73"
+deathMatchPos2Z: "468"
+
+portalEnter1X: "128"
+portalEnter1Y: "1"
+portalEnter1Z: "123"
+portalEnter2X: "128"
+portalEnter2Y: "1"
+portalEnter2Z: "123"
+
+portalExit1X: "-213"
+portalExit1Y: "74"
+portalExit1Z: "228"
+portalExit2X: "-210"
+portalExit2Y: "72"
+portalExit2Z: "226"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playFinishCountdown: 5
+deathMatchStartCountdown: 5
+deathMatchFinishCountdown: 5
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+
+minPlayers: 4
+maxPlayers: 24
+
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+spawnLocations:
+- - "-231"
+  - "67"
+  - "245"
+- - "-234"
+  - "67"
+  - "251"
+- - "-236"
+  - "67"
+  - "257"
+- - "-236"
+  - "67"
+  - "263"
+- - "-236"
+  - "67"
+  - "270"
+- - "-233"
+  - "67"
+  - "275"
+- - "-230"
+  - "67"
+  - "279"
+- - "-224"
+  - "67"
+  - "281"
+- - "-216"
+  - "67"
+  - "282" 
+- - "-209"
+  - "67"
+  - "283" 
+- - "-204"
+  - "67"
+  - "281" 
+- - "-201"
+  - "67"
+  - "278" 
+- - "-199"
+  - "67"
+  - "272" 
+- - "-199"
+  - "67"
+  - "267"   
+- - "-198"
+  - "67"
+  - "262"    
+- - "-197"
+  - "67"
+  - "257"  
+- - "-198"
+  - "67"
+  - "251"
+- - "-201"
+  - "67"
+  - "246"    
+- - "-205"
+  - "67"
+  - "243"
+- - "-210"
+  - "67"
+  - "242"      
+- - "-214"
+  - "67"
+  - "240"     
+- - "-220"
+  - "67"
+  - "240"      
+- - "=226"
+  - "67"
+  - "240"   
+...

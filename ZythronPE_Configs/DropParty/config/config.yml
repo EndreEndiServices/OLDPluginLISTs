@@ -1,0 +1,20 @@
+
+---
+World: castellum
+Time: 15
+Duration: 45
+Message.Started: '§7[§bDrop§6Party§7] §aThis event has been started!'
+Message.Ended: '§7[§bDrop§6Party§7] §cThis event has been ended.'
+Message.Countdown: '§7[§bDrop§6Party§7] §bThis event will starting in {time} minutes.'
+Popup.Enabled: true
+Popup.Message: '§7[§bDrop§6Party§7] §dAll items is dropping, quick!'
+Coordinates:
+  X: 589
+  "Y": 10
+  Z: 621
+Items:
+- 57
+- 42
+- 22
+- 41
+...

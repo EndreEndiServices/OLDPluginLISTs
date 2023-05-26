@@ -1,0 +1,14 @@
+---
+en:
+  kill: fue matado por
+  cannotjoin: El juego ya ha iniciado.
+  seconds: segundos para empezar
+  won: Ha ganado Teams Hunger Games!
+  deathmatchminutes: minutos para el combate final!
+  deathmatchseconds: segundos para el combate final!
+  chestrefill: Los cofres han sido rellenados!
+  remainingminutes: minutos restantes!
+  remainingseconds: segundos restantes!
+  nowinner: Sin ganadores esta vez!
+  moreplayers: Faltan jugadores!
+...

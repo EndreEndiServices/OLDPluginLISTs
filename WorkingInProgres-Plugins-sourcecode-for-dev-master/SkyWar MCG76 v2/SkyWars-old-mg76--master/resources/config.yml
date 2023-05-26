@@ -1,0 +1,54 @@
+---
+districtborder: "off"
+message: This is end of skyblock district
+blocks: "3000"
+#---------------------
+game_play_countdown_wait_time: 5
+spawnmods: "yes"
+#---------------------
+skywars_base_world: skywarsbase1
+skywars_play_world: skywarsbase1_play
+#---------------------
+#skywars lobby world
+#---------------------
+skywars_lobby_world: skywarshome
+skywars_lobby_x: 153
+skywars_lobby_y: 57
+skywars_lobby_z: 151
+#---------------------
+#shop sales people
+#---------------------
+skywars_shop_sales1: villager
+skywars_shop_sales1_x: 144
+skywars_shop_sales1_y: 57
+skywars_shop_sales1_z: 138
+
+skywars_shop_sales2: zombie
+skywars_shop_sales2_x: 171
+skywars_shop_sales2_y: 63
+skywars_shop_sales2_z: 164
+
+#---------------------
+#Player equipments
+#---------------------
+skywars_pe_free1_x: 156
+skywars_pe_free1_y: 57
+skywars_pe_free1_z: 144
+
+skywars_pe_chain1_x: 155
+skywars_pe_chain1_y: 57
+skywars_pe_chain1_z: 144
+
+skywars_pe_iron1_x: 154
+skywars_pe_iron1_y: 57
+skywars_pe_iron1_z: 144
+
+skywars_pe_gold1_x: 153
+skywars_pe_gold1_y: 57
+skywars_pe_gold1_z: 144
+
+skywars_pe_diamond1_x: 152
+skywars_pe_diamond1_y: 57
+skywars_pe_diamond1_z: 144
+
+...

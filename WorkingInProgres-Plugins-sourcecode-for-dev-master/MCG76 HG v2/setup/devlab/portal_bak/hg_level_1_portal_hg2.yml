@@ -1,0 +1,31 @@
+---
+id: 1428632912
+name: hg_level_1_portal_hg2
+type: type_map_portal
+displayName: hg_level_1_portal
+levelName: MinigamesHub
+portalEnter1X: "135"
+portalEnter1Y: "69"
+portalEnter1Z: "-49"
+portalEnter2X: "134"
+portalEnter2Y: "67"
+portalEnter2Z: "-52"
+enterLevelName: "The Survival Games Ultimate - 8 player"
+entranceX: "-881"
+entranceY: "13"
+entranceZ: "920"
+
+portalExit1X: "-878"
+portalExit1Y: "15"
+portalExit1Z: "918"
+portalExit2X: "-876"
+portalExit2Y: "13"
+portalExit2Z: "921"
+exitX: "140"
+exitY: "67"
+exitZ: "-59"
+exitLevelName: "MinigamesHub"
+locationX: "140"
+locationY: "67"
+locationZ: "-60"
+...

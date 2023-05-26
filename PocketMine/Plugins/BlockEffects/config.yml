@@ -1,0 +1,13 @@
+---
+"24:0":
+- effect: 14
+  amplifier: 100
+  duration: 100
+  visible: true
+  particle: heart
+- effect: 10
+  amplifier: 50
+  duration: 100
+  visible: false
+  particle: heart
+...

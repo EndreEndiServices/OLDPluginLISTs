@@ -1,0 +1,193 @@
+---
+The_Signs_in_the_world_@@_have_been_put_back:
+  message: The Signs in the world @@ have been put back
+  alert: success
+The_world_@@_was_not_found:
+  message: The world @@ was not found
+  alert: error
+All_the_Signs_have_been_put_back:
+  message: All the Signs have been put back
+  alert: succes
+There_are_no_Signs_spammed:
+  message: There are no Signs spammed
+  alert: error
+You_have_authorized_@@_to_use_the_command_/sign:
+  message: You have authorized @@ to use the command /sign
+  alert: success
+The_player_@@_is_not_exists:
+  message: The player @@ is not exists
+  alert: warning
+Invalid_arguments:
+  message: Invalid arguments
+  alert: error
+You_have_unauthorized_@@_to_use_the_command_/sign:
+  message: You have unauthorized @@ to use the command /sign
+  alert: succsee
+You_have_authorized_@@_to_create_the_Signs_without_the_blocks_in_the_inventory:
+  message: You have authorized @@ to create the Signs without the blocks in the inventory
+  alert: success
+The_player_@@_is_authorized_to_run_the_command_/sign:
+  message: The player @@ is authorized to run the command /sign
+  alert: info
+The_player_@@_is_not_authorized_to_run_the_command_/sign:
+  message: The player @@ is not authorized to run the command /sign
+  alert: info
+The_command_<@@>_was_not_found!_Use_/sign_help:
+  message: The command <@@> was not found! Use /sign help
+  alert: error
+Now_@@_can_use_the_command_/sign:
+  message: Now @@ can use the command /sign
+  alert: success
+all:
+  message: all
+  alert: success
+admin:
+  message: admin
+  alert: success
+The_action_has_been_executed_successfully:
+  message: The action has been executed successfully
+  alert: success
+Now_touch_on_the_Sign_that_you_want_to_do_this_action:
+  message: Now touch on the Sign that you want to do this action
+  alert: info
+Invalid_value_of_@@:
+  message: Invalid value of @@
+  alert: error
+amount:
+  message: amount
+  alert: error
+cost:
+  message: cost
+  alert: error
+maker:
+  message: maker
+  alert: error
+available:
+  message: available
+  alert: error
+item:
+  message: item
+  alert: error
+player:
+  message: player
+  alert: error
+You_are_not_authorized_to_run_this_command:
+  message: You are not authorized to run this command
+  alert: warning
+The_selected_Sign_is_not_your:
+  message: The selected Sign is not your
+  alert: error
+The_Sign_successfully_removed:
+  message: The Sign successfully removed
+  alert: success
+You_need_to_free_up_space_from_your_inventory_to_remove_this_Sign:
+  message: You need to free up space from your inventory to remove this Sign
+  alert: warning
+Sign_successfully_created:
+  message: Sign successfully created
+  alert: success
+The_item_was_not_found_or_does_not_have_enough_items:
+  message: The item was not found or does not have enough items
+  alert: error
+There_is_a_problem_with_the_creation_of_the_Sign:
+  message: There is a problem with the creation of the Sign
+  alert: error
+The_owner_has_earned_@@:
+  message: The owner has earned @@
+  alert: info
+This_Sign_is_owned_by_@@:
+  message: This Sign is owned by @@
+  alert: info
+There_are_still_@@_blocks/items:
+  message: There are still @@ blocks/items
+  alert: info
+They_were_sold_@@_blocks/items_with_this_Sign:
+  message: They were sold @@ blocks/items with this Sign
+  alert: info
+The_Sign_was_stocked_with_success:
+  message: The Sign was stocked with success
+  alert: success
+You_do_not_have_enough_blocks_to_fill_the_Sign:
+  message: You do not have enough blocks to fill the Sign
+  alert: error
+You_set_the_available_of_the_Sign_in_@@:
+  message: You set the available of the Sign in @@
+  alert: info
+You_set_the_amount_of_the_Sign_in_@@:
+  message: You set the amount of the Sign in @@
+  alert: info
+The_cost_of_the_contents_of_this_Sign_is_now_@@:
+  message: The cost of the contents of this Sign is now @@
+  alert: info
+Now_this_Sign_is_owned_by_@@:
+  message: Now this Sign is owned by @@
+  alert: success
+You_can_not_buy_from_your_Sign:
+  message: You can not buy from your Sign
+  alert: error
+payment_from_@@:
+  message: payment from @@
+  alert: info
+You_can_not_buy_or_sell_in_creative:
+  message: You can not buy or sell in creative
+  alert: error
+Now_this_Sign_has_the_unlimited_available:
+  message: Now this Sign has the unlimited available
+  alert: success
+You_do_not_have_enough_money:
+  message: You do not have enough money
+  alert: warning
+The_content_of_the_Sign_is_sold_out:
+  message: The content of the Sign is sold out
+  alert: warning
+You_bought_the_contents_of_the_Sign:
+  message: You bought the contents of the Sign
+  alert: success
+You_do_not_have_the_space_to_buy_the_contents_of_this_Sign:
+  message: You do not have the space to buy the contents of this Sign
+  alert: warning
+This_command_must_be_run_from_the_console:
+  message: This command must be run from the console
+  alert: warning
+You_can_not_create_the_Signs_from_the_creative_mode:
+  message: You can not create the Signs from the creative mode
+  alert: warning
+You_need_space_to_get_the_items_from_the_Sign:
+  message: You need space to get the items from the Sign
+  alert: warning
+The_amount_must_be_less_than_@@:
+  message: The amount must be less than @@
+  alert: error
+This_sign_is_not_registered:
+  message: This sign is not registered
+  alert: warning
+You_do_not_have_enough_space_to_get_the_contents_of_the_Sign:
+  message: You do not have enough space to get the contents of the Sign
+  alert: warning
+You_have_successfully_sold_the_items:
+  message: You have successfully sold the items
+  alert: success
+The_Sign_is_full:
+  message: The Sign is full
+  alert: warning
+The_Sign_is_empty:
+  message: The Sign is empty
+  alert: warning
+The_Sign_has_been_emptied_successfully:
+  message: The Sign has been emptied successfully
+  alert: success
+This_feature_is_not_yet_available_for_SignSell:
+  message: This feature is not yet available for SignSell
+  alert: error
+The_amount_of_the_Sign_is_unlimited:
+  message: The amount of the Sign is unlimited
+  alert: warning
+You_can_not_sell_your_items_to_your_Sign,_if_you_want_you_can_empty_it_executing_the_command_/sign_empty:
+  message: You can not sell your items to your Sign, if you want you can empty it
+    executing the command /sign empty
+  alert: error
+The_maker_of_Sign_does_not_have_enough_money_to_give_you_the_money:
+  message: The maker of Sign does not have enough money to give you the money
+  alert: error
+version_mex: oneone
+...

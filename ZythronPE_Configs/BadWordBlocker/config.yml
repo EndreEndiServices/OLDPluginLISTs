@@ -1,0 +1,26 @@
+#  ____            ___        __            _ ____  _            _
+# | __ )  __ _  __| \ \      / /__  _ __ __| | __ )| | ___   ___| | _____ _ __
+# |  _ \ / _` |/ _` |\ \ /\ / / _ \| '__/ _` |  _ \| |/ _ \ / __| |/ / _ \ '__|
+# | |_) | (_| | (_| | \ V  V / (_) | | | (_| | |_) | | (_) | (__|   <  __/ |
+# |____/ \__,_|\__,_|  \_/\_/ \___/|_|  \__,_|____/|_|\___/ \___|_|\_\___|_|
+#
+# (C) 2017 by surva network | https://github.com/survanetwork
+
+# Language of the plugin messages
+# Possible options are: en (English), de (German), ru (Russian)
+language: "en"
+
+# List of the blocked words
+badwords:
+  - "fuck"
+  - "shit"
+  - "bitch"
+
+# Minimum time between chat messages in seconds
+waitingtime: 2
+
+# Percentage of uppercase chars in a message required to trigger caps checker
+uppercasepercentage: 0.75
+
+# Minimum amount of chars in a message required to activate caps checker (to avoid blocking HI, OK, etc.)
+minimumchars: 3

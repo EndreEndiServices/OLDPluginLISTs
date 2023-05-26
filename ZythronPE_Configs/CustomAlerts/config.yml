@@ -1,0 +1,89 @@
+---
+datetime-format: "H:i:s"
+Motd:
+  update-timeout: 1
+  custom: true
+  message: "&6Zythron&bPE &7>> &aNEW!"
+OutdatedClient:
+  custom: true
+  message: "&cPlease update your &egame &cto the latest version!"
+OutdatedServer:
+  custom: true
+  message: "&cSorry, this &aserver version &chas been outdated."
+WhitelistedServer:
+  custom: true
+  message: "&cSorry, $6Zythron&2PE &cis whitelisted."
+FullServer:
+  custom: true
+  message: "&cThis server is full! &d[{TOTALPLAYERS}/{MAXPLAYERS}]&c! &aPlease try re-join again, &e{PLAYER}&c!"
+FirstJoin:
+  enable: false
+  message: "&b{PLAYER} &ejoined ZPE for the first time."
+Join:
+  hide: false
+  custom: false
+  message: "&b{PLAYER} &ehas joined the ZPE."
+Quit:
+  hide: false
+  custom: false
+  message: "&b{PLAYER} &chas left the ZPE."
+WorldChange:
+  enable: false
+  message: "&l&a{PLAYER}&e has moved from &c&l{ORIGIN}&e&r to &a&l{TARGET}!"
+Death:
+  hide: false
+  custom: false
+  message: "&c{PLAYER} has died."
+  death-contact-message:
+    hide: false
+    custom: falsd
+    message: "&c{PLAYER} was killed by a &e{BLOCK}?!"
+  kill-message:
+    hide: false
+    custom: false
+    message: "&9{PLAYER} &ewas killed by &c{KILLER}!"
+  death-projectile-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} was killed by $a{KILLER} $cwho shot them!"
+  death-suffocation-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} suffocated!"
+  death-fall-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} fell out."
+  death-fire-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} went up in flames."
+  death-on-fire-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} burned."
+  death-lava-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} tried to swim in lava."
+  death-drowning-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} drowned."
+  death-explosion-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} blown up to death!"
+  death-void-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} fell into the void."
+  death-suicide-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} committed suicide."
+  death-magic-message:
+    hide: false
+    custom: false
+    message: "&c{PLAYER} was killed by a magic spells."
+...

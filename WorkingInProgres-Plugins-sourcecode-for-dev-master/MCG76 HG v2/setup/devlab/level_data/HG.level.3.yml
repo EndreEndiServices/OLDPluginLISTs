@@ -1,0 +1,62 @@
+---
+id: 1428726078
+name: HG level 3
+type: 3
+displayName: HG level-3
+levelName: MinigamesHub
+waitCountDown: 20
+minPlayers: 1
+maxPlayers: 24
+
+locationX: "128"
+locationY: "12"
+locationZ: "123"
+
+joinDownCounter: 8
+
+entranceX: "139"
+entranceY: "67"
+entranceZ: "-50"
+enterLevelName: MinigamesHub
+
+exitX: "126"
+exitY: "67"
+exitZ: "-62"
+exitLevelName: MinigamesHub
+
+signJoinX: "148"
+signJoinY: "68"
+signJoinZ: "-57"
+
+signExitX: "148"
+signExitY: "70"
+signExitZ: "-57"
+
+signStatsX: "148"
+signStatsY: "67"
+signStatsZ: "-57"
+
+mapselectX: "148"
+mapselectY: "67"
+mapselectZ: "-59"
+
+gatePos1X: "147"
+gatePos1Y: "67"
+gatePos1Z: "-58"
+
+gatePos2X: "149"
+gatePos2Y: "69"
+gatePos2Z: "-58"
+
+particles: "portal"
+
+portalEnter1X: "146"
+portalEnter1Y: "70"
+portalEnter1Z: "-57"
+portalEnter2X: "154"
+portalEnter2Y: "72"
+portalEnter2Z: "-47"
+
+maps:
+- 3_SnowValleyAirportResort
+...

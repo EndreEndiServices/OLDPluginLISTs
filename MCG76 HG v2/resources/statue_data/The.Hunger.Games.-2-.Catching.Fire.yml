@@ -1,0 +1,23 @@
+---
+name: The Hunger Games -2- Catching Fire
+type: npc
+networkId: 1
+levelName: "Hunger Games Lobby"
+message: " The Hunger Games - 2 Catching Fire"
+itemOnHand: "267"
+armorHelmet: ~
+armorChestplate: ~
+armorLegging: ~
+armorBoots: ~
+positionX: -35
+positionY: 39
+positionZ: -417
+cost: 0
+kitName: false
+kitBlock: 35
+particles: "flame"
+destinationLevelName: "Hunger Games Lobby"
+destinationPosX: -92
+destinationPosY: 42
+destinationPosZ: -420
+...

@@ -1,0 +1,186 @@
+---
+name: 1_Hunger Games Map
+levelName: Hunger Games Map
+displayName: HG-1 HGMap1
+joinMessage: Welcome to Hunger Games Arena
+locationX: "184"
+locationY: "35"
+locationZ: "256"
+
+arenaEnterX: "178"
+arenaEnterY: "24"
+arenaEnterZ: "221"
+
+arenaExitX: "126"
+arenaExitY: "67"
+arenaExitZ: "-62"
+
+enterLevelName: "Hunger Games Map"
+exitLevelName: "MinigamesHub"
+
+joinDownCounter: 2
+
+signVoteX: 137
+signVoteY: 68
+signVoteZ: -48
+
+signJoinX: 137
+signJoinY: 67
+signJoinZ: -48
+
+signStatsX: 137
+signStatsY: 68
+signStatsZ: -59
+
+signExitX: 128.000000
+signExitY: 1.000000
+signExitZ: 123.000000
+
+deathMatchEnterX: "182"
+deathMatchEnterY: "32"
+deathMatchEnterZ: "412"
+
+deathMatchPos1X: "207"
+deathMatchPos1Y: "41"
+deathMatchPos1Z: "451"
+deathMatchPos2X: "154"
+deathMatchPos2Y: "23"
+deathMatchPos2Z: "374"
+
+portalEnter1X: "175"
+portalEnter1Y: "27"
+portalEnter1Z: "219"
+portalEnter2X: "179"
+portalEnter2Y: "24"
+portalEnter2Z: "217"
+
+portalExit1X: "175"
+portalExit1Y: "27"
+portalExit1Z: "219"
+portalExit2X: "179"
+portalExit2Y: "24"
+portalExit2Z: "217"
+
+resetPeriod: 60
+winnerCoins: 3
+winnerRankUp: 1
+playStartCountdown: 10
+playStartCountdownMessage: let the game begin...
+playFinishCountdown: 5
+playFinishCountdownMessage: '[HG] remains'
+playStartingMessage: '[hg] starting..'
+
+deathMatchStartCountdown: 5
+deathMatchStartMessage: death match begins
+deathMatchFinishCountdown: 5
+deathMatchFinishMessage: game over
+
+deathMatchDuration: 60
+huntingDuration: 200
+
+deatchMatchPlayers: 1
+deatchMatchWinner: mctest
+deathMatchWinnerMessage: winner
+minPlayers: 2
+maxPlayers: 24
+requiredAccessRank: 0
+autoRefill: true
+items: []
+locked: "1"
+unlockItem: "1"
+unlockPassword: false
+numberOfRandomItems: 1
+allowPvP: true
+allowBreakBlock: true
+allowBlockPlace: true
+block: 1
+sectionpos1X: "128"
+sectionpos1Y: "1"
+sectionpos1Z: "123"
+sectionpos2X: "128"
+sectionpos2Y: "1"
+sectionpos2Z: "123"
+gatePos1X: "140"
+gatePos1Y: "69"
+gatePos1Z: "-58"
+gatePos2X: "138"
+gatePos2Y: "67"
+gatePos2Z: "-58"
+chestLocations:
+- - "128"
+  - "1"
+  - "123"
+spawnLocations:
+- - "185"
+  - "24"
+  - "225"
+- - "197"
+  - "24"
+  - "227"
+- - "204"
+  - "24"
+  - "231"
+- - "209"
+  - "24"
+  - "235"
+- - "215"
+  - "24"
+  - "243"
+- - "218"
+  - "24"
+  - "252"
+- - "220"
+  - "24"
+  - "259"
+- - "218"
+  - "24"
+  - "265"
+- - "215"
+  - "24"
+  - "272" 
+- - "208"
+  - "24"
+  - "284" 
+- - "203"
+  - "24"
+  - "287" 
+- - "196"
+  - "24"
+  - "291" 
+- - "185"
+  - "24"
+  - "293" 
+- - "173"
+  - "24"
+  - "290"   
+- - "166"
+  - "24"
+  - "285"    
+- - "162"
+  - "24"
+  - "284"  
+- - "155"
+  - "24"
+  - "273"
+- - "153"
+  - "24"
+  - "267"    
+- - "151"
+  - "24"
+  - "259"
+- - "153"
+  - "24"
+  - "252"      
+- - "155"
+  - "24"
+  - "243"     
+- - "162"
+  - "24"
+  - "235"      
+- - "=166"
+  - "24"
+  - "231"
+- - "=173"
+  - "24"
+  - "227"  
+...

@@ -1,0 +1,25 @@
+name: CrashBang
+author: Cr0sh
+version: "0.1 InDev"
+description: "PvP mini-game plugin with skill system"
+api: [1.14.0, 2.0.0]
+main: crashbang\CrashBang
+commands:
+ cb:
+  description: "A set of CrashBang commands"
+  usage: "/cb <start|yes|no|stop|help|set>"
+  permission: crashbang.command
+ helpall:
+  description: "Prints all skill descriptions"
+  usage: "/helpall"
+permissions:
+ crashbang:
+  default: false
+  description: "Allows working with crashbang things"
+  children:
+   crashbang.command:
+    description: "Allows using /cb command"
+    default: true
+   crashbang.set:
+    description: "Allows setting skill manually by /cb set"
+    default: true # SHOULD BE SET TO FALSE ON PRODUCTION

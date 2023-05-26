@@ -1,0 +1,23 @@
+# Configuration file for VModifier by Kevin Andrews;
+
+# Settings:
+
+# Choose whether enable or disable this plugin
+# true = Enable
+# false = Disable
+enable-plugin: true
+
+# Messages:
+messages:
+
+# Tags:
+ # \n = Line break
+ 
+ # /version
+ version: "This server is running §bZythron§ePE Core made by lordliam8."
+ 
+ # /ver
+ ver: "This server is running §bZythron§ePE Core made by lordliam8."
+ 
+ # /about
+ about: "This server is running §bZythron§ePE Core made by lordliam8."

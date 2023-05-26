@@ -1,0 +1,5 @@
+name: FBar
+main: FBar\FBar
+api: 2.0.0-3.0.0
+load: POSTWORLD
+version: 1.0

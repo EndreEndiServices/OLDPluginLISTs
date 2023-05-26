@@ -1,0 +1,39 @@
+m_version: 1
+
+default-language: "kor"
+
+#(EN) ENGLISH
+eng: true
+eng-default-prefix: "[Server]"
+
+#(KO) KOREAN
+kor: true
+kor-default-prefix: "[전쟁]"
+
+kor-command: "전쟁"
+kor-command-participation: "참여"
+kor-command-spawn: "스폰"
+kor-command-leave: "퇴장"
+kor-command-red: "레드팀"
+kor-command-blue: "블루팀"
+kor-command-lobby: "로비"
+
+kor-command-description: "전쟁 명령어"
+kor-command-help: "/전쟁 <참여|퇴장>"
+kor-command-ophelp: "/전쟁 <참여|퇴장|스폰>"
+
+kor-spawn-help: "/전쟁 스폰 <레드팀|블루팀|로비>"
+
+kor-dont-have-permission: "당신은 이 명령어를 실행할 권한이 없습니다."
+kor-you-dont-participate: "당신은 전쟁에 참여중이 아닙니다."
+kor-already-get-item: "이미 아이템을 얻은 상자입니다."
+kor-not-resume-war: "전쟁이 진행중이 아닙니다."
+kor-already-participate: "이미 참여중입니다."
+
+kor-success-setspawn: "%team% 스폰을 설정했습니다."
+kor-success-setlobby: "로비를 설정했습니다."
+kor-success-participate: "전쟁에 참여하였습니다! 당신은 %team% 입니다."
+kor-leave-from-war: "전쟁에서 퇴장하였습니다."
+kor-get-item-from-chest: "상자에서 아이템을 얻었습니다."
+kor-start-war: "전쟁이 시작되었습니다! (/전쟁 참여 로 전쟁참여 가능)"
+kor-end-war: "전쟁이 종료되었습니다."

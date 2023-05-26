@@ -1,0 +1,34 @@
+---
+enable-multiworld-support: false
+custom-no-fac-message: '...'
+groups:
+  Guest:
+    default-chat: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_YELLOW}{FORMAT_BOLD}[Guest]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Admin:
+    default-chat: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_AQUA}{FORMAT_BOLD}[Admin]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  Owner:
+    default-chat: '{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_BLUE}{FORMAT_BOLD}[Owner]{COLOR_WHITE}{FORMAT_RESET}
+      {display_name}'
+    worlds: []
+  OP:
+    default-chat: '{COLOR_GREEN}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name}
+      {COLOR_GRAY}> {message}'
+    default-nametag: '{COLOR_BLUE}{FORMAT_BOLD}[OP]{COLOR_WHITE}{FORMAT_RESET} {display_name}'
+    worlds: []
+  §4§lYou§fTube:
+    default-nametag: '[§4§lYou§fTube] {display_name}'
+    default-chat: '[§4§lYou§fTube] {display_name} > {message}'
+  §l§3Server:
+    default-nametag: '[§l§3Server] {display_name}'
+    default-chat: '[§l§3Server] {display_name} > {message}'
+...

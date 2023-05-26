@@ -1,0 +1,11 @@
+name: CKit
+main: CKit\Main
+api: [2.0.0]
+author: CREEDO
+version: 0.0.1
+commands:
+  kit:
+    description: "/kit"
+  vip:
+    description: "/vip"
+    permission: ckit.vip

@@ -1,0 +1,14 @@
+name: mcg76_minigame_hungergames
+version: 2.6.0
+api: 1.13.0
+main: mcg76\hungergames\main\HungerGamesPlugIn
+author: minecraftgenius76
+description: minecraftgenius76 Hunger Games v2 Trilogy
+commands:
+ hg:
+  description: "MCG76 Hunger Games v2 Trilogy"
+  permission: mcg76.plugin.hungergames
+permissions:
+ mcg76.plugin.hungergames:
+  description: "mcg76.plugin.hungergames"
+  default: true

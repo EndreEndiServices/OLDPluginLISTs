@@ -1,0 +1,59 @@
+name: EnderAuth
+author: NetherManiacsKingdom
+main: EnderAuth\EnderAuth\Loader
+version: "1.0.0"
+api: [1.13.0]
+description: EnderAuth authentication plugin
+commands:
+ changepw: 
+  description: "Change your password"
+  usage: "/changepw"
+  permission: enderauth.command.changepw
+ unregister:
+  description: "Unregister account"
+  usage: "/unregister"
+  permission: enderauth.command.unregister
+ login:
+  description: "Logs into an account"
+  usage: "Type your password that you registred with"
+  permission: enderauth.command.login
+ register:
+  description: "Registers an account"
+  usage: "Type a password you want to register with"
+  permission: enderauth.command.register
+ confirmreg: 
+  description: "Type your password again confirm it"
+  usage: "Type that password again into chat to confirm the password"
+  permission: enderauth.command.confirmreg
+ confirmcpw:
+  description: "Confirm that new password you want to change to"
+  usage: "Type that password again to change your password"
+  permission: enderauth.command.confirmcpw
+
+
+ permissions:
+ enderauth:
+  default: op
+  description: "Allows using everything EnderAuth has"
+  children:
+   enderauth.chat:
+    description: "Allows using the chat while not being authenticated"
+    default: false
+   enderauth.move:
+    description: "Allows moving while not being authenticated"
+    default: false
+   enderauth.lastid:
+    description: "Allows authenticating using the last id when enabled in the config"
+    default: true
+   enderauth.command:
+    description: "Allows using EnderAuth commands"
+    default: true
+    children:
+     enderauth.command.register:
+      description: "Allows registering an account"
+      default: true
+     enderauth.command.login:
+      description: "Allows logging into an account"
+      default: true
+   
+    

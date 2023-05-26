@@ -1,0 +1,156 @@
+name: SubSigns
+main: Samueljh1\SubSigns\main
+version: 1.0
+api: [1.0.0]
+author: Samueljh1
+load: POSTWORLD
+description: A Plugin that Shows your Sub Count on Youtube!
+
+commands:
+    subreload:
+        description: Reloads all SubSigns in the World you are in.<?php
+
+namespace Samueljh1\SubSigns;
+
+use pocketmine\plugin\PluginBase;
+
+use pocketmine\event\Listener;
+
+use pocketmine\Player;
+use pocketmine\utils\Config;
+use pocketmine\math\Vector3;
+use pocketmine\utils\TextFormat;
+use pocketmine\Server;
+use pocketmine\block\Block;
+use pocketmine\item\Item;
+
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+
+use pocketmine\tile\Sign;
+
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\block\SignChangeEvent;
+
+use pocketmine\plugin\Plugin;
+
+
+class main extends PluginBase implements Listener{
+
+    public function onEnable(){
+
+        $this->saveDefaultConfig();
+	$this->reloadConfig();
+
+	$this->getServer()->getPluginManager()->registerEvents($this, $this);
+
+        $this->getLogger()->info(TextFormat::GREEN . "SubSigns Loaded!");
+
+   }
+
+    public function onSignChange(SignChangeEvent $sc){
+
+        if($this->getConfig()->get('op-create') == "true" && !$sc->getPlayer()->isOP() && $sc->getLine(0) == $this->getConfig()->get('sign-prefix')){
+
+            $sc->setCancelled();
+            $sc->getPlayer()->sendMessage($this->getConfig()->get('non-op-create-fail-message'));
+
+        }
+
+        if($this->getConfig()->get('op-create') != "true" && $sc->getLine(0) == $this->getConfig()->get('sign-prefix') || $this->getConfig()->get('op-create') == "true" && $sc->getPlayer()->isOP() && $sc->getLine(0) == $this->getConfig()->get('sign-prefix')){
+
+            if($this->getSubs($sc->getLine(1)) != "Error"){
+
+                $sc->setLine(2,$this->getSubs($sc->getLine(1)));
+
+                $this->getLogger()->info(TextFormat::GREEN . "A SubSign has Been Created for " . $sc->getLine(1) . " (by " . $sc->getPlayer()->getName() . ") at [" . $sc->getBlock()->getX() . ", " . $sc->getBlock()->getY() . ", " . $sc->getBlock()->getZ() . "]. The Subscriber Count is " . $this->getSubs($sc->getLine(1)));
+
+            }
+
+            else{
+
+                $this->getLogger()->info(TextFormat::RED . "A SubSign has Failed to Create with the name " . $sc->getLine(1) . " at [" . $sc->getBlock()->getX() . ", " . $sc->getBlock()->getY() . ", " . $sc->getBlock()->getZ() . "].");
+                $sc->setLine(2,"Error");
+
+            }
+
+        }
+
+    }
+
+    public function onCommand(CommandSender $sender, Command $command, $label, array $args){
+
+        if(strtolower($command->getName()) == "subreload"){
+
+            if($sender->isOP()){
+
+                $sender->sendMessage("All the SubSigns in the world \"" . $level->getName() . "\" have been Reloaded!"); //For Some Reason this is Called after the Process Below has Finished. Lolwut?!
+
+                $level = $sender->getLevel();
+
+                foreach($level->getTiles() as $sign){
+
+                    if($sign instanceof Sign){
+
+                        if($sign->getText()[0] == $this->getConfig()->get('sign-prefix')){
+
+                            $sign->setText($this->getConfig()->get('sign-prefix'),$sign->getText()[1],$this->getSubs($sign->getText()[1]),$sign->getText()[3]);
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+            else{
+
+                $sender->sendMessage("You Must be OP to Reload SubSigns!");
+
+            }
+
+        }
+
+    }
+
+    public function getSubs($username) { 
+
+        $subs = file_get_contents("http://samueljh1.net/subs.php?usr=" . $username);
+
+        return($subs);
+
+    }
+
+    public function onDisable(){
+
+        $this->saveDefaultConfig();
+        $this->getLogger()->info(TextFormat::RED . "SubSigns Disabled!");
+
+    }
+
+}---
+
+#SubSigns Config File
+
+#################################################
+#						#
+#		     SubSigns                   #
+#		   By: Samueljh1		#
+#						#
+#################################################
+
+#Check Out My Youtube: http://youtube.com/samueljh1
+#My Website: http://samueljh1.net
+#My Google Play Apps! https://play.google.com/store/apps/developer?id=Samueljh1
+
+#What Will be Written on the First Line of a Sign to Become a SubSign
+sign-prefix: "[Subs]"
+
+#If an OP is Required to Create a SubSign
+op-create: "true"
+
+#Non-Op Fail Message
+non-op-create-fail-message: "You do not have Permission to Create a SubSign!"
+
+...

@@ -1,0 +1,22 @@
+---
+Jail:
+  pos:
+    x: -803
+    "y": 45
+    z: 303
+    level: castellum
+  c1:
+    x: -803
+    "y": 44
+    z: 303
+    level: castellum
+  c2:
+    x: -803
+    "y": 44
+    z: 303
+    level: castellum
+  allow-bail: true
+  allow-visit: true
+  mine:
+    isSet: false
+...

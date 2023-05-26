@@ -1,0 +1,64 @@
+---
+id: 1428726078
+name: HG level 1
+type: 1
+displayName: HG level-1
+levelName: MinigamesHub
+waitCountDown: 20
+minPlayers: 1
+maxPlayers: 24
+
+locationX: "128"
+locationY: "12"
+locationZ: "123"
+
+joinDownCounter: 8
+
+entranceX: "139"
+entranceY: "67"
+entranceZ: "-50"
+enterLevelName: MinigamesHub
+
+exitX: "126"
+exitY: "67"
+exitZ: "-62"
+exitLevelName: MinigamesHub
+
+signJoinX: "139"
+signJoinY: "68"
+signJoinZ: "-57"
+
+signExitX: "139"
+signExitY: "68"
+signExitZ: "-55"
+
+signStatsX: "139"
+signStatsY: "67"
+signStatsZ: "-57"
+
+mapselectX: "139"
+mapselectY: "67"
+mapselectZ: "-58"
+
+gatePos1X: "140"
+gatePos1Y: "67"
+gatePos1Z: "-58"
+gatePos2X: "138"
+gatePos2Y: "69"
+gatePos2Z: "-58"
+
+particles: "portal"
+
+portalEnter1X: "132"
+portalEnter1Y: "66"
+portalEnter1Z: "-46"
+portalEnter2X: "142"
+portalEnter2Y: "71"
+portalEnter2Z: "-56"
+
+maps:
+- 1_HG_Island
+- 1_The Survival Games Ultimate
+- 1_Survival Games Map
+- 1_Hunger Games Map
+...

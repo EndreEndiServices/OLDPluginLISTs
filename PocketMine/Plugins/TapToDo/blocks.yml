@@ -1,0 +1,28 @@
+---
+version: 1
+blocks:
+- x: 848
+  "y": 32
+  z: -329
+  level: l
+  commands:
+  - kit Iron
+- x: 846
+  "y": 32
+  z: -329
+  level: l
+  commands:
+  - kit Default
+- x: 109
+  "y": 5
+  z: 127
+  level: l
+  commands:
+  - tntrun join
+- x: 109
+  "y": 5
+  z: 127
+  level: l
+  commands:
+  - tntrun join
+...

@@ -1,0 +1,178 @@
+---
+temas:
+- Pájaro - Bird
+- Pez - Fish
+- Auto - Car
+- Dragón
+- Internet
+- Rana - Frog
+- Mario Bros
+- Perro - Dog
+- Mago - Mage
+- Tractor
+- Bote - Boat
+- Cascada - WaterFall
+- Tigre - Tiger
+- Avión - AirPlane
+- Superhéroe
+- Fútbol - Soccer
+- MCPE Mobs-Monsters
+HypixelSpawn1:
+- 806
+- 6
+- -515
+HypixelSpawn2:
+- 806
+- 6
+- -479
+HypixelSpawn3:
+- 806
+- 6
+- -443
+HypixelSpawn4:
+- 806
+- 6
+- -407
+HypixelSpawn5:
+- 806
+- 6
+- -371
+HypixelSpawn6:
+- 806
+- 6
+- -335
+HypixelSpawn7:
+- 770
+- 6
+- -335
+HypixelSpawn8:
+- 770
+- 6
+- -515
+HypixelSpawn9:
+- 770
+- 6
+- -479
+HypixelSpawn10:
+- 770
+- 6
+- -443
+HypixelSpawn11:
+- 770
+- 6
+- -407
+HypixelSpawn12:
+- 770
+- 6
+- -371
+HypixelSpawn13:
+- 734
+- 6
+- -407
+HypixelSpawn14:
+- 734
+- 6
+- -443
+HypixelSpawn15:
+- 734
+- 6
+- -479
+HypixelSpawn16:
+- 734
+- 6
+- -515
+HypixelSpawn17:
+- 773
+- 5
+- 765
+arenas:
+- Hypixel
+- Hypixel
+- Hypixel
+- Hypixel
+- Hypixel
+- BuildZone
+- BuildZone
+- BuildZone
+- BuildZone
+- BuildZone
+HypixelStart: 0
+HypixelPlayTime: 470
+HypixelStartTime: 30
+Hypixelstart: 0
+Hypixelinicio: 0
+BuildZoneSpawn1:
+- 806
+- 6
+- -515
+BuildZoneSpawn2:
+- 806
+- 6
+- -479
+BuildZoneSpawn3:
+- 806
+- 6
+- -443
+BuildZoneSpawn4:
+- 806
+- 6
+- -407
+BuildZoneSpawn5:
+- 806
+- 6
+- -371
+BuildZoneSpawn6:
+- 806
+- 6
+- -335
+BuildZoneSpawn7:
+- 770
+- 6
+- -335
+BuildZoneSpawn8:
+- 770
+- 6
+- -371
+BuildZoneSpawn9:
+- 770
+- 6
+- -407
+BuildZoneSpawn10:
+- 770
+- 6
+- -443
+BuildZoneSpawn11:
+- 770
+- 6
+- -479
+BuildZoneSpawn12:
+- 770
+- 6
+- -515
+BuildZoneSpawn13:
+- 734
+- 6
+- -515
+BuildZoneSpawn14:
+- 734
+- 6
+- -479
+BuildZoneSpawn15:
+- 734
+- 6
+- -443
+BuildZoneSpawn16:
+- 734
+- 6
+- -407
+BuildZoneSpawn17:
+- 610
+- 6
+- -407
+BuildZoneStart: 0
+BuildZonePlayTime: 470
+BuildZoneStartTime: 30
+BuildZonestart: 0
+BuildZoneinicio: 0
+BuildZonetema: Anything
+...

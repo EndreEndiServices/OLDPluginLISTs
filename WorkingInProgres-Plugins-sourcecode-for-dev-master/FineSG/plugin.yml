@@ -1,0 +1,33 @@
+name: Finecraft_SG
+main: Asidert\Finecraft_SG
+version: "0.5"
+api: [1.0.0]
+load: POSTWORLD
+author: Asidert
+commands:
+ fsg:
+  permission: FSurvivalGame.command.fsg
+  description: Главная команда
+  usage: /fsg <set|remove>
+ lobby:
+  permission: FSurvivalGame.command.lobby
+  description: Вернуться в лобби
+  usage: /lobby
+permissions:
+ FSurvivalGame.*:
+  description: Главная
+  default: op
+  children:
+   FSurvivalGame.command.*:
+    description: Юз
+    default: op
+    children:
+     FSurvivalGame.command.lobby:
+      description: В лобби
+      default: true
+     FSurvivalGame.command.fsg:
+      description: Установка
+      default: op
+   FSurvivalGame.touch.startgame:
+    description: Зайти в игру
+    default: true

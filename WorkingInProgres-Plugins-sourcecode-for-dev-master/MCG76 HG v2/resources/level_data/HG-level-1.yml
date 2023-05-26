@@ -1,0 +1,60 @@
+---
+id: 1437636735
+name: HG-level-1
+type: 1
+displayName: HG level-1
+levelName: Hunger Games Lobby
+waitCountDown: 20
+minPlayers: 2
+maxPlayers: 24
+winnerCoins: 3
+locationX: "128"
+locationY: "12"
+locationZ: "123"
+joinDownCounter: 18
+entranceX: "-30"
+entranceY: "41"
+entranceZ: "-359"
+enterLevelName: "Hunger Games Lobby"
+exitX: "-30"
+exitY: "38"
+exitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+signJoinX: -30.000000
+signJoinY: 43.000000
+signJoinZ: -381.000000
+signJoin2X: -31.000000
+signJoin2Y: 39.000000
+signJoin2Z: -414.000000
+signExitX: -28.000000
+signExitY: 42.000000
+signExitZ: -349.000000
+signStatsX: -30.000000
+signStatsY: 43.000000
+signStatsZ: -353.000000
+mapselectX: "139"
+mapselectY: "67"
+mapselectZ: "-58"
+
+gatePos1X: "-29"
+gatePos1Y: "43"
+gatePos1Z: "-350"
+
+gatePos2X: "-31"
+gatePos2Y: "41"
+gatePos2Z: "-350"
+
+particles: portal
+portalEnter1X: "-19"
+portalEnter1Y: "40"
+portalEnter1Z: "-350"
+portalEnter2X: "-41"
+portalEnter2Y: "43"
+portalEnter2Z: "-341"
+maps:
+- 1_Survival_Swamp
+- 1_Survival_Breeze
+- 1_Survival_Land
+mapselectLevelName: false
+mapSelectionWaitTime: false
+...

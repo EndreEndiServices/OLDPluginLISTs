@@ -1,0 +1,68 @@
+---
+id: 103
+name: HG-level-3
+type: 3
+displayName: HG level-3
+levelName: "Hunger Games Lobby"
+particles: "portal"
+
+#important values
+minPlayers: 2
+maxPlayers: 24
+winnerCoins: 8
+joinDownCounter: 18
+
+locationX: "-30"
+locationY: "37"
+locationZ: "-498"
+
+entranceX: "-30"
+entranceY: "42"
+entranceZ: "-483"
+enterLevelName: "Hunger Games Lobby"
+
+exitX: "-30"
+exitY: "38"
+exitZ: "-420"
+exitLevelName: "Hunger Games Lobby"
+
+signJoinX: "-30"
+signJoinY: "43"
+signJoinZ: "-459"
+
+signJoin2X: "-29"
+signJoin2Y: "39"
+signJoin2Z: "-426"
+
+signStatsX: "-30"
+signStatsY: "44"
+signStatsZ: "-486"
+
+signExitX: "-36"
+signExitY: "40"
+signExitZ: "-501"
+
+mapselectX: "148"
+mapselectY: "67"
+mapselectZ: "-59"
+
+gatePos1X: "-29"
+gatePos1Y: "43"
+gatePos1Z: "-492"
+
+gatePos2X: "-31"
+gatePos2Y: "44"
+gatePos2Z: "-492"
+
+portalEnter1X: "-23"
+portalEnter1Y: "37"
+portalEnter1Z: "-503"
+
+portalEnter2X: "-37"
+portalEnter2Y: "47"
+portalEnter2Z: "-492"
+
+maps:
+- 3_MockingJay_Airport
+- 3_MockingJay_Highway
+...

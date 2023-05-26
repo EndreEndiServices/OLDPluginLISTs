@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS player_profile_key_index ON player_profile(pname)

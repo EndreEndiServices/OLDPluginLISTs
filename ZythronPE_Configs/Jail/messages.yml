@@ -1,0 +1,101 @@
+---
+language: en
+command.error.duringExecution: An error occured during execution of this command!
+no.permission: '&cYou don''t have permission for this!'
+only.works.in.game: '&cCommand only works in-game!'
+jail.not.exist: '&cJail doesn''t exist!'
+player.not.exist: '&cPlayer does not exist!'
+player.not.jailed: '&cPlayer is not jailed!'
+you.not.jailed: '&cYou are not jailed!'
+jail.you.not.jail.that.player: '&cYou can''t jail that player!'
+jail.invalid.time: '&cInvalid time!'
+jail.already.jailed: '&cTarget is already jailed!'
+jail.success.sender: '&aYou jailed %player% for %time% minutes!'
+jail.success.prisoner: |-
+  &eYou have been jailed for %time% minutes!
+  &eReason: %reason%
+bail.feature.disabled: '&cBail feature is disabled!'
+bail.not.use: '&cYou can''t use bail as you are jailed infinitely'
+bail.money.remaining: 'Bank : -$%deduction% | $%remaining% remaining in your account'
+bail.money.not.enough: |-
+  &cYou don't have enough money to bail!
+  &cYou need $%money%
+deljail.success: '&eJail deleted successfully!'
+setjail.must.creative.mode: '&cYou must be in creative mode to use this command!'
+setjail.initialize.2: '&ePlease tap the position where the prisoner will be teleported
+  while they are jailed into this jail.'
+setjail.initialize.3: '&7Re-join server to deactivate jail creation mode.'
+setjail.initialization.start: '&bInitialized jail &a%jail% &bcreation procedure.'
+setjail.success: '&aJail set successfully!'
+setjail.tap.corner.1: '&eNow tap on the 1st corner of the jail area.'
+setjail.tap.corner.2: '&eNow tap on the 2nd corner of the jail area.'
+switchjail.been.switched: '&dYou have been switched to another jail.'
+switchjail.sender.success: '&dYou switched %player% to another jail!'
+tpjail.you.tp.to.that: '&eYou teleported to that jail!'
+tpjail.you.tp.target.to.jail: '&aYou teleported &b%target% &ato jail %jail%!'
+tpjail.you.being.tp.to.jail: '&eYou have been teleported to jail &b%jail%&a!'
+listener.not.allowed.do.this: '&cYou are not allowed to do this while being jailed!'
+listener.block.is.restricted: '&b[&eJail&b] &4This area is restricted.'
+listener.player.command.cancelled: '&cCommand execution cancelled!'
+listener.player.set.success: '&aJail set successfully!'
+listener.player.not.allowed.leave: |2-
+
+  &2You are not allowed to leave the jail!
+listener.player.not.allowed.enter: '&cYou don''t have rights to visit this jail!'
+penalty.added.prisoner: You have been added %time% minutes as penalty!
+unjail.you.success: '&aYou have been unjailed successfully!'
+unjail.sender.success: '&aYou unjailed %prisoner%!'
+jails.listing: 'List of jails: %jails%'
+jailed.listing: 'List of jailed players: %prisoners%'
+votes.enough.jail.broadcast: '&e%player% has been jailed due to enough votes!'
+vote.sender.votedAlready: '&cYou have already voted this player!'
+vote.sender.votedSuccessfully: '&eYou voted the player successfully!'
+vote.target.voteAdded: |-
+  &eYou have been jail-voted by someone!
+  &6Current votes you gained: %votes%/%max%
+timer.broadcast.jailed: '&3You have been jailed!'
+timer.broadcast.timeleft: '&6Time left'
+timer.broadcast.infinite: infinite
+timer.broadcast.bail: '&fBail&r'
+timer.broadcast.notallowed: not allowed
+timer.broadcast.disabled: disabled
+join.uuid.rejected.kickmsg: |-
+  &c&b[JAIL&c]
+  &eYour UUID is duplicated with a jailed player
+setjail.bail.value: '&eAllow bail: &6%bail%'
+setjail.visit.value: '&eAllow visit: &6%visit%'
+sign.destroy.success: '[Jail] Bail sign removed!'
+sign.create.success: '[Jail] Bail sign created!'
+sign.not.jailed: '&cYou are not jailed!'
+mine.set.success: '&aMine set successfully!'
+mine.set.tap.corner.1: '&eNow tap on the 1st corner of the mine'
+mine.set.tap.corner.2: '&eNow tap on the 2nd corner of the mine'
+mine.item.count.notEnough: '&eYour hand does not hold any valid blocks to sell!'
+mine.item.notAvailable: '&eThe item on your hand is not available to be sold!'
+mine.sellHand.success: '&aYou sold %blocksSold% ores => +$%moneyEarned% => Money you
+  have: $%totalMoney%'
+mine.not.set: '&eMine isn''t set in this jail!'
+mine.set.initialization: '&aInitialized mine set procedure for jail ''%jail%'''
+mine.remove.successful: '&aRemoved mine successfully for jail ''%jail%'''
+mine.is.set: '&eMine is set in this jail!'
+mine.reset.success: Resetting mine of '%jail%'...
+sign.sellhand.tag: '&fSell Hand&r'
+sign.sellhand.item: item
+sign.resetmine.tag: '&fReset Mine&r'
+sign.located.outsideJail: '&eYou should create the sign inside a jail!'
+sign.not.inJail: Operation failed - Sign positioned outside jail.
+jailinfo: |-
+  &eInfo of Jail '&f%jail%'
+  &eTP Pos&f: %pos%
+  &eCorner1 Pos&f: %c1%
+  &eCorner2 Pos&f: %c2%
+  &ePrisoners(&f%count%&e)&f: %prisoners%
+  &eMine&f: %isMineSet%
+prisonerinfo: |-
+  &eInfo of prisoner '%prisoner%'
+  &eJail&f: %jail%
+  &eTime left&f: %time_left%
+  &eReason&f: %reason%
+enterJail.msg: '&6You have entered a jail:&e %jail%'
+leaveJail.msg: '&6You have left a jail:&e %jail%'
+...

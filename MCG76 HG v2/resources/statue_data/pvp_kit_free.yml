@@ -1,0 +1,19 @@
+---
+name: pvp_kit_free
+type: npc
+category: kit
+networkId: 186005
+levelName: lobby
+itemOnHand: "268"
+armorHelmet: 306
+armorChestplate: ~
+armorLegging: ~
+armorBoots: ~
+positionX: -991
+positionY: 25
+positionZ: 1522
+cost: 0
+message: "Free PvP Kit"
+kitName: free_kit
+kitBlock: 5
+...

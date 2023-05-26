@@ -1,0 +1,32 @@
+---
+id: 1428631912
+name: hg_level_1_portal_HG_Island
+type: type_map_portal
+displayName: hg_level_1_portal
+levelName: MinigamesHub
+portalEnter1X: "140"
+portalEnter1Y: "69"
+portalEnter1Z: "-46"
+portalEnter2X: "137"
+portalEnter2Y: "67"
+portalEnter2Z: "-45"
+enterLevelName: "HG_Island"
+entranceX: "61"
+entranceY: "63"
+entranceZ: "290"
+
+portalExit1X: "63"
+portalExit1Y: "65"
+portalExit1Z: "292"
+portalExit2X: "60"
+portalExit2Y: "63"
+portalExit2Z: "293"
+exitX: "140"
+exitY: "67"
+exitZ: "-59"
+exitLevelName: "MinigamesHub"
+
+locationX: "140"
+locationY: "67"
+locationZ: "-60"
+...

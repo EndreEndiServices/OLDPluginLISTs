@@ -1,0 +1,10 @@
+name: Money
+main: Azik\aACMain
+version: 1.0
+api: 2.0.0
+author: Azik
+
+commands:
+  setmoney:
+    default: true
+    description: Взять деньги

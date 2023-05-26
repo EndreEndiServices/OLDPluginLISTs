@@ -1,0 +1,4 @@
+# Updated 03/07/16 04:13 by PocketMine-MP 1.6dev
+# victim name | ban date | banned by | banned until | reason
+
+liki|2016-03-07 04:13:00 +0000|(Unknown)|Forever|Banned by an operator.

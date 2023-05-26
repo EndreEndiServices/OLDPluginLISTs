@@ -1,0 +1,6 @@
+---
+players-in-same-group-are-friendly: true
+friends-are-friendly: true
+max-friends: 8
+provider: SQL
+...

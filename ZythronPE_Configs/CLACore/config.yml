@@ -1,0 +1,52 @@
+---
+#CLACore plugin for PocketMine-MP and forks
+#@Author: CLADevs Team
+
+#Languages Available:
+# en - English
+language: en
+
+#-----------AUTO INV----------#
+Auto-Inv: true
+
+#-----------BROADCAST----------#
+Allow-Broadcast: true
+
+#-----------JOIN----------#
+Always-Spawn: true
+Title-Join: true
+Allow-Guardian: true
+
+#-----------DeviceBlocker----------#
+#1 = Android
+#2 = iOS
+#2 = OSX
+#4 = FireOs
+#5 = GearVR
+#6 = Hololens
+#7 = Windows10
+#9 = Dedicated
+Device-Blocker: false
+DeviceToBlock: 7
+kickmsg: "Your Device is not allowed in this server"
+
+#-----------RESPAWN----------#
+Title-Respawn: true
+
+#-----------HUNGER----------#
+Disable-HungerChange: true
+
+#-----------Rank----------#
+Allow-Rank: true
+
+#-----------NO VOID----------#
+Allow-NoVoid: true
+No-Void-World: world
+
+#-----------CLEARLAGG----------#
+Auto-ClearLagg: true
+
+#-----------HIGH PING----------#
+High-Ping-Kick: true
+Max-Ping: 500
+...

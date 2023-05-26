@@ -1,0 +1,26 @@
+---
+ghost_ytpro:
+  authorized: allow
+  changed: 1453879061
+  echo: true
+ghost_ytprod:
+  authorized: allow
+  changed: 1453956793
+  echo: true
+ghost:
+  authorized: allow
+  changed: 1454008097
+  echo: true
+cecy_00:
+  authorized: allow
+  changed: 1454018499
+  echo: true
+steve:
+  authorized: allow
+  changed: 1454034215
+  echo: true
+gtb20:
+  authorized: allow
+  changed: 1457726822
+  echo: true
+...
